@@ -1,0 +1,32 @@
+unit ReferenceFormViewModel;
+
+interface
+
+uses
+
+  AbstractDataSetHolder,
+  SysUtils,
+  Classes;
+  
+type
+
+  TReferenceFormViewModel = class
+
+    protected
+
+      FDataSetHolder: TAbstractDataSetHolder;
+
+    public
+
+      AddingRecordAllowed: Boolean;
+      EditingRecordAllowed: Boolean;
+      RemovingRecordAllowed: Boolean;
+
+    public
+
+      
+    
+  end;
+implementation
+
+end.

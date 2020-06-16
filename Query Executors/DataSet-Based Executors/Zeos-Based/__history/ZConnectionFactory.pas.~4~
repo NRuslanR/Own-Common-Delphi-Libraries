@@ -1,0 +1,26 @@
+unit ZConnectionFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  AbstractConnectionFactory,
+  ZConnection,
+  SysUtils,
+  Classes;
+
+type
+
+  TZConnectionFactory = class (TAbstractConnectionFactory)
+
+    public
+
+      function CreateConnection(ConnectionInfo: TConnectionInfo): TObject;
+        override;
+
+  end;
+
+implementation
+
+end.

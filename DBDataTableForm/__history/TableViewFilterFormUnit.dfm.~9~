@@ -1,0 +1,100 @@
+object TableViewFilterForm: TTableViewFilterForm
+  Left = 0
+  Top = 0
+  Caption = #1054#1090#1073#1086#1088' '#1079#1072#1087#1080#1089#1077#1081' '#1087#1086' '#1079#1072#1076#1072#1085#1085#1099#1084' '#1093#1072#1088#1072#1082#1090#1077#1088#1080#1089#1090#1080#1082#1072#1084
+  ClientHeight = 111
+  ClientWidth = 705
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMode = pmExplicit
+  OnCloseQuery = FormCloseQuery
+  OnMouseWheel = FormMouseWheel
+  OnShow = FormShow
+  DesignSize = (
+    705
+    111)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnApply: TcxButton
+    Left = 525
+    Top = 78
+    Width = 91
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+    Default = True
+    Enabled = False
+    TabOrder = 0
+    OnClick = btnApplyClick
+    LookAndFeel.SkinName = 'UserSkin'
+  end
+  object btnCancel: TcxButton
+    Left = 622
+    Top = 78
+    Width = 75
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1047#1072#1082#1088#1099#1090#1100
+    TabOrder = 1
+    OnClick = btnCancelClick
+    LookAndFeel.SkinName = 'UserSkin'
+  end
+  object FilterOptionsGroupBox: TGroupBox
+    Left = 8
+    Top = 5
+    Width = 689
+    Height = 57
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = #1054#1087#1094#1080#1080' '#1092#1080#1083#1100#1090#1088#1072#1094#1080#1080
+    TabOrder = 2
+    object UseCaseInSensitiveFilter: TCheckBox
+      Left = 16
+      Top = 24
+      Width = 121
+      Height = 17
+      Caption = #1041#1077#1079' '#1091#1095#1105#1090#1072' '#1088#1077#1075#1080#1089#1090#1088#1072
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+    end
+  end
+  object btnCancelPrevFilter: TcxButton
+    Left = 365
+    Top = 78
+    Width = 154
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1054#1090#1084#1077#1085#1080#1090#1100' '#1090#1077#1082#1091#1097#1080#1081' '#1092#1080#1083#1100#1090#1088
+    Enabled = False
+    TabOrder = 3
+    OnClick = btnCancelPrevFilterClick
+    LookAndFeel.SkinName = 'UserSkin'
+  end
+  object SelectAllFieldsCheckBox: TCheckBox
+    Left = 8
+    Top = 82
+    Width = 177
+    Height = 17
+    Anchors = [akLeft, akBottom]
+    Caption = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077' '#1093#1072#1088#1072#1082#1090#1077#1088#1080#1089#1090#1080#1082#1080
+    TabOrder = 4
+    OnClick = FilterByAllFieldsCheckBoxClick
+  end
+  object ResetFilterSettingsButton: TcxButton
+    Left = 232
+    Top = 78
+    Width = 127
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1057#1073#1088#1086#1089#1080#1090#1100' '#1085#1072#1089#1090#1088#1086#1081#1082#1080
+    Enabled = False
+    TabOrder = 5
+    OnClick = ResetFilterSettingsButtonClick
+    LookAndFeel.SkinName = 'UserSkin'
+  end
+end

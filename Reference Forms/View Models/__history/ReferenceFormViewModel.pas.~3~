@@ -1,0 +1,19 @@
+unit ReferenceFormViewModel;
+
+interface
+
+uses
+
+  AbstractDataSetHolder,
+  SysUtils,
+  Classes;
+  
+type
+
+  TReferenceFormViewModel = class
+
+    
+  end;
+implementation
+
+end.

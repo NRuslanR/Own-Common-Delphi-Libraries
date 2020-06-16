@@ -1,0 +1,15 @@
+unit FullSuccessedStubSystemAuthorizationService;
+
+interface
+
+uses
+
+  SystemAuthorizationService,
+  SysUtils;
+
+type
+
+  
+implementation
+
+end.

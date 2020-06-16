@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019.03.05 15:18:29.265.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\TestMessagingServiceFormUnit.pas</Transaction>
+    <Transaction>2019.03.05 15:18:29.265.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\TestMessagingServiceFormUnit.dfm</Transaction>
+    <Transaction>2019.03.05 15:18:45.140.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project4.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\MessagingServiceTestProject.bdsproj</Transaction>
+    <Transaction>2019.03.05 15:19:02.312.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\IMessagingServiceUnit.pas</Transaction>
+    <Transaction>2019.03.05 16:47:01.305.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\MessageAttachmentUnit.pas</Transaction>
+    <Transaction>2019.03.06 09:47:58.717.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\EmailMessagingServiceUnit.pas</Transaction>
+    <Transaction>2019.03.07 09:37:50.045.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\EmailMessageAttachmentUnit.pas</Transaction>
+    <Transaction>2019.03.07 10:05:18.616.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\IMessagingServiceUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\MessagingServiceUnit.pas</Transaction>
+    <Transaction>2019.03.07 10:07:15.615.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\MessageAttachmentUnit.pas=</Transaction>
+    <Transaction>2019.03.07 10:07:52.350.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\EmailMessageAttachmentUnit.pas=</Transaction>
+    <Transaction>2019.03.07 15:11:08.744.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\EmailMessagingServiceUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\AbstractEmailMessagingServiceUnit.pas</Transaction>
+    <Transaction>2019.03.07 15:13:35.977.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\SynopseEmailMessagingServiceUnit.pas</Transaction>
+    <Transaction>2019.03.07 15:15:53.007.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\SynopseEmailMessagingServiceUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Messaging Service\Email\SynapseEmailMessagingServiceUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,747 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="AUTHOR" content="Mike Shkolnik">
+<meta name="DESCRIPTION"
+content="SMExport delphi component, export, excel, spreadsheet, word, lotus, quattro, dif, sylk, sql, dump, dbase, dbf, paradox, text, csv, fixed, wks, wq, html, xml, dataset, tdataset, grid, dbgrid, tdbgrid">
+<meta name="KEYWORDS"
+content="SMExport delphi component, excel export, export dataset to excel, delphi export, delphi excel, excel export data, delphi excel component, delphi excel export, delphi excel vcl, delphi read excel, export datagrid excel, datagrid excel export, delphi export to excel, delphi export to word, export, excel, spreadsheet, word, lotus, quattro, dif, sylk, sql, dump, dbase, dbf, paradox, text, csv, fixed, wks, wq, html, xml">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Data export: SMExport suite</title>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body background="../images/background.gif" bgcolor="#FFFFFF"
+leftmargin="15">
+
+<table border="0" width="100%" bgcolor="#6097CF">
+    <tr>
+        <td><a href="http://www.borland.com" target="_new"><font
+        color="#FFFFFF" size="2"><img src="../images/btp.gif"
+        border="0" width="106" height="51"></font></a></td>
+        <td><p align="right"><font color="#FFFFFF" size="5"><em><strong>SMExport
+        component suite 4.77 <br>
+        </strong></em></font><font color="#FFFFFF" size="3"><strong>convert
+        to all popular data formats!</strong></font></p>
+        </td>
+    </tr>
+</table>
+
+<p align="left"><font color="#000080" size="3"><strong>fast and
+direct data export into MS Excel, XML, HTML, SPSS, PDF and others
+from DBGrid/Dataset or any VCL control!</strong></font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="center"><img src="../images/pal_sme4.gif" width="665"
+height="60"></p>
+
+<p>SMExport suite 4.77 is a component set for data export from
+TDataSet or TDBGrid or any other VCL control (TStringGrid,
+TListView etc) into the Paradox and DBase tables (using BDE) or
+into a text file (fixed or comma-delimited), HTML, XML, MS Excel,
+MS Word, PDF, MS Access, SQL-script, Lotus 1-2-3, Quattro, SYLK,
+DIF, LDAP DIF and others:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bordercolordark="#FFFFFF" bordercolorlight="#808080">
+    <tr>
+        <td width="24">&nbsp;</td>
+        <td><strong>Component name</strong></td>
+        <td><strong>File format</strong></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2xls.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToXLS</strong></font></td>
+        <td><font size="2">MS Excel directly without OLE</font></td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2exc.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToExcel</strong></font></td>
+        <td><font size="2">using MS Excel as OLE-server</font></td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2acc.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToAccess</strong></font></td>
+        <td><font size="2">use the DAO/MS Jet</font></td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2word.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToWord</strong></font></td>
+        <td><font size="2">using MS Word as OLE-server</font></td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2rtf.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToRTF</strong></font></td>
+        <td><font size="2">RichText format (directly without
+        OLE/DDE/RichText.dll)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2txt.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToText</strong></font></td>
+        <td><font size="2">Text files (fixed or comma-delimited
+        types) </font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2html.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToHTML</strong></font></td>
+        <td><font size="2">HTML file</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2xml.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToXML</strong></font></td>
+        <td><font size="2">XML file. Subset of TClientDataset
+        format for save/load from XML is supported</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2pdf.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToPDF</strong></font></td>
+        <td><font size="2">Adobe Acrobat PDF document</font></td>
+    </tr>
+    <tr>
+        <td width="24"><font size="2"><img
+        src="../images/sme2wks.gif" width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToWKS</strong></font></td>
+        <td><font size="2">Lotus 1-2-3 directly without OLE</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2wq.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToQuattro</strong></font></td>
+        <td><font size="2">QuattroPro directly without OLE</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2sylk.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToSYLK</strong></font></td>
+        <td><font size="2">SYLK (Symbolic Link)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2dif.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToDIF</strong></font></td>
+        <td><font size="2">DIF (Data Interchange Format)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2ldif.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToLDIF</strong></font></td>
+        <td><font size="2">LDAP Data Interchange Format
+        (directory entries)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2spss.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToSPSS</strong></font></td>
+        <td><font size="2">SPSS file for statistical software and
+        analysis</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2sql.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToSQL</strong></font></td>
+        <td><font size="2">SQL-script with data dump</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2bde.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToBDE</strong></font></td>
+        <td><font size="2">Paradox/DBase/ASCII files (BDE is
+        required)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2dbf.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToDBF</strong></font></td>
+        <td><font size="2">DBase tables (without BDE)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2ado.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToADO</strong></font></td>
+        <td><font size="2">ADO data source (without ADO VCL
+        components)</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2clp.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToClipboard</strong></font></td>
+        <td><font size="2">MS Windows clipboard with separated
+        fields/columns</font></td>
+    </tr>
+    <tr>
+        <td><font size="2"><img src="../images/sme2ds.gif"
+        width="24" height="24"></font></td>
+        <td><font color="#800000" size="2"><strong>TSMExportToDataset</strong></font></td>
+        <td><font size="2">copy a data into other dataset</font></td>
+    </tr>
+</table>
+</center></div>
+
+<p>Specific formattings (column widths, colors, fonts, selected
+records etc.) is transferred as much as possible.<br>
+SMExport is a native VCL engine with multi-language support.</p>
+
+<p>Also SMExport suite contains a <font color="#800000"><strong>TSMEWizardDlg</strong></font>
+(<img src="../images/smewizard.gif" width="24" height="24">)
+component. It is a wizard form for run-time user visualization of
+export parameters setting. With this component your user can
+control a data export process.</p>
+
+<p>Also SMExport suite contains a <font color="#800000"><strong>TSMExportMonitor</strong></font>
+(<img src="../images/smemonitor.gif" width="24" height="24">)
+component. It is a compound component with visual dialog for
+export parameters setting. With this component you can control a
+data export process in one place and give a flexible application
+to your end-users.</p>
+
+<p align="center"><font size="2"><img
+src="../images/pal_smep4.gif" width="447" height="60"></font></p>
+
+<p>Custom data engines allow to export data from any control
+(TStringGrid, TListView, TDecisionCube etc). Virtual data engine
+allow to generate a data in run-time without any linked control.
+Custom third-party sources supported as well (DevExpress, TMS,
+DOA, IBObject, DBISAM etc)</p>
+
+<p>Data pumping components allow to export a lot of tables from
+database in a few mouse clicks.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td width="100%"><font color="#FFFFFF"><strong>Download
+        (last updated: May 18, 2005)</strong></font></td>
+    </tr>
+</table>
+
+<p align="center"><br>
+</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="0" cellspacing="0"
+bordercolordark="#FFFFFF" bordercolorlight="#808080">
+    <tr>
+        <td>&nbsp;</td>
+        <td align="right" width="60">&nbsp;</td>
+        <td align="center"><font size="2">HTTP</font></td>
+        <td align="center"><font size="2">FTP</font></td>
+    </tr>
+    <tr>
+        <td><font size="2">Delphi 2005 package</font></td>
+        <td align="right" width="60"><font size="2">0.7Mb</font></td>
+        <td align="center"><a
+        href="../download/sme/sme_d2005.zip"><font size="2">sme_d2005.zip</font></a></td>
+        <td align="center"><a
+        href="ftp://ftp.scalabium.com/pub/sme/sme_d2005.zip"><font
+        size="2">sme_d2005.zip</font></a></td>
+    </tr>
+    <tr>
+        <td><font size="2">Delphi packages (v3/4/5/6/7)+demo</font></td>
+        <td align="right" width="60"><font size="2">3.9Mb</font></td>
+        <td align="center"><a
+        href="../download/sme/sme_d34567.zip"><font size="2">sme_d34567.zip</font></a></td>
+        <td align="center"><a
+        href="ftp://ftp.scalabium.com/pub/sme/sme_d34567.zip"><font
+        size="2">sme_d34567.zip</font></a></td>
+    </tr>
+    <tr>
+        <td><font size="2">C++Builder packages (v3/4/5/6)+demo</font></td>
+        <td align="right" width="60"><font size="2">6.3Mb</font></td>
+        <td align="center"><a
+        href="../download/sme/sme_c3456.zip"><font size="2">sme_c3456.zip</font></a></td>
+        <td align="center"><a
+        href="ftp://ftp.scalabium.com/pub/sme/sme_c3456.zip"><font
+        size="2">sme_c3456.zip</font></a></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td align="right" width="60">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><font size="2">Full suite (Delphi/C++Builder/demos)</font></td>
+        <td align="right" width="60"><font size="2">9.9Mb</font></td>
+        <td align="center"><a href="../download/sme/smetrial.zip"><font
+        size="2">smetrial.zip</font></a></td>
+        <td align="center"><a
+        href="ftp://ftp.scalabium.com/pub/sme/smetrial.zip"><font
+        size="2">smetrial.zip</font></a></td>
+    </tr>
+    <tr>
+        <td><font size="2">Compiled demo applications
+        (Delphi/C++Builder)</font></td>
+        <td align="right" width="60"><font size="2">7.3Mb</font></td>
+        <td align="center"><a href="../download/sme/smedemo.zip"><font
+        size="2">smedemo.zip</font></a></td>
+        <td align="center"><a
+        href="ftp://ftp.scalabium.com/pub/sme/smedemo.zip"><font
+        size="2">smedemo.zip</font></a></td>
+    </tr>
+</table>
+</center></div>
+
+<p align="left"><font color="#FF0000"><em>You may use the
+shareware trial version for 30 days with Delphi IDE running only.<br>
+If after 30 days you would like to continue using it, then you
+should purchase a license.<br>
+PS: the trial version allows to export the 50 records with Delphi
+IDE running only.</em></font></p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td width="100%"><font color="#FFFFFF"><strong>Price</strong></font></td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" cellspacing="0"
+bordercolordark="#FFFFFF" bordercolorlight="#808080">
+    <tr>
+        <td>&nbsp;</td>
+        <td>License fee is </td>
+    </tr>
+    <tr>
+        <td align="right">full suite with sources</td>
+        <td align="center">$50</td>
+    </tr>
+    <tr>
+        <td align="right">standard suite without sources</td>
+        <td align="center">$35</td>
+    </tr>
+</table>
+</center></div>
+
+<p><font size="1">* you can distribute the own applications
+absolutely free without any additional hidden fees<br>
+** one license allow to work with this component suite on one
+computer only (one developer). You need as many licenses as many
+developers will use these components<br>
+.*** the site license allow to use these components in company
+with unlimited number of developers. The license fee is
+5*(developer's fee)</font></p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td width="100%"><font color="#FFFFFF"><strong>Order</strong></font></td>
+    </tr>
+</table>
+
+<p>You can read about registration and order methods on <a
+href="../smorder.htm">order page</a>.<br>
+Online secure order:<font color="#800000"><strong> </strong></font><a
+href="http://www.regsoft.net/purchase_nonsecure.php3?productid=13585"
+target="_new"><font color="#800000"><strong>RegSoft, USA</strong></font></a><font
+color="#800000"><strong> </strong></font>or <a
+href="https://secure.element5.com/register.html?productid=131572"
+target="_new"><font color="#800000"><strong>ShareIt, Europe</strong></font></a></p>
+
+<p>You can order the bundle: SMExport+SMImport for $75 and save
+$25 per developer:<br>
+Online secure order:<font color="#800000"><strong> </strong></font><a
+href="http://www.regsoft.net/purchase.php3?productid=64368"
+target="_new"><font color="#800000"><strong>RegSoft, USA</strong></font></a><font
+color="#800000"><strong> </strong></font>or <a
+href="https://secure.element5.com/register.html?productid=138679"
+target="_new"><font color="#800000"><strong>ShareIt, Europe</strong></font></a></p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td width="100%"><font color="#FFFFFF"><strong>What you
+        get when you register</strong></font></td>
+    </tr>
+</table>
+
+<ul>
+    <li>Delivery is done by sending you the fully registered
+        version via email (or by direct link if you have some
+        limitation in mail-server).</li>
+    <li>Demo limitations and nag screens are removed</li>
+    <li>Upgrades are free during 1 (one) year. You will be
+        notified of updated minor versions and they will be send
+        by e-mail on personal request. </li>
+    <li>Technical support by e-mail (please quote your serial
+        number) during 1 (one) year.</li>
+</ul>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>Install instructions</strong></font></td>
+    </tr>
+</table>
+
+<p>1) Unzip it to a created folder<br>
+2) Run <b>Delphi or C++Builder IDE</b><br>
+3) Select <strong>Install packages...</strong> item in <strong>Component</strong>
+menu<br>
+4) Press <strong>Add</strong> button and select a package file (<strong>SMExportD3.DPL</strong>
+for D3, <strong>SMExportXX.BPL</strong> for D4/5/6/7/2005 and
+CB3/4/5) in installed directory<br>
+5) Press <strong>Ok</strong> button<br>
+6) Enjoy it. In the component palette on <strong>SMExport </strong>and
+<strong>SMExport+</strong> pages you can find installed new
+components</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>FAQ</strong></font></td>
+    </tr>
+</table>
+
+<p>You can find answers on frequently asked questions &lt;<a
+href="sme_faq.htm">here</a>&gt;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>Activate methods</strong></font></td>
+    </tr>
+</table>
+
+<p><em><strong>In design-time (being in Delphi designer form):<br>
+</strong></em>to fill a component properties and by pressing the
+mouse right button to execute data export.<br>
+Also for TSMEWizardDlg and/or TSMExportMonitor components you can
+establish all parameters of data export in visual user dialog
+(view screenshot below).</p>
+
+<p><em><strong>In your application run-time:<br>
+</strong></em>with <font color="#800000"><strong>TSMExportMonitor</strong></font>
+component for activation of a data export process:<br>
+to call a <font color="#0000FF"><strong>Execute(True) - </strong></font>with
+setup dialog for visual user parameters prompt<br>
+to call <font color="#0000FF"><strong>Execute(False) - </strong></font>without
+visual dialog</p>
+
+<p>To start an export for all other components call the <font
+color="#0000FF"><strong>Execute</strong></font> method.</p>
+
+<p>Also you can convert the exported text with changed codepage
+table (Windows or DOS).</p>
+
+<p>For text and clipboard exports you can define a custom
+symbol-separator between fields/columns and to include a fixed
+output with the fixed lengths of fields.</p>
+
+<p>You can use the <font color="#800000"><strong>OnGetCellParams</strong></font>
+event for custom control of every exported value and <font
+color="#800000"><strong>OnGetLanguageString</strong></font> event
+for on-fly switch of language in your multilingual application.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>Translated resources</strong></font></td>
+    </tr>
+</table>
+
+<p>In the archive which will be received by registered user in
+the SOURCES\RESOURCES folder you will find the translated
+resources for these languages:</p>
+<div align="center"><center>
+
+<table border="1" cellpadding="2" cellspacing="0">
+    <tr>
+        <td>&nbsp;</td>
+        <td><font size="2"><strong>Language</strong></font></td>
+        <td><font size="2"><strong>Translator</strong></font></td>
+        <td>&nbsp;</td>
+        <td><font size="2"><strong>Language</strong></font></td>
+        <td><font size="2"><strong>Translator</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="6">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/usa.gif" width="30"
+        height="18"><br>
+        <img src="../images/flag/britan.gif" width="30"
+        height="18"></td>
+        <td><font size="2">English</font></td>
+        <td><a href="mailto:mshkolnik@scalabium.com"><font
+        size="2">Mike Shkolnik</font></a></td>
+        <td><img src="../images/flag/russia.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Russian</font></td>
+        <td><a href="mailto:mshkolnik@scalabium.com"><font
+        size="2">Mike Shkolnik</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/france.gif" width="30"
+        height="18"></td>
+        <td><font size="2">French</font></td>
+        <td><a href="mailto:walloon@wanadoo.be"><font size="2">Remy
+        CONSTANT</font></a><font size="2"><br>
+        </font><a href="mailto:patrick@soprane.fr"><font size="2">Patrick
+        Pellizzari</font></a></td>
+        <td><img src="../images/flag/ukraine.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Ukrainian</font></td>
+        <td><a href="mailto:mshkolnik@scalabium.com"><font
+        size="2">Mike Shkolnik</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/german.gif" width="30"
+        height="18"></td>
+        <td><font size="2">German</font></td>
+        <td><a href="mailto:G.SCHMIDT-ADOMEIT@T-ONLINE.DE"><font
+        size="2">Gerhard Schmidt-Adomeit</font></a><font size="2"><br>
+        </font><a href="mailto:tgrimm@allegro-itc.de"><font
+        size="2">Thomas Grimm</font></a><font size="2"><br>
+        </font><a href="mailto:bickel@sbh.de"><font size="2">Michael
+        Bickel</font></a></td>
+        <td><img src="../images/flag/italia.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Italian</font></td>
+        <td><a href="mailto:max@csdinfodauna.it"><font size="2">Massimo
+        Allegretti</font></a><font size="2">,<br>
+        </font><a href="mailto:staff@arlsoft.it"><font size="2">Alessandro
+        Romano</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/netherland.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Dutch</font></td>
+        <td><a href="mailto:s.van.hooft@home.nl"><font size="2">Steph
+        van Hooft</font></a><font size="2"><br>
+        </font><a href="mailto:jwink@bus.nl"><font size="2">Jurrie
+        Wink</font></a></td>
+        <td><img src="../images/flag/spain.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Spanish</font></td>
+        <td><a href="mailto:diego@dayanim.net"><font size="2">Diego
+        Dayan</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/portuguese.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Portuguese</font></td>
+        <td><a href="mailto:pedro.lopes@centralgest.com"><font
+        size="2">Pedro Lopes</font></a><font size="2"><br>
+        </font><a href="mailto:antonio_roque@clix.pt"><font
+        size="2">Antonio Roque</font></a></td>
+        <td><img src="../images/flag/brazil.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Brazilian Portuguese</font></td>
+        <td><a href="http://www.stgsys.com/contact.asp"
+        target="_new"><font size="2">Luiz Marques</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/norway.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Norwegian</font></td>
+        <td><a href="mailto:stein@spider.no"><font size="2">Stein
+        Inge Kvalvik</font></a></td>
+        <td><img src="../images/flag/sweden.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Swedish</font></td>
+        <td><a href="mailto:ante35se@yahoo.se"><font size="2">Andreas
+        Hard</font></a><font size="2"><br>
+        </font><a href="mailto:tommy.ericson@teit.se"><font
+        size="2">Tommy Ericson</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/danish.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Danish</font></td>
+        <td><a href="mailto:thygesen@email.dk"><font size="2">Otto
+        C. Thygesen</font></a></td>
+        <td><img src="../images/flag/indonesia.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Indonesian</font></td>
+        <td><a href="mailto:bpranoto@hotpop.com"><font size="2">Bambang
+        Pranoto</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/china.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Traditional Chinese (BIG5)</font></td>
+        <td><a href="mailto:davidsun@mail.ur-solution.com"><font
+        size="2">SUN SHAN-CHIEH</font></a></td>
+        <td><img src="../images/flag/china.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Simplified Chinese (GB)</font></td>
+        <td><a href="mailto:medatlas@163.com"><font size="2">WEI
+        YI-XIAO</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/greece.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Greek</font></td>
+        <td><a href="mailto:tassos@viva-lancia.com"><font
+        size="2">Tassos Kollias</font></a></td>
+        <td><img src="../images/flag/poland.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Polish</font></td>
+        <td><a href="mailto:slawekc@adh.com.pl"><font size="2">Slawomir
+        Ciunczyk</font></a></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/romania.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Romanian</font></td>
+        <td><a href="mailto:popescu@gmx.net"><font size="2">Bogdan
+        Popescu</font></a></td>
+        <td><img src="../images/flag/slovenia.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Slovenian</font></td>
+        <td><a href="mailto:tom@saop.si"><font size="2">Tom, SAOP
+        d.o.o.</font></a><font size="2"><br>
+        Marko Kastelic, iSoft</font></td>
+    </tr>
+    <tr>
+        <td><img src="../images/flag/turkey.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Turkish</font></td>
+        <td><a href="mailto:hakanoya@turk.net"><font size="2">Hakan
+        Biyiklioglu</font></a><font size="2"><br>
+        </font><a href="mailto:ikutluay@ibrahimkutluay.net"><font
+        size="2">Ibrahim Kutluay</font></a></td>
+        <td><img src="../images/flag/czech.gif" width="30"
+        height="18"></td>
+        <td><font size="2">Czech</font></td>
+        <td><a href="mailto:radvansky@radvansky.net"><font
+        size="2">Martin Radvansky</font></a></td>
+    </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>Screenshots</strong></font></td>
+    </tr>
+</table>
+
+<p align="center"><img src="../images/smewiz.gif"
+alt="TSMEWizardDlg - 22 876 bytes" width="513" height="336"></p>
+
+<p align="center"><img src="../images/exportds.gif"
+alt="TSMExportMonitor - 7452 bytes" align="middle" hspace="2"
+width="425" height="330"></p>
+
+<p align="center"><img src="../images/sme.gif"
+alt="Animated screenshots - 75179 bytes" align="middle"
+hspace="2" width="599" height="360"></p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+bgcolor="#6097CF">
+    <tr>
+        <td><font color="#FFFFFF"><strong>See also</strong></font></td>
+    </tr>
+</table>
+
+<p>You may try also the another our data conversion tools:</p>
+
+<ul>
+    <li><font size="2"><img src="../images/dbimport.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../smi/index.htm">SMImport suite (VCL)</a></li>
+    <li><font size="2"><img src="../images/smi2doc.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../msword/index.htm">SMWordDocument parser (VCL)</a></li>
+    <li><font size="2"><img src="../images/sme2xls.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../dbe/index.htm">DBExport tools</a></li>
+    <li><font size="2"><img src="../images/smi2html.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../dbload.htm">DBLoad tools</a></li>
+    <li><font size="2"><img src="../images/smi2db.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../pdx/pdxa.htm">Paradox reader engine (ActiveX)</a></li>
+    <li><font size="2"><img src="../images/cog.gif"
+        align="absmiddle" width="16" height="16"> </font><a
+        href="../mfe/index.htm">Metafile convert</a></li>
+</ul>
+
+<hr noshade color="#004E98">
+
+<p align="right">Try the <font color="#004E98"><em><strong>SMExport
+suite 4.77</strong></em></font> before you buy it.</p>
+
+<table border="0" width="100%" bgcolor="#6097CF">
+    <tr>
+        <td width="110"><a href="http://www.borland.com"><img
+        src="../images/btp.gif" alt="Borland Software" border="0"
+        width="106" height="51"></a></td>
+        <td align="center" width="180"><a
+        href="http://www.scalabium.com/faq/dc_tips.htm"><img
+        src="../ae/scalabium_sp2.gif" alt="Scalabium Delphi tips"
+        border="0" width="88" height="31"><!-- SpyLOG v2 f:1111 --></a> <script
+        language="javascript">
+u="u035.86.spylog.com";d=document;nv=navigator;na=nv.appName;t="";p=1;
+sz=" width=88 height=31 ";
+hl=history.length;d.cookie="b=b";c=0;
+bv=Math.round(parseFloat(nv.appVersion)*100);
+if (d.cookie) c=1;n=(na.substring(0,2)=="Mi")?0:1;
+if((n==0)||(bv >= 300)){rn=Math.random();t=(new Date()).getTimezoneOffset();} else {rn=0;}
+z="p="+p+"&rn="+rn+"&t="+t+"&c="+c+"&hl="+hl;
+if (self != top) { fr=1;} else { fr=0;}
+r1=escape(d.referrer);r=escape(parent.document.referrer);
+sl="1.0";h=0;
+</script><script
+        language="javascript1.1"
+        src="http://u035.86.spylog.com/js/c2f.js"></script><script
+        language="javascript">
+if (h==0){ y="";
+y+="<a href='http://"+u+"/cnt?f=3&p="+p+"&rn="+rn+"' target=_blank>";
+y+="<img src='http://"+u+"/cnt?";
+ y+=z+"&sl="+sl+"&fr="+fr+"&r="+r+"&r1="+r1+"'";
+y+="' border=0 "+sz+" alt='SpyLOG'>";
+y+="</a>"; 
+d.write(y);
+}
+</script><script
+        language="javascript1.2"><!--
+if (n == 0) { d.write("<");d.write("!--"); }
+//--></script><noscript> <p><a
+        href="http://u035.86.spylog.com/cnt?f=3&amp;p=1"
+        target="_blank"><img
+        src="http://u035.86.spylog.com/cnt?p=1" alt="SpyLOG"
+        border="0"> </noscript></a> <script language="javascript1.2"><!--
+if (n == 0) { d.write("--");d.write(">"); }
+//--></script>
+<!-- SpyLOG  -->        </p>
+        </td>
+        <td><p align="center"><font color="#FFFFFF" size="1"
+        face="Arial"><strong>Copyright© 1998-2005, Scalabium
+        Software. All rights reserved.</strong><br>
+        </font><a href="mailto:webmaster@scalabium.com"><font
+        color="#FFFFFF" size="1" face="Arial"><strong>webmaster@scalabium.com</strong></font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p align="center"><a href="../smi.htm"><img
+src="../images/banners/scalabium3.gif"
+alt="Export and import data" border="0" width="468" height="60"></a></p>
+</body>
+</html>

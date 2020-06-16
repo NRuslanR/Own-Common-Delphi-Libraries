@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019.10.11 13:17:47.123.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateRichEdit.pas</Transaction>
+    <Transaction>2019.10.11 13:26:21.960.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateRichEdit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

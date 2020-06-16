@@ -1,0 +1,90 @@
+object frmSMESpecs: TfrmSMESpecs
+  Left = 200
+  Top = 108
+  BiDiMode = bdLeftToRight
+  Caption = 'Import Specifications'
+  ClientHeight = 174
+  ClientWidth = 315
+  Position = poScreenCenter
+  Transparency = False
+  Visible = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  StyleLookup = 'backgroundstyle'
+  Left = 200
+  Top = 108
+  object lblPrompt: TLabel
+    Position.Point = '(8,8)'
+    Width = 169.000000000000000000
+    Height = 13.000000000000000000
+    TabOrder = 0
+    Text = 'List of available specifications:'
+    WordWrap = False
+  end
+  object imgLogo: TImage
+    Position.Point = '(248,96)'
+    Width = 16.000000000000000000
+    Height = 16.000000000000000000
+    Visible = False
+    Bitmap.PNG = {
+      89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+      61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      00206348524D00007A26000080840000FA00000080E8000075300000EA600000
+      3A98000017709CBA513C0000007F49444154384F9553D10E002108F2FF7FDA9B
+      B774E48CA8D683CB10C1CCDDDC0E8BDDD5934862E7043E02F46489413E421663
+      D56875DA983CB5B28175BD30961814DD25FCCF0844A41A6CD5C039D985DE3F8A
+      27CD41322073C32DEF00152F0DA89D53D5EE40008C36DEFCC7694B00451FFA17
+      92CDF51FB0BE3B1B19EC35F103D439FE02401257DD0000000049454E44AE4260
+      82}
+  end
+  object lbSpecs: TListBox
+    Position.Point = '(8,24)'
+    Width = 217.000000000000000000
+    Height = 145.000000000000000000
+    OnClick = lbSpecsClick
+    OnDblClick = lbSpecsDblClick
+    TabOrder = 2
+    ItemHeight = 17.000000000000000000
+  end
+  object btnClose: TButton
+    Position.Point = '(235,144)'
+    Width = 75.000000000000000000
+    Height = 25.000000000000000000
+    TabOrder = 3
+    StaysPressed = False
+    IsPressed = False
+    ModalResult = 2
+    Text = 'Close'
+    Cancel = True
+  end
+  object btnLoad: TButton
+    Position.Point = '(235,8)'
+    Width = 75.000000000000000000
+    Height = 25.000000000000000000
+    TabOrder = 4
+    StaysPressed = False
+    IsPressed = False
+    ModalResult = 7
+    Text = 'Load'
+  end
+  object btnSave: TButton
+    Position.Point = '(235,36)'
+    Width = 75.000000000000000000
+    Height = 25.000000000000000000
+    TabOrder = 5
+    StaysPressed = False
+    IsPressed = False
+    ModalResult = 6
+    Text = 'Save'
+  end
+  object btnDelete: TButton
+    Position.Point = '(235,64)'
+    Width = 75.000000000000000000
+    Height = 25.000000000000000000
+    OnClick = btnDeleteClick
+    TabOrder = 6
+    StaysPressed = False
+    IsPressed = False
+    Text = 'Delete'
+  end
+end

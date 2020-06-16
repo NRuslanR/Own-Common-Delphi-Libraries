@@ -1,0 +1,87 @@
+unit DatabaseAuthentificationFormViewModelPropertiesINIFile;
+
+interface
+
+uses
+
+  DatabaseAuthentificationFormViewModel,
+  SystemAuthentificationFormViewModelPropertiesINIFile,
+  SystemAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TDatabaseAuthentificationFormViewModelPropertiesINIFile =
+    class (TSystemAuthentificationFormViewModelPropertiesINIFile)
+
+      protected
+
+        function GetValidSystemAuthentificationFormViewModelClass:
+          TSystemAuthentificationFormViewModelClass; override;
+          
+      protected
+
+        procedure SaveSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+
+        procedure RestoreSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+    
+    end;
+
+implementation
+
+{ TDatabaseAuthentificationFormViewModelPropertiesINIFile }
+
+function TDatabaseAuthentificationFormViewModelPropertiesINIFile.
+  GetValidSystemAuthentificationFormViewModelClass:
+    TSystemAuthentificationFormViewModelClass;
+begin
+
+  Result := TDatabaseAuthentificationFormViewModel;
+  
+end;
+
+procedure TDatabaseAuthentificationFormViewModelPropertiesINIFile.
+  RestoreSystemAuthentificationFormViewModelProperties(
+    ViewModel: TSystemAuthentificationFormViewModel
+  );
+begin
+
+  inherited;
+
+  with ViewModel as TDatabaseAuthentificationFormViewModel do begin
+
+    
+  end;
+
+end;
+
+procedure TDatabaseAuthentificationFormViewModelPropertiesINIFile.
+  SaveSystemAuthentificationFormViewModelProperties(
+    ViewModel: TSystemAuthentificationFormViewModel
+  );
+begin
+
+  inherited;
+
+  with ViewModel as TDatabaseAuthentificationFormViewModel do begin
+  
+    FPropertiesINIFile.GoToSection('DatabaseNamesSection');
+
+    FPropertiesINIFile.WriteValueForProperty(
+      'CurrentDatabaseName', CurrentDatabaseName
+    );
+
+    FPropertiesINIFile.WriteValueForProperty(
+      'UsedDatabaseNames', DatabaseNames.CommaText
+    );
+
+  end;
+
+end;
+
+end.

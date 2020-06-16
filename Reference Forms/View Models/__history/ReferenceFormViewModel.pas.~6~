@@ -1,0 +1,63 @@
+unit ReferenceFormViewModel;
+
+interface
+
+uses
+
+  AbstractDataSetHolder,
+  SysUtils,
+  Classes;
+  
+type
+
+  TReferenceFormViewModel = class
+
+    private
+    procedure SetDataSetHolder(const Value: TAbstractDataSetHolder);
+
+    
+    protected
+
+      FDataSetHolder: TAbstractDataSetHolder;
+
+    public
+
+      AddingRecordAllowed: Boolean;
+      EditingRecordAllowed: Boolean;
+      RemovingRecordAllowed: Boolean;
+
+    public
+
+      destructor Destroy; override;
+
+      property DataSetHolder: TAbstractDataSetHolder
+      read FDataSetHolder write SetDataSetHolder;
+    
+  end;
+implementation
+
+{ TReferenceFormViewModel }
+
+destructor TReferenceFormViewModel.Destroy;
+begin
+
+  DataSetHolder := nil;
+  
+  inherited;
+
+end;
+
+procedure TReferenceFormViewModel.SetDataSetHolder(
+  const Value: TAbstractDataSetHolder);
+begin
+
+  if FDataSetHolder = Value then
+    Exit;
+
+  FreeAndNil(FDataSetHolder);
+
+  FDataSetHolder := Value;
+
+end;
+
+end.

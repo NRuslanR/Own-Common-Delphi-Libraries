@@ -1,0 +1,19 @@
+unit AbstractSectionStackedFormControllerEvents;
+
+interface
+
+uses
+
+  Event,
+  SysUtils,
+  Classes;
+
+type
+
+
+
+
+
+implementation
+
+end.

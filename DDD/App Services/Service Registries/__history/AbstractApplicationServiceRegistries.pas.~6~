@@ -1,0 +1,40 @@
+unit AbstractApplicationServiceRegistries;
+
+interface
+
+uses
+
+  ApplicationServiceRegistries,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractApplicationServiceRegistries = class (TInterfacedObject, IApplicationServiceRegistries)
+
+    public
+
+      function GetApplicationServiceRegistryTypeName(
+        ApplicationServiceRegistryTypeInfo: Pointer
+      ): String;
+      
+  end;
+  
+
+implementation
+
+uses
+
+  TypInfo;
+  
+{ TAbstractApplicationServiceRegistries }
+
+function TAbstractApplicationServiceRegistries.GetApplicationServiceRegistryTypeName(
+  ApplicationServiceRegistryTypeInfo: Pointer): String;
+begin
+
+  Result := PTypeInfo(ApplicationServiceRegistryTypeInfo)^.Name;
+
+end;
+
+end.

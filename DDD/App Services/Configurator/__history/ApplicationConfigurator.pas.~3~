@@ -1,0 +1,23 @@
+unit ApplicationConfigurator;
+
+interface
+
+uses
+
+  ApplicationServiceRegistries;
+
+type
+
+  IApplicationConfigurator = interface
+
+    function GetApplicationServiceRegistries: IApplicationServiceRegistries;
+
+    procedure SetApplicationServiceRegistries(
+      Value: IApplicationServiceRegistries
+    );
+    
+    property
+  end;
+implementation
+
+end.

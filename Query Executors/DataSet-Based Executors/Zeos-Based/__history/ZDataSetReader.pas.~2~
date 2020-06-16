@@ -1,0 +1,21 @@
+unit ZDataSetReader;
+
+interface
+
+uses
+
+  DataSetDataReader,
+  DB,
+  SysUtils,
+  Classes;
+
+type
+
+  TZDataSetReader = class (TDataSetDataReader)
+
+    
+  end;
+
+implementation
+
+end.

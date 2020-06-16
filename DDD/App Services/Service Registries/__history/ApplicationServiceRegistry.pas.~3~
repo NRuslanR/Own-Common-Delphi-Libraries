@@ -1,0 +1,18 @@
+unit ApplicationServiceRegistry;
+
+interface
+
+uses
+
+  ApplicationService;
+
+type
+
+  IApplicationServiceRegistry = interface
+
+    
+  end;
+
+implementation
+
+end.

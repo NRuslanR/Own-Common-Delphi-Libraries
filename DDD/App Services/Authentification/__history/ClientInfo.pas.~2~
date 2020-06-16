@@ -1,0 +1,19 @@
+unit ClientInfo;
+
+interface
+
+type
+
+  TClientInfo = class
+
+  end;
+
+  TUserInfo = class
+
+    public
+
+      
+  end;
+implementation
+
+end.

@@ -1,0 +1,22 @@
+unit ReferenceFormRecordViewModelMapper;
+
+interface
+
+uses
+
+  CardFormViewModel,
+  ReferenceFormRecordViewModel;
+
+type
+
+  IReferenceFormRecordViewModelMapper = interface
+
+    function MapReferenceFormRecordViewModelFrom(
+      CardFormViewModel: TCardFormViewModel
+    ): TReferenceFormRecordViewModel; 
+      
+  end;
+
+implementation
+
+end.

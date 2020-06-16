@@ -1,0 +1,22 @@
+unit ApplicationBuilder;
+
+interface
+
+uses
+
+  Application,
+  ClientAccount;
+  
+type
+
+  IApplicationBuilder = interface
+
+    function UseAllServices(ClientAccount: TClientAccount): IApplicationBuilder;
+    
+    function Build: IApplication;
+
+  end;
+  
+implementation
+
+end.

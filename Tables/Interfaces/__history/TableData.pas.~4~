@@ -1,0 +1,21 @@
+unit TableData;
+
+interface
+
+uses
+
+  SysUtils;
+
+type
+
+  ITableData = interface
+
+    function RowCount: Integer;
+    function ColumnCount: Integer;
+
+
+  end;
+
+implementation
+
+end.

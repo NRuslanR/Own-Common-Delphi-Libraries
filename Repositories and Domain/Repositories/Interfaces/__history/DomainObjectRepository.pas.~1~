@@ -1,0 +1,7 @@
+unit DomainObjectRepository;
+
+interface
+
+implementation
+
+end.

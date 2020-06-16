@@ -1,0 +1,812 @@
+// создать ViewDataSetHolder на основе DataSetHolder
+
+unit AbstractDataSetHolder;
+
+interface
+
+uses
+
+  DB,
+  SysUtils,
+  Classes,
+  Variants;
+
+type
+
+  TDataSetHolderFilterApplyingMode = (famDisableControls, famNotDisableControls);
+  TDataSetHolderFilterResetMode = (frmEnableControls, frmNotEnableControls);
+
+  TAbstractDataSetRecordIdGenerator = class
+
+    public
+
+      function GenerateNewId: Variant; virtual; abstract;
+
+  end;
+
+  TIntegerDataSetRecordIdGenerator = class (TAbstractDataSetRecordIdGenerator)
+
+    protected
+
+      FCurrentGeneratedId: Integer;
+      
+    public
+
+      function GenerateNewId: Variant; override;
+
+  end;
+
+  TNegativeIntegerDataSetRecordIdGenerator = class (TAbstractDataSetRecordIdGenerator)
+
+    protected
+
+      FIntegerDataSetRecordIdGenerator: TIntegerDataSetRecordIdGenerator;
+
+    public
+
+      destructor Destroy; override;
+      constructor Create(
+        IntegerDataSetRecordIdGenerator: TIntegerDataSetRecordIdGenerator
+      );
+
+      function GenerateNewId: Variant; override;
+      
+  end;
+
+  TAbstractDataSetFieldDefs = class
+
+    public
+
+      RecordIdFieldName: String;
+      IsRecordIdGeneratedFieldName: String;
+      CanBeChangedFieldName: String;
+      CanBeRemovedFieldName: String;
+      
+  end;
+  
+  TAbstractDataSetHolder = class abstract
+
+    private
+
+      function GetIsRecordIdGeneratedFieldName: String;
+      function GetRecordIdFieldName: String;
+      
+      procedure SetIsRecordIdGeneratedFieldName(const Value: String);
+      procedure SetRecordIdFieldName(const Value: String);
+
+      function GetIsRecordIdGeneratedFieldValue: Boolean;
+      function GetRecordIdFieldValue: Variant;
+
+      procedure SetIsRecordIdGeneratedFieldValue(const Value: Boolean);
+      procedure SetRecordIdFieldValue(const Value: Variant);
+
+      function GetCanBeChangedFieldValue: Variant;
+      function GetCanBeRemovedFieldValue: Variant;
+
+      procedure SetCanBeChangedFieldValue(const Value: Variant);
+      procedure SetCanBeRemovedFieldValue(const Value: Variant);
+
+      function GetCanBeChangedFieldName: String;
+      function GetCanBeRemovedFieldName: String;
+
+      procedure SetCanBeChangedFieldName(const Value: String);
+      procedure SetCanBeRemovedFieldName(const Value: String);
+      
+    protected
+
+      FOnDataSetRecordInsertedEventHandler: TDataSetNotifyEvent;
+      FOnDataSetRecordChangedEventHandler: TDataSetNotifyEvent;
+      FOnDataSetRecordRemovedEventHandler: TDataSetNotifyEvent;
+      
+    protected
+
+      FDataSet: TDataSet;
+      FFieldDefs: TAbstractDataSetFieldDefs;
+      FRecordIdGenerator: TAbstractDataSetRecordIdGenerator;
+      
+      procedure SetDataSet(const Value: TDataSet);
+      procedure SetFieldDefs(const Value: TAbstractDataSetFieldDefs);
+      procedure SetRecordIdGenerator(Value: TAbstractDataSetRecordIdGenerator);
+      procedure SubscribeOnDataSetEvents(DataSet: TDataSet);
+
+    protected
+
+      procedure OnDataSetRecordInserted(DataSet: TDataSet); virtual;
+      procedure OnDataSetRecordChanged(DataSet: TDataSet); virtual;
+      procedure OnDataSetRecordRemoved(DataSet: TDataSet); virtual;
+
+    public
+
+      destructor Destroy; override;
+      constructor Create;
+      constructor CreateFrom(DataSet: TDataSet); overload;
+      
+      constructor CreateFrom(
+        DataSet: TDataSet;
+        FieldDefs: TAbstractDataSetFieldDefs
+      ); overload;
+      
+      function GetDataSetFieldValue(
+        const FieldName: String;
+        DefaultValue: Variant
+      ): Variant;
+
+      procedure SetDataSetFieldValue(
+        const FieldName: String;
+        const Value: Variant
+      );
+      
+      function Eof: Boolean; virtual;
+      function Bof: Boolean; virtual;
+      function IsEmpty: Boolean; virtual;
+      function RecordCount: Integer; virtual; 
+
+      function GetBookmark: TBytes;
+      procedure FreeBookmark(Bookmark: TBytes);
+      procedure GotoBookmark(Bookmark: TBytes);
+      function BookmarkValid(Bookmark: TBytes): Boolean;
+
+      procedure GotoBookmarkAndFree(Bookmark: TBytes);
+
+      procedure Append; virtual;
+      procedure Edit; virtual;
+      procedure Post; virtual;
+      procedure Delete; virtual;
+      
+      procedure Next; virtual;
+      procedure First; virtual;
+
+      procedure EnableControls; virtual;
+      procedure DisableControls; virtual;
+      
+      procedure GenerateNewIdForCurrentRecord; virtual;
+      function GetIsCurrentRecordIdGenerated: Boolean; virtual;
+      
+      procedure ApplyFilter(
+        const Expression: String;
+        const FilterMode: TDataSetHolderFilterApplyingMode = famNotDisableControls
+      );
+
+      procedure RevealRecordsWithGeneratedId(
+        const FilterMode: TDataSetHolderFilterApplyingMode = famDisableControls
+      );
+      
+      procedure ResetFilter(
+        const FilterMode: TDataSetHolderFilterResetMode = frmEnableControls
+      );
+
+      function Locate(const FieldNames: String; const FieldValues: Variant; const Options: TLocateOptions): Boolean;
+
+      function IsInEdit: Boolean;
+      function IsInAppend: Boolean;
+      function IsInEditOrAppend: Boolean;
+
+      function ExtractRecordIdGenerator: TAbstractDataSetRecordIdGenerator;
+      
+    published
+
+      property DataSet: TDataSet
+      read FDataSet write SetDataSet;
+
+      property FieldDefs: TAbstractDataSetFieldDefs
+      read FFieldDefs write SetFieldDefs;
+      
+      property RecordIdGenerator: TAbstractDataSetRecordIdGenerator
+      read FRecordIdGenerator write SetRecordIdGenerator;
+
+      property IsCurrentRecordIdGenerated: Boolean
+      read GetIsCurrentRecordIdGenerated;
+
+    published
+
+      property RecordIdFieldName: String
+      read GetRecordIdFieldName write SetRecordIdFieldName;
+
+      property IsRecordIdGeneratedFieldName: String
+      read GetIsRecordIdGeneratedFieldName
+      write SetIsRecordIdGeneratedFieldName;
+      
+      property CanBeChangedFieldName: String
+      read GetCanBeChangedFieldName write SetCanBeChangedFieldName;
+
+      property CanBeRemovedFieldName: String
+      read  GetCanBeRemovedFieldName write SetCanBeRemovedFieldName;
+      
+    published
+
+      property RecordIdFieldValue: Variant
+      read GetRecordIdFieldValue write SetRecordIdFieldValue;
+
+      property IsRecordIdGeneratedFieldValue: Boolean
+      read GetIsRecordIdGeneratedFieldValue
+      write SetIsRecordIdGeneratedFieldValue;
+
+      property CanBeChangedFieldValue: Variant
+      read GetCanBeChangedFieldValue write SetCanBeChangedFieldValue;
+
+      property CanBeRemovedFieldValue: Variant
+      read  GetCanBeRemovedFieldValue write SetCanBeRemovedFieldValue;
+
+    published
+
+      property OnDataSetRecordInsertedEventHandler: TDataSetNotifyEvent
+      read FOnDataSetRecordInsertedEventHandler
+      write FOnDataSetRecordInsertedEventHandler;
+      
+      property OnDataSetRecordChangedEventHandler: TDataSetNotifyEvent
+      read FOnDataSetRecordChangedEventHandler
+      write FOnDataSetRecordChangedEventHandler;
+      
+      property OnDataSetRecordRemovedEventHandler: TDataSetNotifyEvent
+      read FOnDataSetRecordRemovedEventHandler
+      write FOnDataSetRecordRemovedEventHandler;
+
+  end;
+  
+implementation
+
+{ TAbstractDataSetHolder }
+
+procedure TAbstractDataSetHolder.Append;
+begin
+
+  FDataSet.Append;
+  
+end;
+
+procedure TAbstractDataSetHolder.ApplyFilter(const Expression: String;
+    const FilterMode: TDataSetHolderFilterApplyingMode = famNotDisableControls
+);
+begin
+
+  try
+
+    if not FDataSet.ControlsDisabled then
+      FDataSet.DisableControls;
+
+    FDataSet.Filter := Expression;
+    FDataSet.Filtered := True;
+    
+  finally
+
+    if FilterMode = famNotDisableControls then
+      FDataSet.EnableControls;
+      
+  end;
+
+end;
+
+function TAbstractDataSetHolder.Bof: Boolean;
+begin
+
+  Result := FDataSet.Bof;
+  
+end;
+
+function TAbstractDataSetHolder.BookmarkValid(Bookmark: TBytes): Boolean;
+begin
+
+  Result := DataSet.BookmarkValid(Bookmark);
+
+end;
+
+constructor TAbstractDataSetHolder.Create;
+begin
+
+  inherited;
+  
+end;
+
+constructor TAbstractDataSetHolder.CreateFrom(DataSet: TDataSet;
+  FieldDefs: TAbstractDataSetFieldDefs);
+begin
+
+  CreateFrom(DataSet);
+
+  SetFieldDefs(FieldDefs);
+  
+end;
+
+constructor TAbstractDataSetHolder.CreateFrom(DataSet: TDataSet);
+begin
+
+  inherited;
+
+  FDataSet := DataSet;
+  
+end;
+
+procedure TAbstractDataSetHolder.Delete;
+begin
+
+  FDataSet.Delete;
+  
+end;
+
+destructor TAbstractDataSetHolder.Destroy;
+begin
+
+  FreeAndNil(FDataSet);
+  FreeAndNil(FFieldDefs);
+  FreeAndNil(FRecordIdGenerator);
+  
+  inherited;
+
+end;
+
+procedure TAbstractDataSetHolder.DisableControls;
+begin
+
+  if not FDataSet.ControlsDisabled then
+    FDataSet.DisableControls;
+  
+end;
+
+procedure TAbstractDataSetHolder.Edit;
+begin
+
+  FDataSet.Edit;
+
+end;
+
+procedure TAbstractDataSetHolder.EnableControls;
+begin
+
+  if FDataSet.ControlsDisabled then
+    FDataSet.EnableControls;
+  
+end;
+
+function TAbstractDataSetHolder.Eof: Boolean;
+begin
+
+  Result := FDataSet.Eof;
+
+end;
+
+function TAbstractDataSetHolder.ExtractRecordIdGenerator: TAbstractDataSetRecordIdGenerator;
+begin
+
+  Result := FRecordIdGenerator;
+
+  FRecordIdGenerator := nil;
+  
+end;
+
+procedure TAbstractDataSetHolder.First;
+begin
+
+  FDataSet.First;
+  
+end;
+
+procedure TAbstractDataSetHolder.FreeBookmark(Bookmark: TBytes);
+begin
+
+  DataSet.FreeBookmark(Bookmark);
+
+end;
+
+procedure TAbstractDataSetHolder.GenerateNewIdForCurrentRecord;
+begin
+
+  if not Assigned(FRecordIdGenerator) then
+    raise Exception.Create(
+      'RecordIdGenerator not Assigned'
+    );
+
+  if not Assigned(FFieldDefs) then
+    raise Exception.Create(
+      'FieldDefs not assigned for record id generation'
+    );
+
+  if (Trim(FieldDefs.RecordIdFieldName) = '') or
+     (Trim(FieldDefs.IsRecordIdGeneratedFieldName) = '')
+  then raise Exception.Create(
+                'Field names not assigned for record id generation'
+             );
+  
+  RecordIdFieldValue := FRecordIdGenerator.GenerateNewId;
+  IsRecordIdGeneratedFieldValue := True;
+
+end;
+
+function TAbstractDataSetHolder.GetBookmark: TBytes;
+begin
+
+  Result := DataSet.GetBookmark;
+
+end;
+
+function TAbstractDataSetHolder.GetCanBeChangedFieldName: String;
+begin
+
+  Result := FFieldDefs.CanBeChangedFieldName;
+  
+end;
+
+function TAbstractDataSetHolder.GetCanBeChangedFieldValue: Variant;
+begin
+
+  Result :=
+    GetDataSetFieldValue(
+      FFieldDefs.CanBeChangedFieldName, Null
+    );
+
+end;
+
+function TAbstractDataSetHolder.GetCanBeRemovedFieldName: String;
+begin
+
+  Result := FFieldDefs.CanBeRemovedFieldName;
+  
+end;
+
+function TAbstractDataSetHolder.GetCanBeRemovedFieldValue: Variant;
+begin
+
+  Result :=
+    GetDataSetFieldValue(
+      FFieldDefs.CanBeRemovedFieldName,
+      Null
+    );
+
+end;
+
+function TAbstractDataSetHolder.GetDataSetFieldValue(const FieldName: String;
+  DefaultValue: Variant): Variant;
+var Field: TField;
+begin
+
+  Field := FDataSet.FieldByName(FieldName);
+
+  if Field.IsNull then
+    Result := DefaultValue
+
+  else
+    Result := Field.AsVariant;
+
+end;
+
+function TAbstractDataSetHolder.GetIsCurrentRecordIdGenerated: Boolean;
+begin
+
+  Result := False;
+
+end;
+
+function TAbstractDataSetHolder.GetIsRecordIdGeneratedFieldName: String;
+begin
+
+  Result := FieldDefs.IsRecordIdGeneratedFieldName;
+  
+end;
+
+function TAbstractDataSetHolder.GetIsRecordIdGeneratedFieldValue: Boolean;
+begin
+
+  Result :=
+    GetDataSetFieldValue(
+      FFieldDefs.IsRecordIdGeneratedFieldName,
+      False
+    );
+    
+end;
+
+function TAbstractDataSetHolder.GetRecordIdFieldName: String;
+begin
+
+  Result := FieldDefs.RecordIdFieldName;
+  
+end;
+
+function TAbstractDataSetHolder.GetRecordIdFieldValue: Variant;
+begin
+
+  Result :=
+    GetDataSetFieldValue(
+      FFieldDefs.RecordIdFieldName,
+      Null
+    );
+    
+end;
+
+procedure TAbstractDataSetHolder.GotoBookmark(Bookmark: TBytes);
+begin
+
+  DataSet.GotoBookmark(Bookmark);
+
+end;
+
+procedure TAbstractDataSetHolder.GotoBookmarkAndFree(Bookmark: TBytes);
+begin
+
+  if Assigned(Bookmark) and BookmarkValid(Bookmark)
+  then begin
+
+    GotoBookmark(Bookmark);
+    FreeBookmark(Bookmark);
+
+  end;
+
+end;
+
+function TAbstractDataSetHolder.IsEmpty: Boolean;
+begin
+
+  Result := FDataSet.IsEmpty;
+  
+end;
+
+function TAbstractDataSetHolder.IsInAppend: Boolean;
+begin
+
+  Result := DataSet.State in [dsInsert];
+
+end;
+
+function TAbstractDataSetHolder.IsInEdit: Boolean;
+begin
+
+  Result := DataSet.State in [dsEdit];
+
+end;
+
+function TAbstractDataSetHolder.IsInEditOrAppend: Boolean;
+begin
+
+  Result := IsInEdit or IsInAppend;
+
+end;
+
+function TAbstractDataSetHolder.Locate(const FieldNames: String;
+  const FieldValues: Variant; const Options: TLocateOptions): Boolean;
+begin
+
+  Result := DataSet.Locate(FieldNames, FieldValues, Options);
+
+end;
+
+procedure TAbstractDataSetHolder.Next;
+begin
+
+  FDataSet.Next;
+  
+end;
+
+procedure TAbstractDataSetHolder.OnDataSetRecordChanged(DataSet: TDataSet);
+begin
+
+  if Assigned(FOnDataSetRecordChangedEventHandler) then
+    FOnDataSetRecordChangedEventHandler(DataSet);
+    
+end;
+
+procedure TAbstractDataSetHolder.OnDataSetRecordInserted(DataSet: TDataSet);
+begin
+
+  if Assigned(FOnDataSetRecordInsertedEventHandler) then
+    FOnDataSetRecordInsertedEventHandler(DataSet);
+    
+end;
+
+procedure TAbstractDataSetHolder.OnDataSetRecordRemoved(DataSet: TDataSet);
+begin
+
+  if Assigned(FOnDataSetRecordRemovedEventHandler) then
+    FOnDataSetRecordRemovedEventHandler(DataSet);
+    
+end;
+
+procedure TAbstractDataSetHolder.Post;
+begin
+
+  FDataSet.Post;
+  
+end;
+
+function TAbstractDataSetHolder.RecordCount: Integer;
+begin
+
+  Result := FDataSet.RecordCount;
+  
+end;
+
+procedure TAbstractDataSetHolder.ResetFilter(
+  const FilterMode: TDataSetHolderFilterResetMode = frmEnableControls
+);
+begin
+
+  try
+
+    FDataSet.DisableControls;
+
+    FDataSet.Filter := '';
+    FDataSet.Filtered := False;
+    
+  finally
+
+    if FilterMode = frmEnableControls then
+      FDataSet.EnableControls;
+      
+  end;
+  
+end;
+
+procedure TAbstractDataSetHolder.RevealRecordsWithGeneratedId(
+  const FilterMode: TDataSetHolderFilterApplyingMode
+);
+begin
+
+  ApplyFilter(
+    Format(
+      '%s=true',
+      [
+        FieldDefs.IsRecordIdGeneratedFieldName
+      ]
+    ),
+    FilterMode
+  );
+  
+end;
+
+procedure TAbstractDataSetHolder.SetCanBeChangedFieldName(const Value: String);
+begin
+
+  FFieldDefs.CanBeChangedFieldName := Value;
+  
+end;
+
+procedure TAbstractDataSetHolder.SetCanBeChangedFieldValue(
+  const Value: Variant);
+begin
+
+  SetDataSetFieldValue(CanBeChangedFieldName, Value);
+  
+end;
+
+procedure TAbstractDataSetHolder.SetCanBeRemovedFieldName(const Value: String);
+begin
+
+  FFieldDefs.CanBeRemovedFieldName := Value;
+  
+end;
+
+procedure TAbstractDataSetHolder.SetCanBeRemovedFieldValue(
+  const Value: Variant);
+begin
+
+  SetDataSetFieldValue(CanBeRemovedFieldName, Value);
+  
+end;
+
+procedure TAbstractDataSetHolder.SetDataSet(const Value: TDataSet);
+begin
+
+  FDataSet := Value;
+
+  if Assigned(FDataSet) then
+    SubscribeOnDataSetEvents(FDataSet);
+
+end;
+
+procedure TAbstractDataSetHolder.SetDataSetFieldValue(
+  const FieldName: String;
+  const Value: Variant
+);
+var OldState: TDataSetState;
+begin
+
+  OldState := DataSet.State;
+
+  if not IsInEditOrAppend then begin
+
+    DataSet.Edit;
+    
+  end;
+
+  DataSet.FieldByName(FieldName).AsVariant := Value;
+
+  if OldState <> DataSet.State then
+    DataSet.Post;
+  
+end;
+
+procedure TAbstractDataSetHolder.SetFieldDefs(
+  const Value: TAbstractDataSetFieldDefs);
+begin
+
+  FreeAndNil(FFieldDefs);
+  
+  FFieldDefs := Value;
+
+end;
+
+procedure TAbstractDataSetHolder.SetIsRecordIdGeneratedFieldName(
+  const Value: String);
+begin
+
+  FieldDefs.IsRecordIdGeneratedFieldName := Value;
+  
+end;
+
+procedure TAbstractDataSetHolder.SetIsRecordIdGeneratedFieldValue(
+  const Value: Boolean);
+begin
+
+  SetDataSetFieldValue(FieldDefs.IsRecordIdGeneratedFieldName, Value);
+  
+end;
+
+procedure TAbstractDataSetHolder.SetRecordIdFieldName(const Value: String);
+begin
+
+  FieldDefs.RecordIdFieldName := Value;
+  
+end;
+
+procedure TAbstractDataSetHolder.SetRecordIdFieldValue(const Value: Variant);
+begin
+
+  SetDataSetFieldValue(FieldDefs.RecordIdFieldName, Value);
+  
+end;
+
+procedure TAbstractDataSetHolder.SetRecordIdGenerator(
+  Value: TAbstractDataSetRecordIdGenerator);
+begin
+
+  FreeAndNil(FRecordIdGenerator);
+
+  FRecordIdGenerator := Value;
+  
+end;
+
+procedure TAbstractDataSetHolder.SubscribeOnDataSetEvents(DataSet: TDataSet);
+begin
+
+  DataSet.AfterInsert := OnDataSetRecordInserted;
+  DataSet.AfterPost := OnDataSetRecordChanged;
+  DataSet.AfterDelete := OnDataSetRecordRemoved;
+  
+end;
+
+{ TIntegerDataSetRecordIdGenerator }
+
+function TIntegerDataSetRecordIdGenerator.GenerateNewId: Variant;
+begin
+
+  Inc(FCurrentGeneratedId);
+
+  Result := FCurrentGeneratedId;
+  
+end;
+
+{ TNegativeIntegerDataSetRecordIdGenerator }
+
+constructor TNegativeIntegerDataSetRecordIdGenerator.Create(
+  IntegerDataSetRecordIdGenerator: TIntegerDataSetRecordIdGenerator);
+begin
+
+  inherited Create;
+
+  FIntegerDataSetRecordIdGenerator := IntegerDataSetRecordIdGenerator;
+  
+end;
+
+destructor TNegativeIntegerDataSetRecordIdGenerator.Destroy;
+begin
+
+  FreeAndNil(FIntegerDataSetRecordIdGenerator);
+  inherited;
+
+end;
+
+function TNegativeIntegerDataSetRecordIdGenerator.GenerateNewId: Variant;
+begin
+
+  Result := -FIntegerDataSetRecordIdGenerator.GenerateNewId;
+
+end;
+
+end.

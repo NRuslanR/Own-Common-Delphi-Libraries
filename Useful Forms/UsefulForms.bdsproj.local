@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.06.05 14:03:54.967.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit9.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\MinMaxFormUnit.pas</Transaction>
+    <Transaction>2018.06.05 14:03:54.967.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit9.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\MinMaxFormUnit.dfm</Transaction>
+    <Transaction>2018.06.05 14:07:23.253.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project3.bdsproj=C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\UsefulForms.bdsproj</Transaction>
+    <Transaction>2018.06.05 14:07:29.737.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\UsefulForms.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\UsefulForms.bdsproj</Transaction>
+    <Transaction>2018.06.05 14:13:09.550.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\DialogFormUnit.pas</Transaction>
+    <Transaction>2018.06.05 14:13:09.550.dfm,D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\Unit5.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\DialogFormUnit.dfm</Transaction>
+    <Transaction>2018.06.05 14:49:54.634.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\Unit9.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\TestForm.pas</Transaction>
+    <Transaction>2018.06.05 14:49:54.634.dfm,D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\Unit9.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Useful Forms\TestForm.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

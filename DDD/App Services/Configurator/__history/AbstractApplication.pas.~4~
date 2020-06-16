@@ -1,0 +1,36 @@
+unit AbstractApplication;
+
+interface
+
+uses
+
+  Application,
+  ApplicationServiceRegistries,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractApplication =
+    class abstract (TInterfacedObject, IApplication)
+
+      public
+
+        function GetApplicationServiceRegistries: IApplicationServiceRegistries; virtual; abstract;
+
+        procedure SetApplicationServiceRegistries(
+          Value: IApplicationServiceRegistries
+        ); virtual; abstract;
+
+        function GetClientAccount: TClientAccount;
+    procedure SetClientAccount(ClientAccount: TClientAccount);
+    
+        property ServiceRegistries: IApplicationServiceRegistries
+        read GetApplicationServiceRegistries
+        write SetApplicationServiceRegistries;
+        
+    end;
+
+implementation
+
+end.

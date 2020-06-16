@@ -1,0 +1,113 @@
+unit StubSectionStackedFormController;
+
+interface
+
+uses
+
+  AbstractSectionStackedFormController,
+  unSectionStackedForm,
+  SectionStackedFormViewModel,
+  SectionRecordViewModel,
+  SectionSetHolder,
+  AbstractFormController,
+  FormEvents,
+  Forms,
+  Controls,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractStubSectionStackedFormController = class (TAbstractSectionStackedFormController)
+
+    protected
+
+      procedure CustomizeForm(Form: TForm; FormData: TFormData); override;
+      
+    protected
+
+      procedure OnSectionControlRequestedEventHandler(
+        Sender: TObject;
+        SectionRecordViewModel: TSectionRecordViewModel;
+        var Control: TControl;
+        var Success: Boolean
+      ); override;
+
+    protected
+
+      function CreateTestViewModel: TSectionStackedFormViewModel; virtual;
+
+      procedure InitializeSectionSetFieldDefs(
+        SectionSetFieldDefs: TSectionSetFieldDefs
+      ); virtual;
+
+      procedure InitializeSectionSet(SectionSet: TDataSet); virtual;
+      
+  end;
+  
+
+implementation
+
+uses
+
+  unStubSectionStackedFormDataModule,
+  StdCtrls,
+  ComCtrls;
+  
+{ TAbstractStubSectionStackedFormController }
+
+function TAbstractStubSectionStackedFormController.CreateTestViewModel: TSectionStackedFormViewModel;
+begin
+
+  Result := TSectionStackedFormViewModel.Create;
+
+  Result.SectionSetHolder :=
+    TSectionSetHolder.CreateFrom(
+      TStubSectionStackedFormDataModule.Create(Application).TestSectionMemData
+    );
+
+  Result.SectionSetHolder.FieldDefs := TSectionSetFieldDefs.Create;
+
+  with Result.SectionSetHolder do begin
+
+    SectionIdFieldName := 'section_id';
+    ParentIdSectionFieldName := 'parent_section_id';
+    SectionNameFieldName := 'section_name';
+    
+  end;
+  
+end;
+
+procedure TAbstractStubSectionStackedFormController.CustomizeForm(
+  Form: TForm;
+  FormData: TFormData
+);
+var SectionStackedForm: TSectionStackedForm;
+begin
+
+  inherited;
+
+  SectionStackedForm := Form as TSectionStackedForm;
+
+  SectionStackedForm.ViewModel := CreateTestViewModel;
+
+end;
+
+procedure TAbstractStubSectionStackedFormController.
+  OnSectionControlRequestedEventHandler(
+    Sender: TObject;
+    SectionRecordViewModel: TSectionRecordViewModel;
+    var Control: TControl;
+    var Success: Boolean
+  );
+begin
+
+  if SectionRecordViewModel.Id = 2 then
+    Control := TComboBox.Create(nil)
+
+  else if SectionRecordViewModel.Id = 3 then
+    Control := TDateTimePicker.Create(nil);
+
+end;
+
+end.

@@ -1,0 +1,20 @@
+unit DomainObjectRepository;
+
+interface
+
+uses
+
+  DomainObjectUnit,
+  DomainObjectListUnit,
+  VariantListUnit;
+
+type
+
+  IDomainObjectRepository = interface
+    ['{7CE44677-0B89-45C1-9168-21D7B07371DE}']
+
+    
+  end;
+implementation
+
+end.

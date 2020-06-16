@@ -1,0 +1,20 @@
+unit AbstractCloneable;
+
+interface
+
+uses
+
+  ClonableUnit;
+
+type
+
+  TAbstractCloneable = class (TInterfacedObject, IClonable)
+
+    public
+
+      function Clone: TObject; virtual;
+      
+  end;
+implementation
+
+end.

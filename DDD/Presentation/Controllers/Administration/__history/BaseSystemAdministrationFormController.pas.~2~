@@ -1,0 +1,122 @@
+unit BaseSystemAdministrationFormController;
+
+interface
+
+uses
+
+  unSectionStackedForm,
+  unSystemAdministrationForm,
+  AbstractSectionStackedFormController,
+  AbstractFormController,
+  SystemAdministrationService,
+  SectionRecordViewModel,
+  SectionSetHolder,
+  SectionStackedFormViewModel,
+  SystemAdministrationPrivileges,
+  SystemAdministrationFormViewModelMapperInterface,
+  SystemAdministrationFormControllerEvents,
+  FormEvents,
+  Controls,
+  EventBus,
+  Event,
+  Forms,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationFormController = class (TAbstractSectionStackedFormController)
+
+    protected
+
+      FClientIdentity: Variant;
+      FSystemAdministrationService: ISystemAdministrationService;
+      FFormViewModelMapper: ISystemAdministrationFormViewModelMapper;
+      
+    protected
+
+      function GetFormClass: TFormClass; override;
+
+    protected
+
+      function CreateSectionStackedFormViewModel: TSectionStackedFormViewModel; override;
+
+    protected
+
+      function CreateSectionFormRequestedEventFrom(
+        SectionRecordViewModel: TSectionRecordViewModel
+      ): TSectionFormRequestedEvent; override;
+
+    public
+
+      constructor Create(
+        const ClientIdentity: Variant;
+        SystemAdministrationService: ISystemAdministrationService;
+        FormViewModelMapper: ISystemAdministrationFormViewModelMapper;
+        EventBus: IEventBus
+      );
+    
+  end;
+  
+implementation
+
+{ TSystemAdministrationFormController }
+
+constructor TSystemAdministrationFormController.Create(
+  const ClientIdentity: Variant;
+  SystemAdministrationService: ISystemAdministrationService;
+  FormViewModelMapper: ISystemAdministrationFormViewModelMapper;
+  EventBus: IEventBus
+);
+begin
+
+  inherited Create(EventBus);
+
+  FClientIdentity := ClientIdentity;
+  FSystemAdministrationService := SystemAdministrationService;
+  FFormViewModelMapper := FormViewModelMapper;
+  
+end;
+
+function TSystemAdministrationFormController.CreateSectionFormRequestedEventFrom(
+  SectionRecordViewModel: TSectionRecordViewModel
+): TSectionFormRequestedEvent;
+begin
+
+  Result :=
+    TSystemAdministrationPrivilegeFormRequestedEvent.Create(
+      SectionRecordViewModel.Id
+    );
+
+end;
+
+function TSystemAdministrationFormController.CreateSectionStackedFormViewModel: TSectionStackedFormViewModel;
+var SystemAdministrationPrivileges: TSystemAdministrationPrivileges;
+begin
+
+  SystemAdministrationPrivileges :=
+    FSystemAdministrationService.GetAllSystemAdministrationPrivileges(FClientIdentity);
+
+  try
+
+    Result :=
+      FFormViewModelMapper.MapSystemAdministrationFormViewModelFrom(
+        SystemAdministrationPrivileges
+      );
+      
+  finally
+
+    FreeAndNil(SystemAdministrationPrivileges);
+    
+  end;
+
+end;
+
+function TSystemAdministrationFormController.GetFormClass: TFormClass;
+begin
+
+  Result := TSystemAdministrationForm;
+
+end;
+
+end.

@@ -1,0 +1,107 @@
+inherited ExtendedDatabaseAuthentificationForm: TExtendedDatabaseAuthentificationForm
+  Caption = 'ExtendedDatabaseAuthentificationForm'
+  ClientHeight = 242
+  ClientWidth = 351
+  Constraints.MaxHeight = 281
+  Constraints.MinHeight = 281
+  Constraints.MinWidth = 367
+  ExplicitWidth = 367
+  ExplicitHeight = 281
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited UserLogOnParamsPanel: TPanel
+    Width = 351
+    ExplicitWidth = 351
+    inherited LoginEdit: TRegExprValidateEdit
+      Width = 244
+      ExplicitWidth = 244
+    end
+    inherited PasswordEdit: TRegExprValidateEdit
+      Width = 244
+      ExplicitWidth = 244
+    end
+  end
+  inherited FooterButtonsPanel: TPanel
+    Top = 191
+    Width = 351
+    Height = 51
+    ExplicitTop = 191
+    ExplicitWidth = 351
+    ExplicitHeight = 51
+    inherited DatabaseSettingsButton: TSpeedButton
+      Left = 246
+      Top = 14
+      ExplicitLeft = 246
+      ExplicitTop = 14
+    end
+    inherited AuthentificateButton: TcxButton
+      Left = 70
+      Top = 14
+      ExplicitLeft = 70
+      ExplicitTop = 14
+    end
+    inherited CancelButton: TcxButton
+      Left = 158
+      Top = 14
+      ExplicitLeft = 158
+      ExplicitTop = 14
+    end
+  end
+  inherited DatabaseSettingsPanel: TPanel
+    Width = 351
+    Height = 118
+    ExplicitWidth = 351
+    ExplicitHeight = 118
+    inherited DatabaseLabel: TLabel
+      Top = 98
+      ExplicitTop = 98
+    end
+    object ServerAddressLabel: TLabel [1]
+      Left = 44
+      Top = 19
+      Width = 41
+      Height = 13
+      Caption = #1057#1077#1088#1074#1077#1088':'
+    end
+    object ServerPortLabel: TLabel [2]
+      Left = 56
+      Top = 58
+      Width = 29
+      Height = 13
+      Caption = #1055#1086#1088#1090':'
+    end
+    inherited DatabaseComboBox: TValidateComboBox
+      Top = 91
+      Width = 244
+      ExplicitTop = 91
+      ExplicitWidth = 244
+    end
+    object ServerAddressComboBox: TValidateComboBox
+      Left = 91
+      Top = 18
+      Width = 243
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      ItemHeight = 13
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 1
+      InvalidateOnNonSelection = False
+      InvalidHint = #1044#1083#1103' '#1074#1093#1086#1076#1072' '#1074' '#1089#1080#1089#1090#1077#1084#1091' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1091#1082#1072#1079#1072#1090#1100' '#1072#1076#1088#1077#1089' '#1089#1077#1088#1074#1077#1088#1072' '#1073#1072#1079#1099' '#1076#1072#1085#1085#1099#1093
+      InvalidColor = 10520575
+      RegularExpression = '.+'
+      UseDefaultInvalidColor = True
+    end
+    object ServerPortEdit: TSpinEdit
+      Left = 91
+      Top = 57
+      Width = 243
+      Height = 22
+      Anchors = [akLeft, akTop, akRight]
+      MaxValue = 65536
+      MinValue = 0
+      TabOrder = 2
+      Value = 0
+    end
+  end
+end

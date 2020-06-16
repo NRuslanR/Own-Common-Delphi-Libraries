@@ -1,0 +1,17 @@
+unit ApplicationBuilder;
+
+interface
+
+uses
+
+  Application;
+  
+type
+
+  IApplicationBuilder = interface
+
+    function Build
+  end;
+implementation
+
+end.

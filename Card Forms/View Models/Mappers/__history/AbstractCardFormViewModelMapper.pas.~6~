@@ -1,0 +1,32 @@
+unit AbstractCardFormViewModelMapper;
+
+interface
+
+uses
+
+  CardFormViewModelMapper,
+  ReferenceFormRecordViewModel,
+  CardFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractCardFormViewModelMapper =
+    class abstract (TInterfacedObject, ICardFormViewModelMapper)
+
+      protected
+
+        function GetCardFormViewModelClass: TCardFormViewModelClass; virtual; abstract;
+
+      public
+
+        function MapCardFormViewModelFrom(
+          ReferenceFormRecordViewModel: TReferenceFormRecordViewModel
+        ): TCardFormViewModel;
+
+    end;
+    
+implementation
+
+end.

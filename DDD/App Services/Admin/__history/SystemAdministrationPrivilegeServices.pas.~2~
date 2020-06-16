@@ -1,0 +1,18 @@
+unit SystemAdministrationPrivilegeServices;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeServices = class
+  
+  end;
+
+implementation
+
+end.

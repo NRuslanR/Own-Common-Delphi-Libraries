@@ -1,0 +1,14 @@
+unit AbstractCloneable;
+
+interface
+
+uses
+
+  ClonableUnit;
+
+type
+
+  
+implementation
+
+end.

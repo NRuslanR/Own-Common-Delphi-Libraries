@@ -1,0 +1,198 @@
+unit ZQueryExecutorFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  QueryExecutorFactory,
+  AbstractQueryExecutorFactory,
+  AbstractConnectionFactory,
+  ZConnectionFactory,
+  QueryExecutor,
+  SysUtils,
+  Classes;
+
+type
+
+  TZQueryExecutorFactory = class (TAbstractQueryExecutorFactory)
+
+    private
+
+      FDatabaseProtocol: String;
+      FClientCodePage: String;
+
+      procedure ValidateConnectionFactoryType(
+        ConnectionFactory: TAbstractConnectionFactory
+      );
+
+    public
+
+      constructor Create(
+        ConnectionFactory: TAbstractConnectionFactory
+      ); overload;
+
+      constructor Create(
+        ConnectionFactory: TAbstractConnectionFactory;
+        const DatabaseProtocol: String
+      ); overload;
+
+      constructor Create(
+        ConnectionFactory: TAbstractConnectionFactory;
+        const DatabaseProtocol: String;
+        const ClientCodePage: String
+      ); overload;
+
+      function CreateQueryExecutor(ConnectionInfo: TConnectionInfo): IQueryExecutor; overload; override;
+      function CreateQueryExecutor(Connection: TObject): IQueryExecutor; overload; override;
+
+    public
+
+      property DatabaseProtocol: String read FDatabaseProtocol write FDatabaseProtocol;
+      property ClientCodePage: String read FClientCodePage write FClientCodePage;
+      
+  end;
+  
+implementation
+
+uses
+
+  ZConnection,
+  ZQueryExecutor,
+  AuxZeosFunctions;
+  
+{ TZQueryExecutorFactory }
+
+constructor TZQueryExecutorFactory.Create(
+  ConnectionFactory: TAbstractConnectionFactory
+);
+begin
+
+  inherited Create(ConnectionFactory);
+
+end;
+
+constructor TZQueryExecutorFactory.Create(
+  ConnectionFactory: TAbstractConnectionFactory;
+  const DatabaseProtocol: String
+);
+begin
+
+  inherited Create(ConnectionFactory);
+
+  FDatabaseProtocol := DatabaseProtocol;
+  
+end;
+
+constructor TZQueryExecutorFactory.Create(
+  ConnectionFactory: TAbstractConnectionFactory;
+  const DatabaseProtocol, ClientCodePage: String
+);
+begin
+
+  Create(ConnectionFactory, DatabaseProtocol);
+
+  FClientCodePage := ClientCodePage;
+  
+end;
+
+function TZQueryExecutorFactory.CreateQueryExecutor(
+  Connection: TObject): IQueryExecutor;
+begin
+
+  if not (Connection is TZConnection)
+  then begin
+
+    raise Exception.CreateFmt(
+      'Connection'' type isn''t a %s',
+      [
+        TZConnection.ClassName
+      ]
+    );
+    
+  end;
+
+
+
+end;
+
+function TZQueryExecutorFactory.CreateQueryExecutor(
+  ConnectionInfo: TConnectionInfo
+): IQueryExecutor;
+var ZConnection: TZConnection;
+begin
+
+  if Trim(FDatabaseProtocol) = '' then begin
+
+    raise Exception.Create(
+      'Database protocol has not defined'
+    );
+
+  end;
+
+  ZConnection :=
+    CreateConnection(
+      ConnectionInfo.HostName,
+      ConnectionInfo.Port,
+      ConnectionInfo.DatabaseName,
+      ConnectionInfo.UserName,
+      ConnectionInfo.Password,
+      FDatabaseProtocol,
+      False
+    );
+
+  try
+
+    ZConnection.ClientCodepage := FClientCodePage;
+
+    ZConnection.Connect;
+    
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(ZConnection);
+
+      raise;
+      
+    end;
+
+  end;
+
+  try
+
+    Result := TZQueryExecutor.Create(ZConnection);
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+
+    end;
+
+  end;
+
+end;
+
+procedure TZQueryExecutorFactory.ValidateConnectionFactoryType(
+  ConnectionFactory: TAbstractConnectionFactory);
+begin
+
+  if not (ConnectionFactory is TZConnectionFactory)
+  then begin
+
+    raise Exception.CreateFmt(
+      'Type of connection factory isn''t a %s',
+      [
+        TZConnectionFactory.ClassName
+      ]
+    );
+    
+  end;
+  
+end;
+
+end.

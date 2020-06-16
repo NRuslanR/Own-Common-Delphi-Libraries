@@ -1,0 +1,26 @@
+unit SystemAdministrationService;
+
+interface
+
+uses
+
+  SystemAdministrationPrivileges,
+  SystemAdministrationPrivilegeServices;
+  
+type
+
+  ISystemAdministrationService = interface
+
+    function GetAllSystemAdministrationPrivileges(
+      const ClientIdentity: Variant
+    ): TSystemAdministrationPrivileges;
+
+    function GetSystemAdministrationPrivilegeServices(
+      const PrivilegeIdentity: Variant
+    ): TSystemAdministrationPrivilegeServices;
+    
+  end;
+
+implementation
+
+end.

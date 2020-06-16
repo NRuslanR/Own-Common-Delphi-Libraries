@@ -1,0 +1,22 @@
+unit SystemAdministrationFormViewModel;
+
+interface
+
+uses
+
+  SectionStackedFormViewModel,
+  SectionRecordViewModel,
+  SystemAdministrationPrivilegeViewModel,
+  SystemAdministrationPrivilegeSetHolder,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationFormViewModel = class (TSectionStackedFormViewModel)
+
+  end;
+
+implementation
+
+end.

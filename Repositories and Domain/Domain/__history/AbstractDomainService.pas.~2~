@@ -1,0 +1,21 @@
+unit AbstractDomainService;
+
+interface
+
+uses
+
+  DomainService;
+
+type
+
+  TAbstractDomainService = class (TInterfacedObject, IDomainService)
+
+    public
+
+      function GetSelf: TObject;
+      
+  end;
+
+implementation
+
+end.

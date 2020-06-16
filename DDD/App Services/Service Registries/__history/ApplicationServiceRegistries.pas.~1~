@@ -1,0 +1,13 @@
+unit ApplicationServiceRegistries;
+
+interface
+
+type
+
+  IApplicationServiceRegistries = interface
+
+    procedure 
+  end;
+implementation
+
+end.

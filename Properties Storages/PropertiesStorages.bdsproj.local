@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019.03.26 13:24:13.370.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IApplicationSettingsStorageUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertiesStorageUnit.pas</Transaction>
+    <Transaction>2019.03.26 13:24:35.589.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\TApplicationSettingsIniFileUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\TPropertiesIniFileUnit.pas</Transaction>
+    <Transaction>2019.03.26 13:25:56.917.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\TestPropertiesForm.pas</Transaction>
+    <Transaction>2019.03.26 13:25:56.917.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\TestPropertiesForm.dfm</Transaction>
+    <Transaction>2019.03.26 13:26:08.355.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project4.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\PropertiesStorages.bdsproj</Transaction>
+    <Transaction>2019.03.26 14:00:11.549.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageUnit.pas</Transaction>
+    <Transaction>2019.03.26 14:01:58.212.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageRegistryUnit.pas</Transaction>
+    <Transaction>2019.03.26 14:03:14.967.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertyStorageUnit.pas</Transaction>
+    <Transaction>2019.03.26 14:03:20.529.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertiesStorageUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertyStorageUnit.pas</Transaction>
+    <Transaction>2019.03.26 14:03:33.202.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertyStorageUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IPropertiesStorageUnit.pas</Transaction>
+    <Transaction>2019.03.26 14:03:37.483.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertyStorageUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\IObjectPropertiesStorageUnit.pas</Transaction>
+    <Transaction>2019.03.27 13:43:09.329.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\ObjectPropertiesStorageRegistry.pas</Transaction>
+    <Transaction>2019.03.27 13:50:21.608.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\ObjectPropertiesStorageRegistry.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

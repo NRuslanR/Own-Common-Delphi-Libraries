@@ -1,0 +1,166 @@
+unit DomainObjectUnit;
+
+interface
+
+  uses SysUtils, Classes, Windows, DomainException,
+       ClonableUnit, CopyableUnit, EquatableUnit, IDomainObjectUnit,
+       DomainObjectBaseUnit;
+
+  type
+
+    TDomainObjectException = class (TDomainException)
+
+    end;
+    
+    TDomainObject = class abstract(TDomainObjectBase, IDomainObject)
+
+      protected
+
+        FIdentity: Variant;
+
+        function GetIdentity: Variant; virtual;
+        procedure SetIdentity(Identity: Variant); virtual;
+
+      protected
+
+        procedure RaiseExceptionIfIdentityIsUndefined(const Value: Variant);
+        
+      public
+
+        destructor Destroy; override;
+
+        constructor Create; overload; override;
+        constructor Create(AIdentity: Variant); overload; virtual;
+
+        procedure CopyFrom(Copyable: TObject); override;
+        procedure DeepCopyFrom(Copyable: TObject); override;
+        function Equals(Equatable: TObject): Boolean; override;
+        function Clone: TObject; override;
+
+        function IsSameAs(DomainObject: TDomainObject): Boolean; virtual;
+
+      published
+
+        property Identity: Variant read GetIdentity write SetIdentity;
+        
+    end;
+
+    TDomainObjectClass = class of TDomainObject;
+
+implementation
+
+uses
+
+  Variants,
+  AuxDebugFunctionsUnit;
+  
+{ TDomainObject }
+
+constructor TDomainObject.Create;
+begin
+
+  inherited;
+
+  FIdentity := Null;
+
+end;
+
+function TDomainObject.Clone: TObject;
+begin
+
+  Result := inherited Clone;
+
+end;
+
+procedure TDomainObject.CopyFrom(Copyable: TObject);
+begin
+
+  inherited;
+
+end;
+
+constructor TDomainObject.Create(AIdentity: Variant);
+begin
+
+  inherited Create;
+
+  FIdentity := AIdentity;
+  
+end;
+
+procedure TDomainObject.DeepCopyFrom(Copyable: TObject);
+begin
+
+  inherited;
+
+end;
+
+destructor TDomainObject.Destroy;
+begin
+
+  inherited;
+
+end;
+
+function TDomainObject.Equals(Equatable: TObject): Boolean;
+begin
+
+  if not (Equatable is TDomainObject) then
+    Result := False
+
+  else begin
+
+    Result := IsSameAs(Equatable as TDomainObject) //inherited Equals(Equatable);
+
+  end;
+
+end;
+
+
+function TDomainObject.GetIdentity: Variant;
+begin
+
+  Result := FIdentity;
+
+end;
+
+function TDomainObject.IsSameAs(DomainObject: TDomainObject): Boolean;
+begin
+
+  Result :=
+    not VarIsNull(Identity)
+    and not VarIsNull(DomainObject.Identity)
+    and not VarIsEmpty(Identity)
+    and not VarIsEmpty(DomainObject.Identity)
+    and (Identity = DomainObject.FIdentity);
+
+end;
+
+procedure TDomainObject.RaiseExceptionIfIdentityIsUndefined(
+  const Value: Variant);
+begin
+
+  if not InvariantsComplianceRequested then
+    Exit;
+
+  if VarIsNull(Value) or VarIsEmpty(Value) then begin
+
+    raise TDomainObjectException.Create(
+      'Неопределенное значение ' +
+      'идентификатора объекта'
+    );
+
+  end;
+  
+end;
+
+procedure TDomainObject.SetIdentity(Identity: Variant);
+begin
+
+  RaiseExceptionIfIdentityIsUndefined(Identity);
+  
+  FIdentity := Identity;
+  
+end;
+
+end.

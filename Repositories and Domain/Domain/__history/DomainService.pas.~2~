@@ -1,0 +1,17 @@
+unit DomainService;
+
+interface
+
+uses
+
+  IGetSelfUnit;
+
+type
+
+  IDomainService = interface (IGetSelf)
+
+  end;
+  
+implementation
+
+end.

@@ -1,0 +1,797 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SMExport suite: FAQ</title>
+</head>
+
+<body background="../images/background.gif" bgcolor="#FFFFFF"
+leftmargin="15">
+
+<p align="center"><a href="http://www.scalabium.com"
+target="_new"><img src="../images/banners/smei.gif"
+alt="SMExport/SMImport suite" border="0" width="468" height="60"></a></p>
+
+<table border="1" cellpadding="2" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolordark="#FFFFFF"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#004E98"><p align="center"><a
+        name="List"><font color="#FFFFFF"><strong>SMExport suite:
+        FAQ</strong></font></a></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q1</strong></font></td>
+        <td><a href="#Q1">How can I export into html the
+        hyperlinks from table field?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q2</strong></font></td>
+        <td><a href="#Q2">I don't want to use a BDE. How can I
+        disable it?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q3</strong></font></td>
+        <td><a href="#Q3">Which third-party components (grids and
+        databases) are supported by SMExport?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q4</strong></font></td>
+        <td><a href="#Q4">I want to use SMExport in application
+        server. Any hints for me?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q5</strong></font></td>
+        <td><a href="#Q5">How can I create an XML-file which will
+        be compartible with TClientDataset/ADO?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q6</strong></font></td>
+        <td><a href="#Q6">During data exporting into Excel file,
+        MS Word or MS Access I have some warning dialogs inside
+        Delphi/C++Builder IDE. What can I do?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q7</strong></font></td>
+        <td><a href="#Q7">Can I save the export settings in some
+        file and use it in SMImport as default?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q8</strong></font></td>
+        <td><a href="#Q8">Can you describe a difference between
+        TSMExportToXLS and TSMExportToExcel components?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q9</strong></font></td>
+        <td><a href="#Q9">Can I create own progressbar and update
+        it during export process?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q10</strong></font></td>
+        <td><a href="#Q10">How can I export a TStringGrid to MS
+        Excel?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q11</strong></font></td>
+        <td><a href="#Q11">What is the xsl-file for exporting
+        into XML?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q12</strong></font></td>
+        <td><a href="#Q12">How can I use TSMExpoprtToXML
+        component?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q13</strong></font></td>
+        <td><a href="#Q13">How can I activate a possibility to
+        work with some direct database engine?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q14</strong></font></td>
+        <td><a href="#Q14">How can I apply the updated version?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q15</strong></font></td>
+        <td><a href="#Q15">How can I exclude a Paradox format for
+        wizard dialog?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q16</strong></font></td>
+        <td><a href="#Q16">I want to save export settings and
+        reuse in future. How can I do it? </a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q17</strong></font></td>
+        <td><a href="#Q17">How can I use translated resources (non-english)?</a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q18</strong></font></td>
+        <td><a href="#Q18">How can I request update for new
+        version? </a></td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#004E98"><font color="#FFFFFF"><strong>Q19</strong></font></td>
+        <td><a href="#Q19">How can I control the position for
+        wizard dialog?</a></td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q1"><b>Question</b></a><b>:</b><br>
+        <i>In table field I store the hyperlinks (web url) and I
+        want to export these urls as active links which user
+        could open. How can I do it?</i><p><b>Answer:</b><br>
+        The any export component (TSMExportToHTML including) have
+        an OnGetCellParams event. there you can modify any value
+        which which will be exported. There you can add to value
+        the html-code for hyperlink &quot;activation&quot;:</p>
+        <pre><b>procedure </b>TForm1.SMExportToHTML1GetCellParams(Sender: TObject;
+  Field: TField; <b>var </b>Text: <b>String</b>; AFont: TFont; <b>var </b>Alignment: TAlignment;
+  <b>var </b>Background: TColor);
+<b>begin
+  if </b>Assigned(Field) <b>and
+
+   </b>(UpperCase(Field.FieldName) = <font color="#0000FF">'WWW_LINK'</font>) <b>then
+    </b>Text := <font color="#0000FF">'&lt;a href=&quot;' </font>+ Text + <font
+color="#0000FF">'&quot;&gt;' </font>+ Text + <font
+color="#0000FF">'&lt;/a&gt;'</font>;
+<b>end</b>;</pre>
+        <p>The same example you can find in the topic for
+        OnGetCellParams event of help file.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q2"><b>Question</b></a><b>:</b><br>
+        <i>In own application I not use a BDE and don't want to
+        deploy it. Can I disbale a BDE using for SMExport? If
+        yes, then how?</i><p><b>Answer:</b><br>
+        Yes, of course, you can disable a BDE using for SMExport.</p>
+        <p>The SMExport allow to work with any database engine (BDE,
+        ADO, DAO, IBX etc). SMExport use a BDE for exporting into
+        Paradox/dBase only.</p>
+        <p>So if you'll not use the TSMExportToBDE component in
+        own application or disable the Paradox and dBase formats
+        from Formats property of TSMEWizardDlg/TSMExportMonitor
+        components, your application will not require a BDE at
+        all.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q3"><b>Question</b></a><b>:</b><br>
+        <i>Where can I find a list of grids and databases which
+        are compartible with SMExport suite?</i><p><b>Answer:</b><br>
+        The SMExport suite allow to export a data from any rowset
+        type which is inherited from standard TDataset type. For
+        example,</p>
+        <ul>
+            <li>BDE: TTable, TQuery</li>
+            <li>ADO: TADODataset, TADOTable, TADOQuery</li>
+            <li>IBX: TIBTable, TIBQuery</li>
+            <li>MIDAS: TClientDataset</li>
+            <li>dbExpress</li>
+            <li>DOA from Allround Automations</li>
+            <li>IBObjects from Jason Wharton</li>
+            <li>Advantage</li>
+            <li>DBISAM</li>
+            <li>Apollo</li>
+            <li>Halcyon</li>
+            <li>FlashFiler from TurboPower</li>
+            <li>Diamond Access, Diamond dbExpress</li>
+            <li>RxMemoryDataset from RxLib</li>
+            <li>mODBC</li>
+            <li>kaDAO and kaADO</li>
+            <li>and others</li>
+        </ul>
+        <p>Also any grid which have a Datasource property and
+        Columns collection is supported by SMExport as well. For
+        example:</p>
+        <ul>
+            <li>standard TDBGrid</li>
+            <li>standard TDecisionGrid, TStringGrid, TListView,
+                TStrings, TMemo etc</li>
+            <li>wwDBGrid from InfoPower</li>
+            <li>TdxDBGrid, dxTreeList and dxDBTreeList from
+                DevExpress (QT v3)</li>
+            <li>any TcxCustomGridTableView (TcxGridDBTableView, for example)
+                from DevExpress (QT v4/5)</li>
+            <li>TMSDBGrid from TMS Software</li>
+            <li>freeware TSMDBGrid from SMComponent library</li>
+            <li>listview from Raize</li>
+            <li>freeware TRxDBGrid from RxLib</li>
+            <li>TDBGridEH from EHLib</li>
+            <li>TVolgaDBGrid from VolgaDB</li>
+            <li>and others</li>
+        </ul>
+        <p>If you have some extended type of third-party grid and/or
+        database engine and want to export it, <a
+        href="mailto:smexport@scalabium.com">contact us</a>.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q4"><b>Question</b></a><b>:</b><br>
+        <i>I want to use SMExport on server side of own multi-tier
+        application. Can I use it?</i><p><b>Answer:</b><br>
+        Yes, of course, you can export the data on server-application's
+        side by client request.</p>
+        <p>A few important notes:</p>
+        <ul>
+            <li>you must disable any visual notifications during
+                exporting. So you must disable an animated status
+                dialog (AnimatedStatus := False), to disable any
+                warnings (exclude thesoShowMessage flag from
+                Options property)</li>
+            <li>you can export a data directly in stream instead
+                file on disk. For this task you can call
+                theSaveToStream method instead Execute method.
+                This method is very useful especially for web-services,
+                CGI, ISAPI/NSAPI etc</li>
+        </ul>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q5"><b>Question</b></a><b>:</b><br>
+        <i>I want to create an XML-file which will be succesfully
+        loaded by TClientDataset and/or ADO components.</i><p><b>Answer:</b><br>
+        The SMExport suite support such feature. All what you
+        need is to change a Format property of TSMExportToXML
+        component to xmlClientDataset.</p>
+        <p>The default value is xmlIE.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q6"><b>Question</b></a><b>:</b><br>
+        <i>During data exporting into Excel file, MS Word or MS
+        Access I have some warning dialogs inside Delphi/C++Builder
+        IDE. What can I do?</i><p><b>Answer:</b><br>
+        If you defined a UseCurrentInstance property of export
+        component in True, then SMExport will try to find a
+        current running instance of MS Excel/Word/etc. Inside of
+        code I used try-except statement for activation of
+        current instance (if exist) and if the instance is not
+        available I'll create a new (in except clause).</p>
+        <p>If you ran a project from Delphi IDE, you received a
+        warning. But if you'll run a same project from Explorer (not
+        from Delphi IDE), application will work without any
+        warnings.</p>
+        <p>PS: as alternative you can uncheck the &quot;Stop on
+        exception&quot; option (or &quot;Debug on exception&quot;
+        - it depends from Delphi version) in the Debugger Options
+        item of Tools menu. You'll find this option on Language
+        Exceptions page.</p>
+        <p>But anyway if UseCurrentInstance = False, then you'll
+        receive an error message only if MS Office is not
+        installed on computer. No other reason. </p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q7"><b>Question</b></a><b>:</b><br>
+        <i>Can I save the export settings in some file and use it
+        in SMImport as default?</i><p><b>Answer:</b><br>
+        Yes, of course. Any export and import component have the
+        SaveSpecification and LoadSpecification methods. The
+        specification is the smi-file which contains any required
+        information - export format, delimiters/qualifiers/separators,
+        field mapping etc</p>
+        <p>Also don't forget that you can give a same
+        functionality for your end-users by default - in wizard
+        components (both in SMExport and in SMImport) your user
+        can save/load the own specifications</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q8"><b>Question</b></a><b>:</b><br>
+        <i>Can you describe a difference between TSMExportToXLS
+        and TSMExportToExcel component?</i><p><b>Answer:</b><br>
+        The both components generates the Excel spreadsheet as
+        result but these components use differents methods for
+        xls producing.</p>
+        <ul>
+            <li>TSMExportToXLS generate xls-spreadsheet on low
+                level - byte-by-byte. This component is very-very
+                fast and generate Excel file of v4.0 which can be
+                opened in any version of MS Excel application.
+                This component will work without any problem on
+                any computer (even where MS Excel is not
+                installed) but have a few limitations:<p>-
+                soMergeData flag of Options property is not
+                supported<br>
+                - number of different fonts/colors is limited.
+                The max count is 4<br>
+                - the max length of exported text in each cell is
+                255. So any long MEMO-fields will be truncated</p>
+            </li>
+        </ul>
+        <ul>
+            <li>TSMExportToExcel use MS Excel application as OLE-object
+                so the MS Excel must be installed on client
+                computers for correct work. The export process is
+                not so fast as for TSMExportToXLS but haven't any
+                limitations as described above</li>
+        </ul>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q9"><b>Question</b></a><b>:</b><br>
+        <i>Can I create own progressbar for export process?</i><p><b>Answer:</b><br>
+        Yes, of course, you can create an alternative progressbar
+        instead default animated status dialog.</p>
+        <p>For this task you may in OnGetCellParams to check a
+        ExportedRecordCount property and update own Progressbar
+        component</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q10"><b>Question</b></a><b>:</b><br>
+        <i>How can I export a TStringGrid into MS Excel?</i><p><b>Answer:</b><br>
+        Basic idea of exporting og VCL controls is the next:</p>
+        <ol>
+            <li>you must create a SMEStringGridDataEngine
+                component from SMExport+ page</li>
+            <li>define StringGrid property of this component (just
+                select a desired control which you want to export)</li>
+            <li>any export component (from SMExport page of
+                palette) have a new DataEngine property - select
+                in the ObjectInspector your created
+                SMEStringGridDataEngine component</li>
+            <li>switch a ColumnSource property of export
+                component to csDataEngine (default value is
+                csDBGrid)</li>
+            <li>customize proprties of export and just call
+                Execute method</li>
+        </ol>
+        <p>It's all.</p>
+        <p>The same method is available for any other control (not
+        a StringGrid) - just create another dataengine (TSMEListViewDataEngine,
+        TSMEwwDBGridDataEngine, TSMEStringsDataEngine etc)</p>
+        <p>If you haven't any VCL control and want to &quot;prepare&quot;
+        a data in events, you can use TSMEVirtualDataEngine and
+        &quot;navigate&quot; thru your &quot;data&quot; in the
+        events of this component (OnFirst/OnNext/OnGetValue etc)</p>
+        <p>I developed small demo which can be downloaded at <a
+        href="http://www.scalabium.com/download/sme/sme_sg2xls.zip">http://www.scalabium.com/download/sme/sme_sg2xls.zip</a>
+        (200Kb)</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q11"><b>Question</b></a><b>:</b><br>
+        <i>What is the xsl-file for exporting into XML?</i><p><b>Answer:</b><br>
+        Starting from SMExport 4, the TSMExportToXML component
+        support the xsl-scheme generation with implemented &quot;presentation&quot;
+        of xml-file.</p>
+        <p>By standard, XML file contain a pure data without any
+        visualization (colors/fonts/alignments etc) and by
+        default any browser (MS Internet Explorer, for example)
+        will display xml-file as tree where every source row is
+        your exported record.</p>
+        <p>Of course, better to show your xml-file as table, for
+        example. The xsl-scheme is a such &quot;rule&quot;.</p>
+        <p>TSMExportToXML support a few different formats of xml-file
+        (see Format property) and for every format SMExport will
+        generate a correct xsl-scheme.</p>
+        <p>If you don't want to generate xsl-scheme, just set
+        GenerateXSL property in False.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q12"><b>Question</b></a><b>:</b><br>
+        <i>How can I use TSMExportToXML component?</i><p><b>Answer:</b><br>
+        For correct work you must:<br>
+        1. define a source of data which you want to export:</p>
+        <ul>
+            <li>if this is DBGrid, define a DBGrid property and
+                set ColumnSource = csDBGrid</li>
+            <li>if this is Dataset, define a Dataset property and
+                set ColumnSource = csDataset</li>
+            <li>else define a DataEngine property and set
+                ColumnSource = csDataEngine (of course, you must
+                turn your dataengine from SMExport+ page of
+                component palette)</li>
+        </ul>
+        <p>2. define a FileName property with full file name
+        which will be created with exported data (like c:\archive\xml\data.xml)<br>
+        3. you can select desired Format property.</p>
+        <ul>
+            <li>by default will be generated a file which is more
+                readable with tree of records (you can easy read
+                it in any text editor) - Format=xmlIE</li>
+            <li>if you'll select xmlCompactIE, you'll receive a
+                similar as xmlIE but file size will be less (without
+                added spaces)</li>
+            <li>if you'll select xmlClientDataset, then exported
+                file will be compartible with TClientDataset
+                format (you could load it using LoadFromFile
+                method!)</li>
+            <li>if you'll select xmlElement, then xml will be
+                exported in more popular format which can be
+                loaded in any db-server</li>
+        </ul>
+        <p>4. if you want, you can generate the xsl-scheme for
+        created xml - just set GenerateXSL=True<br>
+        5. it's all - just call Execute method</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q13"><b>Question</b></a><b>:</b><br>
+        <i>How can I activate a possibility to work with some
+        direct database engine?</i><p><b>Answer:</b><br>
+        You may open in any editor the sme.inc file. There you'll
+        find the similar strings:</p>
+        <p>//{$DEFINE ADO_SUPPORT}<br>
+        //{$DEFINE IBX_SUPPORT}<br>
+        //{$DEFINE DOA_SUPPORT}<br>
+        //{$DEFINE INFOPOWER_SUPPORT}<br>
+        //{$DEFINE DEVEXP_SUPPORT}<br>
+        //{$DEFINE DEVEXP_CX_SUPPORT}<br>
+        //{$DEFINE DECISIONCUBE_SUPPORT}<br>
+        //{$DEFINE DBGRIDEH_SUPPORT}<br>
+        //{$DEFINE VOLGAGRID_SUPPORT}<br>
+        //{$DEFINE RAIZE_SUPPORT}<br>
+        //{$DEFINE FXCUBE_SUPPORT}</p>
+        <p>You can uncomment desired engine and recompile a
+        project. After recompilation you'll see new components on
+        SMExport and SMExport+ pages of component palette.</p>
+        <p>For example, if you have a DOA installed (direct
+        access to Oracle), uncomment the DOA_SUPPORT line (just
+        remove first two slash-chars.</p>
+        <p>If you have installed Delphi 5 or 6 or 7 Enterprise
+        edition, you can uncomment the ADO_SUPPORT and IBX_SUPPORT lines.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q14"><b>Question</b></a><b>:</b><br>
+        <i>How can I apply the updated version?</i><p><b>Answer:</b><br>
+        You must apply it in two steps:</p>
+        <p>1. uninstall a previous version</p>
+        <ul>
+            <li>run a Delphi IDE</li>
+            <li>select Close All from File menu</li>
+            <li>select Install Packages item from Component menu</li>
+            <li>select a package in listbox which you want to
+                uninstall</li>
+            <li>press Remove button</li>
+        </ul>
+        <p>2. install a new version from sources</p>
+        <ul>
+            <li>select Open item from File menu</li>
+            <li>change the FileType to package source (*.dpk/*.bpk)</li>
+            <li>select the package file from folder where you
+                unzipped files</li>
+            <li>in the package window press the Install button</li>
+            <li>after compile in the palette on SMExport and
+                SMExport+ pages you can find the components</li>
+        </ul>
+        <p><em>IMPORTANT</em>:<br>
+        you must check that folder name with previous version is
+        removed from search path of Delphi/C++Builder IDE and
+        your project. To check it you can in:</p>
+        <ul>
+            <li>Tools\Environment Options\Library\Library path</li>
+            <li>Project\Options\Directories and
+                Conditionals\Search path</li>
+        </ul>
+        <p>There you must have a folder with new version but not
+        with previous.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q15"><b>Question</b></a><b>:</b><br>
+        <i>How can I exclude a Paradox type for wizard component?</i><p><b>Answer:</b><br>
+        Do you want to show/hide some formats in wizard? If yes,
+        then:</p>
+        <ol>
+            <li>to exclude Paradox and DBase from list of formats
+                which will see the end-user:<br>
+                <em>SMEWizardDlg1.Formats := SMEWizardDlg1.Formats
+                - [teParadox, teDBase]</em></li>
+            <li>to include Excel into list of formats:<br>
+                <em>SMEWizardDlg1.Formats := SMEWizardDlg1.Formats
+                + [teXLS]</em></li>
+        </ol>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q16"><b>Question</b></a><b>:</b><br>
+        <i>I want to save export settings and reuse in future.
+        How can I do it? </i><p><b>Answer:</b><br>
+        Any export component have a SaveSpecification method
+        which allow to save current settings and
+        LoadSpecification method allow to load saved settings.</p>
+        <p>Also user can save and load specifications in wizard
+        component. It's very useful because allow to save some
+        predefined &quot;templates&quot; with more used settings
+        which user can load and include some minor changes for
+        succesful exporting.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q17"><b>Question</b></a><b>:</b><br>
+        <i>IHow can I use translated resources (non-english)?</i><p><b>Answer:</b><br>
+        If your application is non-english (german or french, for
+        example), just copy the ExCnst.pas unit from
+        SOURCES\RESOURCES\* folder (just override unit with
+        default english resources).<br>
+        In this folder you'll find a lot of sub-folders for
+        existing translations (one sub-folder per one language).
+        For example, GER contain german resources, ITA contains
+        italian resources etc</p>
+        <p>The OnGetLanguageString event is required if your
+        application is a multi-lingual (for example, user can
+        switch a language without any recompilation). The sample
+        of using you can see in help file - there I placed an
+        example.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q18"><b>Question</b></a><b>:</b><br>
+        <i>How can I request the update for new version?</i><p><b>Answer:</b><br>
+        For update you may send an email message to <a
+        href="mailto:update@scalabium.com">update@scalabium.com</a><br>
+        Please include in message body any registration
+        information - order number or tracking id or password etc.
+        Without this information you will not find your record in
+        our database.</p>
+        <p>When we'll recieve your message, we'll send you the
+        confirmation that your request added in queue and will be
+        processed soon.</p>
+        <p>Most requests are processed during one-two business
+        days and archive with registration version will be sent
+        to you by email. Only delay is possible after new release
+        when we recieve a lot of requests for update.</p>
+        <p><em>IMPORTANT</em>:<br>
+        if your mail server have some limiations (limited max
+        message size or password-protected files are not allowed),
+        please include a note in body of your request. In this
+        case we'll provide you a direct link where you could
+        download a file with registration version.</p>
+        <p>Note that minor updates are free-of-charge. But all
+        major releases are not free but available for discount.
+        If you want to upgrade your licence for new major
+        version, please contact <a
+        href="mailto:sales@scalabium.com">sales@scalabium.com</a>
+        and we'll provide your a direct link for online order
+        with discount.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%"
+bgcolor="#FFFFFF" bordercolor="#000000">
+    <tr>
+        <td><a name="Q19"><b>Question</b></a><b>:</b><br>
+        <i>How can I control the position for wizard dialog?</i><p><b>Answer:</b><br>
+        By default wizard will be displayed in center of screen.
+        But you may use OnShow event for wizard component and
+        change the position as you like.</p>
+        <p>For example:</p>
+        <pre><b>procedure </b>TForm1.SMEWizardDlg1Show(Sender: TObject);
+<b>begin
+  with </b>(Sender <b>as </b>TForm) <b>do
+  begin
+    </b>Position := poDesigned;
+    Left := 5;
+    Top := 5
+  <b>end</b>;
+<b>end</b>;
+</pre>
+
+        <p>Note that in this event you may also change another
+        properties too - for example, to change the BorderStyle
+        property.</p>
+        <p align="right"><a href="#List"><font size="1">go top</font></a></p>
+        </td>
+    </tr>
+</table>
+
+<p><br>
+</p>
+
+<p align="right">&nbsp;</p>
+
+<table border="0" width="100%">
+    <tr>
+        <td valign="top" width="90"><a
+        href="http://www.scalabium.com/faq/dc_tips.htm"><img
+        src="../images/banners/scaltips.gif"
+        alt="Scalabium Delphi tips" border="0" width="88"
+        height="31"></a></td>
+        <td width="90"><!-- SpyLOG v2 f:1111 --><script language="javascript">
+u="u035.86.spylog.com";d=document;nv=navigator;na=nv.appName;t="";p=1;
+sz=" width=88 height=31 ";
+hl=history.length;d.cookie="b=b";c=0;
+bv=Math.round(parseFloat(nv.appVersion)*100);
+if (d.cookie) c=1;n=(na.substring(0,2)=="Mi")?0:1;
+if((n==0)||(bv >= 300)){rn=Math.random();t=(new Date()).getTimezoneOffset();} else {rn=0;}
+z="p="+p+"&rn="+rn+"&t="+t+"&c="+c+"&hl="+hl;
+if (self != top) { fr=1;} else { fr=0;}
+r1=escape(d.referrer);r=escape(parent.document.referrer);
+sl="1.0";h=0;
+</script><script
+        language="javascript1.1"
+        src="http://u035.86.spylog.com/js/c2f.js"></script><script
+        language="javascript">
+if (h==0){ y="";
+y+="<a href='http://"+u+"/cnt?f=3&p="+p+"&rn="+rn+"' target=_blank>";
+y+="<img src='http://"+u+"/cnt?";
+ y+=z+"&sl="+sl+"&fr="+fr+"&r="+r+"&r1="+r1+"'";
+y+="' border=0 "+sz+" alt='SpyLOG'>";
+y+="</a>"; 
+d.write(y);
+}
+</script><script
+        language="javascript1.2"><!--
+if (n == 0) { d.write("<");d.write("!--"); }
+//--></script><noscript> <p><a
+        href="http://u035.86.spylog.com/cnt?f=3&amp;p=1"
+        target="_blank"><img
+        src="http://u035.86.spylog.com/cnt?p=1" alt="SpyLOG"
+        border="0"></a><a
+        href="http://u035.86.spylog.com/cnt?f=3&amp;p=1"
+        target="_blank"> </noscript></a> <script language="javascript1.2"><!--
+if (n == 0) { d.write("--");d.write(">"); }
+//--></script>
+<!-- SpyLOG  -->        </p>
+        </td>
+        <td><p align="center"><font size="1" face="Arial"><strong>Copyright©
+        1998-2005, Scalabium. All rights reserved.</strong><br>
+        </font><a href="mailto:webmaster@scalabium.com"><font
+        size="1" face="Arial">webmaster@scalabium.com</font></a></p>
+        </td>
+        <td><p align="right"><font size="1" face="Arial"><strong>January
+        10, 2005</strong></font></p>
+        </td>
+    </tr>
+</table>
+
+<p align="center"><a href="http://www.scalabium.com/sme.htm"
+target="_new"><img src="../images/banners/scalabium2.gif"
+alt="SMExport advertising" border="0" width="468" height="60"></a></p>
+</body>
+</html>

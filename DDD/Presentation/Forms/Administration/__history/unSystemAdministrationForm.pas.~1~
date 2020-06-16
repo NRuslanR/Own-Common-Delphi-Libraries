@@ -1,0 +1,27 @@
+unit unSystemAdministrationForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSectionStackedForm, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxCustomData, cxStyles, cxTL, cxMaskEdit,
+  cxTLdxBarBuiltInMenu, dxSkinsCore, dxSkinsDefaultPainters, DB,
+  cxInplaceContainer, cxDBTL, cxTLData, ExtCtrls;
+
+type
+  TSectionStackedForm1 = class(TSectionStackedForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  SectionStackedForm1: TSectionStackedForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.

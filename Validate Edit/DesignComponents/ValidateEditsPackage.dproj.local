@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.05.23 08:13:54.295.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Package1.bdsproj=C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\ValidateEditsPackage.bdsproj</Transaction>
+    <Transaction>2018.05.23 08:18:02.954.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateEditUnit.pas</Transaction>
+    <Transaction>2018.05.23 08:27:16.697.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\ValidateEditsPackage.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateEditsPackage.bdsproj</Transaction>
+    <Transaction>2018.12.20 14:46:43.164.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\ValidateMemoUnit.pas</Transaction>
+    <Transaction>2018.12.20 14:48:34.649.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\Unit1.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Edit\DesignComponents\RegExprValidateMemoUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

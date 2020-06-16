@@ -1,0 +1,30 @@
+unit SystemAdministrationFormControllerEvents;
+
+interface
+
+uses
+
+  Event,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeFormRequestedEvent = class (TEvent)
+
+    private
+
+      FPrivilegeId: Variant;
+
+    public
+
+      constructor Create(const PrivilegeId: Variant);
+
+      property PrivilegeId: Variant
+      read FPrivilegeId;
+    
+  end;
+
+implementation
+
+end.

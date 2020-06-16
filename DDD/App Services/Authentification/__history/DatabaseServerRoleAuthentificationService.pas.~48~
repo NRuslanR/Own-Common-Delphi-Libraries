@@ -1,0 +1,127 @@
+unit DatabaseServerRoleAuthentificationService;
+
+interface
+
+uses
+
+  DatabaseServerAuthentificationService,
+  QueryDataReader,
+  QueryExecutorFactory,
+  ClientAccount,
+  SysUtils,
+  Classes;
+
+type
+
+  TUserRoleAccountDbSchemaData = class (TUserAccountDbSchemaData)
+
+    public
+
+      RoleTableName: String;
+
+      RoleIdColumnName: String;
+      RoleIdForeignKeyColumnName: String;
+      RoleFriendlyNameColumnName: String;
+      
+  end;
+
+  IDatabaseServerRoleAuthentificationService =
+    interface (IDatabaseServerRoleAuthentificationService
+  TDatabaseServerRoleAuthentificationService =
+    class (TDatabaseServerAuthentificationService)
+
+      protected
+
+        function PrepareFetchingUserAccountInfoQuery(
+          UserAccountDbSchemaData: TUserAccountDbSchemaData
+        ): String; override;
+
+      protected
+      
+        procedure FillUserAccount(
+          UserAccount: TUserAccount;
+          QueryDataReader: IQueryDataReader;
+          UserAccountDbSchemaData: TUserAccountDbSchemaData
+        ); override;
+
+      public
+
+        constructor Create(
+          UserRoleAccountDbSchemaData: TUserRoleAccountDbSchemaData;
+          QueryExecutorFactory: IQueryExecutorFactory
+        );
+
+    end;
+  
+
+implementation
+
+{ TDatabaseServerRoleAuthentificationService }
+
+constructor TDatabaseServerRoleAuthentificationService.Create(
+  UserRoleAccountDbSchemaData: TUserRoleAccountDbSchemaData;
+  QueryExecutorFactory: IQueryExecutorFactory);
+begin
+
+  inherited Create(UserAccountDbSchemaData, QueryExecutorFactory);
+  
+end;
+
+procedure TDatabaseServerRoleAuthentificationService.FillUserAccount(
+  UserAccount: TUserAccount;
+  QueryDataReader: IQueryDataReader;
+  UserAccountDbSchemaData: TUserAccountDbSchemaData
+);
+begin
+
+  inherited;
+
+  with
+    UserAccount as TUserRoleAccount,
+    UserAccountDbSchemaData as TUserRoleAccountDbSchemaData
+  do begin
+
+    RoleIdentity := QueryDataReader.GetValue(RoleIdColumnName);
+    RoleFriendlyName := QueryDataReader.GetValueAsString(RoleFriendlyNameColumnName);
+    
+  end;
+
+end;
+
+function TDatabaseServerRoleAuthentificationService.
+  PrepareFetchingUserAccountInfoQuery(
+    UserAccountDbSchemaData: TUserAccountDbSchemaData
+  ): String;
+var UserRoleAccountDbSchemaData: TUserRoleAccountDbSchemaData;
+begin
+
+  UserRoleAccountDbSchemaData := UserAccountDbSchemaData as TUserRoleAccountDbSchemaData;
+
+  Result :=
+    Format(
+      'SELECT ' +
+      'A.%s,A.%s,A.%s,B.%s,B.%s ' +
+      'FROM %s A ' +
+      'JOIN %s B ON B.%s=A.%s ' +
+      'WHERE A.%s=:p%s',
+      [
+        UserRoleAccountDbSchemaData.UserIdColumnName,
+        UserRoleAccountDbSchemaData.UserLoginColumnName,
+        UserRoleAccountDbSchemaData.UserFriendlyNameColumnName,
+        UserRoleAccountDbSchemaData.RoleIdColumnName,
+        UserRoleAccountDbSchemaData.RoleFriendlyNameColumnName,
+
+        UserRoleAccountDbSchemaData.TableName,
+        UserRoleAccountDbSchemaData.RoleTableName,
+
+        UserRoleAccountDbSchemaData.RoleIdColumnName,
+        UserRoleAccountDbSchemaData.RoleIdForeignKeyColumnName,
+
+        UserRoleAccountDbSchemaData.UserLoginColumnName,
+        UserRoleAccountDbSchemaData.UserLoginColumnName
+      ]
+    );
+
+end;
+
+end.

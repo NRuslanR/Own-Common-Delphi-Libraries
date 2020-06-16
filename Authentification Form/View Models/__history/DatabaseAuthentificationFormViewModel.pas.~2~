@@ -1,0 +1,20 @@
+unit DatabaseAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  SystemAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TDatabaseAuthentificationFormViewModel = class (TSystemAuthentificationFormViewModel)
+
+    
+  end;
+
+implementation
+
+end.

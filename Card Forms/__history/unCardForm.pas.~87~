@@ -1,0 +1,206 @@
+unit unCardForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DialogFormUnit, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  Menus, StdCtrls, cxButtons, CardFormViewModel, Disposable;
+
+type
+
+  TOnCardChangesApplyingRequestedEventHandler =
+    procedure (
+      Sender: TObject;
+      var ViewModel: TCardFormViewModel;
+      var Success: Boolean
+    ) of object;
+    
+  TCardForm = class(TDialogForm)
+
+  protected
+
+    FViewModel: TCardFormViewModel;
+    FFreeViewModel: IDisposable;
+
+    procedure SetViewModel(const Value: TCardFormViewModel);
+
+  protected
+
+    procedure SubscribeOnViewModelEvents(
+      ViewModel: TCardFormViewModel
+    ); virtual;
+
+    procedure OnCardFormViewModelPropertyChangedEventHandler(
+      Sender: TObject;
+      const PropertyName: String;
+      const PropertyValue: Variant
+    ); virtual;
+    
+  private
+
+    FOnCardChangesApplyingRequestedEventHandler: TOnCardChangesApplyingRequestedEventHandler;
+
+    procedure RaiseOnCardChangesApplyingRequestedEventHandler(
+      ViewModel: TCardFormViewModel;
+      var Success: Boolean
+    );
+
+  protected
+
+    procedure Initialize; virtual;
+    
+  protected
+
+    procedure FillControlsByViewModel(ViewModel: TCardFormViewModel); virtual; abstract;
+    procedure FillViewModelByControls(ViewModel: TCardFormViewModel); virtual; abstract;
+    
+  protected
+
+    procedure OnOKButtonClicked; override;
+
+    function IsInputDataValid: Boolean; virtual; abstract;
+
+    function GetInputDataNotValidMessage: String; virtual;
+    
+  public
+
+    constructor Create(AOwner: TComponent); override;
+
+    property OnCardChangesApplyingRequestedEventHandler:
+      TOnCardChangesApplyingRequestedEventHandler
+    read FOnCardChangesApplyingRequestedEventHandler
+    write FOnCardChangesApplyingRequestedEventHandler;
+
+  public
+
+    property ViewModel: TCardFormViewModel
+    read FViewModel write SetViewModel;
+
+  end;
+
+implementation
+
+uses
+
+  AuxDebugFunctionsUnit,
+  AuxWindowsFunctionsUnit;
+
+{$R *.dfm}
+
+{ TCardForm }
+
+procedure TCardForm.SetViewModel(const Value: TCardFormViewModel);
+begin
+
+  if FViewModel = Value then
+    Exit;
+
+  FViewModel := Value;
+  FFreeViewModel := FViewModel;
+
+  FillControlsByViewModel(FViewModel);
+
+  SubscribeOnViewModelEvents(FViewModel);
+  
+end;
+
+procedure TCardForm.SubscribeOnViewModelEvents(ViewModel: TCardFormViewModel);
+begin
+
+  ViewModel.OnCardFormViewModelPropertyChangedEventHandler :=
+    OnCardFormViewModelPropertyChangedEventHandler;
+    
+end;
+
+procedure TCardForm.
+  RaiseOnCardChangesApplyingRequestedEventHandler(
+    ViewModel: TCardFormViewModel;
+    var Success: Boolean
+  );
+begin
+
+  if Assigned(FOnCardChangesApplyingRequestedEventHandler)
+  then begin
+
+    FOnCardChangesApplyingRequestedEventHandler(
+      Self, ViewModel, Success
+    );
+
+  end;
+
+end;
+
+
+constructor TCardForm.Create(AOwner: TComponent);
+begin
+
+  inherited;
+
+  Initialize;
+  
+end;
+
+function TCardForm.GetInputDataNotValidMessage: String;
+begin
+
+  Result := 'Не все поля заполнены корректно';
+
+end;
+
+procedure TCardForm.Initialize;
+begin
+
+end;
+
+procedure TCardForm.OnCardFormViewModelPropertyChangedEventHandler(
+  Sender: TObject;
+  const PropertyName: String;
+  const PropertyValue: Variant
+);
+begin
+
+end;
+
+procedure TCardForm.OnOKButtonClicked;
+var CardChangesAppliedSuccess: Boolean;
+    CurrentViewModelSnapshot: TCardFormViewModel;
+    FreeViewModelSnapshot: IDisposable;
+    I: Integer;
+    t: TObject;
+begin
+
+  if not IsInputDataValid then begin
+
+    ShowWarningMessage(
+      Self.Handle, GetInputDataNotValidMessage, 'Сообщение'
+    );
+
+    Exit;
+
+  end;
+
+  CurrentViewModelSnapshot := FViewModel as TCardFormViewModel;
+
+  FreeViewModelSnapshot := CurrentViewModelSnapshot;
+
+  FillViewModelByControls(CurrentViewModelSnapshot);
+  
+  CardChangesAppliedSuccess := True;
+
+  RaiseOnCardChangesApplyingRequestedEventHandler(
+    CurrentViewModelSnapshot, CardChangesAppliedSuccess
+  );
+
+  if CardChangesAppliedSuccess then begin
+
+    FViewModel.CopyFrom(CurrentViewModelSnapshot);
+
+    inherited;
+
+  end;
+
+end;
+
+
+end.

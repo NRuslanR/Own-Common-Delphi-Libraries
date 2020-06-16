@@ -1,0 +1,38 @@
+unit QueryDataReader;
+
+interface
+
+uses
+
+  IGetSelfUnit,
+  SysUtils,
+  Classes;
+
+type
+
+  IQueryDataReader = interface (IGetSelf)
+  ['{74A93A57-CC9A-401D-988D-5098834713E0}']
+  
+    procedure Restart;
+    
+    function Next: Boolean;
+
+    function GetRecordCount: Integer;
+    function GetValue(const FieldName: String): Variant;
+    function GetValueAsString(const FieldName: String): String;
+    function GetValueAsInteger(const FieldName: String): Integer;
+    function GetValueAsFloat(const FieldName: String): Double;
+    function GetValueAsDateTime(const FieldName: String): TDateTime;
+    function GetValueAsBoolean(const FieldName: String): Boolean;
+
+    property Items[const FieldName: String]: Variant
+    read GetValue; default;
+
+    property RecordCount: Integer
+    read GetRecordCount;
+    
+  end;
+
+implementation
+
+end.

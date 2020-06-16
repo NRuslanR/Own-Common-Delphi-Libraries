@@ -1,0 +1,8 @@
+inherited DialogForm1: TDialogForm1
+  Caption = 'DialogForm1'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited btnCancel: TcxButton
+    LookAndFeel.SkinName = ''
+  end
+end

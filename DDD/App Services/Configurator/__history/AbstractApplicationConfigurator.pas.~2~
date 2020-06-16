@@ -1,0 +1,21 @@
+unit AbstractApplicationConfigurator;
+
+interface
+
+uses
+
+  ApplicationConfigurator,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractApplicationConfigurator =
+    class abstract (TInterfacedObject, IApplicationConfigurator)
+
+
+    end;
+
+implementation
+
+end.

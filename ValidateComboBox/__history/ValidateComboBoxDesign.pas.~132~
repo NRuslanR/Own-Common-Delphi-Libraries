@@ -1,0 +1,279 @@
+unit ValidateComboBoxDesign;
+
+interface
+
+uses
+
+  RegExpr,
+  StdCtrls,
+  SysUtils,
+  Graphics,
+  Classes;
+
+type
+
+  TOnValidateEventHandler =
+    procedure (
+      Sender: TObject;
+      var IsValid: Boolean
+    ) of object;
+    
+  TValidateComboBox = class (TComboBox)
+
+    private
+
+      FRegExpr: TRegExpr;
+      
+    private
+
+      FInvalidHint: String;
+      FRegularExpression: String;
+      FInvalidColor: TColor;
+      FDefaultColor: TColor;
+      FIsValid: Boolean;
+      FInvalidateOnNonSelection: Boolean;
+
+      procedure ChangeUserExperienceByValidState(const IsValid: Boolean);
+
+      procedure SetInvalidateOnNonSelection(const Value: Boolean);
+
+      procedure SetInvalidColor(const Value: TColor);
+      procedure SetInvalidHint(const Value: String);
+      procedure SetRegularExpression(const Value: String);
+
+      procedure OnNonSelectionValidateEventHandler(
+        Sender: TObject; var IsValid: Boolean
+      );
+
+      procedure OnSelectEventHandler(Sender: TObject); virtual;
+      procedure OnChangeEventHandler(Sender: TObject); virtual;
+      
+    private
+
+      FOnValidateClientEventHandler: TOnValidateEventHandler;
+
+      FOnValidateEventHandler: TOnValidateEventHandler;
+
+      procedure ValidateByRegularExpression;
+      
+      procedure SetOnValidateEventHandler(const Value: TOnValidateEventHandler);
+
+      function GetUseDefaultInvalidColor: Boolean;
+      procedure SetUseDefaultInvalidColor(const Value: Boolean);
+
+    public
+
+      destructor Destroy; override;
+      
+      constructor Create(AOwner: TComponent); override;
+      
+      function Validate: Boolean;
+
+      property IsValid: Boolean read FIsValid;
+      
+    published
+
+      property InvalidateOnNonSelection: Boolean
+      read FInvalidateOnNonSelection write SetInvalidateOnNonSelection;
+
+      property InvalidHint: String read FInvalidHint write SetInvalidHint;
+      property InvalidColor: TColor read FInvalidColor write SetInvalidColor;
+
+      property RegularExpression: String
+      read FRegularExpression write SetRegularExpression;
+      
+      property UseDefaultInvalidColor: Boolean
+      read GetUseDefaultInvalidColor write SetUseDefaultInvalidColor;
+
+    published
+
+      property OnValidate: TOnValidateEventHandler
+      read FOnValidateEventHandler write SetOnValidateEventHandler;
+      
+  end;
+
+procedure Register;
+
+implementation
+
+uses
+
+  Windows,
+  Dialogs;
+  
+procedure Register;
+begin
+
+  RegisterComponents('Standard', [TValidateComboBox]);
+  
+end;
+
+{ TValidateComboBox }
+
+procedure TValidateComboBox.ChangeUserExperienceByValidState(
+  const IsValid: Boolean);
+begin
+
+  if IsValid then begin
+
+    Hint := '';
+    ShowHint := False;
+    Color := FDefaultColor;
+
+  end
+
+  else begin
+
+    Hint := FInvalidHint;
+    ShowHint := True;
+    Color := FInvalidColor;
+    
+  end;
+
+end;
+
+constructor TValidateComboBox.Create(AOwner: TComponent);
+begin
+
+  inherited;
+
+  FDefaultColor := Color;
+  FIsValid := True;
+
+  FRegExpr := TRegExpr.Create;
+  
+  OnSelect := OnSelectEventHandler;
+  OnChange := OnChangeEventHandler;
+  
+end;
+
+destructor TValidateComboBox.Destroy;
+begin
+
+  FreeAndNil(FRegExpr);
+  
+  inherited;
+
+end;
+
+function TValidateComboBox.GetUseDefaultInvalidColor: Boolean;
+begin
+
+  Result := InvalidColor = $00A087FF;
+
+end;
+
+procedure TValidateComboBox.OnSelectEventHandler(Sender: TObject);
+begin
+
+  Validate;
+  
+end;
+
+procedure TValidateComboBox.OnChangeEventHandler(Sender: TObject);
+begin
+
+ 
+end;
+
+procedure TValidateComboBox.OnNonSelectionValidateEventHandler(
+  Sender: TObject;
+  var IsValid: Boolean
+);
+begin
+
+  IsValid := (ItemIndex >= 0) and (ItemIndex < ItemCount);
+  
+end;
+
+procedure TValidateComboBox.SetUseDefaultInvalidColor(const Value: Boolean);
+begin
+
+  if Value then
+    InvalidColor := $00A087FF
+
+  else InvalidColor := clDefault;
+  
+end;
+
+procedure TValidateComboBox.SetInvalidateOnNonSelection(const Value: Boolean);
+begin
+
+  FInvalidateOnNonSelection := Value;
+
+  if FInvalidateOnNonSelection then
+    FOnValidateEventHandler := OnNonSelectionValidateEventHandler
+
+  else FOnValidateEventHandler := FOnValidateClientEventHandler;
+
+  Validate;
+
+end;
+
+procedure TValidateComboBox.SetInvalidColor(const Value: TColor);
+begin
+
+  FInvalidColor := Value;
+
+  if not FIsValid then
+    Color := FInvalidColor;
+
+end;
+
+procedure TValidateComboBox.SetInvalidHint(const Value: String);
+begin
+
+  FInvalidHint := Value;
+
+  if not FIsValid then
+    Hint := FInvalidHint;
+
+end;
+
+procedure TValidateComboBox.SetOnValidateEventHandler(
+  const Value: TOnValidateEventHandler);
+begin
+
+  FOnValidateEventHandler := Value;
+  FOnValidateClientEventHandler := Value;
+
+end;
+
+procedure TValidateComboBox.SetRegularExpression(const Value: String);
+begin
+
+  FRegularExpression := Value;
+
+  if not FIsValid then
+
+  
+end;
+
+function TValidateComboBox.Validate: Boolean;
+begin
+
+  if Assigned(FOnValidateEventHandler) then
+    FOnValidateEventHandler(Self, FIsValid)
+
+  else FIsValid := True;
+
+  ChangeUserExperienceByValidState(FIsValid);
+
+  Result := FIsValid;
+
+end;
+
+procedure TValidateComboBox.ValidateByRegularExpression;
+begin
+
+  if Trim(FRegularExpression) = '' then
+    Exit;
+
+  FRegExpr.Expression := FRegularExpression;
+
+  
+  
+
+end;
+
+end.

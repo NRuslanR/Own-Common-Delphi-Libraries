@@ -1,0 +1,15 @@
+unit RepositoryRegistry;
+
+interface
+
+uses
+
+  DomainObjectUnit,
+  DomainObjectRepository;
+
+type
+
+  
+implementation
+
+end.

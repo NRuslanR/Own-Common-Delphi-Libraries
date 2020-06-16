@@ -1,0 +1,24 @@
+unit SystemAdministrationPrivilegeServices;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeServices = class
+
+    public
+
+      PrivilegeId: Variant;
+
+      constructor Create(const PrivilegeId: Variant);
+
+  end;
+
+implementation
+
+end.

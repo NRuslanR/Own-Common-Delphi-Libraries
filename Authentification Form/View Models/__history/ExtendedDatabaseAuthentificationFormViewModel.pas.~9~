@@ -1,0 +1,31 @@
+unit ExtendedDatabaseAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  DatabaseAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TExtendedDatabaseAuthentificationFormViewModel =
+    class (TDatabaseAuthentificationFormViewModel)
+
+      private
+
+        FHost: String;
+        FHostList: TStrings;
+        FPort: Integer;
+
+      public
+
+        property Host: String read FHost write FHost;
+        property Port: Integer read FPort write FPort;
+
+    end;
+
+implementation
+
+end.

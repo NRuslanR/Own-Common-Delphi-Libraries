@@ -1,0 +1,18 @@
+unit QueryExecutorFactory;
+
+interface
+
+type
+
+  TConnectionInfo = record
+
+    
+  end;
+  
+  IQueryExecutorFactory = interface
+
+    function CreateQueryExecutor
+  end;
+implementation
+
+end.

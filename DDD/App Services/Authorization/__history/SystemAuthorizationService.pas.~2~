@@ -1,0 +1,14 @@
+unit SystemAuthorizationService;
+
+interface
+
+type
+
+  ISystemAuthorizationService = interface
+
+    
+  end;
+
+implementation
+
+end.

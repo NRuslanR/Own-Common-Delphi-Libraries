@@ -1,0 +1,14 @@
+unit SystemAdministrationService;
+
+interface
+
+type
+
+  ISystemAdministrationService = interface
+
+    
+  end;
+
+implementation
+
+end.

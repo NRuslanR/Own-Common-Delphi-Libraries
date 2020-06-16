@@ -1,0 +1,21 @@
+unit AbstratConnectionFactory;
+
+interface
+
+uses
+
+  ConnectionFactory,
+  ConnectionInfo,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstratConnectionFactory =
+    class (TInterfacedObject, IConnectionFactory)
+
+    end;
+    
+implementation
+
+end.

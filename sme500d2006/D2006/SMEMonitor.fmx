@@ -1,0 +1,125 @@
+object frmExportDlg: TfrmExportDlg
+  Left = 227
+  Top = 130
+  Caption = 'Setup of the data export'
+  ClientHeight = 305
+  ClientWidth = 419
+  OnCreate = FormCreate
+  object lblCharacterSet: TLabel
+Position.Point = '(251,198)'
+    Width = 99
+    Height = 13
+    Text = 'Character set:'
+WordWrap = False
+AutoSize = False
+  end
+  object bvlBtn: TPanel
+Position.Point = '(0,265)'
+    Width = 419
+    Height = 40
+    Align = alBottom
+  end
+  object lblFileName: TLabel
+Position.Point = '(5,243)'
+    Width = 85
+    Height = 13
+    Text = 'Output file:'
+WordWrap = False
+AutoSize = False
+  end
+  object btnOpenDlg: TSpeedButton
+Position.Point = '(366,240)'
+    Width = 21
+    Height = 21
+    OnClick = btnOpenDlgClick
+WordWrap = True
+  end
+  object rgTableType: TPanel
+Position.Point = '(5,3)'
+    Width = 220
+    Height = 230
+    TabOrder = 0
+    OnClick = rgTableTypeClick
+  end
+  object rgSeparator: TPanel
+Position.Point = '(231,3)'
+    Width = 180
+    Height = 110
+    Enabled = False
+    TabOrder = 1
+    OnClick = rgSeparatorClick
+  end
+  object edSymbol: TEdit
+Position.Point = '(360,87)'
+    Width = 33
+    Height = 21
+    TabOrder = 2
+  end
+  object cbAddTitle: TCheckBox
+Position.Point = '(233,118)'
+    Width = 180
+    Height = 17
+    Text = 'include a column titles'
+    TabOrder = 3
+  end
+  object cbCharacterSet: TComboBox
+Position.Point = '(251,212)'
+    Width = 136
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 8
+  end
+  object btnOk: TButton
+Position.Point = '(280,275)'
+    Width = 65
+    Height = 25
+    Text = 'OK'
+    Default = True
+    Enabled = False
+    TabOrder = 9
+    OnClick = btnOkClick
+  end
+  object btnCancel: TButton
+Position.Point = '(350,275)'
+    Width = 65
+    Height = 25
+    Cancel = True
+    Text = 'Cancel'
+    ModalResult = 2
+    TabOrder = 10
+  end
+  object edFileName: TEdit
+Position.Point = '(91,240)'
+    Width = 274
+    Height = 21
+    TabOrder = 7
+    OnChange = edFileNameChange
+  end
+  object cbFixed: TCheckBox
+Position.Point = '(233,134)'
+    Width = 180
+    Height = 17
+    Text = 'fixed length of the columns'
+    TabOrder = 4
+  end
+  object cbSelectedRecord: TCheckBox
+Position.Point = '(233,150)'
+    Width = 180
+    Height = 17
+    Text = 'selected records only'
+    TabOrder = 5
+  end
+  object cbBlankIfZero: TCheckBox
+Position.Point = '(233,166)'
+    Width = 180
+    Height = 17
+    Text = 'blank if zero'
+    TabOrder = 6
+  end
+  object SaveDlg: TSaveDialog
+    Options = [ofHideReadOnly, ofPathMustExist]
+    Title = 'Select a file for data export'
+    Left = 8
+    Top = 272
+  end
+end

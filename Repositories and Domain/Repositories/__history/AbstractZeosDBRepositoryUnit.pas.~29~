@@ -1,0 +1,520 @@
+unit AbstractZeosDBRepositoryUnit;
+
+interface
+
+uses
+
+  Windows, Classes, DB, SysUtils, Variants,
+  AbstractRepositoryUnit, AbstractDBRepositoryUnit,
+  DomainObjectUnit, ZDbcIntfs, ZDataset,
+  ZAbstractRODataset, ZConnection, RegExpr,
+  AbstractRepositoryCriteriaUnit, ConstRepositoryCriterionUnit,
+  AbstractNegativeRepositoryCriterionUnit,
+  ArithmeticRepositoryCriterionOperationsUnit,
+  BoolLogicalNegativeRepositoryCriterionUnit,
+  BoolLogicalRepositoryCriterionBindingsUnit,
+  UnaryRepositoryCriterionUnit, BinaryRepositoryCriterionUnit,
+  UnitingRepositoryCriterionUnit, DomainObjectListUnit,
+  DBTableColumnMappingsUnit,
+  TableColumnMappingsUnit,
+  VariantListUnit;
+
+  type
+
+    TZeosDBRepositoryErrorCreator = class(TDBRepositoryErrorCreator)
+
+      protected
+
+        function CreateDefaultErrorFromException(
+          const SourceException: Exception
+        ): TRepositoryError; override;
+
+        function CreateErrorFromZeosException(ZeosException: EZSQLException): TRepositoryError;
+
+      public
+
+        destructor Destroy; override;
+
+        function CreateErrorFromException(
+          const SourceException: Exception;
+          ExceptionalDomainObject: TDomainObject
+        ): TRepositoryError; override;
+
+    end;
+
+    TAbstractZeosDBRepository = class
+                                abstract(TAbstractDecoratingDBRepository)
+
+      protected
+
+        type
+
+          TVALUESRowsLayoutCreatingMode = (
+
+            UsePrimaryKeyColumns,
+            DontUsePrimaryKeyColumns
+
+          );
+
+      protected
+
+        procedure SetSurrogateIdForDomainObject(
+          DomainObject: TDomainObject
+        ); override;
+
+        procedure SetSurrogateIdForDomainObjects(
+          DomainObjectList: TDomainObjectList
+        ); override;
+
+      protected
+
+        FOperationalQuery: TZQuery;
+
+        constructor Create; overload;
+        constructor Create(Connection: TComponent); overload;
+        constructor Create(
+          Connection: TComponent;
+          DecoratedDBRepository: TAbstractZeosDBRepository
+        ); overload;
+
+        procedure CreateOperationalQueryObject;
+        function GetDatabaseDataHolder: TObject; override;
+
+        function CreateDefaultRepositoryErrorCreator: TRepositoryErrorCreator; override;
+
+        procedure SetConnection(Connection: TComponent); override;
+        function GetConnection: TComponent; override;
+
+        procedure StartTransaction; override;
+        procedure CommitTransaction; override;
+        procedure RollbackTransaction; override;
+
+        procedure ExecuteModifiyngQuery; override;
+        procedure ExecuteSelectingQuery; override;
+
+        function CheckThatSingleRecordSelected: Boolean; override;
+        function CheckThatRecordGroupSelected: Boolean; override;
+        function CheckThatRecordModified: Boolean; override;
+        procedure GenerateExceptionAboutDatabaseOperationFailure; override;
+
+        procedure OnEventRaisedAboutDomainObjectWasLoadedEarlier(
+          DomainObject: TDomainObject;
+          DataHolder: TObject
+        ); virtual;
+        
+        procedure FillDomainObjectListFromDataHolder(
+          DomainObjects: TDomainObjectList;
+          DataHolder: TObject
+        ); override;
+
+      public
+
+        destructor Destroy; override;
+
+        function GetNegativeRepositoryCriterionClass: TBoolNegativeRepositoryCriterionClass; override;
+        function GetConstRepositoryCriterionClass: TConstRepositoryCriterionClass; override;
+        function GetEqualityRepositoryCriterionOperationClass: TEqualityRepositoryCriterionOperationClass; override;
+        function GetLessRepositoryCriterionOperationClass: TLessRepositoryCriterionOperationClass; override;
+        function GetGreaterRepositoryCriterionOperationClass: TGreaterRepositoryCriterionOperationClass; override;
+        function GetLessOrEqualRepositoryCriterionOperationClass: TLessOrEqualRepositoryCriterionOperationClass; override;
+        function GetGreaterOrEqualRepositoryCriterionOperationClass: TGreaterOrEqualRepositoryCriterionOperationClass; override;
+        function GetAndBindingRepositoryCriterionClass: TBoolAndBindingClass; override;
+        function GetOrBindingRepositoryCriterionClass: TBoolOrBindingClass; override;
+        function GetUnaryRepositoryCriterionClass: TUnaryRepositoryCriterionClass; override;
+        function GetBinaryRepositoryCriterionClass: TBinaryRepositoryCriterionClass; override;
+        function GetUnitingRepositoryCriterionClass: TUnitingRepositoryCriterionClass; override;
+
+    end;
+
+implementation
+
+  uses BinaryDBRepositoryCriterionUnit,
+       DBTableMappingUnit,
+       BoolLogicalNegativeDBRepositoryCriterionUnit,
+       ConstDBRepositoryCriterionUnit,
+       UnaryZeosDBRepositoryCriterionUnit,
+       StrUtils,
+       AuxZeosFunctions,
+       ReflectionServicesUnit,
+       AuxiliaryStringFunctions;
+
+{ TZeosDBRepositoryErrorCreator }
+
+
+function TZeosDBRepositoryErrorCreator.CreateDefaultErrorFromException(
+  const SourceException: Exception
+): TRepositoryError;
+begin
+
+  Result := inherited CreateDefaultErrorFromException(SourceException);
+
+  if SourceException is EZSQLException then begin
+
+    with SourceException as EZSQLException do
+      Result.ErrorData := StatusCode;
+
+  end;
+
+end;
+
+function TZeosDBRepositoryErrorCreator.CreateErrorFromException(
+          const SourceException: Exception;
+          ExceptionalDomainObject: TDomainObject
+        ): TRepositoryError;
+begin
+
+  Result := inherited CreateErrorFromException(SourceException, ExceptionalDomainObject);
+  
+end;
+
+function TZeosDBRepositoryErrorCreator.CreateErrorFromZeosException(
+  ZeosException: EZSQLException): TRepositoryError;
+begin
+
+  Result := TRepositoryError.Create(ZeosException.Message, ZeosException.Message, ZeosException.StatusCode);
+  
+end;
+
+destructor TZeosDBRepositoryErrorCreator.Destroy;
+begin
+
+  inherited;
+
+end;
+
+{ TAbstractZeosDBRepository }
+
+destructor TAbstractZeosDBRepository.Destroy;
+begin
+
+  FreeAndNil(FOperationalQuery);
+  inherited;
+
+end;
+
+function TAbstractZeosDBRepository.GetAndBindingRepositoryCriterionClass: TBoolAndBindingClass;
+begin
+
+  Result := inherited GetAndBindingRepositoryCriterionClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetBinaryRepositoryCriterionClass: TBinaryRepositoryCriterionClass;
+begin
+
+  Result := inherited GetBinaryRepositoryCriterionClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetConstRepositoryCriterionClass: TConstRepositoryCriterionClass;
+begin
+
+  Result := inherited GetConstRepositoryCriterionClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetDatabaseDataHolder: TObject;
+begin
+
+  Result := FOperationalQuery;
+  
+end;
+
+function TAbstractZeosDBRepository.GetEqualityRepositoryCriterionOperationClass: TEqualityRepositoryCriterionOperationClass;
+begin
+
+  Result := inherited GetEqualityRepositoryCriterionOperationClass;
+  
+end;
+
+function TAbstractZeosDBRepository.GetGreaterOrEqualRepositoryCriterionOperationClass: TGreaterOrEqualRepositoryCriterionOperationClass;
+begin
+
+  Result := inherited GetGreaterOrEqualRepositoryCriterionOperationClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetGreaterRepositoryCriterionOperationClass: TGreaterRepositoryCriterionOperationClass;
+begin
+
+  Result := inherited GetGreaterRepositoryCriterionOperationClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetLessOrEqualRepositoryCriterionOperationClass: TLessOrEqualRepositoryCriterionOperationClass;
+begin
+
+  Result := inherited GetLessOrEqualRepositoryCriterionOperationClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetLessRepositoryCriterionOperationClass: TLessRepositoryCriterionOperationClass;
+begin
+
+  Result := inherited GetLessRepositoryCriterionOperationClass;
+
+end;
+
+function TAbstractZeosDBRepository.GetNegativeRepositoryCriterionClass: TBoolNegativeRepositoryCriterionClass;
+begin
+
+  Result := inherited GetNegativeRepositoryCriterionClass;
+  
+end;
+
+function TAbstractZeosDBRepository.GetOrBindingRepositoryCriterionClass: TBoolOrBindingClass;
+begin
+
+  Result := inherited GetOrBindingRepositoryCriterionClass;
+  
+end;
+
+function TAbstractZeosDBRepository.GetUnaryRepositoryCriterionClass: TUnaryRepositoryCriterionClass;
+begin
+
+  Result := TUnaryZeosDBRepositoryCriterion;
+
+end;
+
+function TAbstractZeosDBRepository.GetUnitingRepositoryCriterionClass: TUnitingRepositoryCriterionClass;
+begin
+
+  Result := inherited GetUnitingRepositoryCriterionClass;
+
+end;
+
+procedure TAbstractZeosDBRepository.OnEventRaisedAboutDomainObjectWasLoadedEarlier(
+  DomainObject: TDomainObject;
+  DataHolder: TObject
+);
+begin
+
+end;
+
+procedure TAbstractZeosDBRepository.GenerateExceptionAboutDatabaseOperationFailure;
+begin
+
+  raise EZSQLException.CreateWithStatus('', '');
+
+end;
+
+procedure TAbstractZeosDBRepository.StartTransaction;
+begin
+
+  { Commit due to occurring Exception in Zeos Component 6.6.6 version }
+  { Need to turn the transaction control methods to
+    SQL Transaction Control Queries }
+  //FOperationalQuery.Connection.AutoCommit := False;
+  FOperationalQuery.Connection.StartTransaction;
+
+end;
+
+function TAbstractZeosDBRepository.CheckThatRecordGroupSelected: Boolean;
+begin
+
+  Result := FOperationalQuery.RecordCount > 0;
+
+end;
+
+function TAbstractZeosDBRepository.CheckThatRecordModified: Boolean;
+begin
+
+  Result := FOperationalQuery.RowsAffected > 0;
+
+end;
+
+function TAbstractZeosDBRepository.CheckThatSingleRecordSelected: Boolean;
+begin
+
+  Result := FOperationalQuery.RecordCount = 1;
+  
+end;
+
+procedure TAbstractZeosDBRepository.CommitTransaction;
+begin
+
+  FOperationalQuery.Connection.Commit;
+
+end;
+
+procedure TAbstractZeosDBRepository.RollbackTransaction;
+begin
+
+  FOperationalQuery.Connection.Rollback;
+
+end;
+
+constructor TAbstractZeosDBRepository.Create;
+begin
+
+  inherited Create;
+
+  CreateOperationalQueryObject;
+  
+end;
+
+constructor TAbstractZeosDBRepository.Create(Connection: TComponent);
+begin
+
+  CreateOperationalQueryObject;
+
+  inherited Create(Connection);
+
+end;
+
+constructor TAbstractZeosDBRepository.Create(
+  Connection: TComponent;
+  DecoratedDBRepository: TAbstractZeosDBRepository
+);
+begin
+
+  CreateOperationalQueryObject;
+  
+  inherited Create(Connection, DecoratedDBRepository);
+
+end;
+
+function TAbstractZeosDBRepository.CreateDefaultRepositoryErrorCreator: TRepositoryErrorCreator;
+begin
+
+  Result := TZeosDBRepositoryErrorCreator.Create(Self);
+
+end;
+
+procedure TAbstractZeosDBRepository.CreateOperationalQueryObject;
+begin
+
+  FOperationalQuery := TZQuery.Create(nil);
+  
+end;
+
+procedure TAbstractZeosDBRepository.ExecuteModifiyngQuery;
+begin
+
+  FOperationalQuery.ExecSQL;
+
+end;
+
+procedure TAbstractZeosDBRepository.ExecuteSelectingQuery;
+begin
+
+  FOperationalQuery.Close;
+  FOperationalQuery.Open;
+
+end;
+
+procedure TAbstractZeosDBRepository.FillDomainObjectListFromDataHolder(
+  DomainObjects: TDomainObjectList;
+  DataHolder: TObject
+);
+var LoadedDataSet: TDataSet;
+    PrimaryKeyField: String;
+    LoadedIdForDomainObject: Variant;
+    AlreadyLoadedDomainObject: TDomainObject;
+begin
+
+  LoadedDataSet := DataHolder as TDataSet;
+
+  LoadedDataSet.DisableControls;
+  LoadedDataSet.First;
+
+  { to multiple keys in future }
+  PrimaryKeyField := FDBTableMapping.PrimaryKeyColumnMappings[0].ColumnName;
+
+  while not LoadedDataSet.Eof do begin
+
+    LoadedIdForDomainObject :=
+      LoadedDataSet.FieldByName(PrimaryKeyField).AsVariant;
+      
+    AlreadyLoadedDomainObject :=
+      DomainObjects.FindByIdentity(LoadedIdForDomainObject);
+
+    if AlreadyLoadedDomainObject <> nil then
+      OnEventRaisedAboutDomainObjectWasLoadedEarlier(
+        AlreadyLoadedDomainObject,
+        DataHolder
+      )
+
+    else DomainObjects.AddDomainObject(CreateAndFillDomainObjectFromDataHolder(DataHolder));
+    
+    LoadedDataSet.Next;
+
+  end;
+
+  LoadedDataSet.First;
+  LoadedDataSet.EnableControls;
+
+end;
+
+function TAbstractZeosDBRepository.GetConnection: TComponent;
+begin
+
+  Result := FOperationalQuery.Connection;
+
+end;
+
+procedure TAbstractZeosDBRepository.SetConnection(Connection: TComponent);
+begin
+
+  FOperationalQuery.Connection := Connection as TZConnection;
+
+end;
+
+procedure TAbstractZeosDBRepository.SetSurrogateIdForDomainObject(
+  DomainObject: TDomainObject);
+var PrimaryKeyColumnIndex: Integer;
+    PrimaryKeyColumnMappings: TTableColumnMappings;
+    PrimaryKeyColumnMapping: TTableColumnMapping;
+    ComplexIdentity: Variant;
+    PrimaryKeyColumnName: String;
+begin
+
+  if FDBTableMapping.PrimaryKeyColumnMappings.Count = 1 then  begin
+
+    PrimaryKeyColumnName :=
+      FDBTableMapping.PrimaryKeyColumnMappings[0].ColumnName;
+
+    DomainObject.Identity :=
+      FOperationalQuery.FieldByName(PrimaryKeyColumnName).AsVariant;
+
+    Exit;
+
+  end;
+
+  PrimaryKeyColumnMappings := FDBTableMapping.PrimaryKeyColumnMappings;
+
+  ComplexIdentity :=
+    VarArrayCreate([0, PrimaryKeyColumnMappings.Count - 1], varVariant);
+
+  for PrimaryKeyColumnIndex := 0 to PrimaryKeyColumnMappings.Count - 1
+  do begin
+
+    PrimaryKeyColumnMapping :=
+      PrimaryKeyColumnMappings[PrimaryKeyColumnIndex];
+
+    ComplexIdentity[PrimaryKeyColumnIndex] :=
+      FOperationalQuery.FieldByName(
+        PrimaryKeyColumnMapping.ColumnName
+      ).AsVariant;
+
+  end;
+
+end;
+
+procedure TAbstractZeosDBRepository.SetSurrogateIdForDomainObjects(
+  DomainObjectList: TDomainObjectList
+);
+var DomainObject: TDomainObject;
+begin
+
+  for DomainObject in DomainObjectList do begin
+
+    SetSurrogateIdForDomainObject(DomainObject);
+
+    FOperationalQuery.Next;
+
+  end;
+
+end;
+
+end.

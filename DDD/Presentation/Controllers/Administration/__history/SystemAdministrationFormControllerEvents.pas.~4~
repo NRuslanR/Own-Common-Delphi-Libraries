@@ -1,0 +1,20 @@
+unit SystemAdministrationFormControllerEvents;
+
+interface
+
+uses
+
+  Event,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeFormRequestedEvent = class (TEvent)
+
+    
+  end;
+
+implementation
+
+end.

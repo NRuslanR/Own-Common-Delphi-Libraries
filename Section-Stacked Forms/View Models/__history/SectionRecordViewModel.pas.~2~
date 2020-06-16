@@ -1,0 +1,26 @@
+unit SectionRecordViewModel;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSectionRecordViewModel = class
+
+    public
+
+      Id: Variant;
+      ParentId: Variant;
+      Name: String;
+
+      constructor Create;
+      
+  end;
+
+implementation
+
+end.

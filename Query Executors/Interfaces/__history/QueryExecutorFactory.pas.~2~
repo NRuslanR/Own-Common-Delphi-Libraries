@@ -1,0 +1,13 @@
+unit QueryExecutorFactory;
+
+interface
+
+type
+
+  IQueryExecutorFactory = interface
+
+    
+  end;
+implementation
+
+end.

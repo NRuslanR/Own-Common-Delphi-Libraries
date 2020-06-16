@@ -1,0 +1,26 @@
+object DataModule2: TDataModule2
+  OldCreateOrder = False
+  Height = 288
+  Width = 787
+  object TestSectionMemData: TdxMemData
+    Indexes = <>
+    Persistent.Data = {
+      5665728FC2F5285C8FFE3F030000000400000003000B0073656374696F6E5F69
+      64000400000003001200706172656E745F73656374696F6E5F69640014000000
+      01000D0073656374696F6E5F6E616D650001030000000000000000010D000000
+      C0F0F5E8E2E8F0EEE2E0EDE8E501020000000101000000010A000000D1EEF2F0
+      F3E4EDE8EAE801010000000000000000010A000000D3EFF0E0E2EBE5EDE8E5}
+    SortOptions = []
+    Left = 56
+    Top = 16
+    object TestSectionMemDatasection_id: TIntegerField
+      FieldName = 'section_id'
+    end
+    object TestSectionMemDataparent_section_id: TIntegerField
+      FieldName = 'parent_section_id'
+    end
+    object TestSectionMemDatasection_name: TStringField
+      FieldName = 'section_name'
+    end
+  end
+end

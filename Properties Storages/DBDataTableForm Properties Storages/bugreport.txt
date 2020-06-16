@@ -1,0 +1,2218 @@
+date/time          : 2019-03-27, 10:48:41, 89ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 3 hours 42 minutes
+program up time    : 29 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 1055/2047 MB (free/total)
+free disk space    : (C:) 469,39 MB (D:) 14,28 GB
+display mode       : 1280x1024, 32 bit
+process id         : $dc0
+allocated memory   : 23,63 MB
+largest free block : 811,85 MB
+executable         : TestDBDataTableFormPropStorage.exe
+exec. date/time    : 2019-03-27 10:48
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $a70d8311, $4431b949, $4431b949
+count              : 2
+exception number   : 2
+exception class    : EAccessViolation
+exception message  : Access violation at address 0082F20B in module 'TestDBDataTableFormPropStorage.exe'. Read of address 00000004.
+
+main thread ($ea0):
+0082f20b +037 TestDBDataTableFormPropStorage.exe DBDataTableFilterFormStatePropertiesIniFile 275 +4 TDBDataTableFilterFormStatePropertiesIniFile.InternalSaveObjectProperties
+004df6fa +002 TestDBDataTableFormPropStorage.exe DBDataTableFilterFormStatePropertiesStorage  61 +0 TDBDataTableFilterFormStatePropertiesStorage.SaveObjectProperties
+0082e44d +055 TestDBDataTableFormPropStorage.exe DBDataTableFormPropertiesIniFile            151 +6 TDBDataTableFormPropertiesIniFile.InternalSaveObjectProperties
+0082de96 +002 TestDBDataTableFormPropStorage.exe DBDataTableFormPropertiesStorage             97 +0 TDBDataTableFormPropertiesStorage.SaveObjectProperties
+0082f82e +026 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit           49 +6 TForm6.Button1Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                           TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                           TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                           TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                           TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                           TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                           TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                           DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                              TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                           TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                              TCustomForm.WndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                            StdWndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                            StdWndProc
+7c90e470 +010 ntdll.dll                                                                             KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                            SendMessageW
+7e37a993 +016 USER32.dll                                                                            CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                           TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                           TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                           TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                           TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                            StdWndProc
+7e3696c2 +00a USER32.dll                                                                            DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                              TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                              TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                              TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage               41 +6 initialization
+
+thread $b08: <priority:1>
+7c90da48 +0a ntdll.dll                                    NtRemoveIoCompletion
+00462481 +0d TestDBDataTableFormPropStorage.exe madExcept CallThreadProcSafe
+004624eb +37 TestDBDataTableFormPropStorage.exe madExcept ThreadExceptFrame
+>> created by main thread ($ea0) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 TestDBDataTableFormPropStorage.exe                 D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+02ce0000 libintl-2.dll                                      C:\WINDOWS\system32
+02cf0000 libiconv-2.dll                                     C:\WINDOWS\system32
+02dd0000 krb5_32.dll                        1.3.5.0         C:\WINDOWS\system32
+02e60000 ssleay32.dll                       0.9.8.1         C:\WINDOWS\system32
+10000000 libeay32.dll                       0.9.8.1         C:\WINDOWS\system32
+16080000 mdnsNSP.dll                        1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                       1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                        5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                        6.0.2900.5512   C:\WINDOWS\system32
+5d5b0000 comctl32.dll                       5.82.2900.6028  C:\WINDOWS\system32
+63100000 libpq.dll                          8.2.4.7110      C:\WINDOWS\system32
+698b0000 hnetcfg.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                        5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                       5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                         5.1.2600.5512   C:\WINDOWS\system32
+746e0000 MSCTF.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFolder.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76be0000 psapi.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                       5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                       5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                       5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                         5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                       5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                       6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                          5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                        5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                        5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                         5.1.2600.5875   C:\WINDOWS\system32
+77bf0000 version.dll                        5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                         7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                       5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                         5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                          5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                        6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                        5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                       5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                          5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                        6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+000 Idle                               0    0
+004 System                             0    0    normal
+59c smss.exe                           0    0    normal C:\WINDOWS\system32
+5cc csrss.exe                          0    0
+5e4 winlogon.exe                       47   14   high   C:\WINDOWS\system32
+610 services.exe                       4    0    normal C:\WINDOWS\system32
+61c lsass.exe                          4    0    normal C:\WINDOWS\system32
+6e4 svchost.exe                        4    0    normal C:\WINDOWS\system32
+738 svchost.exe                        0    0
+458 svchost.exe                        4    4    normal C:\WINDOWS\System32
+664 svchost.exe                        0    0
+784 svchost.exe                        0    0
+0a4 spoolsv.exe                        4    0    normal C:\WINDOWS\system32
+288 avpsus.exe                         4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2cc BSQLServer.exe                     4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+428 mDNSResponder.exe                  4    0    normal C:\Program Files\Bonjour
+4a4 hasplms.exe                        4    0    normal C:\WINDOWS\system32
+4e4 jqs.exe                            4    0    idle   C:\Program Files\Java\jre7\bin
+484 klnagent.exe                       4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+524 MDM.EXE                            4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+620 sqlservr.exe                       4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+238 nvsvc32.exe                        8    1    normal C:\WINDOWS\system32
+26c pg_ctl.exe                         0    0
+700 pg_ctl.exe                         0    0
+708 postgres.exe                       0    0
+148 sqlbrowser.exe                     0    0
+1a8 sqlwriter.exe                      4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+13c postgres.exe                       0    0
+180 svchost.exe                        4    0    normal C:\WINDOWS\system32
+260 avp.exe                            7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+9d8 postgres.exe                       0    0
+f6c postgres.exe                       0    0
+8e8 postgres.exe                       0    0
+8fc postgres.exe                       0    0
+904 postgres.exe                       0    0
+90c postgres.exe                       0    0
+914 postgres.exe                       0    0
+930 postgres.exe                       0    0
+93c postgres.exe                       0    0
+944 postgres.exe                       0    0
+94c postgres.exe                       0    0
+954 postgres.exe                       0    0
+a58 wmiapsrv.exe                       4    0    normal C:\WINDOWS\system32\wbem
+fa4 vapm.exe                           4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+dac unsecapp.exe                       0    0
+450 Explorer.EXE                       272  114  normal C:\WINDOWS
+3d4 TSVNCache.exe                      8    1    normal C:\Program Files\TortoiseSVN\bin
+128 RTHDCPL.EXE                        759  155  normal C:\WINDOWS
+f48 RUNDLL32.EXE                       16   5    normal C:\WINDOWS\system32
+d98 2GISTrayNotifier.exe               9    1    normal C:\Program Files\2gis\3.0
+c94 avp.exe                            21   14   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+97c Greenshot.exe                      31   20   normal C:\Program Files\Greenshot
+104 jusched.exe                        8    1    normal C:\Program Files\Common Files\Java\Java Update
+150 ctfmon.exe                         25   9    normal C:\WINDOWS\system32
+19c miranda32.exe                      1124 398  normal D:\Program Files\MirandaCorporate
+b88 bds.exe                            3478 1162 normal C:\Program Files\Borland\BDS\4.0\Bin
+d78 GoldenDict.exe                     80   30   normal C:\Program Files\GoldenDict
+c48 msmsgs.exe                         9    10   normal C:\Program Files\Messenger
+ff4 ScreenTranslator.exe               13   16   normal C:\Program Files\Screen Translator
+f4c PanelTask2.exe                     172  75   normal \\server-file\Prog_UMZ\Delphi\PanelTask
+dc0 TestDBDataTableFormPropStorage.exe 544  137  normal D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+d40 wmiprvse.exe                       0    0
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 00000000
+ebx = 00000000
+ecx = 00000000
+edx = 00814ec4
+esi = 02607200
+edi = 0012f6b4
+eip = 0082f20b
+esp = 0012f444
+ebp = 0012f4e0
+
+stack dump:
+0012f444  ec f4 12 00 9c 4f 40 00 - e0 f4 12 00 c0 72 f8 00  .....O@......r..
+0012f454  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f464  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f474  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f484  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f494  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f4a4  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f4b4  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f4c4  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f4d4  00 00 00 00 00 00 00 00 - 40 b6 fc 00 04 f5 12 00  ........@.......
+0012f4e4  fc f6 4d 00 52 e4 82 00 - 8c f8 12 00 9c 4f 40 00  ..M.R........O@.
+0012f4f4  04 f5 12 00 00 72 60 02 - c0 d3 68 02 00 00 00 00  .....r`...h.....
+0012f504  58 f6 12 00 98 de 82 00 - 33 f8 82 00 a4 5d 4a 00  X.......3....]J.
+0012f514  c0 5d f5 00 de 0b 4c 00 - c0 5d f5 00 c7 5d 4a 00  .]....L..]...]J.
+0012f524  b4 f6 12 00 c5 5e 4a 00 - c0 5d f5 00 d6 06 4c 00  .....^J..]....L.
+0012f534  b4 f6 12 00 bc f8 12 00 - c0 5d f5 00 a4 bc 16 00  .........]......
+0012f544  5c f5 12 00 05 5a f1 77 - 1c 43 01 16 80 dc c0 00  \....Z.w.C......
+0012f554  1c 43 01 16 ba 84 36 7e - be 86 36 7e 1c 43 01 16  .C....6~..6~.C..
+0012f564  39 00 00 00 84 f5 12 00 - 20 00 00 00 7c f5 12 00  9....... ...|...
+0012f574  d8 99 37 7e 0a 80 00 00 - 08 f6 12 00 a2 5b 37 7e  ..7~.........[7~
+
+disassembling:
+[...]
+0082f1f8 273   mov     eax, ebx
+0082f1fa       mov     edx, [$814e78]
+0082f200       call    -$42a90d ($4048f8)     ; System.@AsClass
+0082f205       mov     [ebp-8], eax
+0082f208 275   mov     eax, [ebp-8]
+0082f20b     > mov     eax, [eax+4]
+0082f20e       call    -$169cf ($818844)      ; TableViewFilterFormUnit.TFilterPanelDataList.GetEnumerator
+0082f213       mov     [ebp-$c], eax
+0082f216       xor     eax, eax
+0082f218       push    ebp
+0082f219       push    $82f2e3                ; System.@HandleFinally
+[...]
+
+date/time          : 2019-03-27, 11:21:42, 381ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 32 minutes 7 seconds
+program up time    : 1 minute 6 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 991/2047 MB (free/total)
+free disk space    : (C:) 476,90 MB (D:) 14,27 GB
+display mode       : 1280x1024, 32 bit
+process id         : $284
+allocated memory   : 21,87 MB
+largest free block : 811,85 MB
+executable         : TestDBDataTableFormPropStorage.exe
+exec. date/time    : 2019-03-27 11:19
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $ad963598, $851a7a36, $851a7a36
+exception number   : 2
+exception class    : EInvalidOperation
+exception message  : Cannot focus a disabled or invisible window.
+
+main thread ($b00):
+004da145 +05d TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.SetFocus
+0082c522 +0ca TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                2373 +34 TDBDataTableForm.ShowTableViewFilterForm
+0082d23e +002 TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                2895  +0 TDBDataTableForm.OnSelectFilteredDataRecords
+0082add6 +002 TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                 899  +0 TDBDataTableForm.actSelectFilteredDataExecute
+0048abef +00f TestDBDataTableFormPropStorage.exe Classes                                     TBasicAction.Execute
+004cfaed +031 TestDBDataTableFormPropStorage.exe ActnList                                    TContainedAction.Execute
+004d07b4 +050 TestDBDataTableFormPropStorage.exe ActnList                                    TCustomAction.Execute
+0048aabb +013 TestDBDataTableFormPropStorage.exe Classes                                     TBasicActionLink.Execute
+004c0bc1 +04d TestDBDataTableFormPropStorage.exe Controls                                    TControl.Click
+004f043c +000 TestDBDataTableFormPropStorage.exe ComCtrls                                    TToolButton.Click
+004c1053 +06b TestDBDataTableFormPropStorage.exe Controls                                    TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c3daa +0aa TestDBDataTableFormPropStorage.exe Controls                                    GetControlAtPos
+004c3e72 +0a6 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.ControlAtPos
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c407d +0a1 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.IsControlMouseMsg
+004c43e3 +353 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004f4c55 +241 TestDBDataTableFormPropStorage.exe ComCtrls                                    TToolBar.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7e3696c2 +00a USER32.dll                                                                     DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                       TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                       TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.ShowModal
+0082f865 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit   61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                    TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                    DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7c90e470 +010 ntdll.dll                                                                      KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                     SendMessageW
+7e37a993 +016 USER32.dll                                                                     CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                    TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7e3696c2 +00a USER32.dll                                                                     DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                       TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                       TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                       TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage       41  +6 initialization
+
+thread $d4c: <priority:1>
+7c90da48 +0a ntdll.dll                                    NtRemoveIoCompletion
+00462481 +0d TestDBDataTableFormPropStorage.exe madExcept CallThreadProcSafe
+004624eb +37 TestDBDataTableFormPropStorage.exe madExcept ThreadExceptFrame
+>> created by main thread ($b00) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 TestDBDataTableFormPropStorage.exe                 D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+02ce0000 libintl-2.dll                                      C:\WINDOWS\system32
+02cf0000 libiconv-2.dll                                     C:\WINDOWS\system32
+02dd0000 krb5_32.dll                        1.3.5.0         C:\WINDOWS\system32
+02e60000 ssleay32.dll                       0.9.8.1         C:\WINDOWS\system32
+10000000 libeay32.dll                       0.9.8.1         C:\WINDOWS\system32
+16080000 mdnsNSP.dll                        1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                       1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                        5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                        6.0.2900.5512   C:\WINDOWS\system32
+5d5b0000 comctl32.dll                       5.82.2900.6028  C:\WINDOWS\system32
+63100000 libpq.dll                          8.2.4.7110      C:\WINDOWS\system32
+698b0000 hnetcfg.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                        5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                       5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                         5.1.2600.5512   C:\WINDOWS\system32
+746e0000 MSCTF.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFolder.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76be0000 psapi.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                       5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                       5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                       5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                         5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                       5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                       6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                          5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                        5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                        5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                         5.1.2600.5875   C:\WINDOWS\system32
+77bf0000 version.dll                        5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                         7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                       5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                         5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                          5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                        6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                        5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                       5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                          5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                        6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+000 Idle                               0    0
+004 System                             0    0    normal
+5a4 smss.exe                           0    0    normal C:\WINDOWS\system32
+5d4 csrss.exe                          0    0
+5ec winlogon.exe                       41   12   high   C:\WINDOWS\system32
+618 services.exe                       4    0    normal C:\WINDOWS\system32
+624 lsass.exe                          4    0    normal C:\WINDOWS\system32
+6e8 svchost.exe                        4    0    normal C:\WINDOWS\system32
+740 svchost.exe                        0    0
+474 svchost.exe                        4    4    normal C:\WINDOWS\System32
+4c0 svchost.exe                        0    0
+78c svchost.exe                        0    0
+0a4 spoolsv.exe                        4    0    normal C:\WINDOWS\system32
+294 avpsus.exe                         4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2e8 BSQLServer.exe                     4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+450 mDNSResponder.exe                  4    0    normal C:\Program Files\Bonjour
+2d0 DataSnapDemoService.exe            23   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+774 hasplms.exe                        4    0    normal C:\WINDOWS\system32
+7e8 Explorer.EXE                       423  242  normal C:\WINDOWS
+190 jqs.exe                            4    0    idle   C:\Program Files\Java\jre7\bin
+1a4 klnagent.exe                       4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+220 MDM.EXE                            4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+46c sqlservr.exe                       4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+4bc TSVNCache.exe                      8    1    normal C:\Program Files\TortoiseSVN\bin
+3cc nvsvc32.exe                        8    1    normal C:\WINDOWS\system32
+628 pg_ctl.exe                         0    0
+368 postgres.exe                       0    0
+518 sqlbrowser.exe                     0    0
+538 postgres.exe                       0    0
+574 sqlwriter.exe                      4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+5d0 svchost.exe                        4    0    normal C:\WINDOWS\system32
+714 avp.exe                            7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+a80 postgres.exe                       0    0
+fdc RTHDCPL.EXE                        759  157  normal C:\WINDOWS
+39c RUNDLL32.EXE                       16   5    normal C:\WINDOWS\system32
+798 2GISTrayNotifier.exe               18   9    normal C:\Program Files\2gis\3.0
+394 avp.exe                            21   10   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+43c Greenshot.exe                      31   20   normal C:\Program Files\Greenshot
+4d0 jusched.exe                        8    1    normal C:\Program Files\Common Files\Java\Java Update
+4f4 postgres.exe                       0    0
+a20 ctfmon.exe                         25   9    normal C:\WINDOWS\system32
+a60 miranda32.exe                      1121 399  normal D:\Program Files\MirandaCorporate
+cfc GoldenDict.exe                     80   30   normal C:\Program Files\GoldenDict
+e54 msmsgs.exe                         9    10   normal C:\Program Files\Messenger
+fa4 PanelTask2.exe                     171  73   normal \\server-file\Prog_UMZ\Delphi\PanelTask
+85c ScreenTranslator.exe               13   16   normal C:\Program Files\Screen Translator
+860 postgres.exe                       0    0
+880 postgres.exe                       0    0
+974 postgres.exe                       0    0
+990 postgres.exe                       0    0
+270 postgres.exe                       0    0
+e18 bds.exe                            3460 1182 normal C:\Program Files\Borland\BDS\4.0\Bin
+e7c pgadmin3.exe                       803  219  normal C:\Program Files\pgAdmin III\1.22
+91c wmiapsrv.exe                       4    0    normal C:\WINDOWS\system32\wbem
+b50 postgres.exe                       0    0
+484 postgres.exe                       0    0
+9cc postgres.exe                       0    0
+170 postgres.exe                       0    0
+e48 postgres.exe                       0    0
+d70 vapm.exe                           4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+a40 unsecapp.exe                       0    0
+428 wmiprvse.exe                       0    0
+284 TestDBDataTableFormPropStorage.exe 458  145  normal D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 00f6ae70
+ebx = 02cba930
+ecx = 00f6ae70
+edx = 004da14a
+esi = 02606ca0
+edi = 00fa5d90
+eip = 004da14a
+esp = 0012f074
+ebp = 0012f0b8
+
+stack dump:
+0012f074  4a a1 4d 00 de fa ed 0e - 01 00 00 00 07 00 00 00  J.M.............
+0012f084  88 f0 12 00 4a a1 4d 00 - 70 ae f6 00 30 a9 cb 02  ....J.M.p...0...
+0012f094  a0 6c 60 02 90 5d fa 00 - b8 f0 12 00 a4 f0 12 00  .l`..]..........
+0012f0a4  24 f3 12 00 9c 4f 40 00 - b8 f0 12 00 b0 6a f7 00  $....O@......j..
+0012f0b4  00 00 00 00 5c f2 12 00 - 28 c5 82 00 8c fe 4c 00  ....\...(.....L.
+0012f0c4  b0 6a f7 00 44 d2 82 00 - dc ad 82 00 f2 ab 48 00  .j..D.........H.
+0012f0d4  b0 6a f7 00 f2 fa 4c 00 - 68 f2 12 00 64 07 4d 00  .j....L.h...d.M.
+0012f0e4  b0 6a f7 00 b9 07 4d 00 - b0 ef ba 02 c0 aa 48 00  .j....M.......H.
+0012f0f4  3c 04 4f 00 e0 16 bd 02 - c4 0b 4c 00 e0 16 bd 02  <.O.......L.....
+0012f104  41 04 4f 00 58 10 4c 00 - 27 00 16 00 27 00 00 00  A.O.X.L.'...'...
+0012f114  16 00 00 00 00 00 00 00 - 00 00 00 00 44 00 00 00  ............D...
+0012f124  24 00 00 00 ae 08 0d 00 - e0 16 bd 02 68 f2 12 00  $...........h...
+0012f134  d6 06 4c 00 ae 08 0d 00 - 54 f3 12 00 e0 16 bd 02  ..L.....T.......
+0012f144  fe ff ff ff 0a 00 00 00 - e0 16 bd 02 cf 01 00 00  ................
+0012f154  16 00 00 00 00 00 00 00 - d8 f1 12 00 d9 f7 5b 5d  ..............[]
+0012f164  50 10 17 00 ae 08 0d 00 - 02 02 00 00 0a 00 00 00  P...............
+0012f174  cf 01 16 00 40 f2 12 00 - d9 e8 5b 5d d6 e9 5b 5d  ....@.....[]..[]
+0012f184  ac f1 12 00 cf 01 16 00 - ae 08 0d 00 00 00 00 00  ................
+0012f194  c0 d3 68 02 d4 f1 12 00 - a6 f1 71 74 b8 4f 6e 74  ..h.......qt.Ont
+0012f1a4  ff ff ff ff ae 4f 6e 74 - 77 eb 6f 74 00 00 00 00  .....Ontw.ot....
+
+disassembling:
+[...]
+0082c513        mov     dword ptr [eax+$3c0], $82d218  ; DBDataTableFormUnit.TDBDataTableForm.OnDataSetFilteredHandle
+0082c51d        pop     esi
+0082c51e        pop     ebx
+0082c51f        ret
+0082c520 2373   mov     edx, [eax]
+0082c522      > call    dword ptr [edx+$d4]
+0082c528 2375   pop     esi
+0082c529        pop     ebx
+0082c52a        ret
+
+date/time          : 2019-03-27, 11:29:51, 146ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 40 minutes 16 seconds
+program up time    : 7 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 989/2047 MB (free/total)
+free disk space    : (C:) 476,87 MB (D:) 14,27 GB
+display mode       : 1280x1024, 32 bit
+process id         : $b88
+allocated memory   : 20,31 MB
+largest free block : 811,85 MB
+executable         : TestDBDataTableFormPropStorage.exe
+exec. date/time    : 2019-03-27 11:19
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $c6cdc54b, $228e8180, $228e8180
+count              : 6
+exception number   : 1
+exception class    : EAccessViolation
+exception message  : Access violation at address 00816873 in module 'TestDBDataTableFormPropStorage.exe'. Read of address 0000000C.
+
+main thread ($d68):
+00816873 +01b TestDBDataTableFormPropStorage.exe TableViewFilterFormUnit            1663  +3 TTableViewFilterForm.AssignFilterPanelData
+00817e02 +0a6 TestDBDataTableFormPropStorage.exe TableViewFilterFormUnit            2486 +19 TTableViewFilterForm.SetLastState
+0082c4d9 +081 TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                2360 +21 TDBDataTableForm.ShowTableViewFilterForm
+0082d23e +002 TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                2895  +0 TDBDataTableForm.OnSelectFilteredDataRecords
+0082add6 +002 TestDBDataTableFormPropStorage.exe DBDataTableFormUnit                 899  +0 TDBDataTableForm.actSelectFilteredDataExecute
+0048abef +00f TestDBDataTableFormPropStorage.exe Classes                                     TBasicAction.Execute
+004cfaed +031 TestDBDataTableFormPropStorage.exe ActnList                                    TContainedAction.Execute
+004d07b4 +050 TestDBDataTableFormPropStorage.exe ActnList                                    TCustomAction.Execute
+0048aabb +013 TestDBDataTableFormPropStorage.exe Classes                                     TBasicActionLink.Execute
+004c0bc1 +04d TestDBDataTableFormPropStorage.exe Controls                                    TControl.Click
+004f043c +000 TestDBDataTableFormPropStorage.exe ComCtrls                                    TToolButton.Click
+004c1053 +06b TestDBDataTableFormPropStorage.exe Controls                                    TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c3daa +0aa TestDBDataTableFormPropStorage.exe Controls                                    GetControlAtPos
+004c3e72 +0a6 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.ControlAtPos
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c407d +0a1 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.IsControlMouseMsg
+004c43e3 +353 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004f4c55 +241 TestDBDataTableFormPropStorage.exe ComCtrls                                    TToolBar.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7e3696c2 +00a USER32.dll                                                                     DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                       TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                       TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.ShowModal
+0082f865 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit   61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                    TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                    TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                    DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                       TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7c90e470 +010 ntdll.dll                                                                      KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                     SendMessageW
+7e37a993 +016 USER32.dll                                                                     CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                    TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                    TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                    TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                    TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                     StdWndProc
+7e3696c2 +00a USER32.dll                                                                     DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                       TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                       TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                       TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage       41  +6 initialization
+
+thread $1b0: <priority:1>
+7c90da48 +0a ntdll.dll                                    NtRemoveIoCompletion
+00462481 +0d TestDBDataTableFormPropStorage.exe madExcept CallThreadProcSafe
+004624eb +37 TestDBDataTableFormPropStorage.exe madExcept ThreadExceptFrame
+>> created by main thread ($d68) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 TestDBDataTableFormPropStorage.exe                D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+02ce0000 libintl-2.dll                                     C:\WINDOWS\system32
+02cf0000 libiconv-2.dll                                    C:\WINDOWS\system32
+02dd0000 krb5_32.dll                        1.3.5.0        C:\WINDOWS\system32
+02e60000 ssleay32.dll                       0.9.8.1        C:\WINDOWS\system32
+10000000 libeay32.dll                       0.9.8.1        C:\WINDOWS\system32
+16080000 mdnsNSP.dll                        1.0.3.1        C:\Program Files\Bonjour
+1c000000 comerr32.dll                       1.3.5.0        C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                        5.2.6002.22791 C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                        6.0.2900.5512  C:\WINDOWS\system32
+5d5b0000 comctl32.dll                       5.82.2900.6028 C:\WINDOWS\system32
+63100000 libpq.dll                          8.2.4.7110     C:\WINDOWS\system32
+698b0000 hnetcfg.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71a30000 mswsock.dll                        5.1.2600.5625  C:\WINDOWS\System32
+71a70000 wshtcpip.dll                       5.1.2600.5512  C:\WINDOWS\System32
+71a80000 WS2HELP.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71a90000 WS2_32.dll                         5.1.2600.5512  C:\WINDOWS\system32
+71ab0000 wsock32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                         5.1.2600.5512  C:\WINDOWS\system32
+746e0000 MSCTF.dll                          5.1.2600.5512  C:\WINDOWS\system32
+76350000 msimg32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+76380000 comdlg32.dll                       6.0.2900.5512  C:\WINDOWS\system32
+76760000 SHFolder.dll                       6.0.2900.5512  C:\WINDOWS\system32
+76d50000 iphlpapi.dll                       5.1.2600.5512  C:\WINDOWS\system32
+76f10000 DNSAPI.dll                         5.1.2600.6089  C:\WINDOWS\system32
+76f50000 WLDAP32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                       5.1.2600.5512  C:\WINDOWS\system32
+77110000 oleaut32.dll                       5.1.2600.6341  C:\WINDOWS\system32
+773c0000 comctl32.dll                       6.0.2900.6028  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                          5.1.2600.6168  C:\WINDOWS\system32
+77680000 NTMARTA.DLL                        5.1.2600.5512  C:\WINDOWS\system32
+77910000 SETUPAPI.dll                       5.1.2600.5512  C:\WINDOWS\system32
+77bf0000 version.dll                        5.1.2600.5512  C:\WINDOWS\system32
+77c00000 msvcrt.dll                         7.0.2600.5512  C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                       5.1.2600.6382  C:\WINDOWS\system32
+77e70000 RPCRT4.dll                         5.1.2600.6022  C:\WINDOWS\system32
+77f10000 GDI32.dll                          5.1.2600.5698  C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                        6.0.2900.5912  C:\WINDOWS\system32
+77fe0000 Secur32.dll                        5.1.2600.5834  C:\WINDOWS\system32
+7c800000 kernel32.dll                       5.1.2600.6293  C:\WINDOWS\system32
+7c900000 ntdll.dll                          5.1.2600.6055  C:\WINDOWS\system32
+7c9c0000 shell32.dll                        6.0.2900.6242  C:\WINDOWS\system32
+7e360000 USER32.dll                         5.1.2600.5512  C:\WINDOWS\system32
+
+processes:
+000 Idle                               0    0
+004 System                             0    0    normal
+5a4 smss.exe                           0    0    normal C:\WINDOWS\system32
+5d4 csrss.exe                          0    0
+5ec winlogon.exe                       41   12   high   C:\WINDOWS\system32
+618 services.exe                       4    0    normal C:\WINDOWS\system32
+624 lsass.exe                          4    0    normal C:\WINDOWS\system32
+6e8 svchost.exe                        4    0    normal C:\WINDOWS\system32
+740 svchost.exe                        0    0
+474 svchost.exe                        4    4    normal C:\WINDOWS\System32
+4c0 svchost.exe                        0    0
+78c svchost.exe                        0    0
+0a4 spoolsv.exe                        4    0    normal C:\WINDOWS\system32
+294 avpsus.exe                         4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2e8 BSQLServer.exe                     4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+450 mDNSResponder.exe                  4    0    normal C:\Program Files\Bonjour
+2d0 DataSnapDemoService.exe            23   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+774 hasplms.exe                        4    0    normal C:\WINDOWS\system32
+7e8 Explorer.EXE                       465  255  normal C:\WINDOWS
+190 jqs.exe                            4    0    idle   C:\Program Files\Java\jre7\bin
+1a4 klnagent.exe                       4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+220 MDM.EXE                            4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+46c sqlservr.exe                       4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+4bc TSVNCache.exe                      8    1    normal C:\Program Files\TortoiseSVN\bin
+3cc nvsvc32.exe                        8    1    normal C:\WINDOWS\system32
+628 pg_ctl.exe                         0    0
+368 postgres.exe                       0    0
+518 sqlbrowser.exe                     0    0
+538 postgres.exe                       0    0
+574 sqlwriter.exe                      4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+5d0 svchost.exe                        4    0    normal C:\WINDOWS\system32
+714 avp.exe                            7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+a80 postgres.exe                       0    0
+fdc RTHDCPL.EXE                        759  157  normal C:\WINDOWS
+39c RUNDLL32.EXE                       16   5    normal C:\WINDOWS\system32
+798 2GISTrayNotifier.exe               18   9    normal C:\Program Files\2gis\3.0
+394 avp.exe                            21   10   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+43c Greenshot.exe                      31   20   normal C:\Program Files\Greenshot
+4d0 jusched.exe                        8    1    normal C:\Program Files\Common Files\Java\Java Update
+4f4 postgres.exe                       0    0
+a20 ctfmon.exe                         25   9    normal C:\WINDOWS\system32
+a60 miranda32.exe                      1121 399  normal D:\Program Files\MirandaCorporate
+cfc GoldenDict.exe                     80   30   normal C:\Program Files\GoldenDict
+e54 msmsgs.exe                         9    10   normal C:\Program Files\Messenger
+fa4 PanelTask2.exe                     171  73   normal \\server-file\Prog_UMZ\Delphi\PanelTask
+85c ScreenTranslator.exe               13   16   normal C:\Program Files\Screen Translator
+860 postgres.exe                       0    0
+880 postgres.exe                       0    0
+974 postgres.exe                       0    0
+990 postgres.exe                       0    0
+270 postgres.exe                       0    0
+e18 bds.exe                            3454 1176 normal C:\Program Files\Borland\BDS\4.0\Bin
+e7c pgadmin3.exe                       803  219  normal C:\Program Files\pgAdmin III\1.22
+91c wmiapsrv.exe                       4    0    normal C:\WINDOWS\system32\wbem
+b50 postgres.exe                       0    0
+484 postgres.exe                       0    0
+9cc postgres.exe                       0    0
+170 postgres.exe                       0    0
+e48 postgres.exe                       0    0
+d70 vapm.exe                           4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+a40 unsecapp.exe                       0    0
+b88 TestDBDataTableFormPropStorage.exe 450  144  normal D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 02cba930
+ebx = 02bddb98
+ecx = 02bddb98
+edx = 00eda7e0
+esi = 00000000
+edi = 025d4960
+eip = 00816873
+esp = 0012f070
+ebp = 0012f084
+
+stack dump:
+0012f070  00 00 00 00 34 4f 81 00 - 30 a9 cb 02 e0 a7 ed 00  ....4O..0.......
+0012f080  30 a9 cb 02 b8 f0 12 00 - 08 7e 81 00 00 00 00 00  0........~......
+0012f090  24 f3 12 00 9c 4f 40 00 - b8 f0 12 00 90 5d fa 00  $....O@......]..
+0012f0a0  a0 6c 60 02 30 a9 cb 02 - 00 00 00 00 05 00 00 00  .l`.0...........
+0012f0b0  00 00 00 00 30 60 f6 00 - 5c f2 12 00 de c4 82 00  ....0`..\.......
+0012f0c0  8c fe 4c 00 b0 6a f7 00 - 44 d2 82 00 dc ad 82 00  ..L..j..D.......
+0012f0d0  f2 ab 48 00 b0 6a f7 00 - f2 fa 4c 00 68 f2 12 00  ..H..j....L.h...
+0012f0e0  64 07 4d 00 b0 6a f7 00 - b9 07 4d 00 b0 ef ba 02  d.M..j....M.....
+0012f0f0  c0 aa 48 00 3c 04 4f 00 - e0 16 bd 02 c4 0b 4c 00  ..H.<.O.......L.
+0012f100  e0 16 bd 02 41 04 4f 00 - 58 10 4c 00 17 00 16 00  ....A.O.X.L.....
+0012f110  17 00 00 00 16 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f120  44 00 00 00 24 00 00 00 - 9a 09 0d 00 e0 16 bd 02  D...$...........
+0012f130  68 f2 12 00 d6 06 4c 00 - 9a 09 0d 00 54 f3 12 00  h.....L.....T...
+0012f140  e0 16 bd 02 fe ff ff ff - 0a 00 00 00 e0 16 bd 02  ................
+0012f150  bf 01 00 00 16 00 00 00 - 00 00 00 00 d8 f1 12 00  ................
+0012f160  d9 f7 5b 5d d8 0f 17 00 - 9a 09 0d 00 02 02 00 00  ..[]............
+0012f170  0a 00 00 00 bf 01 16 00 - 40 f2 12 00 d9 e8 5b 5d  ........@.....[]
+0012f180  d6 e9 5b 5d ac f1 12 00 - bf 01 16 00 9a 09 0d 00  ..[]............
+0012f190  00 00 00 00 c0 d3 68 02 - d4 f1 12 00 a6 f1 71 74  ......h.......qt
+0012f1a0  b8 4f 6e 74 ff ff ff ff - ae 4f 6e 74 77 eb 6f 74  .Ont.....Ontw.ot
+
+date/time          : 2019-03-27, 11:39:42, 749ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 50 minutes 8 seconds
+program up time    : 3 minutes 15 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 903/2047 MB (free/total)
+free disk space    : (C:) 476,85 MB (D:) 14,27 GB
+display mode       : 1280x1024, 32 bit
+process id         : $a10
+allocated memory   : 24,88 MB
+largest free block : 811,85 MB
+executable         : TestDBDataTableFormPropStorage.exe
+exec. date/time    : 2019-03-27 11:34
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $7972e432, $ccab44f9, $a5352ac6
+count              : 2
+exception number   : 2
+exception class    : EZDatabaseError
+exception message  : SQL Error: ОШИБКА: изменить данные в представлении "v_employees" нельзя DETAIL: Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически. HINT: Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+
+main thread ($8a4):
+007ef5c8 +0b4 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     380 +10 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+main thread ($8a4), inner exception level 1:
+>> EZSQLException, SQL Error: ОШИБКА:  изменить данные в представлении "v_employees" нельзя
+DETAIL:  Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически.
+HINT:  Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+0075475a +022 TestDBDataTableFormPropStorage.exe ZDbcUtils                            371  +2 RaiseSQLException
+00763bdd +1d9 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1578 +36 TZAbstractCachedResultSet.UpdateRow
+7c90e485 +009 ntdll.dll                                                                       KiUserExceptionDispatcher
+0076e43e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2000  +1 TZEmulatedPreparedStatement.ExecuteUpdate
+0076e53e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2040  +1 TZEmulatedPreparedStatement.ExecuteUpdatePrepared
+00765e89 +11d TestDBDataTableFormPropStorage.exe ZDbcGenericResolver                  773 +25 TZGenericCachedResolver.PostUpdates
+00762eb4 +018 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  434  +5 TZAbstractCachedResultSet.PostRowUpdates
+0076302c +05c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  540 +14 TZAbstractCachedResultSet.PostUpdates
+00763b30 +12c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1564 +22 TZAbstractCachedResultSet.UpdateRow
+007ef597 +083 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     378  +8 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+main thread ($8a4), inner exception level 2:
+>> EZSQLException, SQL Error: ОШИБКА:  изменить данные в представлении "v_employees" нельзя
+DETAIL:  Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически.
+HINT:  Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+007af326 +15a TestDBDataTableFormPropStorage.exe ZDbcPostgreSqlUtils                  780 +35 CheckPostgreSQLError
+007b9122 +052 TestDBDataTableFormPropStorage.exe ZDbcPostgreSqlStatement              222  +3 TZPostgreSQLStatement.ExecuteUpdate
+0076e43e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2000  +1 TZEmulatedPreparedStatement.ExecuteUpdate
+0076e53e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2040  +1 TZEmulatedPreparedStatement.ExecuteUpdatePrepared
+00765e89 +11d TestDBDataTableFormPropStorage.exe ZDbcGenericResolver                  773 +25 TZGenericCachedResolver.PostUpdates
+00762eb4 +018 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  434  +5 TZAbstractCachedResultSet.PostRowUpdates
+0076302c +05c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  540 +14 TZAbstractCachedResultSet.PostUpdates
+00763b30 +12c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1564 +22 TZAbstractCachedResultSet.UpdateRow
+007ef597 +083 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     378  +8 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+main thread ($8a4), inner exception level 3:
+>> EZDatabaseError, SQL Error: ОШИБКА:  изменить данные в представлении "v_employees" нельзя
+DETAIL:  Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически.
+HINT:  Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+007ef5c8 +0b4 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     380 +10 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+main thread ($8a4), inner exception level 4:
+>> EZSQLException, SQL Error: ОШИБКА:  изменить данные в представлении "v_employees" нельзя
+DETAIL:  Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически.
+HINT:  Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+0075475a +022 TestDBDataTableFormPropStorage.exe ZDbcUtils                            371  +2 RaiseSQLException
+00763bdd +1d9 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1578 +36 TZAbstractCachedResultSet.UpdateRow
+7c90e485 +009 ntdll.dll                                                                       KiUserExceptionDispatcher
+0076e43e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2000  +1 TZEmulatedPreparedStatement.ExecuteUpdate
+0076e53e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2040  +1 TZEmulatedPreparedStatement.ExecuteUpdatePrepared
+00765e89 +11d TestDBDataTableFormPropStorage.exe ZDbcGenericResolver                  773 +25 TZGenericCachedResolver.PostUpdates
+00762eb4 +018 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  434  +5 TZAbstractCachedResultSet.PostRowUpdates
+0076302c +05c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  540 +14 TZAbstractCachedResultSet.PostUpdates
+00763b30 +12c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1564 +22 TZAbstractCachedResultSet.UpdateRow
+007ef597 +083 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     378  +8 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+main thread ($8a4), inner exception level 5:
+>> EZSQLException, SQL Error: ОШИБКА:  изменить данные в представлении "v_employees" нельзя
+DETAIL:  Представления, выбирающие данные не из одной таблицы или представления, не обновляются автоматически.
+HINT:  Чтобы представление допускало изменение данных, установите триггер INSTEAD OF UPDATE или безусловное правило ON UPDATE DO INSTEAD.
+007af326 +15a TestDBDataTableFormPropStorage.exe ZDbcPostgreSqlUtils                  780 +35 CheckPostgreSQLError
+007b9122 +052 TestDBDataTableFormPropStorage.exe ZDbcPostgreSqlStatement              222  +3 TZPostgreSQLStatement.ExecuteUpdate
+0076e43e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2000  +1 TZEmulatedPreparedStatement.ExecuteUpdate
+0076e53e +02a TestDBDataTableFormPropStorage.exe ZDbcStatement                       2040  +1 TZEmulatedPreparedStatement.ExecuteUpdatePrepared
+00765e89 +11d TestDBDataTableFormPropStorage.exe ZDbcGenericResolver                  773 +25 TZGenericCachedResolver.PostUpdates
+00762eb4 +018 TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  434  +5 TZAbstractCachedResultSet.PostRowUpdates
+0076302c +05c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                  540 +14 TZAbstractCachedResultSet.PostUpdates
+00763b30 +12c TestDBDataTableFormPropStorage.exe ZDbcCachedResultSet                 1564 +22 TZAbstractCachedResultSet.UpdateRow
+007ef597 +083 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     378  +8 TZAbstractDataset.InternalUpdate
+007ef8af +117 TestDBDataTableFormPropStorage.exe ZAbstractDataset                     465 +20 TZAbstractDataset.InternalPost
+006b1d05 +029 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.CheckOperation
+006b19a0 +048 TestDBDataTableFormPropStorage.exe DB                                           TDataSet.Post
+006bd487 +0d3 TestDBDataTableFormPropStorage.exe cxDBData                            4304 +18 TcxDBDataController.CheckBrowseMode
+006beea4 +0b4 TestDBDataTableFormPropStorage.exe cxDBData                            5050 +25 TcxDBDataController.TryFocusRecord
+006bc768 +0d8 TestDBDataTableFormPropStorage.exe cxDBData                            3899 +20 TcxDBDataController.CanFocusRecord
+005a95da +03e TestDBDataTableFormPropStorage.exe cxCustomData                        5981  +4 TcxCustomDataControllerInfo.CanFocusedRowChanging
+005a9736 +07a TestDBDataTableFormPropStorage.exe cxCustomData                        6029 +10 TcxCustomDataControllerInfo.DoChangeFocusedRow
+005ab7f5 +02d TestDBDataTableFormPropStorage.exe cxCustomData                        7198  +4 TcxCustomDataControllerInfo.SetFocusedRowIndex
+005b20e0 +07c TestDBDataTableFormPropStorage.exe cxCustomData                       11201  +9 TcxCustomDataController.ChangeFocusedRowIndex
+006505a7 +053 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8008  +5 TcxCustomGridTableController.SetFocusedRecordIndex
+006516a4 +010 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               8596  +3 TcxCustomGridTableController.SetFocusedRecord
+006ed60f +123 TestDBDataTableFormPropStorage.exe cxGridTableView                     5350 +34 TcxGridTableController.SetFocusedRecord
+00657500 +044 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11941  +6 TcxCustomGridRecordViewInfo.Click
+006f4a7f +027 TestDBDataTableFormPropStorage.exe cxGridTableView                    10053  +2 TcxCustomGridRowViewInfo.Click
+005138a1 +005 TestDBDataTableFormPropStorage.exe cxControls                          3906  +1 TcxControl.GetIsFocused
+006576ca +086 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              12004  +9 TcxCustomGridRecordViewInfo.MouseDown
+00655c11 +05d TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11105  +5 TcxGridTableCellViewInfo.MouseDown
+00656da5 +111 TestDBDataTableFormPropStorage.exe cxGridCustomTableView              11653 +22 TcxGridTableDataCellViewInfo.MouseDown
+00669ab7 +03f TestDBDataTableFormPropStorage.exe cxGridCustomView                    3769  +4 TcxCustomGridController.MouseDown
+0065315e +076 TestDBDataTableFormPropStorage.exe cxGridCustomTableView               9399  +6 TcxCustomGridTableController.MouseDown
+0066ac46 +042 TestDBDataTableFormPropStorage.exe cxGridCustomView                    4489  +3 TcxGridSite.BeforeMouseDown
+00512bb7 +15f TestDBDataTableFormPropStorage.exe cxControls                          3448 +26 TcxControl.MouseDown
+004c0cae +076 TestDBDataTableFormPropStorage.exe Controls                                     TControl.DoMouseDown
+004c0cfc +040 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonDown
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+00512709 +119 TestDBDataTableFormPropStorage.exe cxControls                          3302 +17 TcxControl.WndProc
+0066b353 +01b TestDBDataTableFormPropStorage.exe cxGridCustomView                    4731  +4 TcxGridSite.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004da347 +187 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.ShowModal
+0082f869 +025 TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    61  +6 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+thread $8bc: <priority:1>
+7c90da48 +0a ntdll.dll                                    NtRemoveIoCompletion
+00462481 +0d TestDBDataTableFormPropStorage.exe madExcept CallThreadProcSafe
+004624eb +37 TestDBDataTableFormPropStorage.exe madExcept ThreadExceptFrame
+>> created by main thread ($8a4) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 TestDBDataTableFormPropStorage.exe                 D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+02ce0000 libintl-2.dll                                      C:\WINDOWS\system32
+02cf0000 libiconv-2.dll                                     C:\WINDOWS\system32
+02dd0000 krb5_32.dll                        1.3.5.0         C:\WINDOWS\system32
+02e60000 ssleay32.dll                       0.9.8.1         C:\WINDOWS\system32
+10000000 libeay32.dll                       0.9.8.1         C:\WINDOWS\system32
+16080000 mdnsNSP.dll                        1.0.3.1         C:\Program Files\Bonjour
+1c000000 comerr32.dll                       1.3.5.0         C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                        5.2.6002.22791  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                        6.0.2900.5512   C:\WINDOWS\system32
+5d5b0000 comctl32.dll                       5.82.2900.6028  C:\WINDOWS\system32
+63100000 libpq.dll                          8.2.4.7110      C:\WINDOWS\system32
+698b0000 hnetcfg.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a30000 mswsock.dll                        5.1.2600.5625   C:\WINDOWS\System32
+71a70000 wshtcpip.dll                       5.1.2600.5512   C:\WINDOWS\System32
+71a80000 WS2HELP.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71a90000 WS2_32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+71ab0000 wsock32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                         5.1.2600.5512   C:\WINDOWS\system32
+746e0000 MSCTF.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76350000 msimg32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76380000 comdlg32.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76760000 SHFolder.dll                       6.0.2900.5512   C:\WINDOWS\system32
+76be0000 psapi.dll                          5.1.2600.5512   C:\WINDOWS\system32
+76c20000 WINTRUST.dll                       5.131.2600.6285 C:\WINDOWS\system32
+76c80000 IMAGEHLP.dll                       5.1.2600.6198   C:\WINDOWS\system32
+76d50000 iphlpapi.dll                       5.1.2600.5512   C:\WINDOWS\system32
+76f10000 DNSAPI.dll                         5.1.2600.6089   C:\WINDOWS\system32
+76f50000 WLDAP32.dll                        5.1.2600.5512   C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77110000 oleaut32.dll                       5.1.2600.6341   C:\WINDOWS\system32
+773c0000 comctl32.dll                       6.0.2900.6028   C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                          5.1.2600.6168   C:\WINDOWS\system32
+77680000 NTMARTA.DLL                        5.1.2600.5512   C:\WINDOWS\system32
+77910000 SETUPAPI.dll                       5.1.2600.5512   C:\WINDOWS\system32
+77a70000 CRYPT32.dll                        5.131.2600.6369 C:\WINDOWS\system32
+77b10000 MSASN1.dll                         5.1.2600.5875   C:\WINDOWS\system32
+77bf0000 version.dll                        5.1.2600.5512   C:\WINDOWS\system32
+77c00000 msvcrt.dll                         7.0.2600.5512   C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                       5.1.2600.6382   C:\WINDOWS\system32
+77e70000 RPCRT4.dll                         5.1.2600.6022   C:\WINDOWS\system32
+77f10000 GDI32.dll                          5.1.2600.5698   C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                        6.0.2900.5912   C:\WINDOWS\system32
+77fe0000 Secur32.dll                        5.1.2600.5834   C:\WINDOWS\system32
+7c800000 kernel32.dll                       5.1.2600.6293   C:\WINDOWS\system32
+7c900000 ntdll.dll                          5.1.2600.6055   C:\WINDOWS\system32
+7c9c0000 shell32.dll                        6.0.2900.6242   C:\WINDOWS\system32
+7e360000 USER32.dll                         5.1.2600.5512   C:\WINDOWS\system32
+
+processes:
+000 Idle                               0    0
+004 System                             0    0    normal
+5a4 smss.exe                           0    0    normal C:\WINDOWS\system32
+5d4 csrss.exe                          0    0
+5ec winlogon.exe                       41   12   high   C:\WINDOWS\system32
+618 services.exe                       4    0    normal C:\WINDOWS\system32
+624 lsass.exe                          4    0    normal C:\WINDOWS\system32
+6e8 svchost.exe                        4    0    normal C:\WINDOWS\system32
+740 svchost.exe                        0    0
+474 svchost.exe                        4    4    normal C:\WINDOWS\System32
+4c0 svchost.exe                        0    0
+78c svchost.exe                        0    0
+0a4 spoolsv.exe                        4    0    normal C:\WINDOWS\system32
+294 avpsus.exe                         4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2e8 BSQLServer.exe                     4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+450 mDNSResponder.exe                  4    0    normal C:\Program Files\Bonjour
+2d0 DataSnapDemoService.exe            23   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+774 hasplms.exe                        4    0    normal C:\WINDOWS\system32
+7e8 Explorer.EXE                       463  254  normal C:\WINDOWS
+190 jqs.exe                            4    0    idle   C:\Program Files\Java\jre7\bin
+1a4 klnagent.exe                       4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+220 MDM.EXE                            4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+46c sqlservr.exe                       4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+4bc TSVNCache.exe                      8    1    normal C:\Program Files\TortoiseSVN\bin
+3cc nvsvc32.exe                        8    1    normal C:\WINDOWS\system32
+628 pg_ctl.exe                         0    0
+368 postgres.exe                       0    0
+518 sqlbrowser.exe                     0    0
+538 postgres.exe                       0    0
+574 sqlwriter.exe                      4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+5d0 svchost.exe                        4    0    normal C:\WINDOWS\system32
+714 avp.exe                            7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+a80 postgres.exe                       0    0
+fdc RTHDCPL.EXE                        759  157  normal C:\WINDOWS
+39c RUNDLL32.EXE                       16   5    normal C:\WINDOWS\system32
+798 2GISTrayNotifier.exe               18   9    normal C:\Program Files\2gis\3.0
+394 avp.exe                            21   10   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+43c Greenshot.exe                      31   20   normal C:\Program Files\Greenshot
+4d0 jusched.exe                        8    1    normal C:\Program Files\Common Files\Java\Java Update
+4f4 postgres.exe                       0    0
+a20 ctfmon.exe                         25   9    normal C:\WINDOWS\system32
+a60 miranda32.exe                      1121 399  normal D:\Program Files\MirandaCorporate
+cfc GoldenDict.exe                     80   30   normal C:\Program Files\GoldenDict
+e54 msmsgs.exe                         9    10   normal C:\Program Files\Messenger
+fa4 PanelTask2.exe                     171  73   normal \\server-file\Prog_UMZ\Delphi\PanelTask
+85c ScreenTranslator.exe               13   16   normal C:\Program Files\Screen Translator
+860 postgres.exe                       0    0
+880 postgres.exe                       0    0
+974 postgres.exe                       0    0
+990 postgres.exe                       0    0
+270 postgres.exe                       0    0
+e18 bds.exe                            3500 1181 normal C:\Program Files\Borland\BDS\4.0\Bin
+e7c pgadmin3.exe                       803  219  normal C:\Program Files\pgAdmin III\1.22
+91c wmiapsrv.exe                       4    0    normal C:\WINDOWS\system32\wbem
+b50 postgres.exe                       0    0
+484 postgres.exe                       0    0
+9cc postgres.exe                       0    0
+170 postgres.exe                       0    0
+e48 postgres.exe                       0    0
+d70 vapm.exe                           4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+a40 unsecapp.exe                       0    0
+a10 TestDBDataTableFormPropStorage.exe 646  159  normal D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 03955e08
+ebx = 00753577
+ecx = 03955e08
+edx = 007af32b
+esi = 02eddc80
+edi = 02ef1800
+eip = 007af32b
+esp = 0012ec1c
+ebp = 0012ec90
+
+stack dump:
+0012ec1c  2b f3 7a 00 de fa ed 0e - 01 00 00 00 07 00 00 00  +.z.............
+0012ec2c  30 ec 12 00 2b f3 7a 00 - 08 5e 95 03 77 35 75 00  0...+.z..^..w5u.
+0012ec3c  80 dc ed 02 00 18 ef 02 - 90 ec 12 00 4c ec 12 00  ............L...
+0012ec4c  a4 ec 12 00 9c 4f 40 00 - 90 ec 12 00 00 18 ef 02  .....O@.........
+0012ec5c  b0 a7 f0 00 7a d0 7a 00 - 48 8e 6a 02 0b 00 00 00  ....z.z.H.j.....
+0012ec6c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012ec7c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012ec8c  00 00 00 00 cc ec 12 00 - 27 91 7b 00 00 18 ef 02  ........'.{.....
+0012ec9c  00 00 00 00 03 00 00 00 - d4 ec 12 00 9c 4f 40 00  .............O@.
+0012ecac  cc ec 12 00 77 9b 76 00 - 18 bb 5f 02 10 ef e9 00  ....w.v..._.....
+0012ecbc  00 00 00 00 00 00 00 00 - ff ff ff ff 18 bb 5f 02  .............._.
+0012eccc  ec ec 12 00 41 e4 76 00 - f4 ec 12 00 9c 4f 40 00  ....A.v......O@.
+0012ecdc  ec ec 12 00 c0 00 eb 00 - 10 ef e9 00 00 00 00 00  ................
+0012ecec  08 ed 12 00 41 e5 76 00 - 10 ed 12 00 9c 4f 40 00  ....A.v......O@.
+0012ecfc  08 ed 12 00 00 00 00 00 - 00 00 00 00 60 ed 12 00  ............`...
+0012ed0c  8f 5e 76 00 1c ed 12 00 - 9c 4f 40 00 60 ed 12 00  .^v......O@.`...
+0012ed1c  88 ed 12 00 9c 4f 40 00 - 60 ed 12 00 20 73 22 03  .....O@.`... s".
+0012ed2c  30 2a 76 00 02 8d 7b 00 - 00 00 00 00 00 00 00 00  0*v...{.........
+0012ed3c  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012ed4c  b0 5b 95 03 00 00 00 01 - 00 00 00 00 00 00 00 00  .[..............
+
+disassembling:
+[...]
+007af316       push    eax
+007af317       mov     ecx, [ebp-$10]
+007af31a       mov     dl, 1
+007af31c       mov     eax, [$753140]
+007af321       call    -$5b592 ($753d94)      ; ZDbcIntfs.EZSQLThrowable.CreateWithStatus
+007af326     > call    -$3aa26b ($4050c0)     ; System.@RaiseExcept
+007af32b 782   xor     eax, eax
+007af32d       pop     edx
+007af32e       pop     ecx
+007af32f       pop     ecx
+007af330       mov     fs:[eax], edx
+[...]
+
+date/time          : 2019-03-27, 11:55:20, 982ms
+computer name      : 06-409-5
+user name          : 59968 <admin>
+registered owner   : user
+operating system   : Windows XP Service Pack 3 build 2600
+system language    : Russian
+system up time     : 1 hour 5 minutes
+program up time    : 1 minute 14 seconds
+processors         : 2x Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+physical memory    : 900/2047 MB (free/total)
+free disk space    : (C:) 476,78 MB (D:) 14,27 GB
+display mode       : 1280x1024, 32 bit
+process id         : $fc8
+allocated memory   : 21,89 MB
+largest free block : 811,85 MB
+executable         : TestDBDataTableFormPropStorage.exe
+exec. date/time    : 2019-03-27 11:54
+compiled with      : Delphi 2006/07
+madExcept version  : 5.0.0
+callstack crc      : $f8caabff, $40a39488, $40a39488
+exception number   : 1
+exception class    : EVariantTypeCastError
+exception message  : Could not convert variant of type (String) into type (Boolean).
+
+main thread ($b48):
+00471d5f +06f TestDBDataTableFormPropStorage.exe Variants                                     VarCastError
+0047219e +01a TestDBDataTableFormPropStorage.exe Variants                                     VarResultCheck
+004740ed +081 TestDBDataTableFormPropStorage.exe Variants                                     VarToBoolAsString
+004743c3 +1a3 TestDBDataTableFormPropStorage.exe Variants                                     @VarToBoolean
+00474574 +000 TestDBDataTableFormPropStorage.exe Variants                                     @VarToBool
+006fa12d +021 TestDBDataTableFormPropStorage.exe cxGridTableView                    13782  +2 TcxGridTableView.SetPropertyValue
+005b90d6 +046 TestDBDataTableFormPropStorage.exe cxStorage                           1194  +2 SetPropertyValueByInterface
+005b937e +272 TestDBDataTableFormPropStorage.exe cxStorage                           1277 +72 TcxStorage.SetPropertyValue
+005b8a10 +19c TestDBDataTableFormPropStorage.exe cxStorage                           1064 +20 TcxStorage.InternalRestoreFrom
+005b7ca6 +046 TestDBDataTableFormPropStorage.exe cxStorage                            693  +6 TcxStorage.RestoreWithExistingReader
+005b7c3a +032 TestDBDataTableFormPropStorage.exe cxStorage                            680  +3 TcxStorage.RestoreFrom
+005b7cd5 +009 TestDBDataTableFormPropStorage.exe cxStorage                            702  +1 TcxStorage.RestoreFromIni
+006703d2 +0be TestDBDataTableFormPropStorage.exe cxGridCustomView                    8261 +17 TcxCustomGridView.RestoreFromIniFile
+0082f20c +068 TestDBDataTableFormPropStorage.exe DBDataTableFormPropertiesIniFile     123  +8 TDBDataTableFormPropertiesIniFile.InternalRestorePropertiesForObject
+0082de92 +002 TestDBDataTableFormPropStorage.exe DBDataTableFormPropertiesStorage      88  +0 TDBDataTableFormPropertiesStorage.RestorePropertiesForObject
+0082f860 +01c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorageUnit    59  +4 TForm6.Button2Click
+004c0bd8 +064 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Click
+004a5dc2 +01e TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.Click
+004a5ec0 +00c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButton.CNCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c0360 +024 TestDBDataTableFormPropStorage.exe Controls                                     TControl.Perform
+004c465f +023 TestDBDataTableFormPropStorage.exe Controls                                     DoControlMsg
+004c4dd3 +00b TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WMCommand
+004d8f80 +02c TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WMCommand
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004d6455 +4c1 TestDBDataTableFormPropStorage.exe Forms                                        TCustomForm.WndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7c90e470 +010 ntdll.dll                                                                       KiUserCallbackDispatcher
+7e3792de +044 USER32.dll                                                                      SendMessageW
+7e37a993 +016 USER32.dll                                                                      CallWindowProcA
+004c460b +0d7 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.DefaultHandler
+004c0ff8 +010 TestDBDataTableFormPropStorage.exe Controls                                     TControl.WMLButtonUp
+004c06d3 +2bb TestDBDataTableFormPropStorage.exe Controls                                     TControl.WndProc
+004c4529 +499 TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.WndProc
+004a5c6c +06c TestDBDataTableFormPropStorage.exe StdCtrls                                     TButtonControl.WndProc
+004c3cb4 +02c TestDBDataTableFormPropStorage.exe Controls                                     TWinControl.MainWndProc
+0048b290 +014 TestDBDataTableFormPropStorage.exe Classes                                      StdWndProc
+7e3696c2 +00a USER32.dll                                                                      DispatchMessageA
+004ddb9c +0fc TestDBDataTableFormPropStorage.exe Forms                                        TApplication.ProcessMessage
+004ddbd6 +00a TestDBDataTableFormPropStorage.exe Forms                                        TApplication.HandleMessage
+004dddf6 +096 TestDBDataTableFormPropStorage.exe Forms                                        TApplication.Run
+00834fd8 +06c TestDBDataTableFormPropStorage.exe TestDBDataTableFormPropStorage        41  +6 initialization
+
+thread $d38: <priority:1>
+7c90da48 +0a ntdll.dll                                    NtRemoveIoCompletion
+00462481 +0d TestDBDataTableFormPropStorage.exe madExcept CallThreadProcSafe
+004624eb +37 TestDBDataTableFormPropStorage.exe madExcept ThreadExceptFrame
+>> created by main thread ($b48) at:
+71a3d926 +00 mswsock.dll
+
+modules:
+00400000 TestDBDataTableFormPropStorage.exe                D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+02ce0000 libintl-2.dll                                     C:\WINDOWS\system32
+02cf0000 libiconv-2.dll                                    C:\WINDOWS\system32
+02dd0000 krb5_32.dll                        1.3.5.0        C:\WINDOWS\system32
+02e60000 ssleay32.dll                       0.9.8.1        C:\WINDOWS\system32
+10000000 libeay32.dll                       0.9.8.1        C:\WINDOWS\system32
+16080000 mdnsNSP.dll                        1.0.3.1        C:\Program Files\Bonjour
+1c000000 comerr32.dll                       1.3.5.0        C:\WINDOWS\system32
+4ebe0000 gdiplus.dll                        5.2.6002.22791 C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154
+5b260000 uxtheme.dll                        6.0.2900.5512  C:\WINDOWS\system32
+5d5b0000 comctl32.dll                       5.82.2900.6028 C:\WINDOWS\system32
+63100000 libpq.dll                          8.2.4.7110     C:\WINDOWS\system32
+698b0000 hnetcfg.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71a30000 mswsock.dll                        5.1.2600.5625  C:\WINDOWS\System32
+71a70000 wshtcpip.dll                       5.1.2600.5512  C:\WINDOWS\System32
+71a80000 WS2HELP.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71a90000 WS2_32.dll                         5.1.2600.5512  C:\WINDOWS\system32
+71ab0000 wsock32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+71bd0000 SAMLIB.dll                         5.1.2600.5512  C:\WINDOWS\system32
+746e0000 MSCTF.dll                          5.1.2600.5512  C:\WINDOWS\system32
+76350000 msimg32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+76380000 comdlg32.dll                       6.0.2900.5512  C:\WINDOWS\system32
+76760000 SHFolder.dll                       6.0.2900.5512  C:\WINDOWS\system32
+76d50000 iphlpapi.dll                       5.1.2600.5512  C:\WINDOWS\system32
+76f10000 DNSAPI.dll                         5.1.2600.6089  C:\WINDOWS\system32
+76f50000 WLDAP32.dll                        5.1.2600.5512  C:\WINDOWS\system32
+76fb0000 rasadhlp.dll                       5.1.2600.5512  C:\WINDOWS\system32
+77110000 oleaut32.dll                       5.1.2600.6341  C:\WINDOWS\system32
+773c0000 comctl32.dll                       6.0.2900.6028  C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.6028_x-ww_61e65202
+774d0000 ole32.dll                          5.1.2600.6168  C:\WINDOWS\system32
+77680000 NTMARTA.DLL                        5.1.2600.5512  C:\WINDOWS\system32
+77910000 SETUPAPI.dll                       5.1.2600.5512  C:\WINDOWS\system32
+77bf0000 version.dll                        5.1.2600.5512  C:\WINDOWS\system32
+77c00000 msvcrt.dll                         7.0.2600.5512  C:\WINDOWS\system32
+77dc0000 ADVAPI32.dll                       5.1.2600.6382  C:\WINDOWS\system32
+77e70000 RPCRT4.dll                         5.1.2600.6022  C:\WINDOWS\system32
+77f10000 GDI32.dll                          5.1.2600.5698  C:\WINDOWS\system32
+77f60000 SHLWAPI.dll                        6.0.2900.5912  C:\WINDOWS\system32
+77fe0000 Secur32.dll                        5.1.2600.5834  C:\WINDOWS\system32
+7c800000 kernel32.dll                       5.1.2600.6293  C:\WINDOWS\system32
+7c900000 ntdll.dll                          5.1.2600.6055  C:\WINDOWS\system32
+7c9c0000 shell32.dll                        6.0.2900.6242  C:\WINDOWS\system32
+7e360000 USER32.dll                         5.1.2600.5512  C:\WINDOWS\system32
+
+processes:
+000 Idle                               0    0
+004 System                             0    0    normal
+5a4 smss.exe                           0    0    normal C:\WINDOWS\system32
+5d4 csrss.exe                          0    0
+5ec winlogon.exe                       41   12   high   C:\WINDOWS\system32
+618 services.exe                       4    0    normal C:\WINDOWS\system32
+624 lsass.exe                          4    0    normal C:\WINDOWS\system32
+6e8 svchost.exe                        4    0    normal C:\WINDOWS\system32
+740 svchost.exe                        0    0
+474 svchost.exe                        4    4    normal C:\WINDOWS\System32
+4c0 svchost.exe                        0    0
+78c svchost.exe                        0    0
+0a4 spoolsv.exe                        4    0    normal C:\WINDOWS\system32
+294 avpsus.exe                         4    0    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+2e8 BSQLServer.exe                     4    1    normal C:\Program Files\Embarcadero\RAD Studio\7.0\bin
+450 mDNSResponder.exe                  4    0    normal C:\Program Files\Bonjour
+2d0 DataSnapDemoService.exe            23   15   normal C:\Documents and Settings\59968\Мои документы\RAD Studio\Projects\DataSnapDemoProject
+774 hasplms.exe                        4    0    normal C:\WINDOWS\system32
+7e8 Explorer.EXE                       503  266  normal C:\WINDOWS
+190 jqs.exe                            4    0    idle   C:\Program Files\Java\jre7\bin
+1a4 klnagent.exe                       4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+220 MDM.EXE                            4    0    normal C:\Program Files\Common Files\Microsoft Shared\VS7DEBUG
+46c sqlservr.exe                       4    0    normal C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\Binn
+4bc TSVNCache.exe                      8    1    normal C:\Program Files\TortoiseSVN\bin
+3cc nvsvc32.exe                        8    1    normal C:\WINDOWS\system32
+628 pg_ctl.exe                         0    0
+368 postgres.exe                       0    0
+518 sqlbrowser.exe                     0    0
+538 postgres.exe                       0    0
+574 sqlwriter.exe                      4    0    normal C:\Program Files\Microsoft SQL Server\90\Shared
+5d0 svchost.exe                        4    0    normal C:\WINDOWS\system32
+714 avp.exe                            7    1    normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+a80 postgres.exe                       0    0
+fdc RTHDCPL.EXE                        759  157  normal C:\WINDOWS
+39c RUNDLL32.EXE                       16   5    normal C:\WINDOWS\system32
+798 2GISTrayNotifier.exe               18   9    normal C:\Program Files\2gis\3.0
+394 avp.exe                            21   10   normal C:\Program Files\Kaspersky Lab\Kaspersky Endpoint Security 10 for Windows SP1
+43c Greenshot.exe                      31   20   normal C:\Program Files\Greenshot
+4d0 jusched.exe                        8    1    normal C:\Program Files\Common Files\Java\Java Update
+4f4 postgres.exe                       0    0
+a20 ctfmon.exe                         25   9    normal C:\WINDOWS\system32
+a60 miranda32.exe                      1142 406  normal D:\Program Files\MirandaCorporate
+cfc GoldenDict.exe                     80   30   normal C:\Program Files\GoldenDict
+e54 msmsgs.exe                         9    10   normal C:\Program Files\Messenger
+fa4 PanelTask2.exe                     171  73   normal \\server-file\Prog_UMZ\Delphi\PanelTask
+85c ScreenTranslator.exe               13   16   normal C:\Program Files\Screen Translator
+860 postgres.exe                       0    0
+880 postgres.exe                       0    0
+974 postgres.exe                       0    0
+990 postgres.exe                       0    0
+270 postgres.exe                       0    0
+e18 bds.exe                            3497 1180 normal C:\Program Files\Borland\BDS\4.0\Bin
+e7c pgadmin3.exe                       841  224  normal C:\Program Files\pgAdmin III\1.22
+91c wmiapsrv.exe                       4    0    normal C:\WINDOWS\system32\wbem
+b50 postgres.exe                       0    0
+484 postgres.exe                       0    0
+9cc postgres.exe                       0    0
+170 postgres.exe                       0    0
+e48 postgres.exe                       0    0
+d70 vapm.exe                           4    0    normal C:\Program Files\Kaspersky Lab\NetworkAgent
+a40 unsecapp.exe                       0    0
+fc8 TestDBDataTableFormPropStorage.exe 537  125  normal D:\Common Delphi Libs\u_59968 Delphi Modules\Properties Storages\DBDataTableForm Properties Storages
+
+hardware:
++ DVD и CD-ROM дисководы
+  - DTSOFT Virtual CdRom Device
+  - Optiarc DVD RW AD-7200S
++ IDE ATA/ATAPI контроллеры
+  - Intel(R) ICH10 Family 2 port Serial ATA Storage Controller 2 - 3A26 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family 4 port Serial ATA Storage Controller 1 - 3A20 (driver 9.0.0.1005)
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Вторичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Первичный канал IDE
+  - Стандартный двухканальный контроллер PCI IDE
++ Видеоадаптеры
+  - NVIDIA GeForce 9600 GT (driver 6.14.11.7531)
++ Дисководы гибких дисков
+  - Дисковод гибких дисков
++ Дисковые устройства
+  - WDC WD2500AAKS-22VSA0
+  - WDC WD5000AZLX-75K2TA0
++ Звуковые, видео и игровые устройства
+  - Realtek High Definition Audio (driver 5.10.0.5667)
+  - Аудио кодеки
+  - Видео кодеки
+  - Драйверы аудио (без PnP)
+  - Устройства записи видео (без PnP)
+  - Устройство управления
++ Клавиатуры
+  - Клавиатура HID
++ Компьютер
+  - Многопроцессорный компьютер с ACPI
++ Контроллеры гибких дисков
+  - Стандартный контроллер гибких дисков
++ Контроллеры универсальной последовательной шины USB
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3A (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Enhanced Host Controller - 3A3C (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A34 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A35 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A36 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A37 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A38 (driver 9.0.0.1005)
+  - Intel(R) ICH10 Family USB Universal Host Controller - 3A39 (driver 9.0.0.1005)
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Корневой USB концентратор
+  - Составное USB устройство
++ Мониторы
+  - Модуль подключения монитора
++ Мыши и иные указывающие устройства
+  - Microsoft PS/2 мышь
++ Порты (COM и LPT)
+  - Последовательный порт (COM1)
++ Процессоры
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
+  - Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz
++ Сетевые платы
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller (driver 1.0.0.27)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - VirtualBox Bridged Networking Driver Miniport (driver 4.1.18.0)
+  - Atheros AR8121/AR8113/AR8114 PCI-E Ethernet Controller - Минипорт планировщика пакетов
+  - VirtualBox Host-Only Ethernet Adapter (driver 4.1.18.0)
+  - VirtualBox Host-Only Ethernet Adapter - Минипорт планировщика пакетов
+  - Минипорт WAN (IP)
+  - Минипорт WAN (IP) - Kaspersky Anti-Virus NDIS Miniport (driver 10.0.0.4)
+  - Минипорт WAN (IP) - Минипорт планировщика пакетов
+  - Минипорт WAN (L2TP)
+  - Минипорт WAN (PPPoE)
+  - Минипорт WAN (PPTP)
+  - Прямой параллельный порт
++ Системные устройства
+  - ATK0110 ACPI UTILITY (driver 1043.2.15.37)
+  - CMOS и часы
+  - DAEMON Tools Virtual Bus (driver 5.0.1.282)
+  - Intel(R) 4 Series Chipset PCI Express Root Port - 2E21 (driver 9.0.0.1009)
+  - Intel(R) 4 Series Chipset Processor to I/O Controller - 2E20 (driver 9.0.0.1009)
+  - Intel(R) 82801 PCI мост - 244E
+  - Intel(R) 82802 Firmware концентратор
+  - Intel(R) ICH10 Family PCI Express Root Port 1 - 3A40 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 5 - 3A48 (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family PCI Express Root Port 6 - 3A4A (driver 9.0.0.1009)
+  - Intel(R) ICH10 Family SMBus Controller - 3A30 (driver 9.0.0.1005)
+  - Intel(R) ICH10 LPC Interface Controller - 3A18 (driver 9.0.0.1009)
+  - Microsoft ACPI-совместимая система
+  - Встроенный динамик
+  - Высокоточный таймер событий
+  - Диспетчер логических дисков
+  - Диспетчер томов
+  - Драйвер Microsoft System Management BIOS
+  - Драйвер клавиатуры сервера терминалов
+  - Драйвер мыши сервера терминалов
+  - Драйвер шины Microsoft UAA для High Definition Audio
+  - Кнопка включения питания ACPI
+  - Кнопка фиксированной возможности ACPI
+  - Контроллер прямого доступа к памяти
+  - Перенаправитель устройства сервера терминалов
+  - Перечислитель программных устройств Plug and Play
+  - Порт чтения данных ISAPNP
+  - Программируемый контроллер прерываний
+  - Процессор числовых данных
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Ресурсы системной платы
+  - Системная плата
+  - Системная плата
+  - Системный таймер
+  - Устройство обновления микропрограмм
+  - Шина PCI
++ Устройства HID (Human Interface Devices)
+  - HID-совместимое устройство
+  - HID-совместимое устройство управления
+  - HID-совместимое устройство управления
+  - USB HID-совместимое устройство
+  - USB HID-совместимое устройство
+
+cpu registers:
+eax = 03262330
+ebx = 00000100
+ecx = 00000000
+edx = 00471d64
+esi = 0012000b
+edi = 0012f28c
+eip = 00471d64
+esp = 0012f180
+ebp = 0012f1e0
+
+stack dump:
+0012f180  64 1d 47 00 de fa ed 0e - 01 00 00 00 07 00 00 00  d.G.............
+0012f190  94 f1 12 00 64 1d 47 00 - 30 23 26 03 00 01 00 00  ....d.G.0#&.....
+0012f1a0  0b 00 12 00 8c f2 12 00 - e0 f1 12 00 b0 f1 12 00  ................
+0012f1b0  f0 f1 12 00 9c 4f 40 00 - e0 f1 12 00 30 1e 30 03  .....O@.....0.0.
+0012f1c0  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f1d0  c0 1e 30 03 0b f2 12 00 - 80 1f 30 03 0b f2 12 00  ..0.......0.....
+0012f1e0  0c f2 12 00 a3 21 47 00 - 8c f2 12 00 f2 40 47 00  .....!G......@G.
+0012f1f0  38 f2 12 00 9c 4f 40 00 - 0c f2 12 00 8c f2 12 00  8....O@.........
+0012f200  00 00 00 00 00 00 00 00 - 00 00 00 00 4c f2 12 00  ............L...
+0012f210  c8 43 47 00 65 72 00 00 - c0 ab f5 00 79 45 47 00  .CG.er......yEG.
+0012f220  32 a1 6f 00 28 55 5f 02 - 9c f2 12 00 2c f4 12 00  2.o.(U_.....,...
+0012f230  9b 66 66 00 d9 90 5b 00 - 58 f2 12 00 9c 4f 40 00  .ff...[.X....O@.
+0012f240  4c f2 12 00 00 00 00 00 - 00 00 00 00 a4 f2 12 00  L...............
+0012f250  83 93 5b 00 a4 f2 12 00 - ac f2 12 00 9c 4f 40 00  ..[..........O@.
+0012f260  a4 f2 12 00 c0 ab f5 00 - c0 ab f5 00 f8 da 47 00  ..............G.
+0012f270  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f280  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f290  00 00 00 00 00 00 00 00 - 00 00 00 00 00 00 00 00  ................
+0012f2a0  20 34 f4 00 3c f4 12 00 - 15 8a 5b 00 b8 f2 12 00   4..<.....[.....
+0012f2b0  9c 4f 40 00 3c f4 12 00 - 44 f4 12 00 9c 4f 40 00  .O@.<...D....O@.
+
+disassembling:
+[...]
+006fa121         jnz     loc_6fa13f
+006fa123 13782   mov     eax, ebx
+006fa125         call    -$3f6 ($6f9d34)        ; cxGridTableView.TcxGridTableView.GetOptionsView
+006fa12a         push    eax
+006fa12b         mov     eax, edi
+006fa12d       > call    -$285bbe ($474574)     ; Variants.@VarToBool
+006fa132         mov     edx, eax
+006fa134         pop     eax
+006fa135         call    -$1cde ($6f845c)       ; cxGridTableView.TcxGridTableOptionsView.SetFooter
+006fa13a         jmp     loc_6fa1f5
+006fa13f 13784   mov     eax, esi
+[...]
+

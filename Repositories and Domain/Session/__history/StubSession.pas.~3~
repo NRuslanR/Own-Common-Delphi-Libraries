@@ -1,0 +1,27 @@
+unit StubSession;
+
+interface
+
+uses
+
+  ISessionUnit;
+
+type
+
+  TStubSession = class (TInterfacedObject, ISession)
+
+    public
+
+      procedure Start;
+      procedure Commit;
+      procedure Rollback;
+
+      function GetIsStarted: Boolean;
+
+      property IsStarted: Boolean read GetIsStarted;
+
+  end;
+  
+implementation
+
+end.

@@ -1,0 +1,391 @@
+unit CardFormViewModel;
+
+interface
+
+uses
+
+  Disposable,
+  ClonableUnit,
+  CopyableUnit,
+  SysUtils,
+  Classes;
+
+type
+
+  TCardFormViewModelProperty = class (TInterfacedObject, IClonable)
+
+
+    protected
+
+      FName: String;
+      FIsModified: Boolean;
+      FValue: Variant;
+
+      procedure SetValue(const Value: Variant); virtual;
+      function GetIsModified: Boolean; virtual;
+
+      procedure CopyFrom(OtherViewModelProperty: TCardFormViewModelProperty); virtual;
+      
+    public
+
+      ReadOnly: Boolean;
+      Visible: Boolean;
+
+    public
+
+      constructor Create(const Name: String); virtual;
+
+      property Name: String read FName;
+      property Value: Variant read FValue write SetValue;
+      property IsModified: Boolean read GetIsModified;
+
+    public
+
+      function Clone: TObject; virtual;
+
+      function GetSelf: TObject;
+
+  end;
+
+  TCardFormViewModelPropertyClass = class of TCardFormViewModelProperty;
+
+  TCardFormViewModel = class abstract (TInterfacedObject, IDisposable, IClonable)
+
+    protected
+
+      FPropertyList: TList;
+
+    protected
+
+      function IsPropertyExists(const Name: String): Boolean;
+
+      function FindProperty(const Name: String): TCardFormViewModelProperty;
+
+      function AddProperty(const Name: String): TCardFormViewModelProperty; overload;
+      function AddProperty(const Name: String; const Value: Variant): TCardFormViewModelProperty; overload;
+
+      function AddProperty(
+        const Name: String;
+        const Value: Variant;
+        const ReadOnly: Boolean
+      ): TCardFormViewModelProperty; overload;
+
+      function AddProperty(
+        const Name: String;
+        const Value: Variant;
+        const ReadOnly: Boolean;
+        const Visible: Boolean
+      ): TCardFormViewModelProperty; overload;
+
+      procedure Clear;
+
+      function GetIsModified: Boolean;
+
+      function IsPropertyModified(ViewModelProperty: TCardFormViewModelProperty): Boolean; virtual;
+
+    public
+
+      constructor Create; virtual;
+
+      destructor Destroy; override;
+
+      property IsModified: Boolean read GetIsModified;
+
+    public
+
+      function Clone: TObject; virtual;
+
+      function GetSelf: TObject;
+
+    published
+
+      property Id: TCardFormViewModelProperty
+      read GetId;
+
+  end;
+
+  TCardFormViewModelClass = class of TCardFormViewModel;
+
+implementation
+
+uses
+
+  Variants,
+  AuxCollectionFunctionsUnit;
+
+{ TCardFormViewModel }
+
+function TCardFormViewModel.AddProperty(const Name: String;
+  const Value: Variant): TCardFormViewModelProperty;
+begin
+
+  Result := AddProperty(Name);
+
+  Result.Value := Value;
+
+end;
+
+function TCardFormViewModel.AddProperty(const Name: String;
+  const Value: Variant; const ReadOnly,
+  Visible: Boolean): TCardFormViewModelProperty;
+begin
+
+  Result := AddProperty(Name, Value, ReadOnly);
+
+  Result.Visible := Visible;
+
+end;
+
+procedure TCardFormViewModel.Clear;
+begin
+
+  FreeListItems(FPropertyList);
+
+end;
+
+function TCardFormViewModel.Clone: TObject;
+var ClonedViewModel: TCardFormViewModel;
+    ViewModelPropertyPointer: Pointer;
+    ViewModelProperty: TCardFormViewModelProperty;
+begin
+
+  Result := TCardFormViewModelClass(ClassType).Create;
+
+  ClonedViewModel := Result as TCardFormViewModel;
+  
+  try
+
+    for ViewModelPropertyPointer in FPropertyList do begin
+
+      ViewModelProperty := TCardFormViewModelProperty(ViewModelPropertyPointer);
+
+      if ClonedViewModel.IsPropertyExists(ViewModelProperty.Name)
+      then ClonedViewModel.FindProperty(ViewModelProperty.Name).CopyFrom(ViewModelProperty)
+
+      else ClonedViewModel.FPropertyList.Add(ViewModelProperty.Clone);
+
+    end;
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+      
+    end;
+
+  end;
+
+end;
+
+constructor TCardFormViewModel.Create;
+begin
+
+  inherited;
+
+  FPropertyList := TList.Create;
+
+  AddPr
+
+end;
+
+function TCardFormViewModel.AddProperty(
+  const Name: String): TCardFormViewModelProperty;
+begin
+
+  if Trim(Name) = '' then
+    raise Exception.Create('Property''s name must not be empty !');
+
+  if IsPropertyExists(Name) then begin
+
+    raise Exception.CreateFmt(
+      'Property "%s" is already exists !',
+      [Name]
+    );
+
+  end;
+
+  Result := TCardFormViewModelProperty.Create(Name);
+
+  try
+
+    FPropertyList.Add(Result);
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+
+    end;
+
+  end;
+
+end;
+
+function TCardFormViewModel.AddProperty(const Name: String;
+  const Value: Variant; const ReadOnly: Boolean): TCardFormViewModelProperty;
+begin
+
+  Result := AddProperty(Name, Value);
+
+  Result.ReadOnly := ReadOnly;
+
+end;
+
+destructor TCardFormViewModel.Destroy;
+begin
+
+  FreeListWithItems(FPropertyList);
+
+  inherited;
+
+end;
+
+function TCardFormViewModel.FindProperty(
+  const Name: String): TCardFormViewModelProperty;
+var I: Integer;
+begin
+
+  for I := 0 to FPropertyList.Count - 1 do begin
+
+    Result := TCardFormViewModelProperty(FPropertyList[I]);
+
+    if Result.Name = Name then Exit;
+
+  end;
+
+  Result := nil;
+
+end;
+
+function TCardFormViewModel.GetIsModified: Boolean;
+var ViewModelProperty: TCardFormViewModelProperty;
+    I: Integer;
+begin
+
+  for I := 0 to FPropertyList.Count - 1 do begin
+
+    ViewModelProperty := TCardFormViewModelProperty(FPropertyList[I]);
+
+    if IsPropertyModified(ViewModelProperty) then begin
+
+      Result := True;
+      Exit;
+
+    end;
+
+  end;
+
+  Result := False;
+
+end;
+
+function TCardFormViewModel.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
+function TCardFormViewModel.IsPropertyExists(const Name: String): Boolean;
+begin
+
+  Result := Assigned(FindProperty(Name));
+
+end;
+
+function TCardFormViewModel.IsPropertyModified(
+  ViewModelProperty: TCardFormViewModelProperty): Boolean;
+begin
+
+  Result := ViewModelProperty.IsModified;
+  
+end;
+
+{ TCardFormViewModelProperty }
+
+function TCardFormViewModelProperty.Clone: TObject;
+var ClonedProperty: TCardFormViewModelProperty;
+begin
+
+  Result := TCardFormViewModelPropertyClass(ClassType).Create(Name);
+
+  ClonedProperty := Result as TCardFormViewModelProperty;
+  
+  try
+
+    ClonedProperty.CopyFrom(Self);
+    
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+      
+    end;
+
+  end;
+
+end;
+
+procedure TCardFormViewModelProperty.CopyFrom(
+  OtherViewModelProperty: TCardFormViewModelProperty);
+begin
+
+  FName := OtherViewModelProperty.FName;
+  FValue := OtherViewModelProperty.FValue;
+  FIsModified := OtherViewModelProperty.FIsModified;
+  ReadOnly := OtherViewModelProperty.ReadOnly;
+  Visible := OtherViewModelProperty.Visible;
+  
+end;
+
+constructor TCardFormViewModelProperty.Create(const Name: String);
+begin
+
+  inherited Create;
+
+  FName := Name;
+
+  ReadOnly := False;
+  Visible := True;
+
+end;
+
+function TCardFormViewModelProperty.GetIsModified: Boolean;
+begin
+
+  Result := FIsModified;
+  
+end;
+
+function TCardFormViewModelProperty.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
+procedure TCardFormViewModelProperty.SetValue(const Value: Variant);
+begin
+
+  if FValue <> Value then begin
+
+    FValue := Value;
+
+    FIsModified := True;
+
+  end
+
+  else FIsModified := False;
+
+end;
+
+end.

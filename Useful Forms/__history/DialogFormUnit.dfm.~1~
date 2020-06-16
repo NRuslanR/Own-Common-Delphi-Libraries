@@ -1,0 +1,36 @@
+inherited DialogForm: TDialogForm
+  ClientHeight = 375
+  ClientWidth = 549
+  ExplicitWidth = 557
+  ExplicitHeight = 409
+  DesignSize = (
+    549
+    375)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnOK: TcxButton
+    Left = 379
+    Top = 342
+    Width = 75
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1054#1050
+    TabOrder = 0
+    OnClick = btnOKClick
+    ExplicitLeft = 448
+    ExplicitTop = 535
+  end
+  object btnCancel: TcxButton
+    Left = 466
+    Top = 342
+    Width = 75
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = #1054#1090#1084#1077#1085#1072
+    LookAndFeel.SkinName = ''
+    TabOrder = 1
+    OnClick = btnCancelClick
+    ExplicitLeft = 535
+    ExplicitTop = 535
+  end
+end

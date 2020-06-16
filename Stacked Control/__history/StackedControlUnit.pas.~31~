@@ -1,0 +1,232 @@
+unit StackedControlUnit;
+
+interface
+
+uses ExtCtrls, SysUtils, StdCtrls, ComCtrls, Controls, Classes;
+
+type
+
+  TStackedControl = class (TPanel)
+
+    public
+
+      type
+
+        TControlSizingMode = (csmUseOwnControlSize, csmUseStackedControlSize);
+        
+    strict protected
+
+      FActiveControl: TControl;
+
+      procedure HideAllControlsExcept(ExceptionalControl: TControl);
+      
+      procedure ShowControlAsActive(
+        AControl: TControl;
+        const ControlSizingMode: TControlSizingMode = csmUseOwnControlSize
+      );
+
+      procedure CustomizeControl(AControl: TControl);
+
+    public
+
+      constructor Create(AOwner: TComponent); override;
+
+      function AddControl(AControl: TControl): Integer;
+
+      function Contains(Control: TControl): Boolean;
+      
+      procedure SetActiveControlByIndex(
+        const Index: Integer;
+        const ControlSizingMode: TControlSizingMode = csmUseOwnControlSize
+      ); overload;
+      
+      procedure SetActiveControl(
+        AControl: TControl;
+        const ControlSizingMode: TControlSizingMode = csmUseOwnControlSize
+      ); overload;
+
+      procedure SetActiveControl(
+        AControl: TControl;
+        const ControlSizingMode: TControlSizingMode = csmUseOwnControlSize
+      ); overload;
+
+      procedure RemoveControl(const Index: Integer); overload;
+      function ExtractControl(const Index: Integer): TControl;
+
+      function GetIndexOfControl(AControl: TControl): Integer;
+
+      property ActiveControl: TControl
+      read FActiveControl write SetActiveControl;
+
+      procedure Show;
+
+  end;
+
+implementation
+
+uses Forms, AuxDebugFunctionsUnit;
+
+{ TStackedControl }
+
+function TStackedControl.AddControl(AControl: TControl): Integer;
+begin
+
+  AControl.Parent := Self;
+
+  CustomizeControl(AControl);
+
+  Result := GetIndexOfControl(AControl);
+
+  AControl.Visible := False;
+  
+end;
+
+function TStackedControl.Contains(Control: TControl): Boolean;
+var ChildControl: TControl;
+    I: Integer;
+begin
+
+  for I := 0 to ControlCount - 1 do begin
+
+    ChildControl := Controls[I];
+
+    if ChildControl = Control then begin
+
+      Result := True;
+      Exit;
+
+    end;
+
+  end;
+
+  Result := False;
+
+end;
+
+constructor TStackedControl.Create(AOwner: TComponent);
+begin
+
+  inherited;
+
+  BevelOuter := bvNone;
+
+end;
+
+procedure TStackedControl.CustomizeControl(AControl: TControl);
+begin
+
+  AControl.Left := 0;
+  AControl.Top := 0;
+  
+  AControl.Anchors := [akLeft, akTop, akRight, akBottom];
+
+  // Set itself as owner
+  InsertComponent(AControl);
+
+end;
+
+function TStackedControl.ExtractControl(const Index: Integer): TControl;
+begin
+
+  Result := Controls[Index];
+
+  Result.Parent := nil;
+
+  // Set application as owner
+  Application.InsertComponent(Result);
+
+end;
+
+function TStackedControl.GetIndexOfControl(AControl: TControl): Integer;
+var I: Integer;
+begin
+
+  for I := 0 to ControlCount - 1 do
+    if Controls[I] = AControl then begin
+
+      Result := I;
+      Exit;
+      
+    end;
+
+  Result := -1;
+  
+end;
+
+procedure TStackedControl.HideAllControlsExcept(ExceptionalControl: TControl);
+var I: Integer;
+begin
+
+  for I := 0 to ControlCount - 1 do begin
+
+    if Controls[I] <> ExceptionalControl then begin
+
+      Controls[I].Align := alNone;
+      Controls[I].Hide;
+
+    end;
+
+  end;
+
+end;
+
+procedure TStackedControl.RemoveControl(const Index: Integer);
+begin
+
+  RemoveControl(Controls[Index]);
+
+end;
+
+procedure TStackedControl.SetActiveControlByIndex(
+  const Index: Integer;
+  const ControlSizingMode: TControlSizingMode
+);
+begin
+
+  SetActiveControl(Controls[Index]);
+
+end;
+
+procedure TStackedControl.SetActiveControl(
+  AControl: TControl;
+  const ControlSizingMode: TControlSizingMode
+);
+begin
+
+  HideAllControlsExcept(AControl);
+  ShowControlAsActive(AControl);
+
+end;
+
+procedure TStackedControl.Show;
+begin
+
+  if not Assigned(FActiveControl) and (ControlCount > 0) then
+    SetActiveControlByIndex(0);
+
+  Visible := True;
+
+end;
+
+procedure TStackedControl.ShowControlAsActive(
+  AControl: TControl;
+  const ControlSizingMode: TControlSizingMode
+);
+begin
+
+  FActiveControl := AControl;
+
+  if ControlSizingMode = csmUseOwnControlSize then begin
+
+    Width := FActiveControl.Width;
+    Height := FActiveControl.Height;
+
+  end;
+  
+  FActiveControl.Align := alClient;
+  
+  FActiveControl.Show;
+  
+end;
+
+end.

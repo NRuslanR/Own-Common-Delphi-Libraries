@@ -1,0 +1,26 @@
+unit ClientLogOnInfo;
+
+interface
+
+type
+
+  TClientLogOnInfo = class
+
+  end;
+
+  TClientLogOnInfoClass = class of TClientLogOnInfo;
+  
+  TUserLogOnInfo = class (TClientLogOnInfo)
+
+    public
+
+      UserName: String;
+      Password: String;
+
+      constructor Create(const UserName, Password: String);
+
+  end;
+  
+implementation
+
+end.

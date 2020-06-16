@@ -1,0 +1,19 @@
+unit SystemAuthorizationService;
+
+interface
+
+type
+
+  ISystemAuthorizationService = interface
+
+    function IsClientInRole(
+      const ClientIdentity: Variant;
+      const RoleIdentity: Variant
+    ): Boolean;
+
+
+  end;
+
+implementation
+
+end.

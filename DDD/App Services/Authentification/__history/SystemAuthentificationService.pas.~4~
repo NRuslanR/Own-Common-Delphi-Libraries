@@ -1,0 +1,22 @@
+unit SystemAuthentificationService;
+
+interface
+
+uses
+
+  ClientLogOnInfo,
+  ServiceInfo,
+  ClientAccount,
+  SysUtils,
+  Classes;
+
+type
+
+  ISystemAuthentificationService = interface
+
+
+  end;
+  
+implementation
+
+end.

@@ -1,0 +1,13 @@
+unit AuxiliaryDateFunctions;
+
+interface
+
+uses
+
+  SysUtils;
+
+function IsDateTimeValid(const DateTime: TDateTime);
+
+implementation
+
+end.

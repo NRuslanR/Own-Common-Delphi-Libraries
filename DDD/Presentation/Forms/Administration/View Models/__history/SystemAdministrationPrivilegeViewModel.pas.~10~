@@ -1,0 +1,85 @@
+unit SystemAdministrationPrivilegeViewModel;
+
+interface
+
+uses
+
+  SectionRecordViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeViewModel = class (TSectionRecordViewModel)
+
+    private
+
+      function GetPrivilegeId: Variant;
+      function GetPrivilegeName: String;
+      function GetTopLevelPrivilegeId: Variant;
+
+      procedure SetPrivilegeId(const Value: Variant);
+      procedure SetPrivilegeName(const Value: String);
+      procedure SetTopLevelPrivilegeId(const Value: Variant);
+      
+    public
+
+      property PrivilegeId: Variant
+      read GetPrivilegeId write SetPrivilegeId;
+
+      property TopLevelPrivilegeId: Variant
+      read GetTopLevelPrivilegeId write SetTopLevelPrivilegeId;
+
+      property PrivilegeName: String
+      read GetPrivilegeName write SetPrivilegeName;
+      
+  end;
+
+implementation
+
+{ TSystemAdministrationPrivilegeViewModel }
+
+function TSystemAdministrationPrivilegeViewModel.GetPrivilegeId: Variant;
+begin
+
+  Result := Id;
+  
+end;
+
+function TSystemAdministrationPrivilegeViewModel.GetPrivilegeName: String;
+begin
+
+  Result := Name;
+  
+end;
+
+function TSystemAdministrationPrivilegeViewModel.GetTopLevelPrivilegeId: Variant;
+begin
+
+  Result := ParentId;
+  
+end;
+
+procedure TSystemAdministrationPrivilegeViewModel.SetPrivilegeId(
+  const Value: Variant);
+begin
+
+  Id := Value;
+  
+end;
+
+procedure TSystemAdministrationPrivilegeViewModel.SetPrivilegeName(
+  const Value: String);
+begin
+
+  Name := Value;
+  
+end;
+
+procedure TSystemAdministrationPrivilegeViewModel.SetTopLevelPrivilegeId(
+  const Value: Variant);
+begin
+
+end;
+
+end.

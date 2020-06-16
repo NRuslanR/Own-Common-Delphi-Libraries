@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{09AE5825-BE57-419C-B22E-3637EA0B1925}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="PropertiesStorages.exe">PropertiesStorages.bdsproj</Projects>
+      <Projects Name="TestDBDataTableFormPropStorage.exe">DBDataTableForm Properties Storages\TestDBDataTableFormPropStorage.bdsproj</Projects>
+      <Projects Name="Targets">PropertiesStorages.exe TestDBDataTableFormPropStorage.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

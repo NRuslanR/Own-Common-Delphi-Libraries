@@ -1,0 +1,27 @@
+unit unStubSectionStackedFormDataModule;
+
+interface
+
+uses
+  SysUtils, Classes, DB, dxmdaset;
+
+type
+  TStubSectionStackedFormDataModule = class(TDataModule)
+    TestSectionMemData: TdxMemData;
+    TestSectionMemDatasection_id: TIntegerField;
+    TestSectionMemDataparent_section_id: TIntegerField;
+    TestSectionMemDatasection_name: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  StubSectionStackedFormDataModule: TStubSectionStackedFormDataModule;
+
+implementation
+
+{$R *.dfm}
+
+end.

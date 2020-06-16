@@ -1,0 +1,42 @@
+unit SystemAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAuthentificationFormViewModel = class;
+
+  TOnSystemAuthentificationFormViewModelUpdatedEventHandler =
+    procedure (
+      ViewModel: TSystemAuthentificationFormViewModel
+    ) of object;
+
+  TSystemAuthentificationFormViewModel = class
+
+    private
+
+      FClientLogin: String;
+      FClientPassword: String;
+
+    private
+
+      FUpdatedEventHandler: TOnSystemAuthentificationFormViewModelUpdatedEventHandler;
+      
+    public
+
+      property ClientLogin: String read FClientLogin write FClientLogin;
+      property ClientPassword: String read FClientPassword write FClientPassword;
+
+  end;
+
+  TSystemAuthentificationFormViewModelClass =
+    class of TSystemAuthentificationFormViewModel;
+
+implementation
+
+end.

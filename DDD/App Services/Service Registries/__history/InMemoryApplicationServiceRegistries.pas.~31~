@@ -1,0 +1,194 @@
+unit InMemoryApplicationServiceRegistries;
+
+interface
+
+uses
+
+  ApplicationServiceRegistry,
+  ApplicationServiceRegistries,
+  AbstractApplicationServiceRegistries,
+  SysUtils,
+  Classes;
+
+type
+
+  TInMemoryApplicationServiceRegistries = class (TAbstractApplicationServiceRegistries)
+
+    private
+
+      type
+
+        TApplicationServiceRegistryItem = class
+
+          ApplicationServiceRegistryTypeInfo: Pointer;
+          ApplicationServiceRegistry: IApplicationServiceRegistry;
+
+          constructor Create(
+            ApplicationServiceRegistryTypeInfo: Pointer;
+            ApplicationServiceRegistry: IApplicationServiceRegistry
+          );
+          
+        end;
+
+    private
+
+      FApplicationServiceRegistryItems: TList;
+
+      function FindApplicationServiceRegistryItemByApplicationServiceRegistryTypeInfo(
+        ApplicationServiceRegistryTypeInfo: Pointer
+      ): TApplicationServiceRegistryItem;
+
+      procedure AddApplicationServiceRegistryItem(
+        ApplicationServiceRegistryTypeInfo: Pointer;
+        ApplicationServiceRegistry: IApplicationServiceRegistry
+      );
+
+      function IsApplicationServiceRegistryExists(
+        ApplicationServiceRegistryTypeInfo: Pointer
+      ): Boolean;
+
+    public
+
+      destructor Destroy; override;
+      constructor Create;
+      
+    public
+
+      procedure RegisterApplicationServiceRegistry(
+        ApplicationServiceRegistryTypeInfo: Pointer;
+        ApplicationServiceRegistry: IApplicationServiceRegistry
+      ); override;
+
+      function GetApplicationServiceRegistry(
+        ApplicationServiceRegistryTypeInfo: Pointer
+      ): IApplicationServiceRegistry; override;
+      
+  end;
+  
+implementation
+
+uses
+
+  AuxCollectionFunctionsUnit;
+  
+{ TInMemoryApplicationServiceRegistries }
+
+procedure TInMemoryApplicationServiceRegistries.AddApplicationServiceRegistryItem(
+  ApplicationServiceRegistryTypeInfo: Pointer;
+  ApplicationServiceRegistry: IApplicationServiceRegistry);
+begin
+
+  FApplicationServiceRegistryItems.Add(
+    TApplicationServiceRegistryItem.Create(
+      ApplicationServiceRegistryTypeInfo,
+      ApplicationServiceRegistry
+    )
+  );
+  
+end;
+
+constructor TInMemoryApplicationServiceRegistries.Create;
+begin
+
+  inherited;
+
+  FApplicationServiceRegistryItems := TList.Create;
+  
+end;
+
+destructor TInMemoryApplicationServiceRegistries.Destroy;
+begin
+
+  FreeListWithItems(FApplicationServiceRegistryItems);
+  inherited;
+
+end;
+
+function TInMemoryApplicationServiceRegistries.
+  FindApplicationServiceRegistryItemByApplicationServiceRegistryTypeInfo(
+    ApplicationServiceRegistryTypeInfo: Pointer
+  ): TApplicationServiceRegistryItem;
+var I: Integer;
+begin
+
+  for I := 0 to FApplicationServiceRegistryItems.Count - 1 do begin
+
+    Result := TApplicationServiceRegistryItem(FApplicationServiceRegistryItems[I]);
+
+    if Result.ApplicationServiceRegistryTypeInfo = ApplicationServiceRegistryTypeInfo
+    then Exit;
+
+  end;
+
+  Result := nil;
+  
+end;
+
+function TInMemoryApplicationServiceRegistries.GetApplicationServiceRegistry(
+  ApplicationServiceRegistryTypeInfo: Pointer): IApplicationServiceRegistry;
+var ApplicationServiceRegistryItem: TApplicationServiceRegistryItem;
+begin
+
+  ApplicationServiceRegistryItem :=
+    FindApplicationServiceRegistryItemByApplicationServiceRegistryTypeInfo(
+      ApplicationServiceRegistryTypeInfo
+    );
+
+  if Assigned(ApplicationServiceRegistryItem) then
+    Result := ApplicationServiceRegistryItem.ApplicationServiceRegistry
+
+  else Result := nil;
+
+end;
+
+function TInMemoryApplicationServiceRegistries.IsApplicationServiceRegistryExists(
+  ApplicationServiceRegistryTypeInfo: Pointer): Boolean;
+begin
+
+  Result :=
+    Assigned(
+      FindApplicationServiceRegistryItemByApplicationServiceRegistryTypeInfo(
+        ApplicationServiceRegistryTypeInfo
+      )
+    );
+    
+end;
+
+procedure TInMemoryApplicationServiceRegistries.RegisterApplicationServiceRegistry(
+  ApplicationServiceRegistryTypeInfo: Pointer;
+  ApplicationServiceRegistry: IApplicationServiceRegistry);
+begin
+
+  if IsApplicationServiceRegistryExists(ApplicationServiceRegistryTypeInfo)
+  then begin
+
+    raise Exception.CreateFmt(
+      'Application service registry of the type "%s" ' +
+      'is already exists',
+      [GetApplicationServiceRegistryTypeName(ApplicationServiceRegistryTypeInfo)]
+    );
+    
+  end;
+  
+  AddApplicationServiceRegistryItem(
+    ApplicationServiceRegistryTypeInfo,
+    ApplicationServiceRegistry
+  );
+  
+end;
+
+{ TInMemoryApplicationServiceRegistries.TApplicationServiceRegistryItem }
+
+constructor TInMemoryApplicationServiceRegistries.TApplicationServiceRegistryItem.Create(
+  ApplicationServiceRegistryTypeInfo: Pointer;
+  ApplicationServiceRegistry: IApplicationServiceRegistry);
+begin
+
+  inherited Create;
+
+  Self.ApplicationServiceRegistryTypeInfo := ApplicationServiceRegistryTypeInfo;
+  Self.ApplicationServiceRegistry := ApplicationServiceRegistry;
+  
+end;
+
+end.

@@ -1,0 +1,19 @@
+unit SystemAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAuthentificationFormViewModel = class
+
+
+  end;
+
+implementation
+
+end.

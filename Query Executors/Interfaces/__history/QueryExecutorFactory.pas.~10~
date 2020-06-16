@@ -1,0 +1,20 @@
+unit QueryExecutorFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  QueryExecutor;
+  
+type
+  
+  IQueryExecutorFactory = interface
+
+    function CreateQueryExecutor(ConnectionInfo: TConnectionInfo): IQueryExecutor;
+
+  end;
+  
+implementation
+
+end.

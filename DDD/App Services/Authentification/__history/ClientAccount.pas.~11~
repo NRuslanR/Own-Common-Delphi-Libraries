@@ -1,0 +1,55 @@
+unit ClientAccount;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+  
+type
+
+  TClientAccount = class
+
+    public
+
+      Identity: Variant;
+
+      constructor Create; virtual;
+
+  end;
+
+  TUserAccount = class (TClientAccount)
+
+    public
+
+      UserName: String;
+      UserFriendlyName: String;
+      
+  end;
+
+  TUserRoleAccount = class (TUserAccount)
+
+    public
+
+      
+  end;
+
+implementation
+
+uses
+
+  Variants;
+  
+{ TClientAccount }
+
+constructor TClientAccount.Create;
+begin
+
+  inherited;
+
+  Identity := Null;
+
+end;
+
+end.

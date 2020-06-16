@@ -1,0 +1,51 @@
+unit EntityDtoMapper;
+
+interface
+
+uses
+
+  CardFormViewModel,
+  EntityDto,
+  SysUtils,
+  Classes;
+
+type
+
+  TEntityDtoMapper = class abstract
+
+    protected
+
+      function GetEntityDtoClass: TEntityDtoClass; virtual; abstract;
+
+      procedure FillEntityDtoFrom(
+        EntityDto: TEntityDto;
+        CardFormViewModel: TCardFormViewModel
+      ); virtual;
+      
+    public
+
+      function MapEntityDtoFrom(
+        CardFormViewModel: TCardFormViewModel
+      ): TEntityDto; virtual;
+
+  end;
+
+implementation
+
+{ TEntityDtoMapper }
+
+procedure TEntityDtoMapper.FillEntityDtoFrom(EntityDto: TEntityDto;
+  CardFormViewModel: TCardFormViewModel);
+begin
+
+end;
+
+function TEntityDtoMapper.MapEntityDtoFrom(
+  CardFormViewModel: TCardFormViewModel): TEntityDto;
+begin
+
+  Result := GetEnti
+
+end;
+
+end.

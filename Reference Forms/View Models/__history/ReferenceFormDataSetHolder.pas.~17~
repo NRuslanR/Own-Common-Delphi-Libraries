@@ -1,0 +1,106 @@
+unit ReferenceFormDataSetHolder;
+
+interface
+
+uses
+
+  AbstractDataSetHolder,
+  SysUtils,
+  Classes;
+
+type
+
+  TReferenceFormDataSetFieldDefs = class (TAbstractDataSetFieldDefs)
+
+
+  end;
+
+  TReferenceFormDataSetFieldDefsClass = class of TReferenceFormDataSetFieldDefs;
+  
+  TReferenceFormDataSetHolder = class (TAbstractDataSetHolder)
+
+    private
+
+      function GetIdFieldName: String;
+      function GetIdFieldValue: Variant;
+
+      function GetReferenceFormDataSetFieldDefs: TReferenceFormDataSetFieldDefs;
+      
+      procedure SetIdFieldName(const Value: String);
+      procedure SetIdFieldValue(const Value: Variant);
+      
+      procedure SetReferenceFormDataSetFieldDefs(
+        const Value: TReferenceFormDataSetFieldDefs);
+
+    protected
+
+    public
+
+      property IdFieldName: String
+      read GetIdFieldName write SetIdFieldName;
+
+    public
+    
+      property IdFieldValue: Variant
+      read GetIdFieldValue write SetIdFieldValue;
+
+    public
+
+      property FieldDefs: TReferenceFormDataSetFieldDefs
+      read GetReferenceFormDataSetFieldDefs
+      write SetReferenceFormDataSetFieldDefs;
+      
+  end;
+
+implementation
+
+uses
+
+  Variants;
+
+{ TReferenceFormDataSetHolder }
+
+function TReferenceFormDataSetHolder.GetIdFieldName: String;
+begin
+
+  Result := FieldDefs.RecordIdFieldName;
+  
+end;
+
+function TReferenceFormDataSetHolder.GetIdFieldValue: Variant;
+begin
+
+  Result := GetDataSetFieldValue(IdFieldName, Null);
+  
+end;
+
+function TReferenceFormDataSetHolder.GetReferenceFormDataSetFieldDefs: TReferenceFormDataSetFieldDefs;
+begin
+
+  Result := TReferenceFormDataSetFieldDefs(FFieldDefs);
+  
+end;
+
+procedure TReferenceFormDataSetHolder.SetIdFieldName(const Value: String);
+begin
+
+  FieldDefs.RecordIdFieldName := Value;
+
+end;
+
+procedure TReferenceFormDataSetHolder.SetIdFieldValue(const Value: Variant);
+begin
+
+  SetDataSetFieldValue(IdFieldName, Value);
+  
+end;
+
+procedure TReferenceFormDataSetHolder.SetReferenceFormDataSetFieldDefs(
+  const Value: TReferenceFormDataSetFieldDefs);
+begin
+
+  SetFieldDefs(Value);
+  
+end;
+
+end.

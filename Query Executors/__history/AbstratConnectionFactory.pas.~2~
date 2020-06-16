@@ -1,0 +1,15 @@
+unit AbstratConnectionFactory;
+
+interface
+
+uses
+
+  ConnectionFactory,
+  ConnectionInfo;
+
+type
+
+  
+implementation
+
+end.

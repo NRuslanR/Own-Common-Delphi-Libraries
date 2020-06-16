@@ -1,0 +1,23 @@
+unit QueryExecutorFactory;
+
+interface
+
+type
+
+  TConnectionInfo = record
+
+    HostName: String;
+    Port: Integer;
+    DatabaseName: String;
+    UserName: String;
+    Password: String;
+    
+  end;
+  
+  IQueryExecutorFactory = interface
+
+    function CreateQueryExecutor
+  end;
+implementation
+
+end.

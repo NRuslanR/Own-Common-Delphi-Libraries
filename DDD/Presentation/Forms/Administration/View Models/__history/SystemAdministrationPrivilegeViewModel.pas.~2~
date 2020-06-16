@@ -1,0 +1,20 @@
+unit SystemAdministrationPrivilegeViewModel;
+
+interface
+
+uses
+
+  SectionRecordViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeViewModel = class (TSectionRecordViewModel)
+
+    
+  end;
+
+implementation
+
+end.

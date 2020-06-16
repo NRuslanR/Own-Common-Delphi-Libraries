@@ -1,0 +1,22 @@
+unit SystemAdministrationPrivilegeServices;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeServices = class
+
+    public
+
+      PrivilegeId: Variant;
+
+  end;
+
+implementation
+
+end.

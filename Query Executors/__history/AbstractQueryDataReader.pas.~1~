@@ -1,0 +1,49 @@
+unit AbstractQueryDataReader;
+
+interface
+
+uses
+
+  DB,
+  QueryDataReader,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractQueryDataReader = class abstract (TInterfacedObject, IQueryDataReader)
+
+    public
+
+      procedure Restart; virtual; abstract;
+    
+      function Next: Boolean; virtual; abstract;
+
+      function GetValue(const FieldName: String): Variant; virtual; abstract;
+      function GetValueAsString(const FieldName: String): String; virtual; abstract;
+      function GetValueAsInteger(const FieldName: String): Integer; virtual; abstract;
+      function GetValueAsFloat(const FieldName: String): Double; virtual; abstract;
+      function GetValueAsDateTime(const FieldName: String): TDateTime; virtual; abstract;
+      function GetValueAsBoolean(const FieldName: String): Boolean; virtual; abstract;
+
+      property Items[const FieldName: String]: Variant
+      read GetValue; default;
+
+      function ToDataSet: TDataSet; virtual; abstract;
+
+      function GetSelf: TObject;
+      
+  end;
+  
+implementation
+
+{ TAbstractQueryDataReader }
+
+function TAbstractQueryDataReader.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
+end.

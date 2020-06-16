@@ -1,0 +1,28 @@
+unit DatabaseAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  SystemAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TDatabaseAuthentificationFormViewModel = class (TSystemAuthentificationFormViewModel)
+
+    private
+
+      FCurrentDatabase: String;
+      FDatabaseList: TStrings;
+      
+    public
+
+      property CurrentDatabase: String read FDatabase write FDatabase;
+      
+  end;
+
+implementation
+
+end.

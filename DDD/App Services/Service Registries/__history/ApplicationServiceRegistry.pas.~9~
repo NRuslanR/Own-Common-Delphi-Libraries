@@ -1,0 +1,26 @@
+unit ApplicationServiceRegistry;
+
+interface
+
+uses
+
+  ApplicationService;
+
+type
+
+  IApplicationServiceRegistry = interface
+
+    procedure RegisterApplicationService(
+      ApplicationServiceTypeInfo: Pointer;
+      ApplicationService: IApplicationService
+    );
+
+    function GetApplicationService(
+      ApplicationServiceTypeInfo: Pointer
+    ): IApplicationService;
+    
+  end;
+
+implementation
+
+end.

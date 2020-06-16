@@ -1,0 +1,580 @@
+unit AuxWindowsFunctionsUnit;
+
+interface
+
+uses Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, Menus, ExtCtrls, StdCtrls, ActnList, Math;
+
+const
+
+  CHECKBOX_QUAD_APPROXIMATE_WIDTH = 20;
+
+type
+
+  TAnchorsArray = array of TAnchors;
+  
+function CreateLabel(
+  Parent: TWinControl;
+  const Caption: String = '';
+  const Anchors: TAnchors = [akLeft, akTop]
+): TLabel;
+procedure CenterChildControlsOfParentControlByVertically(
+  ParentControl: TWinControl
+);
+procedure CenterWindowRelativeByHorz(CenteredCtrl, RelativeCtrl: TControl);
+procedure CenterWindowRelativeByVert(CenteredCtrl, RelativeCtrl: TControl);
+procedure CenterWindowRelative(CenteredCtrl, RelativeCtrl: TControl);
+procedure SetEnabledControls(Enabled: boolean; Ctrls: array of TControl);
+procedure SetVisibleControls(Visible: boolean; Ctrls: array of TControl);
+procedure SetCheckedCheckBoxes(Checked: boolean; CheckBoxes: array of TCheckBox);
+procedure SetEnabledActions(Enabled: boolean; Actions: array of TAction);
+procedure SetVisibleActions(const Visible: Boolean; Actions: array of TAction);
+procedure SetEnabledChildControls(const Enabled: Boolean; ParentControl: TWinControl);
+procedure SetProgressBarMinMax(ProgressBar: TProgressBar; const Min, Max: integer);
+procedure SetEnabledMenuItems(const Enabled: boolean; MenuItems: array of TMenuItem);
+procedure SetVisibleMenuItems(const Visible: boolean; MenuItems: array of TMenuItem);
+procedure SetAnchorsToControls(const Anchors: TAnchors; Controls: array of TControl);
+procedure ShowErrorMessage(hWindow: HWND; const Msg, Title: string);
+procedure ShowWarningMessage(hWindow: HWND; const Msg, Title: string);
+procedure AdjustControlBounds(
+  const DeltaLeft, DeltaTop, DeltaWidth, DeltaHeight: Integer;
+  Controls: array of TControl
+); overload;
+procedure AdjustControlBounds(
+  const DeltaBounds: TRect;
+  Controls: array of TControl
+); overload;
+procedure ShowInfoMessage(hWindow: HWND; const Msg, Title: string);
+function ShowQuestionMessage(hWindow: HWND; const Msg, Title: string;
+  MsgBoxButtons: Cardinal = MB_YESNO): Integer;
+procedure AdjustCheckBoxSize(CheckBox: TCheckBox);
+procedure GetAdjustedCheckBoxSize(CheckBox: TCheckBox; var Width, Height: Integer);
+
+procedure AdjustControlSizeByContent(
+  Control: TControl;
+  ControlCanvas: TCanvas;
+  const Padding: TRect
+);
+
+function DisableAnchorsFor(Control: TControl): TAnchorsArray;
+procedure EnableAnchorsFor(Control: TControl; RestoringAnchors: TAnchorsArray);
+
+function GetAncestorCanvasFor(Control: TControl): TCanvas;
+function GetVerticalScrollBarWidth: Integer;
+function GetHorizontalScrollBarHeight: Integer;
+
+procedure SetControlSizeByOtherControlSize(
+  TargetControl: TControl;
+  OtherControl: TControl;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+
+procedure SetControlSizeByRatio(
+  TargetControl: TControl;
+  const NewWidth, NewHeight: Integer;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+
+procedure SetControlSizeByScreenSize(
+  TargetControl: TControl;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+
+function GetMemoTextHeight(Memo: TMemo): Integer;
+function GetMemoTextWidth(Memo: TMemo): Integer;
+
+implementation
+
+uses Spin;
+
+procedure CenterWindowRelativeByHorz(CenteredCtrl, RelativeCtrl: TControl);
+var Left: Integer;
+begin
+
+  if CenteredCtrl.Parent = RelativeCtrl then
+    Left := 0
+
+  else Left := RelativeCtrl.Left;
+  
+  CenteredCtrl.Left := Left + (RelativeCtrl.Width - CenteredCtrl.Width) div 2;
+end;
+
+procedure CenterWindowRelativeByVert(CenteredCtrl, RelativeCtrl: TControl);
+var Top: Integer;
+begin
+
+  if CenteredCtrl.Parent = RelativeCtrl then
+    Top := 0
+
+  else Top := RelativeCtrl.Top;
+
+  CenteredCtrl.Top := Top + (RelativeCtrl.Height - CenteredCtrl.Height) div 2;
+end;
+
+procedure CenterWindowRelative(CenteredCtrl, RelativeCtrl: TControl);
+begin
+  CenterWindowRelativeByHorz(CenteredCtrl, RelativeCtrl);
+  CenterWindowRelativeByVert(CenteredCtrl, RelativeCtrl);
+end;
+
+procedure SetEnabledControls(Enabled: boolean; Ctrls: array of TControl);
+var ctrl: TControl;
+begin
+
+  for ctrl in Ctrls do begin
+    if ctrl = nil then continue;
+    ctrl.Enabled := Enabled;
+  end;
+
+end;
+
+procedure SetVisibleControls(Visible: boolean; Ctrls: array of TControl);
+var ctrl: TControl;
+begin
+
+  for ctrl in Ctrls do begin
+    if ctrl = nil then continue;
+    ctrl.Visible := Visible;
+  end;
+
+end;
+
+procedure SetCheckedCheckBoxes(Checked: boolean; CheckBoxes: array of TCheckBox);
+var cb: TCheckBox;
+begin
+
+  for cb in CheckBoxes do begin
+    if cb = nil then continue;
+    cb.Checked := Checked;
+  end;
+
+end;
+
+procedure SetEnabledActions(Enabled: boolean; Actions: array of TAction);
+var act: TAction;
+begin
+
+  for act in Actions do begin
+    if act = nil then continue;
+    act.Enabled := Enabled;
+  end;
+    
+end;
+
+procedure SetProgressBarMinMax(ProgressBar: TProgressBar; const Min, Max: integer);
+begin
+  ProgressBar.Min := Min;
+  ProgressBar.Max := Max;
+end;
+
+procedure SetVisibleActions(const Visible: Boolean; Actions: array of TAction);
+var act: TAction;
+begin
+
+  for act in Actions do begin
+    if act = nil then Continue;
+    act.Visible := Visible;
+  end;
+
+end;
+
+procedure SetVisibleMenuItems(const Visible: Boolean; MenuItems: array of TMenuItem);
+var MenuItem: TMenuItem;
+begin
+
+  for MenuItem in MenuItems do begin
+    if MenuItem = nil then Continue;
+    MenuItem.Visible := Visible;
+  end;
+
+end;
+
+procedure SetEnabledMenuItems(const Enabled: Boolean; MenuItems: array of TMenuItem);
+var MenuItem: TMenuItem;
+begin
+
+  for MenuItem in MenuItems do begin
+    if MenuItem = nil then Continue;
+    MenuItem.Enabled := Enabled;
+  end;
+
+end;
+
+procedure ShowErrorMessage(hWindow: HWND; const Msg, Title: string);
+begin
+  MessageBox(hWindow, PChar(Msg), PChar(Title), MB_OK or MB_ICONERROR);
+end;
+
+procedure ShowWarningMessage(hWindow: HWND; const Msg, Title: string);
+begin
+  MessageBox(hWindow, PChar(Msg), PChar(Title), MB_OK or MB_ICONWARNING );
+end;
+
+procedure ShowInfoMessage(hWindow: HWND; const Msg, Title: string);
+begin
+  MessageBox(hWindow, PChar(Msg), PChar(Title), MB_OK or MB_ICONINFORMATION);
+end;
+
+function ShowQuestionMessage(hWindow: HWND; const Msg, Title: string;
+  MsgBoxButtons: Cardinal = MB_YESNO): Integer;
+begin
+  Result := MessageBox(hWindow, PChar(Msg), PChar(Title), MsgBoxButtons or MB_ICONQUESTION);
+end;
+
+procedure SetEnabledChildControls(const Enabled: Boolean; ParentControl: TWinControl);
+var I: Integer;
+begin
+
+  for I := 0 to ParentControl.ControlCount - 1 do
+    ParentControl.Controls[I].Enabled := Enabled;
+    
+end;
+
+procedure AdjustCheckBoxSize(CheckBox: TCheckBox);
+var AdjustedWidth, AdjustedHeight: Integer;
+begin
+
+  GetAdjustedCheckBoxSize(CheckBox, AdjustedWidth, AdjustedHeight);
+
+  
+
+end;
+
+procedure GetAdjustedCheckBoxSize(CheckBox: TCheckBox; var Width, Height: Integer);
+var Canvas: TCanvas;
+    Dummy: TForm;
+begin
+
+  Dummy := nil;
+  
+  try
+
+    Canvas := GetAncestorCanvasFor(CheckBox);
+
+    if not Assigned(Canvas) then begin
+
+      Dummy := TForm.Create(nil);
+
+      Canvas := Dummy.Canvas;
+      
+    end;
+
+    Width := CHECKBOX_QUAD_APPROXIMATE_WIDTH + Canvas.TextWidth(CheckBox.Caption);
+    Height := Canvas.TextHeight(CheckBox.Caption);
+    
+  finally
+
+    FreeAndNil(Dummy);
+
+  end;
+
+end;
+
+procedure SetAnchorsToControls(
+  const Anchors: TAnchors;
+  Controls: array of TControl
+);
+var Control: TControl;
+begin
+
+  for Control in Controls do
+    Control.Anchors := Anchors;
+
+end;
+
+procedure AdjustControlBounds(
+  const DeltaLeft, DeltaTop, DeltaWidth, DeltaHeight: Integer;
+  Controls: array of TControl
+);
+var Control: TControl;
+begin
+
+  AdjustControlBounds(Rect(DeltaLeft, DeltaTop, DeltaWidth, DeltaHeight), Controls);
+
+end;
+
+procedure AdjustControlBounds(
+  const DeltaBounds: TRect;
+  Controls: array of TControl
+);
+var Control: TControl;
+
+begin
+
+  for Control in Controls do begin
+
+    Control.Left := Control.Left + DeltaBounds.Left;
+    Control.Top := Control.Top + DeltaBounds.Top;
+    Control.Width := Control.Width + DeltaBounds.Right;
+    Control.Height := Control.Height + DeltaBounds.Bottom;
+    
+  end;
+    
+end;
+
+function CreateLabel(
+  Parent: TWinControl;
+  const Caption: String = '';
+  const Anchors: TAnchors = [akLeft, akTop]
+): TLabel;
+begin
+
+  Result := TLabel.Create(Parent);
+  Result.Parent := Parent;
+  Result.Caption := Caption;
+  Result.Anchors := Anchors;
+
+end;
+
+procedure AdjustControlSizeByContent(
+  Control: TControl;
+  ControlCanvas: TCanvas;
+  const Padding: TRect
+);
+var Content, ContentString: Variant;
+begin
+
+  if Control is TLabel then
+    Content := (Control as TLabel).Caption
+
+  else if Control is TEdit then
+    Content := (Control as TEdit).Text
+
+  else if Control is TPanel then
+    Content :=  (Control as TPanel).Caption
+
+  else if Control is TCheckBox then begin
+
+    AdjustCheckBoxSize(Control as TCheckBox);
+    Exit;
+
+  end
+
+  else if Control is TSpinEdit then
+    Content := (Control as TSpinEdit).Value
+
+  else if Control is TDateTimePicker then
+    Content := (Control as TDateTimePicker).DateTime
+
+  else if Control is TButton then
+    Content := (Control as TButton).Caption
+
+  else Exit;
+
+  ContentString := VarToStr(Content);
+
+  Control.SetBounds(
+    Control.Left, Control.Top,
+    ControlCanvas.TextWidth(ContentString) + Padding.Left + Padding.Right,
+    ControlCanvas.TextHeight(ContentString) + Padding.Top + Padding.Bottom
+  );
+
+end;
+
+procedure CenterChildControlsOfParentControlByVertically(
+  ParentControl: TWinControl
+);
+var ChildControl: TControl;
+    I: Integer;
+begin
+
+  for I := 0 to ParentControl.ControlCount - 1 do begin
+
+    CenterWindowRelativeByVert(ParentControl.Controls[I], ParentControl);
+
+  end;
+
+end;
+
+function GetVerticalScrollBarWidth: Integer;
+begin
+
+  Result := GetSystemMetrics(SM_CXVSCROLL);
+
+end;
+
+function GetHorizontalScrollBarHeight: Integer;
+begin
+
+  Result := GetSystemMetrics(SM_CYHSCROLL);
+
+end;
+
+function GetAncestorCanvasFor(Control: TControl): TCanvas;
+var Ancestor: TControl;
+begin
+
+  Ancestor := Control.Parent;
+
+  while (Ancestor <> nil) and (not (Ancestor is TCustomForm)) do
+    Ancestor := Ancestor.Parent;
+
+  if not Assigned(Ancestor) then
+    Result := nil
+
+  else
+    Result := (Ancestor as TCustomForm).Canvas;
+
+end;
+
+function DisableAnchorsFor(Control: TControl): TAnchorsArray;
+var I: Integer;
+begin
+
+  if Control is TWinControl then begin
+
+    with Control as TWinControl do begin
+
+      SetLength(Result, ControlCount);
+
+      for I := 0 to ControlCount - 1 do begin
+
+        Result[I] := Controls[I].Anchors;
+
+        Controls[I].Anchors := [akLeft, akTop];
+        
+      end;
+
+    end;
+
+  end
+
+  else begin
+
+    SetLength(Result, 1);
+
+    Result[0] := Control.Anchors;
+    
+  end;
+
+end;
+
+procedure EnableAnchorsFor(Control: TControl; RestoringAnchors: TAnchorsArray);
+var I: Integer;
+begin
+
+  if Control is TWinControl then begin
+
+    with Control as TWinControl do begin
+
+      for I := 0 to ControlCount - 1 do
+        Controls[I].Anchors := RestoringAnchors[I];
+
+    end;
+
+  end
+
+  else Control.Anchors := RestoringAnchors[I];
+
+end;
+
+procedure SetControlSizeByScreenSize(
+  TargetControl: TControl;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+begin
+
+  SetControlSizeByRatio(
+    TargetControl,
+    Screen.Width,
+    Screen.Height,
+    WidthRatio,
+    HeightRatio
+  );
+  
+end;
+
+procedure SetControlSizeByOtherControlSize(
+  TargetControl: TControl;
+  OtherControl: TControl;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+begin
+
+  SetControlSizeByRatio(
+    TargetControl,
+    OtherControl.Width,
+    OtherControl.Height,
+    WidthRatio,
+    HeightRatio
+  );
+  
+end;
+
+procedure SetControlSizeByRatio(
+  TargetControl: TControl;
+  const NewWidth, NewHeight: Integer;
+  const WidthRatio: Single = 1.0;
+  const HeightRatio: Single = 1.0
+);
+begin
+
+  TargetControl.Width := Trunc(Min(WidthRatio, 1.0) * NewWidth);
+  TargetControl.Height := Trunc(Min(HeightRatio, 1.0) * NewHeight);
+  
+end;
+
+function GetMemoTextHeight(Memo: TMemo): Integer;
+var Canvas: TCanvas;
+    CustomForm: TForm;
+begin
+
+  Canvas := GetAncestorCanvasFor(Memo);
+
+  if not Assigned(Canvas) then begin
+
+    CustomForm := TForm.Create(nil);
+
+    Canvas := CustomForm.Canvas;
+
+  end
+
+  else CustomForm := nil;
+  
+  try
+
+    Result := Canvas.TextHeight('Wq') * Memo.Lines.Count;
+
+  finally
+
+    FreeAndNil(CustomForm);
+
+  end;
+  
+end;
+
+function GetMemoTextWidth(Memo: TMemo): Integer;
+var Canvas: TCanvas;
+    CustomForm: TForm;
+begin
+
+  Canvas := GetAncestorCanvasFor(Memo);
+
+  if not Assigned(Canvas) then begin
+
+    CustomForm := TForm.Create(nil);
+
+    Canvas := CustomForm.Canvas;
+
+  end
+
+  else CustomForm := nil;
+
+  try 
+
+    Result := Canvas.TextWidth(Memo.Text);
+
+  finally
+
+    FreeAndNil(CustomForm);
+
+  end;
+  
+end;
+
+end.

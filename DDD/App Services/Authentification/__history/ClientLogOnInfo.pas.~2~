@@ -1,0 +1,22 @@
+unit ClientLogOnInfo;
+
+interface
+
+type
+
+  TClientInfo = class
+
+  end;
+
+  TUserLogOnInfo = class (TClientInfo)
+
+    public
+
+      UserName: String;
+      Password: String;
+
+  end;
+  
+implementation
+
+end.

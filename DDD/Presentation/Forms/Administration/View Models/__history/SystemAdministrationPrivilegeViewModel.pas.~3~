@@ -1,0 +1,28 @@
+unit SystemAdministrationPrivilegeViewModel;
+
+interface
+
+uses
+
+  SectionRecordViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationPrivilegeViewModel = class (TSectionRecordViewModel)
+
+    public
+
+      property PrivilegeId: Variant
+      read GetPrivilegeId write SetPrivilegeId;
+
+      property TopLevelPrivilegeId: Variant
+      read GetTopLevelPrivilegeId write SetTopLevelPrivilegeId;
+
+    
+  end;
+
+implementation
+
+end.

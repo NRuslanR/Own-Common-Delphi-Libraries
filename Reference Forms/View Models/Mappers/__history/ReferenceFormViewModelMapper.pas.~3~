@@ -1,0 +1,19 @@
+unit ReferenceFormViewModelMapper;
+
+interface
+
+uses
+
+  ReferenceFormViewModel,
+  EntitySetHolder;
+
+type
+
+  IReferenceFormViewModelMapper = interface
+
+    
+  end;
+
+implementation
+
+end.

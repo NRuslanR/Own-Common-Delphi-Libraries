@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.05.25 13:05:03.062.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Package1.bdsproj=C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\IntervalEditPackage.bdsproj</Transaction>
+    <Transaction>2018.05.25 13:41:42.066.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\IntervalEditUnit.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\IntervalEditBoxUnit.pas</Transaction>
+    <Transaction>2018.05.25 13:50:47.013.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit6.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Unit6.pas</Transaction>
+    <Transaction>2018.05.25 13:50:47.013.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit6.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Unit6.dfm</Transaction>
+    <Transaction>2018.05.25 16:32:16.149.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\IntervalEditPackage.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\IntervalEditPackage.bdsproj</Transaction>
+    <Transaction>2018.05.25 16:44:44.463.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Unit6.pas=</Transaction>
+    <Transaction>2018.05.25 16:44:44.463.dfm,D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Unit6.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,44 @@
+unit SystemAdministrationFormViewModel;
+
+interface
+
+uses
+
+  SectionStackedFormViewModel,
+  SectionRecordViewModel,
+  SystemAdministrationPrivilegeViewModel,
+  SystemAdministrationPrivilegeSetHolder,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAdministrationFormViewModel = class (TSectionStackedFormViewModel)
+
+    private
+
+      
+    protected
+
+      function GetSectionRecordViewModelClass: TSectionRecordViewModelClass; override;
+
+    public
+
+      property SystemAdministrationPrivilegeSetHolder: TSystemAdministrationPrivilegeSetHolder
+      read GetSystemAdministrationPrivilegeSetHolder
+      write SetSystemAdministrationPrivilegeSetHolder;
+      
+  end;
+
+implementation
+
+{ TSystemAdministrationFormViewModel }
+
+function TSystemAdministrationFormViewModel.GetSectionRecordViewModelClass: TSectionRecordViewModelClass;
+begin
+
+  Result := TSystemAdministrationPrivilegeViewModel;
+  
+end;
+
+end.

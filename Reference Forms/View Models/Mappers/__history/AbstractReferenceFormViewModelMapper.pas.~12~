@@ -1,0 +1,137 @@
+unit AbstractReferenceFormViewModelMapper;
+
+interface
+
+uses
+
+  ReferenceFormViewModelMapper,
+  ReferenceFormViewModel,
+  ReferenceFormDataSetHolder,
+  EntitySetHolder,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractReferenceFormViewModelMapper = class abstract (TInterfacedObject, IReferenceFormViewModelMapper)
+
+    protected
+
+      function GetReferenceFormViewModelClass: TReferenceFormViewModelClass; virtual; abstract;
+      function GetReferenceFormDataSetHolderClass: TReferenceFormDataSetHolderClass; virtual; abstract;
+      function GetReferenceFormDataSetFieldDefsClass: TReferenceFormDataSetFieldDefsClass; virtual; abstract;
+
+    protected
+
+      procedure FillReferenceFormViewModelFrom(
+        ReferenceFormViewModel: TReferenceFormViewModel;
+        EntitySetHolder: TEntitySetHolder
+      ); virtual;
+
+      procedure FillReferenceFormDataSetFieldDefsFrom(
+        ReferenceFormDataSetFieldDefs: TReferenceFormDataSetFieldDefs;
+        EntitySetFieldDefs: TEntitySetFieldDefs
+      ); virtual;
+
+    protected
+
+      function MapReferenceFormDataSetHolderFrom(
+        EntitySetHolder: TEntitySetHolder
+      ): TReferenceFormDataSetHolder; virtual;
+      
+    public
+
+      function MapReferenceFormViewModelFrom(
+        EntitySetHolder: TEntitySetHolder
+      ): TReferenceFormViewModel; virtual;
+      
+  end;
+  
+implementation
+
+{ TAbstractReferenceFormViewModelMapper }
+
+procedure TAbstractReferenceFormViewModelMapper.FillReferenceFormDataSetFieldDefsFrom(
+  ReferenceFormDataSetFieldDefs: TReferenceFormDataSetFieldDefs;
+  EntitySetFieldDefs: TEntitySetFieldDefs);
+begin
+
+  ReferenceFormDataSetFieldDefs.RecordIdFieldName := EntitySetFieldDefs.RecordIdFieldName;
+  ReferenceFormDataSetFieldDefs.IsRecordIdGeneratedFieldName := EntitySetFieldDefs.IsRecordIdGeneratedFieldName;
+  ReferenceFormDataSetFieldDefs.CanBeChangedFieldName := EntitySetFieldDefs.CanBeChangedFieldName;
+  ReferenceFormDataSetFieldDefs.CanBeRemovedFieldName := EntitySetFieldDefs.CanBeRemovedFieldName;
+
+end;
+
+procedure TAbstractReferenceFormViewModelMapper.FillReferenceFormViewModelFrom(
+  ReferenceFormViewModel: TReferenceFormViewModel;
+  EntitySetHolder: TEntitySetHolder);
+begin
+
+  ReferenceFormViewModel.ViewRecordsAllowed := EntitySetHolder.ViewAllowed;
+  ReferenceFormViewModel.AddingRecordAllowed := EntitySetHolder.AddingAllowed;
+  ReferenceFormViewModel.EditingRecordAllowed := EntitySetHolder.ModificationAllowed;
+  ReferenceFormViewModel.RemovingRecordAllowed := EntitySetHolder.RemovingAllowed;
+
+  ReferenceFormViewModel.DataSetHolder :=
+    MapReferenceFormDataSetHolderFrom(EntitySetHolder);
+    
+end;
+
+function TAbstractReferenceFormViewModelMapper.MapReferenceFormDataSetHolderFrom(
+  EntitySetHolder: TEntitySetHolder): TReferenceFormDataSetHolder;
+begin
+
+  Result := GetReferenceFormDataSetHolderClass.Create;
+
+  try
+
+    Result.DataSet := EntitySetHolder.DataSet;
+
+    Result.FieldDefs := GetReferenceFormDataSetFieldDefsClass.Create;
+    
+    FillReferenceFormDataSetFieldDefsFrom(
+      Result.FieldDefs, EntitySetHolder.FieldDefs
+    );
+
+    EntitySetHolder.RecordIdGenerator
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+      
+    end;
+
+  end;
+
+end;
+
+function TAbstractReferenceFormViewModelMapper.MapReferenceFormViewModelFrom(
+  EntitySetHolder: TEntitySetHolder): TReferenceFormViewModel;
+begin
+
+  Result := GetReferenceFormViewModelClass.Create;
+
+  try
+
+    FillReferenceFormViewModelFrom(Result, EntitySetHolder);
+    
+  except
+
+    on E: Exception do begin
+
+      FreeAndNil(E);
+
+      raise;
+      
+    end;
+
+  end;
+
+end;
+
+end.

@@ -1,0 +1,45 @@
+object frmSMEProcess: TfrmSMEProcess
+  Left = 210
+  Top = 192
+  BorderIcons = [biSystemMenu]
+  ClientHeight = 87
+  ClientWidth = 442
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object lblStatus: TLabel
+Position.Point = '(8,56)'
+    Width = 339
+    Height = 13
+WordWrap = False
+AutoSize = False
+  end
+  object Bevel: TPanel
+Position.Point = '(0,0)'
+    Width = 442
+    Height = 87
+    TabOrder = 2
+  end
+  object ProgressBar: TProgressBar
+Position.Point = '(10,70)'
+    Width = 337
+    Height = 10
+    Min = 0
+    Max = 100
+    Value = 34
+    TabOrder = 0
+  end
+  object btnCancel: TButton
+Position.Point = '(355,55)'
+    Width = 75
+    Height = 25
+    Cursor = crArrow
+    Cancel = True
+    Text = 'Cancel'
+    ModalResult = 2
+    TabOrder = 1
+    OnClick = btnCancelClick
+  end
+end

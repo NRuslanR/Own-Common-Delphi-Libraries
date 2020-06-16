@@ -1,0 +1,20 @@
+unit ConnectionFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  Classes;
+
+type
+
+  IConnectionFactory = interface
+
+    function CreateConnection(ConnectionInfo: TConnectionInfo): TObject;
+    
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,17 @@
+unit AbstractApplicationServiceRegistries;
+
+interface
+
+uses
+
+  ApplicationServiceRegistries,
+  SysUtils,
+  Classes;
+
+type
+
+  
+
+implementation
+
+end.

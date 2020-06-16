@@ -1,0 +1,245 @@
+unit AbstractFormController;
+
+interface
+
+uses
+
+  AbstractController,
+  Disposable,
+  Controls,
+  Forms,
+  SysUtils,
+  Classes;
+
+type
+
+  TFormData = class (TInterfacedObject, IDisposable)
+
+    public
+
+      Owner: TComponent;
+      Parent: TWinControl;
+
+      constructor Create(Owner: TComponent; Parent: TWinControl = nil);
+
+  end;
+
+  TAbstractFormController = class abstract (TAbstractController)
+
+    private
+
+      procedure SetForm(const Value: TForm);
+
+      procedure DestroyCurrentForm;
+      
+    protected
+
+      FForm: TForm;
+
+      procedure SubscribeOnFormEvents(Form: TForm); virtual;
+      procedure CustomizeForm(Form: TForm; FormData: TFormData); virtual;
+
+      function GetFormClass: TFormClass; virtual; abstract;
+
+    protected
+
+      procedure OnFormDestroyHandler(Sender: TObject); virtual;
+      
+    protected
+
+      procedure OnAfterFormCreated(Form: TForm); virtual;
+
+    public
+
+      destructor Destroy; override;
+
+      function CreateForm(InitialFormData: TFormData): TForm; overload;
+      function CreateForm(Owner: TComponent): TForm; overload;
+
+      procedure ShowForm(InitialFormData: TFormData); overload;
+      procedure ShowForm(Owner: TComponent); overload;
+
+      procedure ShowFormAsModal(InitialFormData: TFormData); overload;
+      procedure ShowFormAsModal(Owner: TComponent); overload;
+
+    published
+
+      property CurrentForm: TForm read FForm write SetForm;
+
+  end;
+
+implementation
+
+uses
+
+  AuxDebugFunctionsUnit;
+
+{ TAbstractFormController }
+
+function TAbstractFormController.CreateForm(InitialFormData: TFormData): TForm;
+var Disposable: IDisposable;
+begin
+
+  Result := nil;
+  
+  Disposable := InitialFormData;
+
+  Screen.Cursor := crHourGlass;
+
+  try
+
+    try
+
+      Result := GetFormClass.Create(InitialFormData.Owner);
+
+      CurrentForm := Result;
+      
+      SubscribeOnFormEvents(Result);
+      CustomizeForm(Result, InitialFormData);
+
+      OnAfterFormCreated(CurrentForm);
+
+    except
+
+      on e: Exception do begin
+
+        FreeAndNil(Result);
+
+        FForm := nil;
+        
+        raise;
+
+      end;
+
+    end;
+    
+  finally
+
+    Screen.Cursor := crDefault;
+    
+  end;
+
+end;
+
+function TAbstractFormController.CreateForm(Owner: TComponent): TForm;
+begin
+
+  Result := CreateForm(TFormData.Create(Owner));
+  
+end;
+
+procedure TAbstractFormController.CustomizeForm(Form: TForm; FormData: TFormData);
+begin
+
+  Form.Parent := FormData.Parent;
+
+end;
+
+destructor TAbstractFormController.Destroy;
+var CurrentFormOwner: TComponent;
+begin
+
+  DestroyCurrentForm;
+
+  inherited;
+
+end;
+
+procedure TAbstractFormController.OnAfterFormCreated(Form: TForm);
+begin
+
+end;
+
+procedure TAbstractFormController.OnFormDestroyHandler(Sender: TObject);
+begin
+
+  FForm := nil;
+
+  DebugOutput(Sender.ClassName);
+  
+end;
+
+procedure TAbstractFormController.SetForm(const Value: TForm);
+begin
+
+  if FForm = Value then Exit;
+
+
+  FreeAndNil(FForm);
+
+  FForm := Value;
+
+end;
+
+procedure TAbstractFormController.ShowForm(InitialFormData: TFormData);
+var FreeFormData: IDisposable;
+begin
+
+  FreeFormData := InitialFormData;
+
+  with CreateForm(InitialFormData) do begin
+
+    Show;
+
+  end;
+
+end;
+
+procedure TAbstractFormController.ShowForm(Owner: TComponent);
+begin
+
+  ShowForm(TFormData.Create(Owner));
+  
+end;
+
+procedure TAbstractFormController.ShowFormAsModal(Owner: TComponent);
+begin
+
+  ShowFormAsModal(TFormData.Create(Owner));
+  
+end;
+
+procedure TAbstractFormController.ShowFormAsModal(InitialFormData: TFormData);
+var Disposable: IDisposable;
+begin
+
+  Disposable := InitialFormData;
+
+  with CreateForm(InitialFormData) do begin
+
+    try
+
+      ShowModal;
+
+    finally
+
+      Free;
+
+      FForm := nil;
+
+    end;
+
+  end;
+
+end;
+
+procedure TAbstractFormController.SubscribeOnFormEvents(Form: TForm);
+begin
+
+  Form.OnDestroy := OnFormDestroyHandler;
+
+end;
+
+{ TFormData }
+
+constructor TFormData.Create(Owner: TComponent; Parent: TWinControl);
+begin
+
+  inherited Create;
+
+  Self.Owner := Owner;
+  Self.Parent := Parent;
+
+end;
+
+end.

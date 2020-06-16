@@ -1,0 +1,18 @@
+unit TableData;
+
+interface
+
+uses
+
+  SysUtils;
+
+type
+
+  ITableData = interface
+
+
+  end;
+
+implementation
+
+end.

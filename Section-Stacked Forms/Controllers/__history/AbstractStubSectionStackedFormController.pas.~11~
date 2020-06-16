@@ -1,0 +1,89 @@
+unit AbstractStubSectionStackedFormController;
+
+interface
+
+uses
+
+  AbstractSectionStackedFormController,
+  unSectionStackedForm,
+  SectionStackedFormViewModel,
+  SectionRecordViewModel,
+  SectionSetHolder,
+  AbstractFormController,
+  FormEvents,
+  Forms,
+  DB,
+  Controls,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractStubSectionStackedFormController = class (TAbstractSectionStackedFormController)
+
+    protected
+
+      procedure CustomizeForm(Form: TForm; FormData: TFormData); override;
+      
+    protected
+
+    protected
+
+      function CreateTestViewModel: TSectionStackedFormViewModel; virtual;
+
+      procedure CreateSectionSetFieldDefs(
+        SectionSet: TDataSet;
+        SectionSetFieldDefs: TSectionSetFieldDefs
+      );
+
+      procedure InitializeSectionSetHolder(SectionSetHolder: TSectionSetHolder); virtual; abstract;
+      
+  end;
+  
+
+implementation
+
+uses
+
+  unStubSectionStackedFormDataModule,
+  StdCtrls,
+  ComCtrls;
+  
+{ TAbstractStubSectionStackedFormController }
+
+function TAbstractStubSectionStackedFormController.CreateTestViewModel: TSectionStackedFormViewModel;
+begin
+
+  Result := TSectionStackedFormViewModel.Create;
+
+  Result.SectionSetHolder :=
+    TSectionSetHolder.CreateFrom(
+      TStubSectionStackedFormDataModule.Create(Application).TestSectionMemData
+    );
+
+  Result.SectionSetHolder.FieldDefs := TSectionSetFieldDefs.Create;
+
+  CreateSectionSetFieldDefs(
+    Result.SectionSetHolder.DataSet, Result.SectionSetHolder.FieldDefs
+  );
+  
+  InitializeSectionSetHolder(Result.SectionSetHolder);
+  
+end;
+
+procedure TAbstractStubSectionStackedFormController.CustomizeForm(
+  Form: TForm;
+  FormData: TFormData
+);
+var SectionStackedForm: TSectionStackedForm;
+begin
+
+  inherited;
+
+  SectionStackedForm := Form as TSectionStackedForm;
+
+  SectionStackedForm.ViewModel := CreateTestViewModel;
+
+end;
+
+end.

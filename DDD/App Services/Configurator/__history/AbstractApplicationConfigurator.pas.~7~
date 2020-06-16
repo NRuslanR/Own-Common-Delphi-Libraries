@@ -1,0 +1,34 @@
+unit AbstractApplicationConfigurator;
+
+interface
+
+uses
+
+  ApplicationConfigurator,
+  ApplicationServiceRegistries,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractApplicationConfigurator =
+    class abstract (TInterfacedObject, IApplicationConfigurator)
+
+      public
+
+        function GetApplicationServiceRegistries: IApplicationServiceRegistries; virtual; abstract;
+
+        procedure SetApplicationServiceRegistries(
+          Value: IApplicationServiceRegistries
+        ); virtual; abstract;
+
+        property ServiceRegistries: IApplicationServiceRegistries
+        read GetApplicationServiceRegistries
+        write SetApplicationServiceRegistries;
+
+        
+    end;
+
+implementation
+
+end.

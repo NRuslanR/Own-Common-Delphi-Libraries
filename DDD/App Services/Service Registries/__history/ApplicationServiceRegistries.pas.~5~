@@ -1,0 +1,25 @@
+unit ApplicationServiceRegistries;
+
+interface
+
+uses
+
+  ApplicationServiceRegistry;
+  
+type
+
+  IApplicationServiceRegistries = interface
+
+    procedure RegisterApplicationServiceRegistry(
+      ApplicationServiceRegistryClass: TClass;
+      ApplicationServiceRegistry: IApplicationServiceRegistry
+    );
+
+    function GetApplicationServiceRegistry(
+      ApplicationServiceRegistryClass: TClass
+    ): IApplicationServiceRegistry;
+    
+  end;
+implementation
+
+end.

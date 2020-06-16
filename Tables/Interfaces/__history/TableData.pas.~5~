@@ -1,0 +1,23 @@
+unit TableData;
+
+interface
+
+uses
+
+  SysUtils;
+
+type
+
+  ITableData = interface
+
+    function RowCount: Integer;
+    function ColumnCount: Integer;
+
+    property Cells[RowIndex, ColumnIndex: Integer]: Variant
+    read GetCell write SetCell;
+    
+  end;
+
+implementation
+
+end.

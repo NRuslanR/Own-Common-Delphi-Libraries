@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.07.09 15:11:24.149.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit15.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\TestFormUnit.pas</Transaction>
+    <Transaction>2018.07.09 15:11:24.149.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit15.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\TestFormUnit.dfm</Transaction>
+    <Transaction>2018.07.09 15:11:33.852.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project3.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\ValidateCheckListBoxProject.bdsproj</Transaction>
+    <Transaction>2018.07.09 15:15:14.180.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\ValidateCheckListBoxUnit.pas</Transaction>
+    <Transaction>2018.07.09 15:21:49.118.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\ValidateCheckListBox\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Validate Controls\ValidateBaseInterfaceUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

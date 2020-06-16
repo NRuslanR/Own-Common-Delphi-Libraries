@@ -1,0 +1,21 @@
+unit AbstractController;
+
+interface
+
+uses
+
+  Controller,
+  EventBus,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractController = class abstract (TInterfacedObject, IController)
+
+
+  end;
+
+implementation
+
+end.

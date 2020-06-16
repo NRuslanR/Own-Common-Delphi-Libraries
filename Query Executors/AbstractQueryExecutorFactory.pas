@@ -1,0 +1,54 @@
+unit AbstractQueryExecutorFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  QueryExecutor,
+  ConnectionFactory,
+  QueryExecutorFactory,
+  SysUtils;
+
+type
+
+  TAbstractQueryExecutorFactory =
+    class abstract (TInterfacedObject, IQueryExecutorFactory)
+
+      protected
+
+        FConnectionFactory: IConnectionFactory;
+
+      public
+
+        destructor Destroy; override;
+
+        constructor Create(ConnectionFactory: IConnectionFactory);
+
+        function CreateQueryExecutor(ConnectionInfo: TConnectionInfo): IQueryExecutor; overload; virtual; abstract;
+        function CreateQueryExecutor(Connection: TObject): IQueryExecutor; overload; virtual; abstract;
+
+    end;
+
+implementation
+
+{ TAbstractQueryExecutorFactory }
+
+constructor TAbstractQueryExecutorFactory.Create(
+  ConnectionFactory: IConnectionFactory);
+begin
+
+  inherited Create;
+
+  FConnectionFactory := ConnectionFactory;
+  
+end;
+
+destructor TAbstractQueryExecutorFactory.Destroy;
+begin
+  
+  inherited;
+
+end;
+
+end.

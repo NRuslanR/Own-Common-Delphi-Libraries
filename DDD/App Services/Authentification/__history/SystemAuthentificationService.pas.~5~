@@ -1,0 +1,25 @@
+unit SystemAuthentificationService;
+
+interface
+
+uses
+
+  ClientLogOnInfo,
+  ServiceInfo,
+  ClientAccount,
+  SysUtils,
+  Classes;
+
+type
+
+  ISystemAuthentificationService = interface
+
+    function Authentificate(
+      ClientLogOnInfo: TClientLogOnInfo;
+      
+
+  end;
+  
+implementation
+
+end.

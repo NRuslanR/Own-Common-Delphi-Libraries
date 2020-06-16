@@ -1,0 +1,214 @@
+; This contents file was created with HelpScribble 5.2.0
+; Registered to: 
+
+:BASE smexport.hlp
+:TITLE SMExport suite for Delphi/C++Builder
+:LINK DEL5VCL.HLP
+1 Introduction to SMExport suite=Scribble15
+1 How to register own copy=Scribble17
+1 TSMEColumnTitle object
+2 TSMEColumnTitle object Reference=Scribble30
+2 Properties
+3 Alignment=Scribble70
+3 Caption=Scribble100
+3 Color=Scribble130
+3 Font=Scribble160
+2 Methods
+3 Create=Scribble190
+1 TSMEColumn component
+2 TSMEColumn component Reference=Scribble220
+2 Properties
+3 Alignment=Scribble280
+3 Color=Scribble310
+3 FieldName=Scribble340
+3 Font=Scribble370
+3 Title=Scribble400
+3 Visible=Scribble430
+3 Width=Scribble460
+2 Methods
+1 TSMEColumns component
+2 TSMEColumns component Reference=Scribble490
+2 Properties
+3 Items=Scribble550
+3 SMEControl=Scribble580
+2 Methods
+3 Create=Scribble610
+3 Add=Scribble640
+1 TSMExportBaseComponent component
+2 TSMExportBaseComponent component Reference=Scribble670
+2 Properties
+3 About=Scribble740
+3 ActionAfterExport=Scribble770
+3 AddTitle=Scribble800
+3 AnimatedStatus=Scribble830
+3 BlankIfZero=Scribble860
+3 CharacterSet=Scribble890
+3 Columns=Scribble920
+3 ColumnSource=Scribble950
+3 DataFormats=Scribble5740
+3 DataSet=Scribble980
+3 DBGrid=Scribble1010
+3 ExportedRecordCount=Scribble1040
+3 FileName=Scribble1070
+3 Fixed=Scribble1100
+3 IsWWDBGrid=Scribble1130
+3 KeyGenerator=Scribble1160
+3 Layout=Scribble5840
+3 OnGetFileName=Scribble5920
+3 OnGetNextSelected=Scribble1190
+3 OnGetSelectedCount=Scribble1220
+3 Options=Scribble1250
+3 RecordSeparator=Scribble6040
+3 RightToLeft=Scribble1280
+3 RowsPerFile=Scribble5960
+3 SelectedRecord=Scribble1310
+3 Separator=Scribble1340
+3 TableName=Scribble1370
+3 TextQualifier=Scribble6000
+2 Methods
+3 Extension=Scribble1400
+3 GetDS=Scribble1430
+3 AboutSME=Scribble1460
+3 Execute=Scribble1490
+3 LoadSpecification=Scribble1520
+3 SaveSpecification=Scribble1550
+2 Events
+3 OnAfterExecute=Scribble1580
+3 OnBeforeExecute=Scribble1610
+3 OnGetCellParams=Scribble1640
+3 OnGetLanguageString=Scribble1670
+1 TSMExportToCellFile component
+2 TSMExportToCellFile component Reference=Scribble1960
+2 Properties
+2 Events
+1 TSMExportToClipboard component
+2 TSMExportToClipboard component Reference=Scribble2040
+2 Properties
+3 Separator=Scribble2110
+2 Methods
+2 Events
+1 TSMExportToText component
+2 TSMExportToText component Reference=Scribble2160
+2 Properties
+2 Methods
+2 Events
+1 TSMExportToXLS component
+2 TSMExportToXLS component Reference=Scribble2250
+2 Methods
+1 TSMExportToWKS component
+2 TSMExportToWKS component Reference=Scribble2320
+2 Methods
+1 TSMExportToQuattro component
+2 TSMExportToQuattro component Reference=Scribble2390
+2 Methods
+1 TSMExportToDIF component
+2 TSMExportToDIF component Reference=Scribble2460
+2 Methods
+1 TSMExportToSYLK component
+2 TSMExportToSYLK component Reference=Scribble2530
+2 Methods
+1 TSMExportToSQL component
+2 TSMExportToSQL component Reference=Scribble200
+2 Properties
+3 TableName=Scribble2670
+2 Methods
+2 Events
+1 TSMExportToDataset component
+2 TSMExportToDataset component Reference=Scribble2300
+2 Properties
+3 Destination=Scribble2400
+3 Mappings=Scribble2405
+3 Mode=Scribble2500
+2 Methods
+2 Events
+3 OnErrorEvent=Scribble2505
+1 TSMExportToHTML component
+2 TSMExportToHTML component Reference=Scribble5000
+2 Properties
+3 HTMLPattern=Scribble5100
+2 Methods
+2 Events
+1 TSMExportToExcel component
+2 TSMExportToExcel component Reference=Scribble6800
+2 Properties
+2 Methods
+2 Events
+1 TSMExportToWord component
+2 TSMExportToWord component Reference=Scribble7400
+2 Properties
+2 Methods
+2 Events
+1 TSMExportToAccess component
+2 TSMExportToAccess component Reference=Scribble8000
+2 Properties
+3 TableName=Scribble8100
+2 Methods
+2 Events
+1 TSMExportToRTF component
+2 TSMExportToRTF component Reference=Scribble12900
+2 Properties
+2 Methods
+2 Events
+1 TSMExportToXML component
+2 TSMExportToXML component Reference=Scribble17100
+2 Properties
+3 Format=Scribble3530
+2 Methods
+1 TSMExportToBDE component
+2 TSMExportToBDE component Reference=Scribble3600
+2 Properties
+3 TableType=Scribble3660
+2 Methods
+1 TSMExportMonitor component
+2 TSMExportMonitor component Reference=Scribble3690
+2 Properties
+3 Formats=Scribble3760
+3 TableType=Scribble3790
+2 Methods
+3 Execute=Scribble3820
+3 ExportDataSet=Scribble3850
+3 ExportToAccess=Scribble3880
+3 ExportToCellFile=Scribble3910
+3 ExportToClipboard=Scribble3940
+3 ExportToExcel=Scribble3970
+3 ExportToHTML=Scribble4000
+3 ExportToRTF=Scribble4030
+3 ExportToSQL=Scribble4060
+3 ExportToText=Scribble4090
+3 ExportToWord=Scribble4120
+3 ExportToXML=Scribble4150
+2 Events
+1 TfrmSMEWizard form
+2 TfrmSMEWizard form Reference=Scribble4230
+2 Methods
+3 btnCancelClick=Scribble4280
+3 btnFileNameClick=Scribble4310
+3 btnNextClick=Scribble4340
+3 btnPrevClick=Scribble4370
+3 btnSpecsClick=Scribble4400
+3 btnTitleFontClick=Scribble4430
+3 cbTableNamesDropDown=Scribble4460
+3 clbFieldsClick=Scribble4490
+3 clbFieldsDragDrop=Scribble4520
+3 clbFieldsDragOver=Scribble4550
+3 edFileNameChange=Scribble4580
+3 edSymbolChange=Scribble4610
+3 FormActivate=Scribble4640
+3 FormCloseQuery=Scribble4670
+3 FormCreate=Scribble4700
+3 PropertyExit=Scribble4730
+3 rgSeparatorClick=Scribble4760
+3 rgTableTypeClick=Scribble4790
+3 SMColorsCBTitleDrawItem=Scribble4820
+1 TSMEWizardDlg component
+2 TSMEWizardDlg component Reference=Scribble4850
+2 Properties
+3 Formats=Scribble4920
+3 Picture=Scribble4950
+3 TableType=Scribble4980
+3 Title=Scribble5010
+2 Methods
+3 Execute=Scribble5040
+3 ExecuteWithoutDialog=Scribble5070
+2 Events
+3 OnGetSpecifications=Scribble5100

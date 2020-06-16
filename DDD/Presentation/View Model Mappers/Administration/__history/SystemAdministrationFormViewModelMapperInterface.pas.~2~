@@ -1,0 +1,18 @@
+unit SystemAdministrationFormViewModelMapperInterface;
+
+interface
+
+uses
+
+  SystemAdministrationPrivileges,
+  SystemAdministrationFormViewModel;
+
+type
+
+  ISystemAdministrationFormViewModelMapper = interface
+
+
+  end;
+implementation
+
+end.

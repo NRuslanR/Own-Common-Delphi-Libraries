@@ -1,0 +1,20 @@
+unit AbstractApplicationServiceRegistry;
+
+interface
+
+uses
+
+  ApplicationServiceRegistry,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractApplicationServiceRegistry = class (TInterfacedObject, IApplicationServiceRegistry)
+
+  
+  end;
+  
+implementation
+
+end.

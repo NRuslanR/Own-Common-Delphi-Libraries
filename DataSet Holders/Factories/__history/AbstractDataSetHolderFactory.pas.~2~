@@ -1,0 +1,23 @@
+unit AbstractDataSetHolderFactory;
+
+interface
+
+uses
+
+  AbstractDataSetHolder,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractDataSetHolderFactory = class abstract
+
+    public
+
+      function CreateDataSetHolder: TAbstractDataSetHolder;
+      
+  end;
+
+implementation
+
+end.

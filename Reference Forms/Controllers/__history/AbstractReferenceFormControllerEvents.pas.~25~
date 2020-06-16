@@ -1,0 +1,117 @@
+unit AbstractReferenceFormControllerEvents;
+
+interface
+
+uses
+
+  Event,
+  SysUtils,
+  ReferenceFormRecordViewModel,
+  Classes;
+  
+type
+
+  TReferenceRecordChooseRequestedEvent = class (TEvent)
+
+  end;
+  
+  TAddingReferenceRecordRequestedEvent = class (TEvent)
+
+  end;
+
+  TAddingReferenceRecordRequestedEventClass = class of TAddingReferenceRecordRequestedEvent;
+
+  TChangingReferenceRecordRequestedEvent = class (TEvent)
+
+    private
+
+      FRecordViewModel: TReferenceFormRecordViewModel;
+
+      procedure SetRecordViewModel(
+        Value: TReferenceFormRecordViewModel
+      );
+
+    public
+
+      constructor Create(
+        RecordViewModel: TReferenceFormRecordViewModel
+      );
+
+      property RecordViewModel:TReferenceFormRecordViewModel
+      read FRecordViewModel write SetRecordViewModel;
+
+  end;
+
+  TChangingReferenceRecordRequestedEventClass = class of TChangingReferenceRecordRequestedEvent;
+
+  TRemovingReferenceRecordRequestedEvent = class (TEvent)
+
+    private
+
+      FRecordViewModel: TReferenceFormRecordViewModel;
+
+      procedure SetRecordViewModel(
+        Value: TReferenceFormRecordViewModel
+      );
+
+    public
+
+      constructor Create(
+        RecordViewModel: TReferenceFormRecordViewModel
+      );
+
+      property RecordViewModel: TReferenceFormRecordViewModel
+      read FRecordViewModel write SetRecordViewModel;
+
+  end;
+
+  TRemovingReferenceRecordRequestedEventClass = class of TRemovingReferenceRecordRequestedEvent;
+
+implementation
+
+{ TChangingReferenceRecordRequestedEvent }
+
+constructor TChangingReferenceRecordRequestedEvent.Create(
+  RecordViewModel: TReferenceFormRecordViewModel
+);
+begin
+
+  inherited Create;
+
+  Self.RecordViewModel := RecordViewModel;
+
+end;
+
+procedure TChangingReferenceRecordRequestedEvent.SetRecordViewModel(
+  Value: TReferenceFormRecordViewModel);
+begin
+
+  FreeAndNil(FRecordViewModel);
+
+  FRecordViewModel := Value;
+
+end;
+
+{ TRemovingReferenceRecordRequestedEvent }
+
+constructor TRemovingReferenceRecordRequestedEvent.Create(
+  RecordViewModel: TReferenceFormRecordViewModel);
+begin
+
+  inherited Create;
+
+  Self.RecordViewModel := RecordViewModel;
+
+end;
+
+procedure TRemovingReferenceRecordRequestedEvent.SetRecordViewModel(
+  Value: TReferenceFormRecordViewModel);
+begin
+
+  FreeAndNil(FRecordViewModel);
+
+  FRecordViewModel := Value;
+
+end;
+
+end.

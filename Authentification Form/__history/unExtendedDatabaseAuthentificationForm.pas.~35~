@@ -1,0 +1,104 @@
+unit unExtendedDatabaseAuthentificationForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDatabaseAuthentificationForm, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Menus, StdCtrls, cxButtons, ValidateEditUnit,
+  RegExprValidateEditUnit, Spin, ExtCtrls, ImgList, pngimage, cxClasses, Buttons,
+  ActnList, ExtendedDatabaseAuthentificationFormViewModel,
+  ValidateComboBoxDesign, SystemAuthentificationFormViewModel;
+
+type
+  TExtendedDatabaseAuthentificationForm = class(TDatabaseAuthentificationForm)
+    ServerAddressLabel: TLabel;
+    ServerAddressComboBox: TValidateComboBox;
+    ServerPortLabel: TLabel;
+    ServerPortEdit: TSpinEdit;
+  private
+
+    function GetExtendedDatabaseAuthentificationFormViewModel:
+      TExtendedDatabaseAuthentificationFormViewModel;
+
+    procedure SetExtendedDatabaseAuthentificationFormViewModel(
+      const Value: TExtendedDatabaseAuthentificationFormViewModel
+    );
+
+  protected
+
+    procedure FillControlsByViewModel(ViewModel: TSystemAuthentificationFormViewModel); override;
+    procedure FillViewModelByControls; override;
+
+  protected
+
+    function InputCredentialsDataFormatValid: Boolean; override;
+    
+  public
+
+    property ViewModel: TExtendedDatabaseAuthentificationFormViewModel
+    read GetExtendedDatabaseAuthentificationFormViewModel
+    write SetExtendedDatabaseAuthentificationFormViewModel;
+    
+  end;
+
+var
+  ExtendedDatabaseAuthentificationForm: TExtendedDatabaseAuthentificationForm;
+
+implementation
+
+{$R *.dfm}
+
+{ TExtendedDatabaseAuthentificationForm }
+
+procedure TExtendedDatabaseAuthentificationForm.FillControlsByViewModel(
+  ViewModel: TSystemAuthentificationFormViewModel);
+begin
+
+  inherited;
+
+  with ViewModel as TExtendedDatabaseAuthentificationFormViewModel do begin
+
+    ServerAddressComboBox.Items := Hosts;
+    ServerAddressComboBox.ItemIndex := ServerAddressComboBox.Items.IndexOf(CurrentHost);
+    ServerPortEdit.Value := Port;
+    
+  end;
+
+end;
+
+procedure TExtendedDatabaseAuthentificationForm.FillViewModelByControls;
+begin
+
+  inherited;
+
+  ViewModel.CurrentHost :=
+    ServerAddressComboBox.Items[ServerAddressComboBox.ItemIndex];
+
+  ViewModel.Hosts.Assign(ServerAddressComboBox.Items);
+
+  ViewModel.Port := ServerPortEdit.Value;
+  
+end;
+
+function TExtendedDatabaseAuthentificationForm.
+  GetExtendedDatabaseAuthentificationFormViewModel:
+    TExtendedDatabaseAuthentificationFormViewModel;
+begin
+
+  Result :=
+    TExtendedDatabaseAuthentificationFormViewModel(inherited ViewModel);
+  
+end;
+
+procedure TExtendedDatabaseAuthentificationForm.
+  SetExtendedDatabaseAuthentificationFormViewModel(
+    const Value: TExtendedDatabaseAuthentificationFormViewModel
+  );
+begin
+
+  SetViewModel(Value);
+
+end;
+
+end.

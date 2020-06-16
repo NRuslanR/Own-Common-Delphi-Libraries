@@ -1,0 +1,484 @@
+unit AbstractCardFormController;
+
+interface
+
+uses
+
+  AbstractFormController,
+  AbstractReferenceFormControllerEvents,
+  CardFormViewModelMapper,
+  AbstractCardFormControllerEvents,
+  Event,
+  EventHandler,
+  EventBus,
+  Forms,
+  Controls,
+  CardFormViewModel,
+  ReferenceFormRecordViewModel,
+  unCardForm,
+  SysUtils,
+  Classes;
+
+type
+
+  TCardFormData = class (TFormData)
+
+    private
+
+      FViewModel: TCardFormViewModel;
+
+      procedure SetViewModel(
+        const Value: TCardFormViewModel);
+
+    public
+
+      constructor Create(
+        ViewModel: TCardFormViewModel;
+        Owner: TComponent;
+        Parent: TWinControl = nil
+      );
+
+      property ViewModel: TCardFormViewModel
+      read FViewModel write SetViewModel;
+
+  end;
+
+  TAbstractCardFormController = class abstract (TAbstractFormController, IEventHandler)
+
+    protected
+
+      FCardFormViewModelMapper: ICardFormViewModelMapper;
+      
+    protected
+
+        procedure SubscribeOnEvents(EventBus: IEventBus); override;
+
+      protected
+
+        procedure SubscribeOnFormEvents(Form: TForm); override;
+        procedure CustomizeForm(Form: TForm; FormData: TFormData); override;
+
+      protected
+
+        procedure OnCardChangesApplyingRequestedEventHandler(
+          Sender: TObject;
+          var ViewModel: TCardFormViewModel;
+          var Success: Boolean
+        ); virtual;
+
+        function IsNewCardFormViewModel(ViewModel: TCardFormViewModel): Boolean; virtual;
+
+        function IsCardFormViewModelChanged(
+          CardForm: TCardForm;
+          CurrentCardFormViewModel: TCardFormViewModel
+        ): Boolean; virtual;
+
+      protected
+
+        procedure CreateNewCard(ViewModel: TCardFormViewModel; var Success: Boolean); virtual; abstract;
+        procedure ModifyCard(ViewModel: TCardFormViewModel; var Success: Boolean); virtual; abstract;
+        procedure RemoveCard(ViewModel: TCardFormViewModel); virtual; abstract;
+
+        function GetCardCreatedEventClass: TCardCreatedEventClass; virtual; abstract;
+        function GetCardModifiedEventClass: TCardModifiedEventClass; virtual; abstract;
+        function GetCardRemovedEventClass: TCardRemovedEventClass; virtual; abstract;
+        
+        function CreateCardCreatedEvent(ViewModel: TCardFormViewModel): TCardCreatedEvent; virtual;
+        function CreateCardModifiedEvent(ViewModel: TCardFormViewModel): TCardModifiedEvent; virtual;
+        function CreateCardRemovedEvent(ViewModel: TCardFormViewModel): TCardRemovedEvent; virtual;
+
+      protected
+
+        function CreateCardFormViewModelForChangingReferenceRecordRequestHandling(
+          ChangingReferenceRecordRequestedEvent: TChangingReferenceRecordRequestedEvent
+        ): TCardFormViewModel; virtual;
+
+        function CreateCardFormViewModelForAddingReferenceRecordRequestHandling(
+          AddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent
+        ): TCardFormViewModel; virtual;
+
+        function CreateCardFormViewModelFrom(
+          ReferenceFormRecordViewModel: TReferenceFormRecordViewModel
+        ): TCardFormViewModel;
+
+      protected
+
+        function GetAddingReferenceRecordRequestedEventClass: TAddingReferenceRecordRequestedEventClass; virtual; abstract;
+        function GetChangingReferenceRecordRequestedEventClass: TChangingReferenceRecordRequestedEventClass; virtual; abstract;
+        function GetRemovingReferenceRecordRequestedEventClass: TRemovingReferenceRecordRequestedEventClass; virtual;  abstract;
+
+      protected
+
+        procedure OnAddingReferenceRecordRequestedEventHandler(
+          AddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent
+        ); virtual;
+
+        procedure OnChangingReferenceRecordRequestedEventHandler(
+          ChangingReferenceRecordRequestedEvent: TChangingReferenceRecordRequestedEvent
+        ); virtual;
+
+        procedure OnRemovingReferenceRecordRequestedEventHandler(
+          RemovingReferenceRecordRequestedEvent: TRemovingReferenceRecordRequestedEvent
+        ); virtual;
+
+      protected
+
+        procedure OnAfterFormCreated(Form: TForm); override;
+
+      public
+
+        constructor Create(
+          CardFormViewModelMapper: ICardFormViewModelMapper;
+          EventBus: IEventBus
+        );
+        
+        destructor Destroy; override;
+
+        procedure Handle(Event: TEvent); virtual;
+
+        function GetSelf: TObject;
+
+  end;
+  
+implementation
+
+uses
+
+  Variants,
+  Disposable;
+  
+constructor TAbstractCardFormController.Create(
+  CardFormViewModelMapper: ICardFormViewModelMapper;
+  EventBus: IEventBus
+);
+begin
+
+  inherited Create(EventBus);
+
+  FCardFormViewModelMapper := CardFormViewModelMapper;
+
+end;
+
+function TAbstractCardFormController.CreateCardCreatedEvent(
+  ViewModel: TCardFormViewModel): TCardCreatedEvent;
+begin
+
+  Result := GetCardCreatedEventClass.Create(ViewModel);
+  
+end;
+
+function TAbstractCardFormController.
+  CreateCardFormViewModelForAddingReferenceRecordRequestHandling(
+    AddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent
+  ): TCardFormViewModel;
+begin
+
+  Result := FCardFormViewModelMapper.CreateEmptyCardFormViewModel;
+  
+end;
+
+function TAbstractCardFormController.
+  CreateCardFormViewModelForChangingReferenceRecordRequestHandling(
+    ChangingReferenceRecordRequestedEvent: TChangingReferenceRecordRequestedEvent
+  ): TCardFormViewModel;
+begin
+
+  Result :=
+    CreateCardFormViewModelFrom(
+      ChangingReferenceRecordRequestedEvent.RecordViewModel
+    );
+
+end;
+
+function TAbstractCardFormController.CreateCardFormViewModelFrom(
+  ReferenceFormRecordViewModel: TReferenceFormRecordViewModel): TCardFormViewModel;
+begin
+
+  Result :=
+    FCardFormViewModelMapper.MapCardFormViewModelFrom(
+      ReferenceFormRecordViewModel
+    );
+    
+end;
+
+function TAbstractCardFormController.CreateCardModifiedEvent(
+  ViewModel: TCardFormViewModel): TCardModifiedEvent;
+begin
+
+  Result := GetCardModifiedEventClass.Create(ViewModel);
+
+end;
+
+function TAbstractCardFormController.CreateCardRemovedEvent(
+  ViewModel: TCardFormViewModel): TCardRemovedEvent;
+begin
+
+  Result := GetCardRemovedEventClass.Create(ViewModel);
+  
+end;
+
+procedure TAbstractCardFormController.CustomizeForm(
+  Form: TForm;
+  FormData: TFormData
+);
+var CardForm: TCardForm;
+    CardFormData: TCardFormData;
+begin
+
+  if not (FormData is TCardFormData) then
+    Exit;
+
+  CardForm := Form as TCardForm;
+  CardFormData := FormData as TCardFormData;
+
+  CardForm.ViewModel := CardFormData.ViewModel;
+
+end;
+
+destructor TAbstractCardFormController.Destroy;
+begin
+
+  //ShowInfoMessage(0, ClassName + ' destroyed', 'M');
+
+  inherited;
+
+end;
+
+function TAbstractCardFormController.GetSelf: TObject;
+begin
+
+  Result := Self;
+
+end;
+
+procedure TAbstractCardFormController.Handle(
+  Event: TEvent);
+begin
+
+  if Event.ClassType.InheritsFrom(GetAddingReferenceRecordRequestedEventClass)
+  then begin
+
+    OnAddingReferenceRecordRequestedEventHandler(
+      Event as TAddingReferenceRecordRequestedEvent
+    );
+
+  end
+
+  else if Event.ClassType.InheritsFrom(GetChangingReferenceRecordRequestedEventClass)
+  then begin
+
+    OnChangingReferenceRecordRequestedEventHandler(
+      Event as TChangingReferenceRecordRequestedEvent
+    );
+
+  end
+
+  else if Event.ClassType.InheritsFrom(GetRemovingReferenceRecordRequestedEventClass)
+  then begin
+
+    OnRemovingReferenceRecordRequestedEventHandler(
+      Event as TRemovingReferenceRecordRequestedEvent
+    );
+
+  end;
+
+end;
+
+function TAbstractCardFormController.IsCardFormViewModelChanged(
+  CardForm: TCardForm;
+  CurrentCardFormViewModel: TCardFormViewModel
+): Boolean;
+begin
+
+  Result := not CardForm.ViewModel.Equals(CurrentCardFormViewModel);
+
+end;
+
+function TAbstractCardFormController.
+  IsNewCardFormViewModel(
+    ViewModel: TCardFormViewModel
+  ): Boolean;
+begin
+
+  if ViewModel.Id.IsSurrogate then
+    Result := VarIsNull(ViewModel.Id.Value)
+
+  else Result := not ViewModel.Id.ReadOnly;
+  
+end;
+
+procedure TAbstractCardFormController.OnAddingReferenceRecordRequestedEventHandler(
+  AddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent);
+var CardFormViewModel: TCardFormViewModel;
+    FreeViewModel: IDisposable;
+begin
+
+  CardFormViewModel :=
+    CreateCardFormViewModelForAddingReferenceRecordRequestHandling(
+      AddingReferenceRecordRequestedEvent
+    );
+
+  FreeViewModel := CardFormViewModel;
+  
+  ShowFormAsModal(TCardFormData.Create(CardFormViewModel, Application));
+
+end;
+
+procedure TAbstractCardFormController.OnAfterFormCreated(
+  Form: TForm);
+begin
+
+  inherited;
+
+end;
+
+procedure TAbstractCardFormController.
+  OnCardChangesApplyingRequestedEventHandler(
+    Sender: TObject;
+    var ViewModel: TCardFormViewModel;
+    var Success: Boolean
+  );
+var Event: TEvent;
+begin
+
+  Event := nil;
+
+  try
+
+    if IsNewCardFormViewModel(ViewModel) then begin
+
+      CreateNewCard(ViewModel, Success);
+
+      if Success then
+        Event := CreateCardCreatedEvent(ViewModel);
+      
+    end
+
+    else if IsCardFormViewModelChanged(TCardForm(Sender), ViewModel)
+    then begin
+
+      ModifyCard(ViewModel, Success);
+
+      if Success then
+        Event := CreateCardModifiedEvent(ViewModel);
+
+    end;
+
+    if Assigned(Event) then
+      EventBus.RaiseEvent(Event);
+
+  finally
+
+    FreeAndNil(Event);
+
+  end;
+
+end;
+
+procedure TAbstractCardFormController.
+  OnChangingReferenceRecordRequestedEventHandler(
+    ChangingReferenceRecordRequestedEvent: TChangingReferenceRecordRequestedEvent
+  );
+var ViewModel: TCardFormViewModel;
+    FreeViewModel: IDisposable;
+begin
+
+  ViewModel :=
+    CreateCardFormViewModelForChangingReferenceRecordRequestHandling(
+      ChangingReferenceRecordRequestedEvent
+    );
+
+  FreeViewModel := ViewModel;
+
+  if not ViewModel.Id.IsSurrogate then
+    ViewModel.Id.ReadOnly := True;
+
+  ShowFormAsModal(
+    TCardFormData.Create(ViewModel, Application)
+  );
+
+end;
+
+procedure TAbstractCardFormController.
+  OnRemovingReferenceRecordRequestedEventHandler(
+    RemovingReferenceRecordRequestedEvent: TRemovingReferenceRecordRequestedEvent
+  );
+var CardRemovedEvent: TCardRemovedEvent;
+    CardFormViewModel: TCardFormViewModel;
+    FreeCardFormViewModel: IDisposable;
+begin
+
+  CardFormViewModel :=
+    CreateCardFormViewModelFrom(
+      RemovingReferenceRecordRequestedEvent.RecordViewModel
+    );
+
+  FreeCardFormViewModel := CardFormViewModel;
+
+  RemoveCard(CardFormViewModel);
+
+  CardRemovedEvent := CreateCardRemovedEvent(CardFormViewModel);
+
+  try
+
+    EventBus.RaiseEvent(CardRemovedEvent);
+    
+  finally
+
+    FreeAndNil(CardRemovedEvent);
+    
+  end;
+
+end;
+
+procedure TAbstractCardFormController.SubscribeOnEvents(
+  EventBus: IEventBus);
+begin
+
+  inherited;
+
+  EventBus.RegisterEventHandler(GetAddingReferenceRecordRequestedEventClass, Self);
+  EventBus.RegisterEventHandler(GetChangingReferenceRecordRequestedEventClass, Self);
+  EventBus.RegisterEventHandler(GetRemovingReferenceRecordRequestedEventClass, Self);
+
+end;
+
+procedure TAbstractCardFormController.SubscribeOnFormEvents(
+  Form: TForm);
+var CardForm: TCardForm;
+begin
+
+  inherited;
+
+  CardForm := Form as TCardForm;
+
+  CardForm.OnCardChangesApplyingRequestedEventHandler :=
+    OnCardChangesApplyingRequestedEventHandler;
+    
+end;
+
+{ TCardFormData }
+
+constructor TCardFormData.Create(ViewModel: TCardFormViewModel;
+  Owner: TComponent; Parent: TWinControl);
+begin
+
+  inherited Create(Owner, Parent);
+
+  Self.ViewModel := ViewModel;
+  
+end;
+
+procedure TCardFormData.SetViewModel(const Value: TCardFormViewModel);
+begin
+
+  if FViewModel = Value then
+    Exit;
+
+  FreeAndNil(FViewModel);
+
+  FViewModel := Value;
+  
+end;
+
+end.

@@ -1,0 +1,19 @@
+unit ConnectionFactory;
+
+interface
+
+uses
+
+  ConnectionInfo,
+  Classes;
+
+type
+
+  IConnectionFactory = interface
+
+    function C
+  end;
+
+implementation
+
+end.

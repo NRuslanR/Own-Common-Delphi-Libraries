@@ -1,0 +1,263 @@
+unit VariantListUnit;
+
+interface
+
+uses
+
+  ClonableUnit,
+  SysUtils,
+  Classes;
+
+type
+
+  TVariantList = class;
+
+  TVariantListEnumerator = class (TListEnumerator)
+
+    protected
+
+      function GetCurrentVariant: Variant;
+
+      constructor Create(VariantList: TVariantList);
+
+    public
+
+      property Current: Variant read GetCurrentVariant;
+      
+  end;
+
+  TVariantList = class (TList, IClonable)
+
+    strict protected
+
+      function GetVariantByIndex(Index: Integer): Variant;
+      
+      procedure Notify(Ptr: Pointer; Action: TListNotification); override;
+
+    public
+
+      constructor Create;
+      constructor CreateFrom(
+        Variants: array of Variant
+      ); overload;
+      
+      constructor CreateFrom(Variants: Variant); overload;
+      
+      procedure Clear; override;
+
+      function IsEmpty: Boolean;
+      
+      function GetEnumerator: TVariantListEnumerator;
+
+      function IndexOf(Value: Variant): Integer;
+      function Add(Value: Variant): Integer; overload;
+      function AddObject(Instance: TObject): Integer;
+      procedure Remove(Value: Variant);
+      function ExtractFirst: Variant;
+      function ExtractLast: Variant;
+      function Contains(Value: Variant): Boolean;
+
+      function Clone: TObject;
+      
+      property Items[Index: Integer]: Variant read GetVariantByIndex; default;
+
+  end;
+
+implementation
+
+uses Variants, VariantTypeUnit;
+{ TVariantListEnumerator }
+
+constructor TVariantListEnumerator.Create(VariantList: TVariantList);
+begin
+
+  inherited Create(VariantList);
+
+end;
+
+function TVariantListEnumerator.GetCurrentVariant: Variant;
+begin
+
+  Result :=  TVariant(GetCurrent).Value;
+  
+end;
+
+{ TVariantList }
+
+function TVariantList.Add(Value: Variant): Integer;
+var VariantWrapper: TVariant;
+begin
+
+  VariantWrapper := nil;
+
+  try
+
+    VariantWrapper := TVariant.Create(Value);
+
+    Result := Add(VariantWrapper);
+
+  except
+
+    FreeAndNil(VariantWrapper);
+    raise;
+    
+  end;
+
+end;
+
+function TVariantList.AddObject(Instance: TObject): Integer;
+var ObjectVariant: Variant;
+begin
+
+  TVarData(ObjectVariant).VType := varByRef;
+  TVarData(ObjectVariant).VPointer := Instance;
+
+  Add(ObjectVariant);
+
+end;
+
+procedure TVariantList.Clear;
+begin
+
+  inherited;
+
+end;
+
+function TVariantList.Clone: TObject;
+var VariantItem: Variant;
+    ClonedVariantList: TVariantList;
+begin
+
+  Result := TVariantList.Create;
+
+  ClonedVariantList := Result as TVariantList;
+
+  
+  
+end;
+
+function TVariantList.Contains(Value: Variant): Boolean;
+var CurrentValue: Variant;
+begin
+
+  for CurrentValue in Self do
+    if CurrentValue = Value then begin
+
+      Result := True;
+      Exit;
+
+    end;
+
+  Result := False;
+
+end;
+
+constructor TVariantList.Create;
+begin
+
+  inherited;
+  
+end;
+
+constructor TVariantList.CreateFrom(Variants: Variant);
+var I, Low, High: Integer;
+begin
+
+  Create;
+  
+  if not VarIsArray(Variants) then
+    Add(Variants)
+
+  else begin
+
+    Low := VarArrayLowBound(Variants, 1);
+    High := VarArrayHighBound(Variants, 1);
+
+    for I := Low to High do
+      Add(Variants[I]);
+      
+  end;
+  
+end;
+
+constructor TVariantList.CreateFrom(Variants: array of Variant);
+var VariantValue:Variant;
+begin
+
+  Create;
+
+  for VariantValue in Variants do
+    Add(VariantValue);
+    
+end;
+
+function TVariantList.ExtractFirst: Variant;
+begin
+
+  Result := Self[0];
+
+  Delete(0);
+
+end;
+
+function TVariantList.ExtractLast: Variant;
+begin
+
+  Result := Self[Count - 1];
+
+  Delete(Count - 1);
+  
+end;
+
+function TVariantList.GetEnumerator: TVariantListEnumerator;
+begin
+
+  Result := TVariantListEnumerator.Create(Self);
+  
+end;
+
+function TVariantList.GetVariantByIndex(Index: Integer): Variant;
+begin
+
+  Result := TVariant(Get(Index)).Value;
+  
+end;
+
+function TVariantList.IndexOf(Value: Variant): Integer;
+begin
+
+  for Result := 0 to Count - 1 do
+    if Self[Result] = Value then
+      Exit;
+
+  Result := -1;
+  
+end;
+
+function TVariantList.IsEmpty: Boolean;
+begin
+
+  Result := Count = 0;
+  
+end;
+
+procedure TVariantList.Notify(Ptr: Pointer; Action: TListNotification);
+begin
+
+  if Action = lnDeleted then
+    TVariant(Ptr).Free;
+
+end;
+
+procedure TVariantList.Remove(Value: Variant);
+var ValueIndex: Integer;
+begin
+
+  ValueIndex := IndexOf(Value);
+
+  if ValueIndex >= 0 then
+    Delete(ValueIndex);
+  
+end;
+
+end.

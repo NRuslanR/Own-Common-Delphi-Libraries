@@ -1,0 +1,20 @@
+object DataModule2: TDataModule2
+  OldCreateOrder = False
+  Height = 288
+  Width = 787
+  object TestSectionMemData: TdxMemData
+    Indexes = <>
+    SortOptions = []
+    Left = 56
+    Top = 16
+    object TestSectionMemDatasection_id: TIntegerField
+      FieldName = 'section_id'
+    end
+    object TestSectionMemDataparent_section_id: TIntegerField
+      FieldName = 'parent_section_id'
+    end
+    object TestSectionMemDatasection_name: TIntegerField
+      FieldName = 'section_name'
+    end
+  end
+end

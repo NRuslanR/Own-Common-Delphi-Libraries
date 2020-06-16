@@ -1,0 +1,13 @@
+unit ReferenceFormViewModel;
+
+interface
+
+type
+
+  TReferenceFormViewModel = class
+
+    
+  end;
+implementation
+
+end.

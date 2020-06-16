@@ -1,0 +1,24 @@
+unit Arrays;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TArrays = class sealed
+
+    public
+
+      class function BinarySearch(
+        const TargetArray: Array Of Variant;
+
+  end;
+
+
+implementation
+
+end.

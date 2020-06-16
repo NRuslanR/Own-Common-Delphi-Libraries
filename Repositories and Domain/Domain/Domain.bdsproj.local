@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.12.05 13:26:26.401.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit17.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\TestFormUnit.pas</Transaction>
+    <Transaction>2018.12.05 13:26:26.401.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit17.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\TestFormUnit.dfm</Transaction>
+    <Transaction>2018.12.05 13:26:41.901.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project4.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Domain.bdsproj</Transaction>
+    <Transaction>2018.12.05 14:21:32.618.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectUnit.pas</Transaction>
+    <Transaction>2018.12.05 14:43:23.354.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Misceleneous\Interfaces\IObjectUnit.pas=</Transaction>
+    <Transaction>2018.12.05 14:46:33.343.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectValueUnit.pas</Transaction>
+    <Transaction>2018.12.06 08:18:42.049.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\IDomainObjectBaseUnit.pas</Transaction>
+    <Transaction>2018.12.06 08:19:28.987.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\DomainObjectBaseUnit.pas</Transaction>
+    <Transaction>2018.12.06 15:52:17.685.pas,D:\Common Delphi Libs\u_59968 Delphi Modules\Repositories and Domain\Domain\Unit5.pas=C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\MetrologicalSupportDepartmentIS\OMODomain\Domain Items\Entities\MeasurementMeanTypeUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

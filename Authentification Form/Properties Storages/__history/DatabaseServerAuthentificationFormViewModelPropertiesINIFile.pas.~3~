@@ -1,0 +1,31 @@
+unit DatabaseServerAuthentificationFormViewModelPropertiesINIFile;
+
+interface
+
+uses
+
+  SystemAuthentificationFormViewModelPropertiesINIFile,
+  SystemAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TDatabaseServerAuthentificationFormViewModelPropertiesINIFile =
+    class (TSystemAuthentificationFormViewModelPropertiesINIFile)
+
+      protected
+
+        procedure SaveSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+
+        procedure RestoreSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+    
+    end;
+
+implementation
+
+end.

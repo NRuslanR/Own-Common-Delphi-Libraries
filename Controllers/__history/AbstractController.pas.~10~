@@ -1,0 +1,51 @@
+unit AbstractController;
+
+interface
+
+uses
+
+  Forms,
+  Controller,
+  EventBus,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractController = class abstract (TInterfacedObject, IController)
+
+    private
+
+      FEventBus: IEventBus;
+
+    protected
+
+      procedure SubscribeOnEvents(EventBus: IEventBus); virtual;
+
+      property EventBus: IEventBus read FEventBus;
+
+    public
+
+      constructor Create(EventBus: IEventBus);
+
+  end;
+
+implementation
+
+{ TAbstractController }
+
+constructor TAbstractController.Create(EventBus: IEventBus);
+begin
+
+  inherited Create;
+
+  FEventBus := EventBus;
+
+end;
+
+procedure TAbstractController.SubscribeOnEvents(EventBus: IEventBus);
+begin
+
+end;
+
+end.

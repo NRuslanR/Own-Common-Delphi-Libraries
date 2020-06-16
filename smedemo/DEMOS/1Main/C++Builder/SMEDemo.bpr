@@ -1,0 +1,219 @@
+# ---------------------------------------------------------------------------
+!if !$d(BCB)
+BCB = $(MAKEDIR)\..
+!endif
+
+# ---------------------------------------------------------------------------
+# IDE SECTION
+# ---------------------------------------------------------------------------
+# The following section of the project makefile is managed by the BCB IDE.
+# It is recommended to use the IDE to change any of the values in this
+# section.
+# ---------------------------------------------------------------------------
+
+VERSION = BCB.04.04
+# ---------------------------------------------------------------------------
+PROJECT = SMEDemo.exe
+OBJFILES = ..\..\..\..\..\..\cbuilder\SMEDemo.obj ..\..\..\..\..\..\cbuilder\Main.obj
+RESFILES = SMEDemo.res
+RESDEPEN = $(RESFILES) Main.dfm
+LIBFILES =
+LIBRARIES = BCBSMP40.lib SMExportC4.lib vcldbx40.lib vcldb40.lib vclx40.lib vcl40.lib
+SPARELIBS = vcl40.lib vclx40.lib vcldb40.lib vcldbx40.lib SMExportC4.lib BCBSMP40.lib
+PACKAGES = VCL40.bpi VCLX40.bpi VCLJPG40.bpi bcbsmp40.bpi QRPT40.bpi VCLDB40.bpi \
+  ibsmp40.bpi VCLDBX40.bpi TEEUI40.bpi TEEDB40.bpi TEE40.bpi nmfast40.bpi
+DEFFILE =
+# ---------------------------------------------------------------------------
+PATHCPP = .;
+PATHPAS = .;
+PATHASM = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+USERDEFINES = $(SYSDEFINES);$(USERDEFINES)
+SYSDEFINES = NO_STRICT
+# ---------------------------------------------------------------------------
+CFLAG1 = -I$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\..\cbuilder\add-ins4\export \
+  -Od -Hc -H=$(BCB)\lib\vcl40.csm -w -Ve -r- -a8 -k -y -v -vi- \
+  -D$(SYSDEFINES);$(USERDEFINES) -c -b- -w-par -w-inl -Vx -tW -tWM -tWM
+CFLAG2 =
+CFLAG3 =
+PFLAGS = -U..\..\..\..\..\..\cbuilder\add-ins4\export;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\..\cbuilder\add-ins4\export \
+  -N2..\..\..\..\..\..\cbuilder -N0..\..\..\..\..\..\cbuilder \
+  -D$(SYSDEFINES);$(USERDEFINES) -$YD -$W -$O- -$C- -v -JPHNE -M -JPHNE
+RFLAGS = -i$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\..\cbuilder\add-ins4\export \
+  -D$(SYSDEFINES);$(USERDEFINES)
+AFLAGS = /i$(BCB)\include /i$(BCB)\include\vcl \
+  /i..\..\..\..\..\..\cbuilder\add-ins4\export /d$(SYSDEFINES) /d$(USERDEFINES) \
+  /mx /w2 /zi
+LFLAGS = -L..\..\..\..\..\..\cbuilder\add-ins4\export;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -aa -Tpe -x -Gn -v
+IFLAGS =
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+!ifdef IDEOPTIONS
+
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=4
+MinorVer=2
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=Scalabium, Mike Shkolnik
+FileDescription=SMExport suite's demo application
+FileVersion=4.2.0.0
+InternalName=SMExport suite
+LegalCopyright=Copyright 1998-2002, Mike Shkolnik
+LegalTrademarks=SMExport
+OriginalFilename=SMEDemo
+ProductName=SMEDemo
+ProductVersion=4.2.0.0
+Comments=http://www.scalabium.com
+
+[Excluded Packages]
+$(BCB)\Projects\Bpl\SMImportC4.bpl=SMImport suite: data importing into dataset. Scalabium/Mike Shkolnik, 2000-2002.
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=$(BCB)\include;$(BCB)\include\vcl;..\..\..\..\..\..\cbuilder\add-ins4\export
+Item1=$(BCB)\include;$(BCB)\include\vcl;d:\misha\cbuilder\add-ins4\export
+Item2=$(BCB)\include;$(BCB)\include\vcl;d:\misha\cbuilder\add-ins\export
+Item3=D:\MISHA\DELPHI\SME\TRIAL\3.72\EXAMPLE\C++Builder\;$(BCB)\include;$(BCB)\include\vcl;d:\misha\cbuilder\add-ins4\export
+Item4=D:\MISHA\DELPHI\SME\TRIAL\3.72\EXAMPLE\C++Builder;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=4
+Item0=..\..\..\..\..\..\cbuilder\add-ins4\export;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=d:\misha\cbuilder\add-ins4\export;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item2=d:\misha\cbuilder\add-ins\export;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item3=d:\misha\cbuilder\add-ins4\export;D:\MISHA\DELPHI\SME\TRIAL\3.72\EXAMPLE\C++Builder;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=2
+Item0=$(SYSDEFINES);$(USERDEFINES)
+Item1=USEPACKAGES
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=..\..\..\..\..\..\cbuilder
+Item1=d:\misha\cbuilder[Debugging]
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+InMemoryExe=0
+ShowInfoMsgs=0
+
+!endif
+
+# ---------------------------------------------------------------------------
+# MAKE SECTION
+# ---------------------------------------------------------------------------
+# This section of the project file is not used by the BCB IDE.  It is for
+# the benefit of building from the command-line using the MAKE utility.
+# ---------------------------------------------------------------------------
+
+.autodepend
+# ---------------------------------------------------------------------------
+!if !$d(BCC32)
+BCC32 = bcc32
+!endif
+
+!if !$d(CPP32)
+CPP32 = cpp32
+!endif
+
+!if !$d(DCC32)
+DCC32 = dcc32
+!endif
+
+!if !$d(TASM32)
+TASM32 = tasm32
+!endif
+
+!if !$d(LINKER)
+LINKER = ilink32
+!endif
+
+!if !$d(BRCC32)
+BRCC32 = brcc32
+!endif
+
+# ---------------------------------------------------------------------------
+!if $d(PATHCPP)
+.PATH.CPP = $(PATHCPP)
+.PATH.C   = $(PATHCPP)
+!endif
+
+!if $d(PATHPAS)
+.PATH.PAS = $(PATHPAS)
+!endif
+
+!if $d(PATHASM)
+.PATH.ASM = $(PATHASM)
+!endif
+
+!if $d(PATHRC)
+.PATH.RC  = $(PATHRC)
+!endif
+# ---------------------------------------------------------------------------
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES)
+!
+# ---------------------------------------------------------------------------
+.pas.hpp:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.pas.obj:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.cpp.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) -n$(@D) {$< }
+
+.c.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) -n$(@D) {$< }
+
+.c.i:
+    $(BCB)\BIN\$(CPP32) $(CFLAG1) -n. {$< }
+
+.cpp.i:
+    $(BCB)\BIN\$(CPP32) $(CFLAG1) -n. {$< }
+
+.asm.obj:
+    $(BCB)\BIN\$(TASM32) $(AFLAGS) $<, $@
+
+.rc.res:
+    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -fo$@ $<
+# ---------------------------------------------------------------------------

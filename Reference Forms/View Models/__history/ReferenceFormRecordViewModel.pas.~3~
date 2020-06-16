@@ -1,0 +1,19 @@
+unit ReferenceFormRecordViewModel;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TReferenceFormRecordViewModel = class
+
+    
+  end;
+
+implementation
+
+end.

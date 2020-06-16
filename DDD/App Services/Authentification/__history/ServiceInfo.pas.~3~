@@ -1,0 +1,18 @@
+unit ServiceInfo;
+
+interface
+
+type
+
+  TServiceInfo = class
+
+  end;
+
+  THostInfo = class
+
+
+  end;
+  
+implementation
+
+end.

@@ -1,0 +1,318 @@
+{$A+,B-,C+,D+,E-,F-,G+,H+,I+,J+,K-,L+,M-,N+,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y-,Z1}
+
+//{$DEFINE BDE_SUPPORT}
+//{$DEFINE ADO_SUPPORT}
+//{$DEFINE IBX_SUPPORT}
+//{$DEFINE DOA_SUPPORT}
+//{$DEFINE IBO_SUPPORT}
+
+//{$DEFINE INFOPOWER_SUPPORT}
+//{$DEFINE DEVEXP_SUPPORT}
+//{$DEFINE DEVEXP_CX_SUPPORT}
+//{$DEFINE DEVEXP_CXTREE_SUPPORT}
+
+//{$DEFINE SMDBGRID_SUPPORT}
+//{$DEFINE SMI_SUPPORT}
+
+//{$DEFINE DECISIONCUBE_SUPPORT}
+//{$DEFINE DBGRIDEH_SUPPORT}
+//{$DEFINE VOLGAGRID_SUPPORT}
+//{$DEFINE RAIZE_SUPPORT}
+//{$DEFINE FXCUBE_SUPPORT}
+
+//{$DEFINE SME_USE_JPEG}
+{$DEFINE SME_USE_ZLIB}
+
+//{$DEFINE SME_USE_WIDESTRING}
+
+//{$DEFINE SME_USE_FMX}
+
+
+{$IFDEF VER100}
+  {$DEFINE SMForDelphi3}
+{$ENDIF}
+
+{$IFDEF VER110}
+  {$DEFINE SMForDelphi3}
+{$ENDIF}
+
+{$IFDEF VER120}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+{$ENDIF}
+
+{$IFDEF VER125}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+{$ENDIF}
+
+{$IFDEF VER130}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+{$ENDIF}
+
+{$IFDEF VER140}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+{$ENDIF}
+
+{$IFDEF VER150}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+{$ENDIF}
+
+{$IFDEF VER170}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+{$ENDIF}
+
+{$IFDEF VER180}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+  {$ENDIF}
+{$ENDIF}
+
+{$IFDEF VER185}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007} //Highlander
+{$ENDIF}
+
+{$IFDEF VER190}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+{$ENDIF}
+
+{$IFDEF VER200}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+{$ENDIF}
+
+{$IFDEF VER210}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+{$ENDIF}
+
+{$IFDEF VER220}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+{$ENDIF}
+
+{$IFDEF VER230}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+  {$DEFINE SMForDelphiXE2}
+{$ENDIF}
+
+{$IFDEF VER240}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+  {$DEFINE SMForDelphiXE2}
+  {$DEFINE SMForDelphiXE3}
+{$ENDIF}
+
+{$IFDEF VER250}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+  {$DEFINE SMForDelphiXE2}
+  {$DEFINE SMForDelphiXE3}
+  {$DEFINE SMForDelphiXE4}
+{$ENDIF}
+
+{$IFDEF VER260}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+  {$DEFINE SMForDelphiXE2}
+  {$DEFINE SMForDelphiXE3}
+  {$DEFINE SMForDelphiXE4}
+  {$DEFINE SMForDelphiXE5}
+{$ENDIF}
+
+{$IFDEF VER270}
+  {$DEFINE SMForDelphi3}
+  {$DEFINE SMForDelphi4}
+  {$DEFINE SMForDelphi5}
+  {$DEFINE SMForDelphi6}
+  {$DEFINE SMForDelphi7}
+  {$DEFINE SMForDelphi2005}
+  {$DEFINE SMForDelphi2006}
+  {$IFDEF BCB}
+    {$DEFINE SMForBCB2006}
+    {$DEFINE SMForBCB2007}
+    {$DEFINE SMForBCB2009}
+    {$DEFINE SMForBCB2010}
+  {$ENDIF}
+  {$DEFINE SMForDelphi2007}
+  {$DEFINE SMForRADStudio2007}
+  {$DEFINE SMForDelphi2009}
+  {$DEFINE SMForDelphi2010}
+  {$DEFINE SMForDelphiXE}
+  {$DEFINE SMForDelphiXE2}
+  {$DEFINE SMForDelphiXE3}
+  {$DEFINE SMForDelphiXE4}
+  {$DEFINE SMForDelphiXE5}
+  {$DEFINE SMForDelphiXE6}
+{$ENDIF}
+
+{$IFDEF SMForDelphi6}
+  {$WARN SYMBOL_PLATFORM OFF}
+{$ENDIF}
+
+{$IFDEF SMForDelphi7}
+  {$WARN SYMBOL_DEPRECATED OFF}
+  {$WARN UNSAFE_CODE OFF}
+  {$WARN UNSAFE_CAST OFF}
+  {$WARN UNSAFE_TYPE OFF}
+{$ENDIF}
+
+{$IFDEF SMForDelphi2009}
+  {$IFNDEF SME_USE_WIDESTRING}
+    {$DEFINE SME_USE_WIDESTRING}
+  {$ENDIF}
+{$ENDIF}
+

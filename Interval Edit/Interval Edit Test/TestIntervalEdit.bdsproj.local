@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018.05.25 13:08:54.279.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Project3.bdsproj=C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\TestIntervalEdit.bdsproj</Transaction>
+    <Transaction>2018.05.25 16:42:59.214.pas,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.pas=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Interval Edit Test\Unit5.pas</Transaction>
+    <Transaction>2018.05.25 16:42:59.214.dfm,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\Unit5.dfm=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Interval Edit Test\Unit5.dfm</Transaction>
+    <Transaction>2018.05.25 16:43:02.324.bdsproj,C:\Documents and Settings\59968\Мои документы\Borland Studio Projects\TestIntervalEdit.bdsproj=D:\Common Delphi Libs\u_59968 Delphi Modules\Interval Edit\Interval Edit Test\TestIntervalEdit.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>

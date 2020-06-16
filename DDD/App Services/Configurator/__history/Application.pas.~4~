@@ -1,0 +1,28 @@
+unit Application;
+
+interface
+
+uses
+
+  ApplicationServiceRegistries,
+  ClientAccount;
+
+type
+
+  IApplication = interface
+
+    function GetApplicationServiceRegistries: IApplicationServiceRegistries;
+
+    procedure SetApplicationServiceRegistries(
+      Value: IApplicationServiceRegistries
+    );
+    
+    property ServiceRegistries: IApplicationServiceRegistries
+    read GetApplicationServiceRegistries
+    write SetApplicationServiceRegistries;
+    
+  end;
+  
+implementation
+
+end.

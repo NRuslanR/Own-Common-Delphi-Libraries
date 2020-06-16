@@ -1,0 +1,7 @@
+unit AbstractCloneable;
+
+interface
+
+implementation
+
+end.

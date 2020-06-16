@@ -1,0 +1,48 @@
+unit ClientAccount;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+  
+type
+
+  TClientAccount = class
+
+    public
+
+      Id: Variant;
+
+      constructor Create; virtual;
+
+  end;
+
+  TUserAccount = class (TClientAccount)
+
+    public
+
+      UserName: String;
+      FriendlyName: String;
+      
+  end;
+
+implementation
+
+uses
+
+  Variants;
+  
+{ TClientAccount }
+
+constructor TClientAccount.Create;
+begin
+
+  inherited;
+
+  Id := Null;
+
+end;
+
+end.

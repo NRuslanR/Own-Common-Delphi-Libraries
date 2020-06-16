@@ -1,0 +1,67 @@
+program RepositoriesAndDomainProject;
+
+uses
+  Forms,
+  TestFormUnit in 'TestFormUnit.pas' {Form5},
+  UnaryZeosDBRepositoryCriterionUnit in 'Repository Criteria\UnaryZeosDBRepositoryCriterionUnit.pas',
+  AbstractNegativeRepositoryCriterionUnit in 'Repository Criteria\AbstractNegativeRepositoryCriterionUnit.pas',
+  AbstractRepositoryCriteriaUnit in 'Repository Criteria\AbstractRepositoryCriteriaUnit.pas',
+  ArithmeticRepositoryCriterionOperationsUnit in 'Repository Criteria\ArithmeticRepositoryCriterionOperationsUnit.pas',
+  BinaryRepositoryCriterionUnit in 'Repository Criteria\BinaryRepositoryCriterionUnit.pas',
+  BinaryDBRepositoryCriterionUnit in 'Repository Criteria\BinaryDBRepositoryCriterionUnit.pas',
+  BoolLogicalNegativeRepositoryCriterionUnit in 'Repository Criteria\BoolLogicalNegativeRepositoryCriterionUnit.pas',
+  BoolLogicalNegativeDBRepositoryCriterionUnit in 'Repository Criteria\BoolLogicalNegativeDBRepositoryCriterionUnit.pas',
+  BoolLogicalRepositoryCriterionBindingsUnit in 'Repository Criteria\BoolLogicalRepositoryCriterionBindingsUnit.pas',
+  ConstRepositoryCriterionUnit in 'Repository Criteria\ConstRepositoryCriterionUnit.pas',
+  ConstDBRepositoryCriterionUnit in 'Repository Criteria\ConstDBRepositoryCriterionUnit.pas',
+  UnaryRepositoryCriterionUnit in 'Repository Criteria\UnaryRepositoryCriterionUnit.pas',
+  UnitingRepositoryCriterionUnit in 'Repository Criteria\UnitingRepositoryCriterionUnit.pas',
+  RepositoryCriteriaListUnit in 'Repository Criteria\RepositoryCriteriaListUnit.pas',
+  Unit2 in 'Unit2.pas' {Form2},
+  AuxCollectionFunctionsUnit in '..\AuxCollectionFunctions\AuxCollectionFunctionsUnit.pas',
+  VariantTypeUnit in '..\DBDataTableForm\VariantTypeUnit.pas',
+  AuxSystemFunctionsUnit in '..\AuxSystemFunctions\AuxSystemFunctionsUnit.pas',
+  AuxWindowsFunctionsUnit in '..\AuxWindowsFunctions\AuxWindowsFunctionsUnit.pas',
+  AuxZeosFunctions in '..\AuxZeosFunctions\AuxZeosFunctions.pas',
+  PostgresErrorCodes in '..\DBErrorsAtUserDataMapper\PostgresErrorCodes.pas',
+  SQLCommandThreadUnit in '..\Thread Extensions\SQLCommandThreadUnit.pas',
+  CancellationThreadUnit in '..\Thread Extensions\CancellationThreadUnit.pas',
+  DataSetOperationThreadUnit in '..\Thread Extensions\DataSetOperationThreadUnit.pas',
+  LifeCycleDebugableObjectUnit in '..\LifeCycleDebugableObjectUnit.pas',
+  NoConstructableObjectUnit in '..\NoConstructableObjectUnit.pas',
+  DeletableOnCloseFormUnit in '..\DeletableOnCloseFormUnit.pas' {DeletableOnCloseForm},
+  MyClassUnit in 'MyClassUnit.pas',
+  ReflectionServicesUnit in '..\Reflection\ReflectionServicesUnit.pas',
+  MyNestedClassUnit in 'MyNestedClassUnit.pas',
+  FieldsEqualityImplementationUnit in '..\Misceleneous\FieldsEqualityImplementationUnit.pas',
+  TableColumnMappingsUnit in 'Repositories\TableColumnMappingsUnit.pas',
+  DomainObjectFromDataSetLoaderUnit in 'Repositories\DomainObjectFromDataSetLoaderUnit.pas',
+  AbstractZeosDBRepositoryUnit in 'Repositories\AbstractZeosDBRepositoryUnit.pas',
+  AbstractDBRepositoryUnit in 'Repositories\AbstractDBRepositoryUnit.pas',
+  AbstractRepositoryUnit in 'Repositories\AbstractRepositoryUnit.pas',
+  ClonableUnit in '..\Misceleneous\Interfaces\ClonableUnit.pas',
+  CopyableUnit in '..\Misceleneous\Interfaces\CopyableUnit.pas',
+  EquatableUnit in '..\Misceleneous\Interfaces\EquatableUnit.pas',
+  TableMappingUnit in 'Repositories\TableMappingUnit.pas',
+  DBTableMappingUnit in 'Repositories\DBTableMappingUnit.pas',
+  IGetSelfUnit in '..\IGetSelfUnit.pas',
+  DocRepositoryUnit in 'DocRepositoryUnit.pas',
+  DomainObjectBaseUnit in 'Domain\DomainObjectBaseUnit.pas',
+  DomainObjectListUnit in 'Domain\DomainObjectListUnit.pas',
+  DomainObjectUnit in 'Domain\DomainObjectUnit.pas',
+  DomainObjectValueUnit in 'Domain\DomainObjectValueUnit.pas',
+  IDomainObjectBaseUnit in 'Domain\IDomainObjectBaseUnit.pas',
+  IDomainObjectUnit in 'Domain\IDomainObjectUnit.pas',
+  IDomainObjectValueUnit in 'Domain\IDomainObjectValueUnit.pas',
+  UnaryDBRepositoryCriterionUnit in 'Repository Criteria\UnaryDBRepositoryCriterionUnit.pas',
+  AbstractContainsRepositoryCriterionOperationUnit in 'Repository Criteria\AbstractContainsRepositoryCriterionOperationUnit.pas',
+  ContainsDBRepositoryCriterionOperationUnit in 'Repository Criteria\ContainsDBRepositoryCriterionOperationUnit.pas',
+  ContainsRepositoryCriterionOperationUnit in 'Repository Criteria\ContainsRepositoryCriterionOperationUnit.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm5, Form5);
+  Application.Run;
+end.

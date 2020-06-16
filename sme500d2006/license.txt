@@ -1,0 +1,81 @@
+All copyrights to the SMExport suite are exclusively
+owned by Mike Shkolnik. 
+
+The SMExport is a Shareware. If you intend to use
+SMExport suite after the trial period of 30 days,
+you must register your copy of SMExport or stop using it.
+
+Once registered, you are granted a non-exclusive
+licence to use the SMExport suite in own development.
+The registered SMExport software may not be
+rented, leased or transferred. 
+
+The SMExport unregistered shareware may be freely
+distributed, provided the distribution package is
+not modified. No person or company may charge a
+fee for the distribution of the SMExport without
+written permission from the copyright holder.
+
+The SMExport is distributed "AS IS" and you assume
+full responsibility for determining the
+suitability of SMExport and for results obtained. 
+
+Mike Shkolnik makes no warranty that all errors have
+been or can be eliminated from the SMExport suite
+and, with respect thereto, Mike Shkolnik shall not be
+responsible for losses, damages, costs, or
+expenses of any kind resulting from using or
+misusing the SMExport including without limitation,
+any liability for business expenses, machine
+downtime, damages experienced by you or any third
+person as a result of any deficiency, defect, bug,
+error or malfunction. Mike Shkolnik shall not be liable
+for any indirect, special, incidental, or
+consequential damages relating to or arising out
+of the subject matter of this Agreement or actions
+taken thereunder 
+
+NO WARRANTY OF ANY KIND IS EXPRESSED OR IMPLIED.
+YOU USE THE SMEXPORT AT YOUR OWN RISK.
+MIKE SHKOLNIK DISCLAIMS ALL WARRANTIES, EITHER
+EXPRESS OR IMPLIED, INCLUDING THE WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. NOBODY WILL BE LIABLE FOR DATA LOSS,
+DAMAGES, LOSS OF PROFITS OR ANY OTHER KIND OF LOSS
+WHILE USING OR MISUSING THIS SOFTWARE. 
+
+You may not use, copy, emulate, clone, rent,
+lease, sell, modify, decompile, disassemble,
+otherwise reverse engineer, or transfer the
+licenced program, or any subset of the licenced
+program, except as provided for in this agreement.
+Any such unauthorised use shall result in
+immediate and automatic termination of this
+licence and may result in criminal and/or civil
+prosecution. Any such unauthorised use shall
+result in immediate and automatic termination of
+this licence and may result in criminal and/or
+civil prosecution. 
+
+All rights not expressly granted here are
+reserved by Mike Shkolnik.
+
+The terms of this licence, as well as the SMExport
+features and interface design are subjects of
+changes in future versions of the SMExport suite.
+
+These Terms of Use will be governed by and construed
+in accordance with the laws of the Ukraine. You
+agree and consent that jurisdiction and proper
+venue for all claims, actions and proceedings
+of any kind relating to <company name> or the
+matters in these Terms of Use shall be exclusively
+in courts located in Kiev, Ukraine.
+
+Installing and/or using SMExport signifies
+acceptance of these terms and conditions of the
+licence.
+
+If you do not agree with the terms of this
+licence you must remove the SMExport package from your
+storage devices and cease to use the product.

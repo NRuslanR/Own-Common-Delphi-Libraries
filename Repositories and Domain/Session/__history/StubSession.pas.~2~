@@ -1,0 +1,17 @@
+unit StubSession;
+
+interface
+
+uses
+
+  ISessionUnit;
+
+type
+
+  TStubSession = class (TInterfacedObject, ISession)
+
+  end;
+  
+implementation
+
+end.

@@ -1,0 +1,28 @@
+unit SystemAuthentificationFormViewModel;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAuthentificationFormViewModel = class
+
+    private
+
+      FClientLogin: String;
+      FClientPassword: String;
+
+    public
+
+      
+
+
+  end;
+
+implementation
+
+end.

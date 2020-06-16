@@ -1,0 +1,699 @@
+unit unReferenceForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DBDataTableFormUnit, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, Menus, cxControls, cxStyles, dxSkinsCore,
+  dxSkinsDefaultPainters, dxSkinscxPC3Painter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, DB, cxDBData, cxLocalization, ActnList, ImgList,
+  PngImageList, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, ComCtrls, ExtCtrls, StdCtrls,
+  cxButtons, ToolWin, ReferenceFormViewModel, ReferenceFormRecordViewModel,
+  ReferenceFormDataSetHolder;
+
+type
+
+  TOnAddingRecordRequestedEventHandler =
+    procedure (
+      Sender: TObject
+    ) of object;
+
+  TOnChangingRecordRequestedEventHandler =
+    procedure (
+      Sender: TObject;
+      var RecordViewModel: TReferenceFormRecordViewModel;
+      var Success: Boolean
+    ) of object;
+
+  TOnRemovingRecordRequestedEventHandler =
+    procedure (
+      Sender: TObject;
+      var RecordViewModel: TReferenceFormRecordViewModel;
+      var Success: Boolean
+    ) of object;
+
+  TOnRecordsRefreshRequestedEventHandler =
+    procedure (
+      Sender: TObject
+    ) of object;
+
+  TOnRecordFocusedEventHandler =
+    procedure (
+      Sender: TObject;
+      var FocusedRecordViewModel: TReferenceFormRecordViewModel
+    ) of object;
+
+  TReferenceForm = class(TDBDataTableForm)
+    IdColumn: TcxGridDBColumn;
+    CanBeChangedColumn: TcxGridDBColumn;
+    CanBeRemovedColumn: TcxGridDBColumn;
+    procedure DataRecordGridTableViewCustomDrawCell(
+      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure DataRecordGridTableViewFocusedRecordChanged(
+      Sender: TcxCustomGridTableView; APrevFocusedRecord,
+      AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
+    procedure DataRecordGridTableViewCanFocusRecord(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      var AAllow: Boolean);
+    private
+
+      FOnAddingRecordRequestedEventHandler: TOnAddingRecordRequestedEventHandler;
+      FOnChangingRecordRequestedEventHandler: TOnChangingRecordRequestedEventHandler;
+      FOnRemovingRecordRequestedEventHandler: TOnRemovingRecordRequestedEventHandler;
+      FOnRecordsRefreshRequestedEventHandler: TOnRecordsRefreshRequestedEventHandler;
+      FOnRecordFocusedEventHandler: TOnRecordFocusedEventHandler;
+
+      procedure RaiseOnRecordFocusedEventHandler;
+      
+    protected
+
+      FViewModel: TReferenceFormViewModel;
+
+      procedure SetViewModel(
+        const Value: TReferenceFormViewModel
+      );
+
+      procedure SetCurrentDataSetRecordFieldValuesFromViewModel(
+        RecordViewModel: TReferenceFormRecordViewModel
+      );
+
+    protected
+
+      function DataSetHolder: TReferenceFormDataSetHolder;
+      
+      procedure FillControlsByViewModel(
+        ViewModel: TReferenceFormViewModel
+      ); virtual;
+
+      // Реализовать в будущем,
+      // создав ViewDataSetHolder на основе DataSetHolder
+      procedure CreateTableColumnLayoutFrom(
+        DataSetFieldDefs: TReferenceFormDataSetFieldDefs
+      ); virtual;
+      
+    protected
+
+      function OnAddRecord: Boolean; override;
+      function OnChangeRecord: Boolean; override;
+      function OnDeleteCurrentRecord: Boolean; override;
+      procedure OnRefreshRecords; override;
+
+    protected
+
+      function ColumnByFieldName(const FieldName: String): TcxGridDBColumn;
+      
+    protected
+
+      function GetReferenceFormRecordViewModelClass: TReferenceFormRecordViewModelClass; virtual; abstract;
+
+      procedure FillRecordViewModelFromGridRecord(
+        RecordViewModel: TReferenceFormRecordViewModel;
+        GridRecord: TcxCustomGridRecord
+      ); virtual;
+      
+      function CreateRecordViewModel(
+        GridRecord: TcxCustomGridRecord
+      ): TReferenceFormRecordViewModel; virtual;
+
+      procedure InternalSetCurrentDataSetRecordFieldValuesFromViewModel(
+        RecordViewModel: TReferenceFormRecordViewModel
+      ); virtual;
+
+      function FocusOnFirstNonGroupRecordIfRecordIsGrouping(
+        GridTableView: TcxCustomGridTableView;
+        GridRecord: TcxCustomGridRecord;
+        PreviousGridRecord: TcxCustomGridRecord
+      ): Boolean;
+
+    public
+
+      function CreateFocusedRecordViewModel: TReferenceFormRecordViewModel;
+
+      procedure AddRecordByViewModel(
+        RecordViewModel: TReferenceFormRecordViewModel
+      );
+
+      procedure ChangeRecordByViewModel(
+        RecordViewModel: TReferenceFormRecordViewModel
+      );
+
+      procedure RemoveRecordByViewModel(
+        RecordViewModel: TReferenceFormRecordViewModel
+      ); 
+
+      property ViewModel: TReferenceFormViewModel
+      read FViewModel write SetViewModel;
+
+    published
+
+      property OnAddingRecordRequestedEventHandler:
+        TOnAddingRecordRequestedEventHandler
+      read FOnAddingRecordRequestedEventHandler
+      write FOnAddingRecordRequestedEventHandler;
+
+      property OnChangingRecordRequestedEventHandler:
+        TOnChangingRecordRequestedEventHandler
+      read FOnChangingRecordRequestedEventHandler
+      write FOnChangingRecordRequestedEventHandler;
+
+      property OnRemovingRecordRequestedEventHandler:
+        TOnRemovingRecordRequestedEventHandler
+      read FOnRemovingRecordRequestedEventHandler
+      write FOnRemovingRecordRequestedEventHandler;
+
+      property OnRecordsRefreshRequestedEventHandler:
+        TOnRecordsRefreshRequestedEventHandler
+      read FOnRecordsRefreshRequestedEventHandler
+      write FOnRecordsRefreshRequestedEventHandler;
+
+      property OnRecordFocusedEventHandler:
+        TOnRecordFocusedEventHandler
+      read FOnRecordFocusedEventHandler
+      write FOnRecordFocusedEventHandler;
+
+    end;
+
+implementation
+
+{$R *.dfm}
+
+{ TReferenceForm }
+
+procedure TReferenceForm.AddRecordByViewModel(
+  RecordViewModel: TReferenceFormRecordViewModel);
+begin
+
+  try
+
+    DataSetHolder.DisableControls;
+
+    DataSetHolder.Append;
+
+    SetCurrentDataSetRecordFieldValuesFromViewModel(RecordViewModel);
+
+  finally
+
+    DataSetHolder.EnableControls;
+
+  end;
+
+end;
+
+procedure TReferenceForm.ChangeRecordByViewModel(
+  RecordViewModel: TReferenceFormRecordViewModel);
+var PreviousRecordBookmark: TBytes;
+begin
+
+  if not Assigned(RecordViewModel) then Exit;
+
+  try
+
+    DataSetHolder.DisableControls;
+
+    if GetFocusedRecordColumnValue(DataSetHolder.IdFieldName) <> RecordViewModel.Id
+    then begin
+
+      PreviousRecordBookmark := DataSetHolder.GetBookmark;
+
+      DataSetHolder.Locate(DataSetHolder.IdFieldName, RecordViewModel.Id, []);
+
+    end
+
+    else PreviousRecordBookmark := nil;
+
+    if not VarIsNull(RecordViewModel.CanBeChanged)
+       and not RecordViewModel.CanBeChanged
+    then begin
+
+      DataSetHolder.Edit;
+
+      DataSetHolder.CanBeChangedFieldValue := False;
+      DataSetHolder.CanBeRemovedFieldValue := RecordViewModel.CanBeRemoved;
+      
+      DataSetHolder.Post;
+
+      Exit;
+
+    end
+
+    else SetCurrentDataSetRecordFieldValuesFromViewModel(RecordViewModel);
+
+  finally
+
+    try
+
+      DataSetHolder.GotoBookmarkAndFree(PreviousRecordBookmark);
+
+    finally
+
+      DataSetHolder.EnableControls;
+
+    end;
+
+  end;
+
+end;
+
+function TReferenceForm.ColumnByFieldName(
+  const FieldName: String): TcxGridDBColumn;
+begin
+
+  Result := DataRecordGridTableView.GetColumnByFieldName(FieldName);
+  
+end;
+
+function TReferenceForm.CreateFocusedRecordViewModel: TReferenceFormRecordViewModel;
+begin
+
+  Result := CreateRecordViewModel(DataRecordGridTableView.Controller.FocusedRecord);
+
+end;
+
+function TReferenceForm.CreateRecordViewModel(
+  GridRecord: TcxCustomGridRecord): TReferenceFormRecordViewModel;
+begin
+
+  Result := GetReferenceFormRecordViewModelClass.Create;
+
+  try
+
+    FillRecordViewModelFromGridRecord(Result, GridRecord);
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+
+    end;
+
+  end;
+
+end;
+
+procedure TReferenceForm.
+  CreateTableColumnLayoutFrom(
+    DataSetFieldDefs: TReferenceFormDataSetFieldDefs
+  );
+begin
+                 
+  IdColumn.DataBinding.FieldName := DataSetFieldDefs.RecordIdFieldName;
+  CanBeChangedColumn.DataBinding.FieldName := DataSetFieldDefs.CanBeChangedFieldName;
+  CanBeRemovedColumn.DataBinding.FieldName := DataSetFieldDefs.CanBeRemovedFieldName;
+
+  DataRecordGridTableView.DataController.KeyFieldNames :=
+    DataSetFieldDefs.RecordIdFieldName;
+
+end;
+
+procedure TReferenceForm.DataRecordGridTableViewCanFocusRecord(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  var AAllow: Boolean);
+begin
+
+  AAllow := not (ARecord is TcxGridGroupRow);
+
+end;
+
+procedure TReferenceForm.
+  DataRecordGridTableViewCustomDrawCell(
+    Sender: TcxCustomGridTableView;
+    ACanvas: TcxCanvas;
+    AViewInfo: TcxGridTableDataCellViewInfo;
+    var ADone: Boolean
+  );
+begin
+
+  inherited;
+
+  //
+
+end;
+
+procedure TReferenceForm.DataRecordGridTableViewFocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+var CanBeChanged, CanBeRemoved: Variant;
+begin
+
+  inherited;
+
+  if not Assigned(AFocusedRecord) then
+    Exit;
+
+  if
+    FocusOnFirstNonGroupRecordIfRecordIsGrouping(Sender, AFocusedRecord)
+  then Exit;
+
+  CanBeChanged := GetFocusedRecordColumnValue(DataSetHolder.CanBeChangedFieldName);
+  CanBeRemoved := GetFocusedRecordColumnValue(DataSetHolder.CanBeRemovedFieldName);
+
+  if ViewModel.EditingRecordAllowed and not VarIsNull(CanBeChanged) then
+    ChangeRecordActionVisible := CanBeChanged
+
+  else ChangeRecordActionVisible := ViewModel.EditingRecordAllowed;
+
+  if ViewModel.RemovingRecordAllowed and not VarIsNull(CanBeRemoved) then
+    RemoveRecordsActionVisible := CanBeRemoved
+
+  else RemoveRecordsActionVisible := ViewModel.RemovingRecordAllowed;
+  
+  if APrevFocusedRecord = AFocusedRecord then
+    Exit;
+
+  RaiseOnRecordFocusedEventHandler;
+
+end;
+
+function TReferenceForm.DataSetHolder: TReferenceFormDataSetHolder;
+begin
+
+  if not Assigned(ViewModel) then
+    Result := nil
+
+  else
+    Result := ViewModel.DataSetHolder;
+
+end;
+
+procedure TReferenceForm.FillControlsByViewModel(
+  ViewModel: TReferenceFormViewModel);
+begin
+
+  AddRecordActionVisible := ViewModel.AddingRecordAllowed;
+  ChangeRecordActionVisible := ViewModel.EditingRecordAllowed;
+  RemoveRecordsActionVisible := ViewModel.RemovingRecordAllowed;
+
+  CreateTableColumnLayoutFrom(ViewModel.DataSetHolder.FieldDefs);
+
+  DataSet := ViewModel.DataSetHolder.DataSet;
+
+end;
+
+procedure TReferenceForm.FillRecordViewModelFromGridRecord(
+  RecordViewModel: TReferenceFormRecordViewModel;
+  GridRecord: TcxCustomGridRecord
+);
+begin
+
+  RecordViewModel.Id := GridRecord.Values[IdColumn.Index];
+  RecordViewModel.CanBeChanged := GridRecord.Values[CanBeChangedColumn.Index];
+  RecordViewModel.CanBeRemoved := GridRecord.Values[CanBeRemovedColumn.Index];
+
+end;
+
+function TReferenceForm.FocusOnFirstNonGroupRecordIfRecordIsGrouping(
+  GridTableView: TcxCustomGridTableView;
+  GridRecord: TcxCustomGridRecord;
+  PreviousGridRecord: TcxCustomGridRecord
+): Boolean;
+var
+    I: Integer;
+begin
+
+  if not (GridRecord is TcxGridGroupRow) then begin
+
+    Result := False;
+    Exit;
+    
+  end;
+
+  I := TcxGridGroupRow(GridRecord).Index;
+
+  with GridTableView.ViewData do begin
+
+    while Records[I] is TcxGridGroupRow do begin
+
+      if Records[I].Expandable then
+        Records[I].Expand(False);
+      
+      Inc(I);
+
+    end;
+
+    GridTableView.Controller.ClearSelection;
+    
+    Records[I].Focused := True;
+    Records[I].Selected := True;
+
+    Result := True;
+    
+  end;
+
+end;
+
+function TReferenceForm.OnAddRecord: Boolean;
+begin
+
+  if Assigned(FOnAddingRecordRequestedEventHandler) then begin
+
+    FOnAddingRecordRequestedEventHandler(Self);
+
+    Result := True;
+
+  end
+
+  else Result := inherited OnAddRecord;
+
+end;
+
+function TReferenceForm.OnChangeRecord: Boolean;
+var RecordViewModel: TReferenceFormRecordViewModel;
+    Success: Boolean;
+begin
+
+  if not Assigned(FOnChangingRecordRequestedEventHandler)
+  then begin
+
+    Result := inherited OnChangeRecord;
+    Exit;
+
+  end;
+
+  RecordViewModel := CreateFocusedRecordViewModel;
+
+  try
+
+    Success := True;
+
+    FOnChangingRecordRequestedEventHandler(
+      Self, RecordViewModel, Success
+    );
+
+    Result := True;
+
+  finally
+
+    if Success then
+      ChangeRecordByViewModel(RecordViewModel);
+
+    FreeAndNil(RecordViewModel);
+
+  end;
+
+end;
+
+function TReferenceForm.OnDeleteCurrentRecord: Boolean;
+var RecordViewModel: TReferenceFormRecordViewModel;
+    Success: Boolean;
+begin
+
+  if not Assigned(FOnRemovingRecordRequestedEventHandler)
+  then begin
+
+    Result := inherited OnDeleteCurrentRecord;
+    Exit;
+
+  end;
+
+  RecordViewModel := CreateFocusedRecordViewModel;
+
+  try
+
+    Success := True;
+
+    FOnRemovingRecordRequestedEventHandler(
+      Self, RecordViewModel, Success
+    );
+
+    if Success then
+      RemoveRecordByViewModel(RecordViewModel);
+
+    Result := True;
+    
+  finally
+
+    FreeAndNil(RecordViewModel);
+
+  end;
+
+end;
+
+procedure TReferenceForm.OnRefreshRecords;
+begin
+
+  if Assigned(FOnRecordsRefreshRequestedEventHandler)
+  then begin
+
+    try
+
+      SetActivatedDataOperationControls(False);
+
+      FOnRecordsRefreshRequestedEventHandler(Self);
+
+      UpdateUIAfterSuccessDataLoading;
+      
+    except
+
+      on e: Exception do begin
+
+        if Assigned(DataSet) then
+          UpdateUIAfterFailedDataLoading;
+
+        raise;
+        
+      end;
+
+    end;
+
+  end
+
+  else inherited;
+
+end;
+
+procedure TReferenceForm.RaiseOnRecordFocusedEventHandler;
+var FocusedRecordViewModel: TReferenceFormRecordViewModel;
+begin
+
+  if not Assigned(FOnRecordFocusedEventHandler) then
+    Exit;
+  
+  FocusedRecordViewModel := CreateFocusedRecordViewModel;
+
+  try
+
+    FOnRecordFocusedEventHandler(Self, FocusedRecordViewModel);
+
+    ChangeRecordByViewModel(FocusedRecordViewModel);
+    
+  finally
+
+    FreeAndNil(FocusedRecordViewModel);
+    
+  end;
+
+end;
+
+procedure TReferenceForm.RemoveRecordByViewModel(
+  RecordViewModel: TReferenceFormRecordViewModel);
+var PreviousRecordBookmark: TBytes;
+begin
+
+  if not Assigned(RecordViewModel) then
+    Exit;
+    
+  try
+
+    DataSetHolder.DisableControls;
+
+    if GetFocusedRecordColumnValue(DataSetHolder.IdFieldName) <> RecordViewModel.Id
+    then begin
+
+      PreviousRecordBookmark := DataSetHolder.GetBookmark;
+
+      DataSetHolder.Locate(DataSetHolder.IdFieldName, RecordViewModel.Id, []);
+
+    end
+
+    else PreviousRecordBookmark := nil;
+
+    if not VarIsNull(RecordViewModel.CanBeRemoved)
+       and not RecordViewModel.CanBeRemoved
+    then begin
+
+      DataSetHolder.Edit;
+
+      DataSetHolder.CanBeRemovedFieldValue := False;
+      DataSetHolder.CanBeChangedFieldValue := RecordViewModel.CanBeChanged;
+      
+      DataSetHolder.Post;
+
+    end
+
+    else begin
+
+      DataSetHolder.Delete;
+      
+    end;
+
+  finally
+
+    try
+
+      DataSetHolder.GotoBookmarkAndFree(PreviousRecordBookmark);
+
+    finally
+
+      DataSetHolder.EnableControls;
+
+    end;
+
+  end;
+
+end;
+
+procedure TReferenceForm.
+  SetCurrentDataSetRecordFieldValuesFromViewModel(
+    RecordViewModel: TReferenceFormRecordViewModel
+  );
+begin
+              
+  if not DataSetHolder.IsInEditOrAppend then
+    DataSetHolder.Edit;
+
+  InternalSetCurrentDataSetRecordFieldValuesFromViewModel(RecordViewModel);
+
+  DataSetHolder.Post;
+
+end;
+
+procedure TReferenceForm.InternalSetCurrentDataSetRecordFieldValuesFromViewModel(
+  RecordViewModel: TReferenceFormRecordViewModel);
+begin
+
+  if VarIsNull(RecordViewModel.Id) then
+    DataSetHolder.GenerateNewIdForCurrentRecord
+
+  else
+    DataSetHolder.IdFieldValue := RecordViewModel.Id;
+
+  DataSetHolder.CanBeChangedFieldValue := RecordViewModel.CanBeChanged;
+  DataSetHolder.CanBeRemovedFieldValue := RecordViewModel.CanBeRemoved;
+
+end;
+
+procedure TReferenceForm.SetViewModel(
+  const Value: TReferenceFormViewModel);
+var Old: TReferenceFormViewModel;
+begin
+
+  if FViewModel = Value then
+    Exit;
+
+  FreeAndNil(FViewModel);
+
+  FViewModel := Value;
+  
+  FillControlsByViewModel(FViewModel);
+
+  
+end;
+
+end.

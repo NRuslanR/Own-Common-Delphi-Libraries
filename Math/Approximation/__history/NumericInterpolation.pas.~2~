@@ -1,0 +1,14 @@
+unit NumericInterpolation;
+
+interface
+
+uses
+
+  SysUtils;
+
+type
+
+  
+implementation
+
+end.

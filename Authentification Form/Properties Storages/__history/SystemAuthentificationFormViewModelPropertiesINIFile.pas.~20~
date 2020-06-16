@@ -1,0 +1,34 @@
+unit SystemAuthentificationFormViewModelPropertiesINIFile;
+
+interface
+
+uses
+
+  SystemAuthentificationFormViewModel,
+  AbstractSystemAuthentificationFormViewModelPropertiesStorage,
+  PropertiesIniFileUnit,
+  SysUtils,
+  Classes;
+
+type
+
+  TSystemAuthentificationFormViewModelPropertiesINIFile =
+    class abstract (
+      TAbstractSystemAuthentificationFormViewModelPropertiesStorage
+    )
+
+      protected
+
+        FPropertiesINIFile: TPropertiesIniFile;
+        
+      public
+
+        destructor Destroy; override;
+
+        constructor Create(const PropertiesINIFilePath: String);
+        
+    end;
+    
+implementation
+
+end.

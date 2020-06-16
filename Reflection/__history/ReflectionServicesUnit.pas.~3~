@@ -1,0 +1,325 @@
+unit ReflectionServicesUnit;
+
+interface
+
+type
+
+  TReflectionServices = class
+
+    public
+
+      class function GetClassPropertyTypeAsVariantConstant(
+        TargetClass: TClass;
+        const PropertyName: String
+      ): Word;
+
+      class function GetObjectPropertyValue(
+        TargetObject: TObject;
+        const PropertyName: String
+      ): Variant; static;
+
+      class procedure SetObjectPropertyValue(
+        TargetObject: TObject;
+        const PropertyName: String;
+        const Value: Variant
+      ); static;
+
+  end;
+
+implementation
+
+uses TypInfo, Variants, SysUtils, Windows, AuxDebugFunctionsUnit;
+
+{ TReflectionServices }
+
+class function TReflectionServices.GetClassPropertyTypeAsVariantConstant(
+  TargetClass: TClass; const PropertyName: String): Word;
+var ClassTypeInfo: PTypeInfo;
+    ClassTypeData: PTypeData;
+    PropertyList: PPropList;
+    PropertyInfo: TPropInfo;
+    I, PropertyCount: Integer;
+begin
+
+  ClassTypeInfo := TargetClass.ClassInfo;
+  ClassTypeData := GetTypeData(ClassTypeInfo);
+
+  PropertyCount := ClassTypeData.PropCount;
+
+  if PropertyCount = 0 then begin
+
+    Result := null;
+    Exit;
+
+  end;
+
+  try
+
+    GetMem(PropertyList, Sizeof(PPropInfo) * PropertyCount);
+
+    GetPropList(ClassTypeInfo, tkProperties, PropertyList);
+
+    for I := 0 to PropertyCount - 1 do begin
+
+      PropertyInfo := PropertyList[I]^;
+
+      if PropertyInfo.Name <> PropertyName then
+        Continue;
+
+      case PropertyInfo.PropType^.Kind of
+
+        tkInteger, tkEnumeration:
+
+          Result := varInteger;
+
+        tkSet:
+
+          Result := varUnknown;
+          
+        tkLString, tkWString, tkString {$IFDEF VER210}, tkUString {$ENDIF}:
+
+          Result := varString;
+
+        tkFloat:
+        begin
+
+          if PropertyInfo.PropType^.Name = 'TDateTime' then
+            Result := varDate
+
+          else if PropertyInfo.PropType^.Name = 'Single' then
+            Result := varSingle
+
+          else Result := varDouble;
+
+        end;
+
+        tkInt64:
+
+          Result := varInt64;
+
+        tkVariant:
+
+          Result := varVariant;
+
+        tkClass:
+
+          Result := varByRef;
+
+        else
+
+          raise Exception.Create('Unexpected property kind was encountered !');
+
+      end;
+
+      Break;
+
+    end;
+
+  finally
+
+    FreeMem(PropertyList);
+
+  end;
+
+end;
+
+class function TReflectionServices.GetObjectPropertyValue(
+  TargetObject: TObject;
+  const PropertyName: String
+): Variant;
+var ClassTypeInfo: PTypeInfo;
+    ClassTypeData: PTypeData;
+    PropertyList: PPropList;
+    PropertyInfo: TPropInfo;
+    I, PropertyCount: Integer;
+begin
+
+  ClassTypeInfo := TargetObject.ClassInfo;
+  ClassTypeData := GetTypeData(ClassTypeInfo);
+
+  PropertyCount := ClassTypeData.PropCount;
+
+  if PropertyCount = 0 then begin
+
+    Result := null;
+    Exit;
+
+  end;
+
+  try
+
+    GetMem(PropertyList, Sizeof(PPropInfo) * PropertyCount);
+
+    GetPropList(ClassTypeInfo, tkProperties, PropertyList);
+
+    for I := 0 to PropertyCount - 1 do begin
+
+      PropertyInfo := PropertyList[I]^;
+
+      if PropertyInfo.Name <> PropertyName then
+        Continue;
+
+      case PropertyInfo.PropType^.Kind of
+
+        tkInteger, tkEnumeration:
+        begin
+
+          Result := GetOrdProp(TargetObject, PropertyName);
+
+          if PropertyInfo.PropType^.Name = 'Boolean' then
+            Result := VarAsType(Result, varBoolean);
+
+        end;
+
+        tkSet:
+
+          Result := GetSetProp(TargetObject, PropertyName);
+          
+        tkLString, tkWString, tkString {$IFDEF VER210}, tkUString {$ENDIF}:
+
+          Result := GetStrProp(TargetObject, PropertyName);
+
+        tkFloat:
+        begin
+
+          Result := GetFloatProp(TargetObject, PropertyName);
+
+          if PropertyInfo.PropType^.Name = 'TDateTime' then
+            Result := FloatToDateTime(Result);
+
+        end;
+
+        tkInt64:
+
+          Result := GetInt64Prop(TargetObject, PropertyName);
+
+        tkVariant:
+
+          Result := GetVariantProp(TargetObject, PropertyName);
+
+        tkClass:
+        begin
+
+          TVarData(Result).VType := varByRef;
+          TVarData(Result).VPointer :=
+            Pointer(GetObjectProp(TargetObject, PropertyName));
+
+        end
+
+        else
+
+          raise Exception.Create('Unexpected property kind was encountered');
+
+      end;
+
+      Break;
+
+    end;
+
+  finally
+
+    FreeMem(PropertyList);
+
+  end;
+
+end;
+
+class procedure TReflectionServices.SetObjectPropertyValue(
+  TargetObject: TObject;
+  const PropertyName: String;
+  const Value: Variant
+);
+var ClassTypeInfo: PTypeInfo;
+    ClassTypeData: PTypeData;
+    PropertyList: PPropList;
+    PropertyInfo: TPropInfo;
+    I, PropertyCount: Integer;
+    Int64Value: Int64;
+begin
+
+  if (Value = Unassigned) or (Value = Null) then
+    Exit;
+  
+  ClassTypeInfo := TargetObject.ClassInfo;
+  ClassTypeData := GetTypeData(ClassTypeInfo);
+
+  PropertyCount := ClassTypeData.PropCount;
+
+  if PropertyCount = 0 then begin
+
+    Exit;
+
+  end;
+
+  try
+
+    GetMem(PropertyList, Sizeof(PPropInfo) * PropertyCount);
+
+    GetPropList(ClassTypeInfo, tkProperties, PropertyList);
+
+    for I := 0 to PropertyCount - 1 do begin
+
+      PropertyInfo := PropertyList[I]^;
+
+      if PropertyInfo.Name <> PropertyName then
+        Continue;
+
+      case PropertyInfo.PropType^.Kind of
+
+        tkInteger, tkEnumeration:
+
+          SetOrdProp(TargetObject, PropertyName, Value);
+
+        tkSet:
+
+          SetSetProp(TargetObject, PropertyName, Value);
+          
+        tkLString, tkWString, tkString {$IFDEF VER210}, tkUString {$ENDIF}:
+
+          SetStrProp(TargetObject, PropertyName, Value);
+
+        tkFloat:
+
+          SetFloatProp(TargetObject, PropertyName, Value);
+
+        tkInt64:
+        begin
+
+          Int64Value := Value;
+
+          SetInt64Prop(TargetObject, PropertyName, Int64Value);
+
+        end;
+
+        tkVariant:
+
+          SetVariantProp(TargetObject, PropertyName, Value);
+
+        tkClass:
+        begin
+
+          SetObjectProp(
+            TargetObject, PropertyName, TObject(TVarData(Value).VPointer)
+          );
+
+        end;
+
+        else
+
+          raise Exception.Create('Unexpected property kind was encountered');
+
+      end;
+
+      Break;
+
+    end;
+
+  finally
+
+    FreeMem(PropertyList);
+
+  end;
+
+end;
+
+end.

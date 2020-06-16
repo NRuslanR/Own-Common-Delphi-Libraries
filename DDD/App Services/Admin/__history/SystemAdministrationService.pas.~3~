@@ -1,0 +1,19 @@
+unit SystemAdministrationService;
+
+interface
+
+uses
+
+  SystemAdministrationPrivileges,
+  SystemAdministrationPrivilegeServices;
+  
+type
+
+  ISystemAdministrationService = interface
+
+    
+  end;
+
+implementation
+
+end.

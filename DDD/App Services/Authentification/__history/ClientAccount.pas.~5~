@@ -1,0 +1,33 @@
+unit ClientAccount;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+  
+type
+
+  TClientAccount = class
+
+    public
+
+      Id: Variant;
+
+      constructor Create;
+
+  end;
+
+  TUserAccount = class (TClientAccount)
+
+    public
+
+      UserName: String;
+      FriendlyName: String;
+      
+  end;
+
+implementation
+
+end.

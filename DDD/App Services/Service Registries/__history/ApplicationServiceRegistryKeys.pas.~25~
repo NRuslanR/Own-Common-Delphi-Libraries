@@ -1,0 +1,100 @@
+unit ApplicationServiceRegistryKeys;
+
+interface
+
+uses
+
+  IGetSelfUnit;
+  
+type
+
+  IApplicationServiceRegistryKey = interface (IGetSelf)
+
+    function Equals(OtherKey: IApplicationServiceRegistryKey): Boolean;
+    
+  end;
+
+  TAbstractApplicationServiceRegistryKey = class (TInterfacedObject, IApplicationServiceRegistryKey)
+
+    public
+
+      function Equals(OtherKey: IApplicationServiceRegistryKey): Boolean; virtual; abstract;
+
+      function GetSelf: TObject;
+      
+  end;
+
+  TVariantApplicationRegistryKey = class (TAbstractApplicationServiceRegistryKey)
+
+    protected
+
+      FVariant: Variant;
+      
+    public
+
+      constructor Create(VariantKeyValue: Variant);
+      
+      function Equals(OtherKey: IApplicationServiceRegistryKey): Boolean; override;
+      
+  end;
+
+  TObjectApplicationRegistryKey = class (TAbstractApplicationServiceRegistryKey)
+
+    protected
+
+      FObject: TObject;
+      
+    public
+
+      constructor Create(ObjectKeyValue: TObject);
+      
+      function Equals(OtherKey: IApplicationServiceRegistryKey): Boolean; override;
+
+  end;
+
+  TClassApplicationRegistryKey = class (TAbstractApplicationServiceRegistryKey)
+
+    protected
+
+      FClass: TClass;
+      
+    public
+
+      constructor Create(ClassKeyValue: TClass);
+      
+      function Equals(OtherKey: IApplicationServiceRegistryKey): Boolean; override;
+    
+  end;
+
+implementation
+
+{ TVariantApplicationRegistryKey }
+
+constructor TVariantApplicationRegistryKey.Create(VariantKeyValue: Variant);
+begin
+
+  inherited Create;
+
+  FVariant := Variant;
+
+end;
+
+function TVariantApplicationRegistryKey.Equals(
+  OtherKey: IApplicationServiceRegistryKey): Boolean;
+begin
+
+  Result :=
+    (OtherKey is TVariantApplicationRegistryKey) and
+    (FVariant = (OtherKey as 
+end;
+
+{ TAbstractApplicationServiceRegistryKey }
+
+function TAbstractApplicationServiceRegistryKey.GetSelf: TObject;
+begin
+
+  Result := Self;
+  
+end;
+
+end.

@@ -1,0 +1,45 @@
+unit FullSuccessedStubSystemAuthentificationService;
+
+interface
+
+uses
+
+  SystemAuthentificationService,
+  ClientLogOnInfo,
+  ServiceInfo,
+  SysUtils,
+  ClientAccount,
+  Classes;
+
+type
+
+  TFullSuccessedStubSystemAuthentificationService =
+    class (TInterfacedObject, ISystemAuthentificationService)
+
+      protected
+
+        function CreateClientAccount: TClientAccount; virtual;
+      public
+
+        function Authentificate(
+          ClientLogOnInfo: TClientLogOnInfo;
+          ServiceInfo: TServiceInfo
+        ): TClientAccount;
+
+    end;
+  
+implementation
+
+{ TFullSuccessedStubSystemAuthentificationService }
+
+function TFullSuccessedStubSystemAuthentificationService.Authentificate(
+  ClientLogOnInfo: TClientLogOnInfo;
+  ServiceInfo: TServiceInfo
+): TClientAccount;
+begin
+
+
+
+end;
+
+end.

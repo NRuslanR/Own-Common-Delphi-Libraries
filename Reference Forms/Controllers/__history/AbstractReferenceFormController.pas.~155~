@@ -1,0 +1,518 @@
+unit AbstractReferenceFormController;
+
+interface
+
+uses
+
+  ReferenceFormViewModel,
+  ReferenceFormRecordViewModel,
+  ReferenceFormRecordViewModelMapper,
+  AbstractReferenceFormControllerEvents,
+  AbstractCardFormControllerEvents,
+  EventHandler,
+  Forms,
+  Controls,
+  EventBus,
+  Event,
+  unReferenceForm,
+  AbstractFormController,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractReferenceFormController =
+    class abstract (TAbstractFormController, IEventHandler)
+
+      protected
+
+        FReferenceFormRecordViewModelMapper: IReferenceFormRecordViewModelMapper;
+
+      protected
+
+        procedure SubscribeOnEvents(EventBus: IEventBus); override;
+        procedure SubscribeOnCardStateChangesEvents; virtual;
+        procedure SubscribeOnFormEvents(Form: TForm); override;
+        procedure SubscribeOnReferenceFormRecordsEvents(ReferenceForm: TReferenceForm); virtual;
+        procedure CustomizeForm(Form: TForm; InitialFormData: TFormData); override;
+        procedure CustomizeReferenceFormForChooseRecord(ReferenceForm: TReferenceForm); virtual;
+        procedure RefreshReferenceForm(ReferenceForm: TReferenceForm); virtual;
+        procedure OnAfterFormCreated(Form: TForm); override;
+        
+      protected
+
+        procedure HandleReferenceRecordChooseRequestedEvent(
+          Event: TReferenceRecordChooseRequestedEvent
+        ); virtual;
+
+        procedure OnCardCreatedEventHandler(CardCreatedEvent: TCardCreatedEvent); virtual;
+        procedure OnCardModifiedEventHandler(CardModifiedEvent: TCardModifiedEvent); virtual;
+        procedure OnCardRemovedEventHandler(CardRemovedEvent: TCardRemovedEvent); virtual;
+
+      protected
+
+        function GetCardCreatedEventClass: TCardCreatedEventClass; virtual; abstract;
+        function GetCardModifiedEventClass: TCardModifiedEventClass; virtual; abstract;
+        function GetCardRemovedEventClass: TCardRemovedEventClass; virtual; abstract;
+
+        function GetReferenceRecordChooseRequestedEventClass:
+          TReferenceRecordChooseRequestedEventClass; virtual; abstract;
+
+        function GetReferenceRecordChoosenEventClass:
+          TReferenceRecordChoosenEventClass; virtual; abstract;
+          
+      protected
+
+        procedure OnAddingRecordRequestedEventHandler(Sender: TObject); virtual;
+
+        procedure OnChangingRecordRequestedEventHandler(
+          Sender: TObject;
+          var RecordViewModel: TReferenceFormRecordViewModel;
+          var Success: Boolean
+        ); virtual;
+
+        procedure OnRemovingRecordRequestedEventHandler(
+          Sender: TObject;
+          var RecordViewModel: TReferenceFormRecordViewModel;
+          var Success: Boolean
+        ); virtual;
+
+        procedure OnRecordsRefreshRequestedEventHandler(
+          Sender: TObject
+        ); virtual;
+
+        procedure OnRecordFocusedEventHandler(
+          Sender: TObject;
+          var FocusedRecordViewModel: TReferenceFormRecordViewModel
+        ); virtual;
+
+      protected
+
+        function CreateAddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent; virtual;
+        
+        function CreateChangingReferenceRecordRequestedEvent(
+          RecordViewModel: TReferenceFormRecordViewModel
+        ): TChangingReferenceRecordRequestedEvent; virtual;
+
+        function CreateRemovingReferenceRecordRequestedEvent(
+          RecordViewModel: TReferenceFormRecordViewModel
+        ): TRemovingReferenceRecordRequestedEvent; virtual;
+
+      protected
+
+        function GetAddingReferenceRecordRequestedEventClass: TAddingReferenceRecordRequestedEventClass; virtual; abstract;
+        function GetChangingReferenceRecordRequestedEventClass: TChangingReferenceRecordRequestedEventClass; virtual; abstract;
+        function GetRemovingReferenceRecordRequestedEventClass: TRemovingReferenceRecordRequestedEventClass; virtual; abstract;
+
+      protected
+
+        function GetCurrentForm: TReferenceForm;
+
+      protected
+
+        function CreateReferenceFormViewModel: TReferenceFormViewModel; virtual; abstract;
+        
+      public
+
+        destructor Destroy; override;
+
+        constructor Create(
+          ReferenceFormRecordViewModelMapper: IReferenceFormRecordViewModelMapper;
+          EventBus: IEventBus
+        );
+
+        procedure Handle(Event: TEvent); virtual;
+
+        function GetSelf: TObject;
+
+        property CurrentForm: TReferenceForm
+        read GetCurrentForm;
+
+    end;
+
+implementation
+
+function TAbstractReferenceFormController.CreateAddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent;
+begin
+
+  Result := GetAddingReferenceRecordRequestedEventClass.Create;
+  
+end;
+
+constructor TAbstractReferenceFormController.Create(
+  ReferenceFormRecordViewModelMapper: IReferenceFormRecordViewModelMapper;
+  EventBus: IEventBus
+);
+begin
+
+  inherited Create(EventBus);
+
+  FReferenceFormRecordViewModelMapper := ReferenceFormRecordViewModelMapper;
+
+end;
+
+function TAbstractReferenceFormController.CreateChangingReferenceRecordRequestedEvent(
+  RecordViewModel: TReferenceFormRecordViewModel): TChangingReferenceRecordRequestedEvent;
+begin
+
+  Result := GetChangingReferenceRecordRequestedEventClass.Create(RecordViewModel);
+
+end;
+
+function TAbstractReferenceFormController.CreateRemovingReferenceRecordRequestedEvent(
+  RecordViewModel: TReferenceFormRecordViewModel): TRemovingReferenceRecordRequestedEvent;
+begin
+
+  Result := GetRemovingReferenceRecordRequestedEventClass.Create(RecordViewModel);
+  
+end;
+
+procedure TAbstractReferenceFormController.
+  CustomizeForm(
+    Form: TForm;
+    InitialFormData: TFormData
+  );
+var ReferenceForm: TReferenceForm;
+begin
+
+  inherited;
+
+  ReferenceForm := Form as TReferenceForm;
+
+  ReferenceForm.ViewModel := CreateReferenceFormViewModel;
+
+end;
+
+destructor TAbstractReferenceFormController.Destroy;
+begin
+
+  //ShowInfoMessage(0, ClassName + ' destroyed', 'M');
+
+  inherited;
+
+end;
+
+function TAbstractReferenceFormController.GetCurrentForm: TReferenceForm;
+begin
+
+  Result := TReferenceForm(inherited CurrentForm);
+
+end;
+
+function TAbstractReferenceFormController.GetSelf: TObject;
+begin
+
+  Result := Self;
+
+end;
+
+procedure TAbstractReferenceFormController.Handle(
+  Event: TEvent);
+begin
+
+  if Event.ClassType.InheritsFrom(GetReferenceRecordChooseRequestedEventClass)
+  then begin
+
+    HandleReferenceRecordChooseRequestedEvent(
+      TReferenceRecordChooseRequestedEvent(Event)
+    );
+
+  end
+
+  else if Event.ClassType.InheritsFrom(GetCardCreatedEventClass) then
+    OnCardCreatedEventHandler(Event as TCardCreatedEvent)
+
+  else if Event.ClassType.InheritsFrom(GetCardModifiedEventClass) then
+    OnCardModifiedEventHandler(Event as TCardModifiedEvent)
+
+  else if Event.ClassType.InheritsFrom(GetCardRemovedEventClass)
+  then OnCardRemovedEventHandler(Event as TCardRemovedEvent)
+
+  else inherited;
+
+end;
+
+procedure TAbstractReferenceFormController.
+  HandleReferenceRecordChooseRequestedEvent(
+    Event: TReferenceRecordChooseRequestedEvent
+  );
+var ReferenceForm: TReferenceForm;
+    ReferenceRecordViewModel: TReferenceFormRecordViewModel;
+    ReferenceRecordChoosenEvent: TReferenceRecordChoosenEvent;
+begin
+
+  ReferenceForm := TReferenceForm(CreateForm(Application));
+
+  ReferenceRecordChoosenEvent := nil;
+  ReferenceRecordViewModel := nil;
+  
+  try
+
+    ReferenceForm.EnableMultiSelectionMode := False;
+    ReferenceForm.EnableChooseRecordAction := True;
+    ReferenceForm.ChooseRecordActionVisible := True;
+
+    CustomizeReferenceFormForChooseRecord(ReferenceForm);
+
+    ReferenceForm.LocateRecordById(Event.SelectedRecordId);
+
+    if ReferenceForm.ShowModal <> mrOk then Exit;
+
+    ReferenceRecordViewModel := ReferenceForm.CreateFocusedRecordViewModel;
+
+    ReferenceRecordChoosenEvent :=
+      GetReferenceRecordChoosenEventClass.Create(ReferenceRecordViewModel);
+
+    EventBus.RaiseEvent(ReferenceRecordChoosenEvent);
+    
+  finally
+
+    FreeAndNil(ReferenceRecordChoosenEvent);
+    FreeAndNil(ReferenceRecordViewModel);
+    FreeAndNil(ReferenceForm);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnAfterFormCreated(
+    Form: TForm
+  );
+begin
+
+  inherited;
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnChangingRecordRequestedEventHandler(
+    Sender: TObject;
+    var RecordViewModel: TReferenceFormRecordViewModel;
+    var Success: Boolean
+  );
+var ChangingReferenceRecordRequestedEvent: TChangingReferenceRecordRequestedEvent;
+begin
+
+  ChangingReferenceRecordRequestedEvent :=
+    CreateChangingReferenceRecordRequestedEvent(RecordViewModel);
+
+  try
+
+    Success := False;
+
+    EventBus.RaiseEvent(ChangingReferenceRecordRequestedEvent);
+
+  finally
+
+    FreeAndNil(ChangingReferenceRecordRequestedEvent);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnRecordFocusedEventHandler(
+    Sender: TObject;
+    var FocusedRecordViewModel: TReferenceFormRecordViewModel
+  );
+begin
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnRemovingRecordRequestedEventHandler(
+    Sender: TObject;
+    var RecordViewModel: TReferenceFormRecordViewModel;
+    var Success: Boolean
+  );
+var RemovingReferenceRecordRequestedEvent: TRemovingReferenceRecordRequestedEvent;
+begin
+
+  RemovingReferenceRecordRequestedEvent :=
+    CreateRemovingReferenceRecordRequestedEvent(RecordViewModel);
+
+  try
+
+    Success := False;
+    
+    EventBus.RaiseEvent(RemovingReferenceRecordRequestedEvent);
+
+  finally
+
+    FreeAndNil(RemovingReferenceRecordRequestedEvent);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.RefreshReferenceForm(
+  ReferenceForm: TReferenceForm);
+begin
+
+  ReferenceForm.ViewModel := CreateReferenceFormViewModel;
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnRecordsRefreshRequestedEventHandler(
+    Sender: TObject
+  );
+var ReferenceForm: TReferenceForm;
+begin
+
+  ReferenceForm := Sender as TReferenceForm;
+
+  RefreshReferenceForm(ReferenceForm);
+
+end;
+
+procedure TAbstractReferenceFormController.
+  OnAddingRecordRequestedEventHandler(
+    Sender: TObject
+  );
+var AddingReferenceRecordRequestedEvent: TAddingReferenceRecordRequestedEvent;
+begin
+
+  AddingReferenceRecordRequestedEvent :=
+    CreateAddingReferenceRecordRequestedEvent;
+
+  try
+
+    EventBus.RaiseEvent(AddingReferenceRecordRequestedEvent);
+
+  finally
+
+    FreeAndNil(AddingReferenceRecordRequestedEvent);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.OnCardCreatedEventHandler(
+  CardCreatedEvent: TCardCreatedEvent
+);
+var NewRecordViewModel: TReferenceFormRecordViewModel;
+begin
+
+  NewRecordViewModel :=
+    FReferenceFormRecordViewModelMapper.MapReferenceFormRecordViewModelFrom(
+      CardCreatedEvent.CardFormViewModel
+    );
+
+  try
+
+    CurrentForm.AddRecordByViewModel(NewRecordViewModel);
+
+  finally
+
+    FreeAndNil(NewRecordViewModel);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.OnCardModifiedEventHandler(
+  CardModifiedEvent: TCardModifiedEvent
+);
+var ChangedRecordViewModel: TReferenceFormRecordViewModel;
+begin
+
+  ChangedRecordViewModel :=
+    FReferenceFormRecordViewModelMapper.MapReferenceFormRecordViewModelFrom(
+      CardModifiedEvent.CardFormViewModel
+    );
+
+  try
+
+    CurrentForm.ChangeRecordByViewModel(ChangedRecordViewModel);
+
+  finally
+
+    FreeAndNil(ChangedRecordViewModel);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.OnCardRemovedEventHandler(
+  CardRemovedEvent: TCardRemovedEvent
+);
+var RemoveableRecordViewModel: TReferenceFormRecordViewModel;
+begin
+
+  RemoveableRecordViewModel :=
+    FReferenceFormRecordViewModelMapper.MapReferenceFormRecordViewModelFrom(
+      CardRemovedEvent.CardFormViewModel
+    );
+
+  try
+
+    CurrentForm.RemoveRecordByViewModel(RemoveableRecordViewModel);
+    
+  finally
+
+    FreeAndNil(RemoveableRecordViewModel);
+
+  end;
+
+end;
+
+procedure TAbstractReferenceFormController.SubscribeOnCardStateChangesEvents;
+begin
+
+  EventBus.RegisterEventHandler(GetCardCreatedEventClass, Self);
+  EventBus.RegisterEventHandler(GetCardModifiedEventClass, Self);
+  EventBus.RegisterEventHandler(GetCardRemovedEventClass, Self);
+  
+end;
+
+procedure TAbstractReferenceFormController.SubscribeOnEvents(
+  EventBus: IEventBus);
+begin
+
+  inherited;
+
+  SubscribeOnCardStateChangesEvents;
+
+  EventBus.RegisterEventHandler(TReferenceRecordChooseRequestedEvent, Self);
+
+end;
+
+procedure TAbstractReferenceFormController.SubscribeOnFormEvents(
+  Form: TForm);
+var ReferenceForm: TReferenceForm;
+begin
+
+  inherited;
+
+  ReferenceForm := Form as TReferenceForm;
+
+  SubscribeOnReferenceFormRecordsEvents(ReferenceForm);
+
+end;
+
+procedure TAbstractReferenceFormController.
+  SubscribeOnReferenceFormRecordsEvents(
+    ReferenceForm: TReferenceForm
+  );
+begin
+
+  ReferenceForm.OnAddingRecordRequestedEventHandler :=
+    OnAddingRecordRequestedEventHandler;
+
+  ReferenceForm.OnChangingRecordRequestedEventHandler :=
+    OnChangingRecordRequestedEventHandler;
+
+  ReferenceForm.OnRemovingRecordRequestedEventHandler :=
+    OnRemovingRecordRequestedEventHandler;
+
+  ReferenceForm.OnRecordsRefreshRequestedEventHandler :=
+    OnRecordsRefreshRequestedEventHandler;
+
+  ReferenceForm.OnRecordFocusedEventHandler :=
+    OnRecordFocusedEventHandler;
+    
+end;
+
+end.

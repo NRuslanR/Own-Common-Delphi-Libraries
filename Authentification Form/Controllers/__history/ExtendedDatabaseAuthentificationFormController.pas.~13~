@@ -1,0 +1,81 @@
+unit ExtendedDatabaseAuthentificationFormController;
+
+interface
+
+uses
+
+  DatabaseAuthentificationFormController,
+  ExtendedDatabaseAuthentificationFormViewModel,
+  unExtendedDatabaseAuthentificationForm,
+  SystemAuthentificationFormViewModel,
+  ServiceInfo,
+  Forms,
+  SysUtils,
+  Classes;
+
+type
+
+  TExtendedDatabaseAuthentificationFormController =
+    class (TDatabaseAuthentificationFormController)
+
+      protected
+
+        procedure FillServiceInfoFromViewModel(
+          ServiceInfo: TServiceInfo;
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+        
+      protected
+
+        function GetSystemAuthentificationFormViewModelClass:
+          TSystemAuthentificationFormViewModelClass; override;
+
+      protected
+
+        function GetFormClass: TFormClass; override;
+        
+    end;
+    
+implementation
+
+{ TExtendedDatabaseAuthentificationFormController }
+
+procedure TExtendedDatabaseAuthentificationFormController.
+  FillServiceInfoFromViewModel(
+    ServiceInfo: TServiceInfo;
+    ViewModel: TSystemAuthentificationFormViewModel
+  );
+var DatabaseServerInfo: TDatabaseServerInfo;
+begin
+
+  inherited;
+
+  DatabaseServerInfo := ServiceInfo as TDatabaseServerInfo;
+
+  with ViewModel as TExtendedDatabaseAuthentificationFormViewModel do begin
+
+    DatabaseServerInfo.Host := CurrentHost;
+    DatabaseServerInfo.Port := Port;
+    
+  end;
+
+end;
+
+function TExtendedDatabaseAuthentificationFormController.
+  GetFormClass: TFormClass;
+begin
+
+  Result := TExtendedDatabaseAuthentificationForm;
+
+end;
+
+function TExtendedDatabaseAuthentificationFormController.
+  GetSystemAuthentificationFormViewModelClass:
+    TSystemAuthentificationFormViewModelClass;
+begin
+
+  Result := TExtendedDatabaseAuthentificationFormViewModel;
+
+end;
+
+end.

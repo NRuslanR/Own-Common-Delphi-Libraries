@@ -1,0 +1,22 @@
+unit ApplicationService;
+
+interface
+
+uses
+
+  SysUtils,
+  Classes;
+
+type
+
+  TApplicationServiceException = class (Exception)
+
+  end;
+
+  IApplicationService = interface
+  
+  end;
+
+implementation
+
+end.

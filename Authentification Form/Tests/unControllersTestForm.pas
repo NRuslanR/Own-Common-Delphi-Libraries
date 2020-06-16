@@ -1,0 +1,38 @@
+unit unControllersTestForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,
+  TestExtendedDatabaseAuthentificationFormController,
+  StdCtrls;
+
+type
+  TControllersTestForm = class(TForm)
+    btn1: TButton;
+    procedure btn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ControllersTestForm: TControllersTestForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TControllersTestForm.btn1Click(Sender: TObject);
+var Controller: TTestExtendedDatabaseAuthentificationFormController;
+begin
+
+  Controller := TTestExtendedDatabaseAuthentificationFormController.Create;
+
+  Controller.ShowFormAsModal(Self);
+  
+end;
+
+end.

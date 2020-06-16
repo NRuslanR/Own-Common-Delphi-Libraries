@@ -1,0 +1,26 @@
+Email|Question 1|Question 2|Question 3|Question 4|Question 5|Question 6|Question 7|Question 8|
+irma.garcia@itesm.mx|Answer 1|Answer 2|Answer 3|Answer 4|Answer 5|Answer 6|Answer 7|Answer 8|
+eolmedo@itesm.mx|Gerente|Masculino|12|1|2|Chihuhua|Mercadotecnia y ServicioEmisión y controlEgresosIngresosOperacionesPlaneaciónDirecciones de ventasPublicidadInformática|1112222233|
+rez@itesm.mx|Gerente|Masculino|15|6|3|Leon|Mercadotecnia y ServicioEmisión y controlEgresosOperacionesDirecciones de ventasPublicidadPlaneaciónInformáticaRecursos HumanosIngresos|1No Aplica23No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica|
+pascual@itesm.mx|Administrador|Masculino|13|5|3|Nuevo Laredo|Mercadotecnia y ServicioEmisión y controlDirecciones de ventasPublicidadInformáticaRecursos HumanosOperacionesIngresosEgresos|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica23|
+fhernand@itesm.mx|Gerente|Masculino|2|5|0|Monterrey|Mercadotecnia y ServicioEmisión y controlDirecciones de ventasPublicidadPlaneaciónInformáticaRecursos HumanosOperacionesIngresosEgresos|1223222222|
+alopez@sorteotec.itesm.mx|Auxiliar Administrativo|Femenino|12|4|3|Cd. Juarez|Emisión y controlEgresosInformáticaRecursos HumanosOperacionesIngresos|1122211111|
+durango@sorteotec.itesm.mx|Auxiliar Administrativo|Femenino|23|8|6|Durango|Emisión y controlInformáticaOperacionesEgresos|13No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica13|
+cleon@sorteotec.itesm.mx|Auxiliar Administrativo|Femenino|7|0|3|Leon|Emisión y controlInformáticaOperaciones|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica11|
+lfornue@sorteotec.itesm.mx|Gerente|Femenino|32|18||Matamoros|Mercadotecnia y ServicioEmisión y controlPublicidadDirecciones de ventasRecursos HumanosOperacionesIngresos|12No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica3|
+rquintan@sorteotec.itesm.mx|Administrador|Masculino|40|1|4|Matamoros|Emisión y controlRecursos HumanosPublicidadInformáticaOperacionesEgresosIngresos|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica23|
+nginer@sorteotec.itesm.mx|Coordinador|Femenino|5|3|1|Monterrey|Mercadotecnia y ServicioDirecciones de ventasPublicidadPlaneaciónRecursos HumanosEgresosInformáticaOperaciones|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica32|
+javierch@sorteotec.itesm.mx|Gerente|Masculino|10|6|1|Michoacan|Mercadotecnia y ServicioDirecciones de ventasPublicidadRecursos HumanosOperacionesEmisión y control|1No AplicaNo AplicaNo Aplica322211|
+goropeza@sorteotec.itesm.mx|Administrador|Masculino|4|1|1|Villahermosa|Emisión y controlEgresosIngresosPublicidadInformáticaRecursos HumanosOperaciones|13No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica2|
+jaron@sorteotec.itesm.mx|Supervisor Administrativo|Masculino|1año|4|1|Saltillo|Emisión y control|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica|
+cpena@sorteotec.itesm.mx|Auxiliar Administrativo|Femenino|33|9|8|Monclova|Mercadotecnia y ServicioEgresosIngresosDirecciones de ventasPublicidadInformáticaRecursos HumanosOperacionesEmisión y control|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica322|
+zacateca@sorteotec.itesm.mx|Auxiliar Administrativo|Femenino|12|48|4|Zacatecas|Emisión y controlOperacionesInformáticaIngresos|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica322|
+cpuebla@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|12|03|2000|Puebla|OperacionesInformática|2No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica3|
+ovalenzu@sorteotec.mty.itesm.mx|Coordinador|Femenino|11 años|7|5|Monterrey|Emisión y controlEgresosOperacionesInformáticaDirecciones de ventasRecursos HumanosIngresos|123No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica|
+jgonzale@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|9 años|10|9|Monterrey|Emisión y controlInformática|1No AplicaNo Aplica2No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica|
+wcanela@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|4|0|4|Monterrey|Emisión y controlDirecciones de ventasInformáticaRecursos HumanosIngresos|11No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica3|
+jsilv@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|12|5|3|Monterrey|Emisión y controlInformáticaRecursos HumanosOperaciones|222No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica2|
+jacontre@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Femenino|12|11|2|Monterrey|Emisión y controlDirecciones de ventasInformática|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica2No Aplica3|
+sesifuen@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|7|6|1|Monterrey|Mercadotecnia y ServicioEmisión y controlDirecciones de ventasInformáticaRecursos HumanosOperaciones|12No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica3|
+jdelgado@sorteotec.mty.itesm.mx|Auxiliar Administrativo|Masculino|3|6||Tampico|Mercadotecnia y ServicioOperacionesPublicidadInformáticaRecursos HumanosIngresosEmisión y controlEgresos|13No AplicaNo Aplica322111|
+erpuente@itesm.mx|Coordinador|Femenino|4|4||Matamoros|Mercadotecnia y ServicioIngresosEgresosEmisión y control|1No AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo AplicaNo Aplica3~2|

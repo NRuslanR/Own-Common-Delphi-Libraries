@@ -1,0 +1,82 @@
+unit GlobalErrorHandler;
+
+interface
+
+uses
+
+  Forms,
+  SysUtils,
+  Classes;
+
+type
+
+  TErrorHandler = class sealed
+
+    private
+
+      class var FInstance: TErrorHandler;
+
+      class function GetInstance: TErrorHandler; static;
+
+    private
+
+      FPreviousOnExceptionEventHandler: TExceptionEvent;
+
+      procedure OnExceptionEventHandler(Sender: TObject; E: Exception);
+      
+    public
+
+      procedure Activate;
+      procedure Deactivate;
+
+      class property Current: TErrorHandler read GetInstance;
+
+  end;
+
+implementation
+
+uses
+
+  AuxWindowsFunctionsUnit,
+  ApplicationService,
+  DomainException;
+  
+{ TErrorHandler }
+
+procedure TErrorHandler.Activate;
+begin
+
+  FPreviousOnExceptionEventHandler := Application.OnException;
+  
+  Application.OnException := OnExceptionEventHandler;
+
+end;
+
+procedure TErrorHandler.Deactivate;
+begin
+
+  Application.OnException := FPreviousOnExceptionEventHandler;
+
+end;
+
+class function TErrorHandler.GetInstance: TErrorHandler;
+begin
+
+  if not Assigned(FInstance) then
+    FInstance := TErrorHandler.Create;
+
+  Result := FInstance;
+  
+end;
+
+procedure TErrorHandler.OnExceptionEventHandler(Sender: TObject; E: Exception);
+begin
+
+  if E is TDomainException then
+    ShowWarningMessage(Application.Handle, E.Message, 'Сообщение')
+
+  else ShowErrorMessage(Application.Handle, E.Message, 'Сообщение');
+  
+end;
+
+end.

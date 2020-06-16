@@ -1,0 +1,84 @@
+unit AbstractSystemAuthentificationFormViewModelPropertiesStorage;
+
+interface
+
+uses
+
+  PropertiesIniFileUnit,
+  IObjectPropertiesStorageUnit,
+  SystemAuthentificationFormViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractSystemAuthentificationFormViewModelPropertiesStorageException =
+    class (Exception)
+
+    end;
+    
+  TAbstractSystemAuthentificationFormViewModelPropertiesStorage =
+    class abstract (TInterfacedObject, IObjectPropertiesStorage)
+
+      protected
+
+        procedure RaiseExceptionIfObjectHasNotValidType(
+          VerifiableObject: TObject
+        );
+
+        
+      protected
+
+        procedure SaveSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); virtual; abstract;
+
+        procedure RestoreSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); virtual; abstract;
+
+      public
+
+        procedure SaveObjectProperties(TargetObject: TObject);
+        procedure RestorePropertiesForObject(TargetObject: TObject);
+
+    end;
+
+implementation
+
+{ TAbstractSystemAuthentificationFormViewModelPropertiesStorage }
+
+procedure TAbstractSystemAuthentificationFormViewModelPropertiesStorage.
+  RestorePropertiesForObject(
+    TargetObject: TObject
+  );
+begin
+
+  RaiseExceptionIfObjectHasNotValidType(TargetObject);
+  
+  if not (TargetObject is TSystemAuthentificationFormViewModel) then begin
+
+    raise
+    TAbstractSystemAuthentificationFormViewModelPropertiesStorageException
+      .CreateFmt(
+        'Type "%s" isn''t descendant of "%s"',
+        [
+          TargetObject.ClassName,
+          TSystemAuthentificationFormViewModel.ClassName
+        ]
+      );
+      
+  end;
+  
+
+end;
+
+procedure TAbstractSystemAuthentificationFormViewModelPropertiesStorage.
+  SaveObjectProperties(
+    TargetObject: TObject
+  );
+begin
+
+end;
+
+end.

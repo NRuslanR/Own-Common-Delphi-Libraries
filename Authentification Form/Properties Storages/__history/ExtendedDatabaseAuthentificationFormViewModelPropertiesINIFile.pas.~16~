@@ -1,0 +1,110 @@
+unit ExtendedDatabaseAuthentificationFormViewModelPropertiesINIFile;
+
+interface
+
+uses
+
+  DatabaseAuthentificationFormViewModelPropertiesINIFile,
+  ExtendedDatabaseAuthentificationFormViewModel,
+  SystemAuthentificationFormViewModel,
+  unExtendedDatabaseAuthentificationForm,
+  SysUtils,
+  Classes;
+
+const
+
+  SERVER_ADDRESSES_SECTION = 'ServerAddressesSection';
+  CURRENT_SERVER_ADDRESS_PROPERTY_NAME = 'CurrentServerAddress';
+  CURRENT_SERVER_PORT_PROPERTY_NAME = 'CurrentServerPort';
+  USED_SERVER_ADDRESSES_PROPERTY_NAME = 'UsedServerAddresses';
+
+type
+
+  TExtendedDatabaseAuthentificationFormViewModelPropertiesINIFile =
+    class (TDatabaseAuthentificationFormViewModelPropertiesINIFile)
+
+      protected
+
+        procedure SaveSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+
+        procedure RestoreSystemAuthentificationFormViewModelProperties(
+          ViewModel: TSystemAuthentificationFormViewModel
+        ); override;
+        
+    end;
+    
+implementation
+
+{ TExtendedDatabaseAuthentificationFormViewModelPropertiesINIFile }
+
+procedure TExtendedDatabaseAuthentificationFormViewModelPropertiesINIFile.
+  RestoreSystemAuthentificationFormViewModelProperties(
+    ViewModel: TSystemAuthentificationFormViewModel
+  );
+var UsedServerAddresses: TStrings;
+begin
+
+  inherited;
+
+  FPropertiesINIFile.GoToSection(SERVER_ADDRESSES_SECTION);
+
+  with ViewModel as TExtendedDatabaseAuthentificationFormViewModel do begin
+
+    CurrentHost :=
+      FPropertiesINIFile.ReadValueForProperty(
+        CURRENT_SERVER_ADDRESS_PROPERTY_NAME, varString, ''
+      );
+
+    UsedServerAddresses := TStrings.Create;
+
+    try
+
+      UsedServerAddresses.CommaText :=
+        FPropertiesINIFile.ReadValueForProperty(
+          USED_SERVER_ADDRESSES_PROPERTY_NAME, varString, ''
+        );
+
+      Hosts := UsedServerAddresses;
+      
+    except
+
+      on e: Exception do begin
+
+        FreeAndNil(UsedServerAddresses);
+
+        raise;
+
+      end;
+
+    end;
+
+    Port :=
+      FPropertiesINIFile.ReadValueForProperty(
+        CURRENT_SERVER_PORT_PROPERTY_NAME, varInteger, 0
+      );
+
+  end;
+
+end;
+
+procedure TExtendedDatabaseAuthentificationFormViewModelPropertiesINIFile.
+  SaveSystemAuthentificationFormViewModelProperties(
+    ViewModel: TSystemAuthentificationFormViewModel
+  );
+begin
+
+  inherited;
+
+  FPropertiesINIFile.GoToSection(SERVER_ADDRESSES_SECTION);
+
+  with ViewModel as TExtendedDatabaseAuthentificationFormViewModel
+  do begin
+
+
+  end;
+
+end;
+
+end.

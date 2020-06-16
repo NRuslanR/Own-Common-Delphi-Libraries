@@ -1,0 +1,104 @@
+object SectionStackedForm: TSectionStackedForm
+  Left = 0
+  Top = 0
+  Caption = 'SectionStackedForm'
+  ClientHeight = 411
+  ClientWidth = 664
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 233
+    Top = 0
+    Width = 4
+    Height = 411
+    Color = clBtnFace
+    ParentColor = False
+  end
+  object SectionListPanel: TPanel
+    Left = 0
+    Top = 0
+    Width = 233
+    Height = 411
+    Align = alLeft
+    BevelOuter = bvNone
+    TabOrder = 0
+    DesignSize = (
+      233
+      411)
+    object SectionsTreeList: TcxDBTreeList
+      Left = 8
+      Top = 8
+      Width = 223
+      Height = 395
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Bands = <
+        item
+        end>
+      DataController.DataSource = SectionsDataSource
+      LookAndFeel.SkinName = 'UserSkin'
+      OptionsData.Editing = False
+      OptionsData.Deleting = False
+      OptionsSelection.CellSelect = False
+      OptionsSelection.HideFocusRect = False
+      OptionsView.CellAutoHeight = True
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.HeaderAutoHeight = True
+      RootValue = -1
+      TabOrder = 0
+      OnFocusedNodeChanged = SectionsTreeListFocusedNodeChanged
+      object SectionIdColumn: TcxDBTreeListColumn
+        Visible = False
+        Options.Customizing = False
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object ParentSectionIdColumn: TcxDBTreeListColumn
+        Visible = False
+        Options.Customizing = False
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object SectionNameColumn: TcxDBTreeListColumn
+        Caption.AlignHorz = taCenter
+        Caption.AlignVert = vaCenter
+        Caption.Text = #1056#1072#1079#1076#1077#1083#1099
+        Options.Customizing = False
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+  end
+  object SectionContentPanel: TScrollBox
+    Left = 237
+    Top = 0
+    Width = 427
+    Height = 411
+    Align = alClient
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    BorderStyle = bsNone
+    TabOrder = 1
+    ExplicitLeft = 252
+    ExplicitWidth = 412
+  end
+  object SectionsDataSource: TDataSource
+    Left = 16
+    Top = 368
+  end
+end

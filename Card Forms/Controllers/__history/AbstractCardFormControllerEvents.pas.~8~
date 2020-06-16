@@ -1,0 +1,60 @@
+unit AbstractCardFormControllerEvents;
+
+interface
+
+uses
+
+  CardFormViewModel,
+  Disposable,
+  Event,
+  SysUtils,
+  Classes;
+  
+type
+
+  TCardStateChanged = class (TEvent)
+
+    private
+
+      FViewModel: TCardFormViewModel;
+      FFreeViewModel: IDisposable;
+
+      procedure SetViewModel(
+        const Value: TCardFormViewModel);
+
+    public
+
+      constructor Create(
+        ViewModel: TCardFormViewModel
+      );
+
+      property CardFormViewModel: TCardFormViewModel
+      read FViewModel write SetViewModel;
+
+  end;
+
+  TNewFuelCharacteristicsCalculationSavedEvent = class (TEvent)
+
+    private
+
+      FViewModel: TFuelCharacteristicsCalculationCardFormViewModel;
+      FFreeViewModel: IDisposable;
+
+      procedure SetViewModel(
+        const Value: TFuelCharacteristicsCalculationCardFormViewModel);
+
+    public
+
+      constructor Create(
+        ViewModel: TFuelCharacteristicsCalculationCardFormViewModel
+      );
+
+      property FuelCharacteristicsCalculationCardFormViewModel:
+        TFuelCharacteristicsCalculationCardFormViewModel
+      read FViewModel write SetViewModel;
+
+  end;
+  
+implementation
+
+end.

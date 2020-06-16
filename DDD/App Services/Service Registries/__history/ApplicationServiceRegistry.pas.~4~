@@ -1,0 +1,20 @@
+unit ApplicationServiceRegistry;
+
+interface
+
+uses
+
+  ApplicationService;
+
+type
+
+  IApplicationServiceRegistry = interface
+
+    procedure RegisterApplicationService(
+
+    
+  end;
+
+implementation
+
+end.

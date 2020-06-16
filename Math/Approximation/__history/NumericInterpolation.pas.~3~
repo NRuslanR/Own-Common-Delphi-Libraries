@@ -1,0 +1,22 @@
+unit NumericInterpolation;
+
+interface
+
+uses
+
+  SysUtils;
+
+type
+
+  TNumericInterpolation = class sealed
+
+    public
+
+      class function LinearlyInterpolate(
+        const LowerX, LowerY: Double;
+        const UpperX, UpperY: Double;
+  end;
+
+implementation
+
+end.

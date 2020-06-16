@@ -1,0 +1,5 @@
+inherited SectionStackedForm1: TSectionStackedForm1
+  Caption = 'SectionStackedForm1'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

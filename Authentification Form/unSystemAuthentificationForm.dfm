@@ -1,0 +1,109 @@
+object SystemAuthentificationForm: TSystemAuthentificationForm
+  Left = 0
+  Top = 0
+  Caption = #1042#1093#1086#1076' '#1074' '#1089#1080#1089#1090#1077#1084#1091
+  ClientHeight = 126
+  ClientWidth = 371
+  Color = clBtnFace
+  Constraints.MaxHeight = 165
+  Constraints.MinHeight = 165
+  Constraints.MinWidth = 387
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object UserLogOnParamsPanel: TPanel
+    Left = 0
+    Top = 0
+    Width = 371
+    Height = 73
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 0
+    DesignSize = (
+      371
+      73)
+    object LoginLabel: TLabel
+      Left = 23
+      Top = 14
+      Width = 34
+      Height = 13
+      Caption = #1051#1086#1075#1080#1085':'
+    end
+    object PasswordLabel: TLabel
+      Left = 16
+      Top = 53
+      Width = 41
+      Height = 13
+      Caption = #1055#1072#1088#1086#1083#1100':'
+    end
+    object LoginEdit: TRegExprValidateEdit
+      Left = 63
+      Top = 13
+      Width = 292
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 0
+      InvalidHint = #1044#1083#1103' '#1074#1093#1086#1076#1072' '#1074' '#1089#1080#1089#1090#1077#1084#1091' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1074#1074#1077#1089#1090#1080' '#1083#1086#1075#1080#1085
+      InvalidColor = 10520575
+      RegularExpression = '.+'
+    end
+    object PasswordEdit: TRegExprValidateEdit
+      Left = 63
+      Top = 52
+      Width = 292
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      PasswordChar = '*'
+      TabOrder = 1
+      InvalidHint = #1044#1083#1103' '#1074#1093#1086#1076#1091' '#1074' '#1089#1080#1089#1090#1077#1084#1091' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1074#1074#1077#1089#1090#1080' '#1087#1072#1088#1086#1083#1100
+      InvalidColor = 10520575
+      RegularExpression = '.+'
+    end
+  end
+  object FooterButtonsPanel: TPanel
+    Left = 0
+    Top = 73
+    Width = 371
+    Height = 53
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 1
+    DesignSize = (
+      371
+      53)
+    object AuthentificateButton: TcxButton
+      Left = 192
+      Top = 16
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = #1042#1086#1081#1090#1080
+      Default = True
+      TabOrder = 0
+      OnClick = AuthentificateButtonClick
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = True
+      LookAndFeel.SkinName = 'UserSkin'
+    end
+    object CancelButton: TcxButton
+      Left = 280
+      Top = 16
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = #1054#1090#1084#1077#1085#1072
+      TabOrder = 1
+      OnClick = CancelButtonClick
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = True
+      LookAndFeel.SkinName = 'UserSkin'
+    end
+  end
+end

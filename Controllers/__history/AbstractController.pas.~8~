@@ -1,0 +1,40 @@
+unit AbstractController;
+
+interface
+
+uses
+
+  Forms,
+  Controller,
+  EventBus,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractController = class abstract (TInterfacedObject, IController)
+
+    protected
+
+      FEventBus: IEventBus;
+
+    public
+
+      constructor Create(EventBus: IEventBus);
+
+  end;
+
+implementation
+
+{ TAbstractController }
+
+constructor TAbstractController.Create(EventBus: IEventBus);
+begin
+
+  inherited Create;
+
+  FEventBus := EventBus;
+
+end;
+
+end.

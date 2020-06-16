@@ -1,0 +1,25 @@
+unit unControllersTestForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, TTestExte, StdCtrls;
+
+type
+  TControllersTestForm = class(TForm)
+    btn1: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ControllersTestForm: TControllersTestForm;
+
+implementation
+
+{$R *.dfm}
+
+end.

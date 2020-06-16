@@ -1,0 +1,49 @@
+unit SystemAuthentificationFormControllerEvents;
+
+interface
+
+uses
+
+  ServiceInfo,
+  ClientAccount,
+  Event;
+  
+type
+
+  TLogOnRequestedEvent = class (TEvent)
+
+  end;
+
+  TClientAuthentificatedEvent = class (TEvent)
+
+    private
+
+      FClientAccount: TClientAccount;
+      FServiceInfo: TServiceInfo;
+
+    public
+
+      constructor Create(
+        ClientAccount: TClientAccount;
+        ServiceInfo: TServiceInfo
+      );
+
+      property ClientAccount: TClientAccount read FClientAccount;
+      property ServiceInfo: TServiceInfo read FServiceInfo;
+
+  end;
+  
+implementation
+
+{ TClientAuthentificatedEvent }
+
+constructor TClientAuthentificatedEvent.Create(ClientAccount: TClientAccount);
+begin
+
+  inherited Create;
+
+  FClientAccount := ClientAccount;
+  
+end;
+
+end.

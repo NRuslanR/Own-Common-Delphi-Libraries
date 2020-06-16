@@ -1,0 +1,72 @@
+unit AbstractReferenceFormRecordViewModelMapper;
+
+interface
+
+uses
+
+  CardFormViewModel,
+  ReferenceFormRecordViewModelMapper,
+  ReferenceFormRecordViewModel,
+  SysUtils,
+  Classes;
+
+type
+
+  TAbstractReferenceFormRecordViewModelMapper = class (TInterfacedObject, IReferenceFormRecordViewModelMapper)
+
+    protected
+
+      function GetReferenceFormRecordViewModelClass: TReferenceFormRecordViewModelClass; virtual; abstract;
+
+      procedure FillReferenceFormRecordViewModelFrom(
+        ReferenceFormRecordViewModel: TReferenceFormRecordViewModel;
+        CardFormViewModel: TCardFormViewModel
+      ); virtual;
+
+    public
+
+      function MapReferenceFormRecordViewModelFrom(
+        CardFormViewModel: TCardFormViewModel
+      ): TReferenceFormRecordViewModel; virtual;
+      
+  end;
+
+implementation
+
+{ TAbstractReferenceFormRecordViewModelMapper }
+
+procedure TAbstractReferenceFormRecordViewModelMapper.
+  FillReferenceFormRecordViewModelFrom(
+    ReferenceFormRecordViewModel: TReferenceFormRecordViewModel;
+    CardFormViewModel: TCardFormViewModel
+  );
+begin
+
+
+end;
+
+function TAbstractReferenceFormRecordViewModelMapper.MapReferenceFormRecordViewModelFrom(
+  CardFormViewModel: TCardFormViewModel): TReferenceFormRecordViewModel;
+begin
+
+  Result := GetReferenceFormRecordViewModelClass.Create;
+
+  try
+
+    FillReferenceFormRecordViewModelFrom(CardFormViewModel);
+    
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(Result);
+
+      raise;
+
+    end;
+
+  end;
+
+end;
+
+end.

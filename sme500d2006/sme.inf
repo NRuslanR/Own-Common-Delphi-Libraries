@@ -1,0 +1,90 @@
+[DSP upload]
+Filename=smetrial.zip
+Replacements=
+Version=4.77
+FileURL=http://www.scalabium.com/download/sme/smetrial.zip
+Description=SMExport for Delphi&C++Builder is a native VCL component
+suite for data export from TDataSet or TDBGrid or any other VCL control
+(TStringGrid, TListView etc) into the Paradox and DBase tables or
+into a text file (fixed or comma-delimited), HTML, XML, MS Excel,
+MS Word, PDF, MS Access, SQL-script, Lotus 1-2-3, Quattro, SYLK, DIF,
+LDAP DIF and others:
+1. TSMExportToXLS - direct export into MS Excel spreadsheet without OLE
+2. TSMExportToExcel - export into MS Excel file using OLE
+3. TSMExportToWord - export into MS Word file using OLE
+4. TSMExportToAccess - export into MS Access database using DAO
+5. TSMExportToText - export into text file (fixed or comma-delimited) without BDE
+6. TSMExportToHTML - export into HTML file
+7. TSMExportToXML - export into XML file
+8. TSMExportToPDF - export into Adobe Acrobat PDF document
+9. TSMExportToWKS - export into Lotus 1-2-3 spreadsheet (directly without OLE)
+10. TSMExportToQuattro - export into QuattroPro spreadsheet (directly without OLE)
+11. TSMExportToRTF - export into RichText format file (directly without OLE/DDE/RichEdit.dll)
+12. TSMExportToSYLK - export into SYLK file
+13. TSMExportToDIF - export into DIF file
+14. TSMExportToSQL - generate the dump file with SQL-script
+15. TSMExportToBDE - export into Paradox/DBase/ASCII (using BDE)
+16. TSMExportToClipboard - copy into MS Windows clipboard
+17. TSMExportToSPSS - export into SPSS file for statistical software and analysis
+18. TSMExportToLDIF - export into LDAP Data Interchange Format (directory entries)
+18. TSMExportToADO - copy into any ADO data sources
+19. TSMExportToDataset - copy into other dataset
+
+Specific formattings (column widths, colors, fonts, selected records etc.) is transferred as much as possible.
+SMExport is a native VCL engine with multi-language support.
+
+Also SMExport suite contains a TSMEWizardDlg and TSMExportMonitor compound
+components with visual dialog for export parameters setting. With these
+components you can control a data export process in one place and give a
+flexible application to your end-users.
+
+Custom data engines allow to export data from any control (TStringGrid, TListView,
+TDecisionCube etc). Virtual data engine allow to generate a data in run-time without any linked control.
+
+Data pumping components allow to export a lot of tables from database in a few mouse clicks.
+
+Delphi 1.0=N
+Delphi 2.0=N
+Delphi 3.0=Y
+Delphi 4.0=Y
+Delphi 5.0=Y
+Delphi 6.0=Y
+Delphi 7.0=Y
+Delphi 2005=Y
+C++Builder 3.0=Y
+C++Builder 4.0=Y
+C++Builder 5.0=Y
+C++Builder 6.0=Y
+File Status=Shareware
+Full Source=Not Included
+Category=DataSet export engine
+Note=trial version for 30 days
+Additional info=
+Direct online registration:
+1. http://www.regsoft.com/cgi-bin/reg_it_offsite.pl?13585
+or
+2. https://secure.element5.com/register.html?productid=131572
+
+[DSP Support]
+DSP Support=Y
+
+[Versions available]
+Delphi 1.0=
+Delphi 2.0=
+Delphi 3.0=http://www.scalabium.com/download/sme/sme_d34567.zip
+Delphi 4.0=http://www.scalabium.com/download/sme/sme_d34567.zip
+Delphi 5.0=http://www.scalabium.com/download/sme/sme_d34567.zip
+Delphi 6.0=http://www.scalabium.com/download/sme/sme_d34567.zip
+Delphi 7.0=http://www.scalabium.com/download/sme/sme_d34567.zip
+Delphi 2005=http://www.scalabium.com/download/sme/sme_d2005.zip
+C++Builder 1.0=
+C++Builder 2.0=
+C++Builder 3.0=http://www.scalabium.com/download/sme/sme_c3456.zip
+C++Builder 4.0=http://www.scalabium.com/download/sme/sme_c3456.zip
+C++Builder 5.0=http://www.scalabium.com/download/sme/sme_c3456.zip
+C++Builder 6.0=http://www.scalabium.com/download/sme/sme_c3456.zip
+
+[Uploader]
+Author name=Mike Shkolnik
+Author E-mail=smexport@scalabium.com
+Author URL=http://www.scalabium.com

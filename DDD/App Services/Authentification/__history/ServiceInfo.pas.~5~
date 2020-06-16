@@ -1,0 +1,22 @@
+unit ServiceInfo;
+
+interface
+
+type
+
+  TServiceInfo = class
+
+  end;
+
+  THostProcessInfo = class (TServiceInfo)
+
+    public
+
+      Host: String;
+      Port: Integer;
+
+  end;
+  
+implementation
+
+end.

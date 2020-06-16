@@ -1,0 +1,19 @@
+unit ConnectionFactory;
+
+interface
+
+uses
+
+  Classes,
+  QueryExecutorFactory;
+
+type
+
+  IConnectionFactory = interface
+
+    function C
+  end;
+
+implementation
+
+end.

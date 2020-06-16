@@ -1,0 +1,308 @@
+unit DBDataTableFormPropertiesIniFile;
+
+interface
+
+uses
+
+  DBDataTableFormPropertiesStorage,
+  DBDataTableFilterFormStatePropertiesStorage,
+  DBDataTableFormUnit,
+  TableViewFilterFormUnit,
+  PropertiesIniFileUnit,
+  cxGrid,
+  cxGridCustomTableView,
+  cxGridDBTableView,
+  SysUtils,
+  Classes;
+
+const
+
+  LAST_FOCUSED_RECORD_SECTION_NAME = 'LastFocusedRecord';
+  LAST_FOCUSED_RECORD_ID_KEY_NAME = 'LastFocusedRecordId';
+
+  LAST_FOCUSED_FIELD_SECTION_NAME = 'LastFocusedField';
+  LAST_FOCUSED_FIELD_NAME_KEY_NAME = 'LastFocusedFieldName';
+  
+type
+
+   TDBDataTableFormPropertiesIniFile = class (TDBDataTableFormPropertiesStorage)
+
+      protected
+
+        FIniFilePath: String;
+        FPropertiesIniFile: TPropertiesIniFile;
+        
+        function GetIniFilePath: String;
+        procedure SetIniFilePath(const Value: String);
+
+      protected
+
+        function CreateFilterFormStateObject: TTableViewFilterFormState; virtual;
+
+        procedure RestoreColumnVisibility(
+          DBDataTableForm: TDBDataTableForm
+        );
+        
+        procedure InternalSaveObjectProperties(DBDataTableForm: TDBDataTableForm); override;
+        procedure InternalRestorePropertiesForObject(DBDataTableForm: TDBDataTableForm); override;
+
+      public
+
+        destructor Destroy; override;
+        constructor Create; overload; override;
+
+        constructor Create(
+          FilterFormStatePropertiesStorage: TDBDataTableFilterFormStatePropertiesStorage
+        ); overload;
+
+        constructor Create(
+          const IniFilePath: String;
+          FilterFormStatePropertiesStorage: TDBDataTableFilterFormStatePropertiesStorage
+        ); overload;
+
+        constructor Create(const IniFilePath: String); overload;
+
+      published
+
+        property IniFilePath: String read GetIniFilePath write SetIniFilePath;
+        
+   end;
+
+implementation
+
+uses
+
+  Variants,
+  cxGridCustomView;
+  
+{ TDBDataTableFormPropertiesIniFile }
+
+constructor TDBDataTableFormPropertiesIniFile.Create;
+begin
+
+  inherited;
+
+end;
+
+constructor TDBDataTableFormPropertiesIniFile.Create(const IniFilePath: String);
+begin
+           
+  inherited Create;
+
+  Self.IniFilePath := IniFilePath;
+  
+end;
+
+constructor TDBDataTableFormPropertiesIniFile.Create(
+  FilterFormStatePropertiesStorage: TDBDataTableFilterFormStatePropertiesStorage);
+begin
+
+  inherited Create(FilterFormStatePropertiesStorage);
+  
+end;
+
+constructor TDBDataTableFormPropertiesIniFile.Create(const IniFilePath: String;
+  FilterFormStatePropertiesStorage: TDBDataTableFilterFormStatePropertiesStorage);
+begin
+
+  inherited Create(FilterFormStatePropertiesStorage);
+
+  Self.IniFilePath := IniFilePath;
+  
+end;
+
+function TDBDataTableFormPropertiesIniFile.CreateFilterFormStateObject: TTableViewFilterFormState;
+begin
+
+  Result := TTableViewFilterFormState.Create;
+  
+end;
+
+destructor TDBDataTableFormPropertiesIniFile.Destroy;
+begin
+
+  FreeAndNil(FPropertiesIniFile);
+  inherited;
+
+end;
+
+function TDBDataTableFormPropertiesIniFile.GetIniFilePath: String;
+begin
+
+  Result := FIniFilePath;
+
+end;
+
+procedure TDBDataTableFormPropertiesIniFile.SetIniFilePath(const Value: String);
+begin
+
+  FIniFilePath := Value;
+
+  if not Assigned(FPropertiesIniFile) then
+    FPropertiesIniFile := TPropertiesIniFile.Create(Value)
+
+  else FPropertiesIniFile.IniFilePath := Value;
+
+end;
+
+procedure TDBDataTableFormPropertiesIniFile.InternalRestorePropertiesForObject(
+  DBDataTableForm: TDBDataTableForm);
+var FilterFormState: TTableViewFilterFormState;
+    LastFocusedRecordKeyValue: Variant;
+    LastFocusedFieldName: Variant;
+begin
+
+  FilterFormState := CreateFilterFormStateObject;
+
+  try
+
+    DBDataTableForm.DataRecordGridTableView.RestoreFromIniFile(
+      FIniFilePath,
+      True,
+      False,
+      [gsoUseFilter, gsoUseSummary]
+    );
+
+    RestoreColumnVisibility(DBDataTableForm);
+    
+    FilterFormStatePropertiesStorage.RestorePropertiesForObject(FilterFormState);
+
+    DBDataTableForm.FilterFormLastState := FilterFormState;
+
+    FPropertiesIniFile.GoToSection(LAST_FOCUSED_RECORD_SECTION_NAME);
+    
+    LastFocusedRecordKeyValue :=
+      FPropertiesIniFile.ReadValueForProperty(
+        LAST_FOCUSED_RECORD_ID_KEY_NAME,
+        varVariant,
+        Unassigned
+      );
+
+    if not VarIsEmpty(LastFocusedRecordKeyValue) then begin
+
+      DBDataTableForm.SetRequestedFocusedRecord(
+        LastFocusedRecordKeyValue
+      );
+      
+    end;
+          {
+    FPropertiesIniFile.GoToSection(LAST_FOCUSED_FIELD_SECTION_NAME);
+    
+    LastFocusedFieldName :=
+      FPropertiesIniFile.ReadValueForProperty(
+        LAST_FOCUSED_FIELD_NAME_KEY_NAME,
+        varVariant,
+        Unassigned
+      );
+
+    if not VarIsEmpty(LastFocusedFieldName) then begin
+
+      DBDataTableForm.SetFocusedColumnByFieldName(
+        LastFocusedFieldName
+      );
+      
+    end;        }
+
+  except
+
+    on e: Exception do begin
+
+      FreeAndNil(FilterFormState);
+      raise;
+      
+    end;
+
+  end;
+
+end;
+
+procedure TDBDataTableFormPropertiesIniFile.InternalSaveObjectProperties(
+  DBDataTableForm: TDBDataTableForm);
+var CurrentRecordKeyValue: Variant;
+    DBDataTableRecordFocusedField: TDBDataTableRecordField;
+begin
+
+  DBDataTableForm.DataRecordGridTableView.StoreToIniFile(
+    FIniFilePath,
+    True,
+    [gsoUseFilter, gsoUseSummary]
+  );
+
+  CurrentRecordKeyValue := DBDataTableForm.GetCurrentRecordKeyValue;
+
+  if VarIsNull(CurrentRecordKeyValue) then Exit;
+  
+  FPropertiesIniFile.GoToSection(LAST_FOCUSED_RECORD_SECTION_NAME);
+
+  FPropertiesIniFile.WriteValueForPropertyAsVariant(
+    LAST_FOCUSED_RECORD_ID_KEY_NAME,
+    CurrentRecordKeyValue
+  );
+                                       {
+  FPropertiesIniFile.GoToSection(LAST_FOCUSED_FIELD_SECTION_NAME);
+
+  DBDataTableRecordFocusedField := DBDataTableForm.FocusedField;
+
+  try
+
+    FPropertiesIniFile.WriteValueForPropertyAsVariant(
+      LAST_FOCUSED_FIELD_NAME_KEY_NAME,
+      DBDataTableRecordFocusedField.Name
+    );
+
+  finally
+
+    FreeAndNil(DBDataTableRecordFocusedField);
+    
+  end;               }
+
+  FilterFormStatePropertiesStorage.SaveObjectProperties(DBDataTableForm.FilterFormLastState);
+
+end;
+
+procedure TDBDataTableFormPropertiesIniFile.RestoreColumnVisibility(
+  DBDataTableForm: TDBDataTableForm
+);
+var I: Integer;
+    Column: TcxGridDBColumn;
+    ColumnIniFileSection: String;
+    ColumnVisibilityVariant: Variant;
+begin
+ {
+  for I := 0 to DBDataTableForm.DataRecordGridTableView.ColumnCount - 1 do
+  begin
+
+    Column := DBDataTableForm.DataRecordGridTableView.Columns[I];
+
+    if not Column.VisibleForCustomization then Continue;
+
+    ColumnIniFileSection :=
+      DBDataTableForm.Name +
+      '.' +
+      DBDataTableForm.DataRecordGridTableView.Name +
+      '/' +
+      Column.Name +
+      ': ' +
+      Column.ClassName;
+
+    FPropertiesIniFile.GoToSection(ColumnIniFileSection);
+
+    ColumnVisibilityVariant :=
+      FPropertiesIniFile.ReadValueForProperty(
+        'Visible',
+        varString,
+        'True'
+      );
+
+    if not VarIsEmpty(ColumnVisibilityVariant) then begin
+
+      Column.Visible := StrToBool(ColumnVisibilityVariant);
+      
+    end;
+
+  end;
+           }
+
+end;
+
+end.
